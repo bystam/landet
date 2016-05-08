@@ -8,10 +8,10 @@ CREATE TABLE days (
   date TEXT UNIQUE NOT NULL
 );
 
-CREATE TABLE users (
-  id INTEGER PRIMARY KEY,
-  name TEXT NOT NULL
-);
+-- CREATE TABLE users (
+--   id INTEGER PRIMARY KEY,
+--   name TEXT NOT NULL
+-- );
 
 CREATE TABLE posts (
   id INTEGER PRIMARY KEY,
@@ -20,8 +20,8 @@ CREATE TABLE posts (
   created_at TEXT NOT NULL,
   updated_at TEXT NOT NULL,
 
-  user_id INTEGER NOT NULL,
+--  user_id INTEGER NOT NULL,
   day_id INTEGER NOT NULL,
-  FOREIGN KEY(user_id) REFERENCES users(id)
+--  FOREIGN KEY(user_id) REFERENCES users(id)
   FOREIGN KEY(day_id) REFERENCES days(id)
 );
