@@ -5,8 +5,8 @@ const logger = require('morgan');
 // const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 
-const days = require('./routes/days');
-const users = require('./routes/users');
+const days = require('./routes/days-route');
+const users = require('./routes/users-route');
 
 const app = express();
 
