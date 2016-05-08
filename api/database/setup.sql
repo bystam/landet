@@ -5,7 +5,7 @@ DROP TABLE IF EXISTS users;
 
 CREATE TABLE days (
   id INTEGER PRIMARY KEY,
-  date DATE NOT NULL
+  date TEXT NOT NULL
 );
 
 CREATE TABLE users (
@@ -17,8 +17,8 @@ CREATE TABLE posts (
   id INTEGER PRIMARY KEY,
   text TEXT NOT NULL,
 
-  created_at DATETIME NOT NULL,
-  updated_at DATETIME NOT NULL,
+  created_at TEXT NOT NULL,
+  updated_at TEXT NOT NULL,
 
   user_id INTEGER NOT NULL,
   day_id INTEGER NOT NULL,
