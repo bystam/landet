@@ -1,0 +1,27 @@
+
+DROP TABLE IF EXISTS days;
+DROP TABLE IF EXISTS posts;
+DROP TABLE IF EXISTS users;
+
+CREATE TABLE days (
+  id INTEGER PRIMARY KEY,
+  date DATE NOT NULL
+);
+
+CREATE TABLE users (
+  id INTEGER PRIMARY KEY,
+  name TEXT NOT NULL
+);
+
+CREATE TABLE posts (
+  id INTEGER PRIMARY KEY,
+  text TEXT NOT NULL,
+
+  created_at DATETIME NOT NULL,
+  updated_at DATETIME NOT NULL,
+
+  user_id INTEGER NOT NULL,
+  day_id INTEGER NOT NULL,
+  FOREIGN KEY(user_id) REFERENCES users(id)
+  FOREIGN KEY(day_id) REFERENCES days(id)
+);
