@@ -4,8 +4,8 @@ const Day = require('./entities').Day;
 
 function fetchToday() {
   return Day.where({ date: todayString() }).fetch().then(function(today) {
-    if (today) return today;
-    else return createToday();
+    if (today) { return today; }
+    else { return createToday(); }
   });
 }
 
