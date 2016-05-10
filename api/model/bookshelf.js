@@ -3,8 +3,11 @@
 let knexConfig = {};
 
 const db = process.env.LANDET_DB
-if (db == 'heroku_dev') {
-  console.log('using heroku dev db');
+
+if (db === 'heroku_dev') {
+
+  console.log('--- knex --- heroku dev db');
+
   knexConfig = {
     client: 'pg',
     connection: {
@@ -16,12 +19,16 @@ if (db == 'heroku_dev') {
       charset  : 'utf8'
     }
   };
+
 } else {
+  console.log('--- knex --- local sqlite db');
+
   knexConfig = {
     client: 'sqlite3',
     useNullAsDefault: true,
     connection: {
       filename: './database/db.sqlite3'
+    }
   };
 }
 
