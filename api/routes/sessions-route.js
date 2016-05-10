@@ -13,4 +13,11 @@ router.get('/', function(req, res, next) {
   });
 });
 
+router.post('/refresh', function(req, res, next) {
+  let refreshToken = req.body.refresh_token;
+  sessions.refreshSession(refreshToken).then(function(newToken) {
+    res.status(201).json({ token: newToken });
+  });
+});
+
 module.exports = router;

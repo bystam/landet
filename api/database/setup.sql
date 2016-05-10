@@ -2,6 +2,7 @@
 DROP TABLE IF EXISTS days;
 DROP TABLE IF EXISTS posts;
 DROP TABLE IF EXISTS users;
+DROP TABLE IF EXISTS sessions;
 
 CREATE TABLE days (
   id INTEGER PRIMARY KEY,
@@ -29,7 +30,8 @@ CREATE TABLE posts (
 
 CREATE TABLE sessions (
   id INTEGER PRIMARY KEY,
-  token TEXT NOT NULL,
+  token TEXT UNIQUE NOT NULL,
+  refresh_token TEXT UNIQUE NOT NULL,
   expiration_date INTEGER NOT NULL,
 
   user_id INTEGER NOT NULL,
