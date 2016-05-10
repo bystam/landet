@@ -1,9 +1,11 @@
 {
   "name": "landet",
   "version": "0.0.0",
-  "private": true,
   "scripts": {
     "start": "node ./bin/api"
+  },
+  "engines": {
+    "node": "5.7.0"
   },
   "dependencies": {
     "body-parser": "~1.13.2",
