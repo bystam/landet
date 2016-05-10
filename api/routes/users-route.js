@@ -6,7 +6,6 @@ const router = express.Router();
 const users = require('../model/users');
 const sessions = require('../model/sessions');
 
-/* GET users listing. */
 router.get('/', function(req, res, next) {
   res.send('respond with a resource');
 });
