@@ -5,35 +5,32 @@ DROP TABLE IF EXISTS users;
 DROP TABLE IF EXISTS sessions;
 
 CREATE TABLE days (
-  id INTEGER PRIMARY KEY,
-  date TEXT UNIQUE NOT NULL
+  id SERIAL PRIMARY KEY,
+  date DATE UNIQUE NOT NULL
 );
 
 CREATE TABLE users (
-  id INTEGER PRIMARY KEY,
+  id SERIAL PRIMARY KEY,
   username TEXT UNIQUE NOT NULL,
   hashedpw TEXT NOT NULL
 );
 
 CREATE TABLE posts (
-  id INTEGER PRIMARY KEY,
+  id SERIAL PRIMARY KEY,
   text TEXT NOT NULL,
 
-  created_at TEXT NOT NULL,
-  updated_at TEXT NOT NULL,
+  created_at TIMESTAMP NOT NULL,
+  updated_at TIMESTAMP NOT NULL,
 
-  user_id INTEGER NOT NULL,
-  day_id INTEGER NOT NULL,
-  FOREIGN KEY(user_id) REFERENCES users(id)
-  FOREIGN KEY(day_id) REFERENCES days(id)
+  user_id INTEGER REFERENCES users (id),
+  day_id INTEGER REFERENCES days (id)
 );
 
 CREATE TABLE sessions (
-  id INTEGER PRIMARY KEY,
+  id SERIAL PRIMARY KEY,
   token TEXT UNIQUE NOT NULL,
   refresh_token TEXT UNIQUE NOT NULL,
-  expiration_date INTEGER NOT NULL,
+  expiration_date TIMESTAMP NOT NULL,
 
-  user_id INTEGER NOT NULL,
-  FOREIGN KEY(user_id) REFERENCES users(id)
+  user_id INTEGER REFERENCES users (id)
 );
