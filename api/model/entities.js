@@ -40,5 +40,6 @@ const Session = bookshelf.Model.extend({
 module.exports = {
   Day,
   Post,
-  User, Session
+  User,
+  Session
 };
