@@ -10,9 +10,9 @@ router.post('/', function (req, res) {
   let text = req.body.text;
 
   days.fetchToday().then(function(today) {
-    posts.createPost(text, today).then(function(post) {
-      res.json(post);
-    });
+    return posts.createPost(text, today);
+  }).then(function(post) {
+    res.json(post);
   });
 });
 
