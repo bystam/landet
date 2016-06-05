@@ -4,11 +4,11 @@
 
 import UIKit
 
-private typealias TabItemSpecification = (storyboard: String, title: String)
+private typealias TabItemSpecification = (storyboard: String, title: String, iconDeselected: String, iconSelected: String)
 
 private let kTabs: [TabItemSpecification] = [
-    (storyboard: "Map", title: "Map"),
-    (storyboard: "Topics", title: "Topics")
+    (storyboard: "Map", title: "Map", iconDeselected: "TabIcon.Pin", iconSelected: "TabIcon.Pin+Selected"),
+    (storyboard: "Topics", title: "Topics", iconDeselected: "TabIcon.Cocktail", iconSelected: "TabIcon.Cocktail+Selected")
 ]
 
 class AppNavigationController {
@@ -19,7 +19,7 @@ class AppNavigationController {
         var viewControllers = [UIViewController]()
         for tab in kTabs {
             let vc = UIStoryboard(name: tab.storyboard, bundle: nil).instantiateInitialViewController()!
-            let item = UITabBarItem(title: tab.title, image: nil, selectedImage: nil)
+            let item = UITabBarItem(title: tab.title, image: UIImage(named: tab.iconDeselected), selectedImage: UIImage(named: tab.iconSelected))
             vc.tabBarItem = item
 
             viewControllers.append(vc)
