@@ -8,7 +8,7 @@ const kUnauthorized = {
 };
 
 function authenticate(req, res, next) {
-  let token = req.get('Authorization');
+  let token = req.get('Authorization') || '';
   token = token.replace('Basic ', '');
   if (token.length === 0) {
     return res.status(401).json(kUnauthorized);
