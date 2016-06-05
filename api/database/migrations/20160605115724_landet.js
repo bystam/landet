@@ -48,7 +48,7 @@ exports.up = function(knex, Promise) {
           table.string('text');
           table.dateTime('comment_time');
 
-          table.integer('creator_id')
+          table.integer('author_id')
                .references('uid')
                .inTable('users');
           table.integer('event_id')

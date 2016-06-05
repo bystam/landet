@@ -2,24 +2,6 @@
 
 const bookshelf = require('./bookshelf').bookshelf;
 
-const Day = bookshelf.Model.extend({
-  tableName: 'days',
-  posts: function() {
-    return this.hasMany(Post);
-  }
-});
-
-const Post = bookshelf.Model.extend({
-  tableName: 'posts',
-  hasTimestamps: true,
-  day: function() {
-    return this.belongsTo(Day);
-  },
-  user: function() {
-    return this.belongsTo(User);
-  }
-});
-
 const User = bookshelf.Model.extend({
   tableName: 'users',
   posts: function() {
@@ -37,9 +19,40 @@ const Session = bookshelf.Model.extend({
   }
 });
 
+const Location = bookshelf.Model.extend({
+  tableName: 'locations',
+  events: function() {
+    return this.hasMany(Event);
+  }
+});
+
+const Event = bookshelf.Model.extend({
+  tableName: 'events',
+  creator: function() {
+    return this.belongsTo(User);
+  },
+  location: function() {
+    return this.belongsTo(Location);
+  },
+  comments: function() {
+    return this.hasMany(EventComment);
+  }
+});
+
+const EventComment = bookshelf.Model.extend({
+  tableName: 'event_comments',
+  author: function() {
+    return this.belongsTo(User);
+  },
+  event: function() {
+    return this.belongsTo(Event);
+  }
+});
+
 module.exports = {
-  Day,
-  Post,
   User,
-  Session
+  Session,
+  Location,
+  Event,
+  EventComment
 };
