@@ -5,10 +5,12 @@ const logger = require('morgan');
 // const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 
-const days = require('./routes/days-route');
 const users = require('./routes/users-route');
-const posts = require('./routes/posts-route');
 const sessions = require('./routes/sessions-route');
+const locations = require('./routes/locations-route');
+const events = require('./routes/events-route');
+
+const auth = require('./middleware/auth');
 
 const app = express();
 
@@ -24,10 +26,10 @@ app.use(bodyParser.json());
 // app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/days', days);
 app.use('/users', users);
-app.use('/posts', posts);
 app.use('/sessions', sessions);
+app.use('/locations', locations);
+app.use('/events', auth.authenticate, events);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -54,7 +54,7 @@ exports.up = function(knex, Promise) {
           table.integer('event_id')
                .references('id')
                .inTable('events');
-        });
+        })
     ]);
 };
 
