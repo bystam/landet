@@ -7,7 +7,10 @@ const comments = require('./eventcomments-route');
 router.use('/:eventid/comments', comments);
 
 router.get('/', function(req, res) {
-  res.json({ message: 'Events route' });
+  res.json({
+    message: 'Events route',
+    user: req.user
+  });
 });
 
 module.exports = router;

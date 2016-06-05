@@ -4,7 +4,7 @@ const Session = require('./entities').Session;
 const Sessions = require('./entities').Sessions;
 const crypto = require('crypto');
 
-const kSessionTimeoutMilliseconds = 5 * 1000;
+const kSessionTimeoutMilliseconds = 2 * 60 * 60 * 1000;
 
 function create(user) {
   let token = randomString();
@@ -15,6 +15,19 @@ function create(user) {
     token: token,
     refresh_token: refreshToken,
     expiration_date : expiration
+  });
+}
+
+function userWithSessionToken(token) {
+  return Session.where({ token: token }).fetch().then(function(session) {
+    if (!session) { return null; }
+
+    const expiration = session.get('expiration_date');
+    if (expiration < Date.now()) {
+      return session.unset('token').save().then(function() { return null; });
+    }
+
+    return session.user().fetch();
   });
 }
 
@@ -50,6 +63,7 @@ function randomString() {
 
 module.exports = {
   create,
+  userWithSessionToken,
   fetchSession,
   refreshSession
 }
