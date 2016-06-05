@@ -33,6 +33,7 @@ exports.up = function(knex, Promise) {
             table.increments('id').primary();
             table.string('title');
             table.string('body');
+            table.dateTime('event_time');
 
             table.integer('creator_id')
                  .references('uid')
@@ -45,6 +46,7 @@ exports.up = function(knex, Promise) {
         knex.schema.createTable('event_comments', function(table) {
           table.increments('id').primary();
           table.string('text');
+          table.dateTime('comment_time');
 
           table.integer('creator_id')
                .references('uid')
