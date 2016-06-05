@@ -5,34 +5,24 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <scenes>
-        <!--Root View Controller-->
-        <scene sceneID="j0B-cT-Xo7">
+        <!--Map-->
+        <scene sceneID="9Z2-wA-hCC">
             <objects>
-                <tableViewController id="bLo-nA-y3o" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="edI-RG-7kw">
+                <viewController id="6f3-7V-HOk" customClass="MapViewController" customModule="Landet" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="QVq-fQ-YXT"/>
+                        <viewControllerLayoutGuide type="bottom" id="N11-DJ-63Z"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Qbe-V6-Chj">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="zQx-rj-6W3">
-                                <rect key="frame" x="0.0" y="92" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="zQx-rj-6W3" id="yH9-t1-6sW">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="bLo-nA-y3o" id="aud-u1-M3I"/>
-                            <outlet property="delegate" destination="bLo-nA-y3o" id="sGn-0Y-ekY"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="wuL-if-byV"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="BEY-Ne-0Sd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                        <color key="backgroundColor" red="0.14509803921568626" green="0.12941176470588234" blue="0.12549019607843137" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Map" id="Ffh-KA-OdK"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="taP-1J-ifL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="404.5" y="662.5"/>
+            <point key="canvasLocation" x="417.5" y="662.5"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="4Z7-Ys-mkk">
@@ -44,7 +34,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="bLo-nA-y3o" kind="relationship" relationship="rootViewController" id="5xl-Qh-eMR"/>
+                        <segue destination="6f3-7V-HOk" kind="relationship" relationship="rootViewController" id="wBq-DH-V6D"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PKG-VQ-LHJ" userLabel="First Responder" sceneMemberID="firstResponder"/>

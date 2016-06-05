@@ -7,8 +7,8 @@ import UIKit
 private typealias TabItemSpecification = (storyboard: String, title: String)
 
 private let kTabs: [TabItemSpecification] = [
-    (storyboard: "Topics", title: "Topics"),
-    (storyboard: "Map", title: "Map")
+    (storyboard: "Map", title: "Map"),
+    (storyboard: "Topics", title: "Topics")
 ]
 
 class AppNavigationController {

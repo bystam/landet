@@ -17,6 +17,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     private func setupUI() {
+        Theme.apply()
+        
         let window = UIWindow(frame: UIScreen.mainScreen().bounds)
         appNavigationController.installInWindow(window)
         window.makeKeyAndVisible()
