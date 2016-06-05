@@ -1,39 +1,22 @@
 'use strict'
 
-let knexConfig = {};
+const knexConfigs = require('../database/knexfile');
 
+let knexConfig = null;
 const db = process.env.LANDET_DB
 
 if (db === 'heroku_dev') {
-
-  console.log('--- knex --- heroku dev db');
-
-  knexConfig = {
-    client: 'pg',
-    connection: {
-      host     : 'ec2-54-228-219-2.eu-west-1.compute.amazonaws.com',
-      user     : 'hgznctmjjryuvs',
-      password : process.env.LANDET_DEV_DB_PW,
-      database : 'd403dmetsr9t9q',
-      port     : 5432,
-      charset  : 'utf8'
-    }
-  };
-
+  knexConfig = knexConfigs.heroku_dev;
 } else {
-  console.log('--- knex --- local sqlite db');
-
-  knexConfig = {
-    client: 'sqlite3',
-    useNullAsDefault: true,
-    connection: {
-      filename: './database/db.sqlite3'
-    }
-  };
+  knexConfig = knexConfigs.development;
 }
 
-const knex = require('knex')(knexConfig)
+const knex = require('knex')(knexConfig);
 const bookshelf = require('bookshelf')(knex);
+
+knex.migrate.latest({
+  directory: './database/migrations'
+});
 
 module.exports = {
   bookshelf
