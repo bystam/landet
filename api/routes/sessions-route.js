@@ -19,7 +19,7 @@ router.get('/', function(req, res, next) {
 router.post('/refresh', function(req, res, next) {
   let refreshToken = req.body.refresh_token;
   sessions.refreshSession(refreshToken).then(function(session) {
-    res.status(201).json(session);
+    res.status(201).json({ token: session.get('token') });
   }).catch(logError);
 });
 
