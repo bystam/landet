@@ -67,18 +67,20 @@ class HttpClient {
             task.cancel()
         }
 
+        print("------> \(request.HTTPMethod!) \(request.URL!.absoluteString) ")
+        print("      > \(String(data: request.HTTPBody!, encoding: NSUTF8StringEncoding)!)")
+
         return operation
     }
 
     private func request(method method: HttpMethod, towards endpoint: String, body: AnyObject?) -> NSMutableURLRequest {
         let url = NSURL(string: (HttpClient.debugHost ?? HttpClient.host) + endpoint)
-        let request = NSMutableURLRequest(URL: url!)
+        let request = NSMutableURLRequest(URL: url!, cachePolicy: .ReloadIgnoringLocalCacheData, timeoutInterval: 20.0)
 
         request.HTTPMethod = method.rawValue
 
         if let body = body, data = try? NSJSONSerialization.dataWithJSONObject(body, options: []) {
-            request.setValue("applicaton/json", forHTTPHeaderField: "Content-Type")
-            request.setValue(String(data.length), forHTTPHeaderField: "Content-Length")
+            request.setValue("application/json", forHTTPHeaderField: "Content-Type")
             request.HTTPBody = data
         }
 

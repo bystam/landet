@@ -35,7 +35,7 @@ class UserAPI {
                 return
             }
 
-            guard let token = sessionData["token"] as? String, refreshToken = sessionData["refreshToken"] as? String else {
+            guard let token = sessionData["token"] as? String, refreshToken = sessionData["refresh_token"] as? String else {
                 completion(error: kLoginFailedError)
                 return
             }
