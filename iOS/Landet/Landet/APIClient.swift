@@ -4,32 +4,124 @@
 
 import Foundation
 
+struct APIResponse {
+    let httpStatus: HttpStatusCode
+    let body: AnyObject?
+    let error: NSError?
+}
+
+protocol APIClient {
+    func get(endpoint: String, completion: (response: APIResponse) -> ())
+    func post(endpoint: String, body: [String : AnyObject], completion: (response: APIResponse) -> ())
+    func put(endpoint: String, body: [String : AnyObject], completion: (response: APIResponse) -> ())
+    func delete(endpoint: String, completion: (response: APIResponse) -> ())
+}
+
+
 private enum HttpMethod: String {
     case GET, POST, PUT, DELETE
 }
 
-class APIClient {
+class HttpClient {
 
-    static var host = "localhost:3000"
+    static let sharedUrlSession: NSURLSession = {
+        let config = NSURLSessionConfiguration()
+        config.timeoutIntervalForRequest = 20.0
+        return NSURLSession(configuration: config)
+    }()
+
+    static var host = "192.168.1.174:3000"
+    static var debugHost: String?
 
     var requestSetup: ((request: NSMutableURLRequest) -> ())?
 
-    private func request(method method: HttpMethod, towards endpoint: String, data: AnyObject?) -> NSMutableURLRequest {
-        let url = NSURL(string: APIClient.host + endpoint)
+    private func send(request request: NSURLRequest,
+                              requestCompletion: (body: AnyObject?, response: NSHTTPURLResponse?, error: NSError?) -> ()) {
+        let session = HttpClient.sharedUrlSession
+        let operation = AsyncOperation()
+        var task: NSURLSessionTask!
+
+        operation.asyncTask { (operationCompletion) in
+            task = session.dataTaskWithURL(request.URL!) { (body, response, error) in
+
+                var responseError = error
+                var data: AnyObject?
+
+                if let body = body {
+                    do {
+                        data = try NSJSONSerialization.JSONObjectWithData(body, options: [])
+                    } catch let e as NSError {
+                        responseError = responseError ?? e
+                    }
+                }
+
+                // run the response completion block before considering the operation done
+                requestCompletion(body: data, response: response as? NSHTTPURLResponse, error: responseError)
+                operationCompletion()
+            }
+
+            task.resume()
+        }
+
+        operation.cancelTask {
+            task.cancel()
+        }
+    }
+
+    private func request(method method: HttpMethod, towards endpoint: String, body: AnyObject?) -> NSMutableURLRequest {
+        let url = NSURL(string: (HttpClient.debugHost ?? HttpClient.host) + endpoint)
         let request = NSMutableURLRequest(URL: url!)
 
         request.HTTPMethod = method.rawValue
 
-        if let data = data, body = try? NSJSONSerialization.dataWithJSONObject(data, options: []) {
+        if let body = body, data = try? NSJSONSerialization.dataWithJSONObject(body, options: []) {
             request.setValue("applicaton/json", forHTTPHeaderField: "Content-Type")
-            request.setValue(String(body.length), forHTTPHeaderField: "Content-Length")
+            request.setValue(String(data.length), forHTTPHeaderField: "Content-Length")
         }
 
         requestSetup?(request: request)
 
         return request
     }
+}
 
+extension HttpClient: APIClient {
+
+    func get(endpoint: String, completion: (response: APIResponse) -> ()) {
+        let req = request(method: .GET, towards: endpoint, body: nil)
+
+        send(request: req) { (body, response, error) in
+            let status = HttpStatusCode(rawValue: response!.statusCode)!
+            completion(response: APIResponse(httpStatus: status, body: body, error: error))
+        }
+    }
+
+    func post(endpoint: String, body: [String : AnyObject], completion: (response: APIResponse) -> ()) {
+        let req = request(method: .POST, towards: endpoint, body: body)
+
+        send(request: req) { (body, response, error) in
+            let status = HttpStatusCode(rawValue: response!.statusCode)!
+            completion(response: APIResponse(httpStatus: status, body: body, error: error))
+        }
+    }
+
+    func put(endpoint: String, body: [String : AnyObject], completion: (response: APIResponse) -> ()) {
+        let req = request(method: .PUT, towards: endpoint, body: body)
+
+        send(request: req) { (body, response, error) in
+            let status = HttpStatusCode(rawValue: response!.statusCode)!
+            completion(response: APIResponse(httpStatus: status, body: body, error: error))
+        }
+    }
+
+    func delete(endpoint: String, completion: (response: APIResponse) -> ()) {
+        let req = request(method: .DELETE, towards: endpoint, body: nil)
+
+        send(request: req) { (body, response, error) in
+            let status = HttpStatusCode(rawValue: response!.statusCode)!
+            completion(response: APIResponse(httpStatus: status, body: body, error: error))
+        }
+    }
 }
 
 
@@ -69,11 +161,11 @@ class AsyncOperation: NSOperation {
 
     // MARK: - Async task controllers
 
-    func setAsyncTask(task: (completion: () -> ()) -> ()) {
+    func asyncTask(task: (operationCompletion: () -> ()) -> ()) {
         asyncTask = task
     }
 
-    func setCancelTask(task: () -> ()) {
+    func cancelTask(task: () -> ()) {
         cancelTask = task
     }
 
