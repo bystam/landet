@@ -17,6 +17,10 @@
 		DB0FFBCC1D04A53800DD4B94 /* Locations.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB0FFBCB1D04A53800DD4B94 /* Locations.swift */; };
 		DB0FFBD01D04AEDB00DD4B94 /* RoundRectButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB0FFBCE1D04AEDB00DD4B94 /* RoundRectButton.swift */; };
 		DB0FFBD11D04AEDB00DD4B94 /* RoundRectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB0FFBCF1D04AEDB00DD4B94 /* RoundRectView.swift */; };
+		DB0FFBD41D04C32B00DD4B94 /* EventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB0FFBD31D04C32B00DD4B94 /* EventsViewController.swift */; };
+		DB0FFBD61D04C33600DD4B94 /* Events.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DB0FFBD51D04C33600DD4B94 /* Events.storyboard */; };
+		DB0FFBD81D04C34400DD4B94 /* Events.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DB0FFBD71D04C34400DD4B94 /* Events.xcassets */; };
+		DB0FFBDA1D04C42000DD4B94 /* EventsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB0FFBD91D04C42000DD4B94 /* EventsTableViewController.swift */; };
 		DBD1F8191D045B0D0035A7B4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD1F8181D045B0D0035A7B4 /* AppDelegate.swift */; };
 		DBD1F8201D045B0D0035A7B4 /* AppNavigation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DBD1F81E1D045B0D0035A7B4 /* AppNavigation.storyboard */; };
 		DBD1F8221D045B0D0035A7B4 /* Common.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DBD1F8211D045B0D0035A7B4 /* Common.xcassets */; };
@@ -44,6 +48,10 @@
 		DB0FFBCB1D04A53800DD4B94 /* Locations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Locations.swift; sourceTree = "<group>"; };
 		DB0FFBCE1D04AEDB00DD4B94 /* RoundRectButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundRectButton.swift; sourceTree = "<group>"; };
 		DB0FFBCF1D04AEDB00DD4B94 /* RoundRectView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundRectView.swift; sourceTree = "<group>"; };
+		DB0FFBD31D04C32B00DD4B94 /* EventsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsViewController.swift; sourceTree = "<group>"; };
+		DB0FFBD51D04C33600DD4B94 /* Events.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Events.storyboard; sourceTree = "<group>"; };
+		DB0FFBD71D04C34400DD4B94 /* Events.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Events.xcassets; sourceTree = "<group>"; };
+		DB0FFBD91D04C42000DD4B94 /* EventsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsTableViewController.swift; sourceTree = "<group>"; };
 		DBD1F8151D045B0D0035A7B4 /* Landet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Landet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DBD1F8181D045B0D0035A7B4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DBD1F81F1D045B0D0035A7B4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/AppNavigation.storyboard; sourceTree = "<group>"; };
@@ -113,6 +121,17 @@
 			name = UI;
 			sourceTree = "<group>";
 		};
+		DB0FFBD21D04C32100DD4B94 /* Events */ = {
+			isa = PBXGroup;
+			children = (
+				DB0FFBD71D04C34400DD4B94 /* Events.xcassets */,
+				DB0FFBD51D04C33600DD4B94 /* Events.storyboard */,
+				DB0FFBD31D04C32B00DD4B94 /* EventsViewController.swift */,
+				DB0FFBD91D04C42000DD4B94 /* EventsTableViewController.swift */,
+			);
+			name = Events;
+			sourceTree = "<group>";
+		};
 		DBD1F80C1D045B0D0035A7B4 = {
 			isa = PBXGroup;
 			children = (
@@ -156,8 +175,9 @@
 		DBD1F82D1D045B5F0035A7B4 /* Tabs */ = {
 			isa = PBXGroup;
 			children = (
-				DBD1F82F1D045B8B0035A7B4 /* Map */,
+				DB0FFBD21D04C32100DD4B94 /* Events */,
 				DBD1F82E1D045B840035A7B4 /* Topics */,
+				DBD1F82F1D045B8B0035A7B4 /* Map */,
 			);
 			name = Tabs;
 			sourceTree = "<group>";
@@ -256,6 +276,8 @@
 				DBD1F8461D04688E0035A7B4 /* Topics.xcassets in Resources */,
 				DBD1F8221D045B0D0035A7B4 /* Common.xcassets in Resources */,
 				DBD1F8371D045C580035A7B4 /* Map.storyboard in Resources */,
+				DB0FFBD61D04C33600DD4B94 /* Events.storyboard in Resources */,
+				DB0FFBD81D04C34400DD4B94 /* Events.xcassets in Resources */,
 				DBD1F8351D045C520035A7B4 /* Topics.storyboard in Resources */,
 				DBD1F8201D045B0D0035A7B4 /* AppNavigation.storyboard in Resources */,
 			);
@@ -280,11 +302,13 @@
 				DB0FFBCA1D04A53200DD4B94 /* Users.swift in Sources */,
 				DBD1F83B1D045F020035A7B4 /* TopicsViewController.swift in Sources */,
 				DBD1F8191D045B0D0035A7B4 /* AppDelegate.swift in Sources */,
+				DB0FFBDA1D04C42000DD4B94 /* EventsTableViewController.swift in Sources */,
 				DB0FFBBE1D04719200DD4B94 /* LandetAPI.swift in Sources */,
 				DB0FFBC21D04983700DD4B94 /* HttpStatusCodes.swift in Sources */,
 				DBD1F8391D045EFA0035A7B4 /* MapViewController.swift in Sources */,
 				DBD1F83D1D045F5C0035A7B4 /* TopicsTableViewController.swift in Sources */,
 				DB0FFBBC1D046FA800DD4B94 /* Session.swift in Sources */,
+				DB0FFBD41D04C32B00DD4B94 /* EventsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -7,8 +7,9 @@ import UIKit
 private typealias TabItemSpecification = (storyboard: String, title: String, iconDeselected: String, iconSelected: String)
 
 private let kTabs: [TabItemSpecification] = [
+    (storyboard: "Events", title: "Events", iconDeselected: "TabIcon.Sun", iconSelected: "TabIcon.Sun+Selected"),
+    (storyboard: "Topics", title: "Topics", iconDeselected: "TabIcon.Cocktail", iconSelected: "TabIcon.Cocktail+Selected"),
     (storyboard: "Map", title: "Map", iconDeselected: "TabIcon.Pin", iconSelected: "TabIcon.Pin+Selected"),
-    (storyboard: "Topics", title: "Topics", iconDeselected: "TabIcon.Cocktail", iconSelected: "TabIcon.Cocktail+Selected")
 ]
 
 class AppNavigationController {

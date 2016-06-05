@@ -4,7 +4,7 @@
 
 import UIKit
 
-class MapViewController: UIViewController {
+class EventsTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
