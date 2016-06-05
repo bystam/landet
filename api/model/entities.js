@@ -4,13 +4,16 @@ const bookshelf = require('./bookshelf').bookshelf;
 
 const User = bookshelf.Model.extend({
   tableName: 'users',
-  posts: function() {
-    return this.hasMany(Post);
-  },
+  hasTimestamps: true,
   sessions: function() {
     return this.hasMany(Session);
   }
 });
+
+const Users = bookshelf.Collection.extend({
+  model: User
+});
+
 
 const Session = bookshelf.Model.extend({
   tableName: 'sessions',
@@ -19,12 +22,22 @@ const Session = bookshelf.Model.extend({
   }
 });
 
+const Sessions = bookshelf.Collection.extend({
+  model: Session
+});
+
+
 const Location = bookshelf.Model.extend({
   tableName: 'locations',
   events: function() {
     return this.hasMany(Event);
   }
 });
+
+const Locations = bookshelf.Collection.extend({
+  model: Location
+});
+
 
 const Event = bookshelf.Model.extend({
   tableName: 'events',
@@ -39,6 +52,11 @@ const Event = bookshelf.Model.extend({
   }
 });
 
+const Events = bookshelf.Collection.extend({
+  model: Event
+});
+
+
 const EventComment = bookshelf.Model.extend({
   tableName: 'event_comments',
   author: function() {
@@ -49,10 +67,20 @@ const EventComment = bookshelf.Model.extend({
   }
 });
 
+const EventComments = bookshelf.Collection.extend({
+  model: EventComment
+});
+
+
 module.exports = {
   User,
+  Users,
   Session,
+  Sessions,
   Location,
+  Locations,
   Event,
-  EventComment
+  Events,
+  EventComment,
+  EventComments
 };

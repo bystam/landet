@@ -4,9 +4,9 @@ exports.up = function(knex, Promise) {
   return Promise.all([
 
         knex.schema.createTable('users', function(table) {
-            table.increments('uid').primary();
+            table.increments('id').primary();
             table.string('username');
-            table.string('password');
+            table.string('hashedpw');
             table.string('name');
             table.timestamps();
         }),
@@ -18,7 +18,7 @@ exports.up = function(knex, Promise) {
           table.dateTime('expiration_date');
 
           table.integer('user_id')
-               .references('uid')
+               .references('id')
                .inTable('users');
         }),
 
@@ -36,7 +36,7 @@ exports.up = function(knex, Promise) {
             table.dateTime('event_time');
 
             table.integer('creator_id')
-                 .references('uid')
+                 .references('id')
                  .inTable('users');
             table.integer('location_id')
                  .references('id')
@@ -49,7 +49,7 @@ exports.up = function(knex, Promise) {
           table.dateTime('comment_time');
 
           table.integer('author_id')
-               .references('uid')
+               .references('id')
                .inTable('users');
           table.integer('event_id')
                .references('id')
@@ -61,6 +61,7 @@ exports.up = function(knex, Promise) {
 exports.down = function(knex, Promise) {
   return Promise.all([
     knex.schema.dropTable('sessions'),
+    knex.schema.dropTable('event_comments'),
     knex.schema.dropTable('events'),
     knex.schema.dropTable('locations'),
     knex.schema.dropTable('users'),

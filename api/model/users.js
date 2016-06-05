@@ -1,13 +1,15 @@
 'use strict'
 
 const User = require('./entities').User;
+const Users = require('./entities').Users;
 const bcrypt = require('bcrypt');
 
-function createUser(username, password) {
-  return hash(password).then(function(hashed) {
-    return new User({
-      username: username,
-      hashedpw: hashed
+function createUser(user) {
+  return hash(user.password).then(function(hashed) {
+    return User.forge({
+      username: user.username,
+      hashedpw: hashed,
+      name: user.name
     }).save();
   });
 }

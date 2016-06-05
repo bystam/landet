@@ -6,17 +6,18 @@ const router = express.Router();
 const users = require('../model/users');
 const sessions = require('../model/sessions');
 
-router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
-});
+function logError(e) {
+  console.log(e);
+}
 
 router.post('/create', function(req, res) {
   let username = req.body.username;
   let password = req.body.password;
+  let name = req.body.name;
 
-  users.createUser(username, password).then(function(user) {
+  users.createUser({ username, password, name }).then(function(user) {
     res.json(user);
-  });
+  }).catch(logError);
 });
 
 router.post('/login', function(req, res) {
@@ -27,7 +28,7 @@ router.post('/login', function(req, res) {
     return sessions.create(user);
   }).then(function(session) {
     res.json(session);
-  });
+  }).catch(logError);
 });
 
 module.exports = router;
