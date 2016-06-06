@@ -13,5 +13,5 @@ struct APIResponse {
 class APIOperation: AsyncOperation {
 
     var apiResponse: APIResponse!
-    
+
 }

@@ -94,7 +94,7 @@ private class SessionAPI {
 
                         totalOperation.apiResponse = secondOp.apiResponse
                         totalOperationCompletion()
-                        
+
                     }
                 }
             }
