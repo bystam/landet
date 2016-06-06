@@ -2,6 +2,8 @@
 
 const sessions = require('../model/sessions');
 
+const errors = require('../util/errors');
+
 const kUnauthorized = {
   status: 401,
   message: '401: Unauthorized'

@@ -3,6 +3,7 @@
 const Session = require('./entities').Session;
 const Sessions = require('./entities').Sessions;
 const crypto = require('crypto');
+const errors = require('../util/errors');
 
 const kSessionTimeoutMilliseconds = 2 * 60 * 60 * 1000;
 
@@ -20,11 +21,11 @@ function create(user) {
 
 function userWithSessionToken(token) {
   return Session.where({ token: token }).fetch().then(function(session) {
-    if (!session) { return null; }
+    if (!session) { throw errors.Unauthorized.TokenInvalid(); }
 
     const expiration = session.get('expiration_date');
     if (expiration < Date.now()) {
-      return session.unset('token').save().then(function() { return null; });
+      throw errors.Unauthorized.TokenExpired();
     }
 
     return session.user().fetch();
@@ -33,11 +34,11 @@ function userWithSessionToken(token) {
 
 function fetchSession(token) {
   return Session.where({ token: token }).fetch().then(function(session) {
-    if (!session) { return null; }
+    if (!session) { throw errors.Unauthorized.TokenInvalid(); }
 
     const expiration = session.get('expiration_date');
     if (expiration < Date.now()) {
-      return session.unset('token').save().then(function() { return null; });
+      throw errors.Unauthorized.TokenExpired();
     }
 
     return session;
@@ -46,7 +47,7 @@ function fetchSession(token) {
 
 function refreshSession(refreshToken) {
   return Session.where({ refresh_token: refreshToken }).fetch().then(function(session) {
-    if (!session) { return null; }
+    if (!session) { throw errors.Unauthorized.InvalidRefreshToken(); }
 
     let newToken = randomString();
     let expiration = new Date(Date.now() + kSessionTimeoutMilliseconds);

@@ -4,23 +4,20 @@ const express = require('express');
 const router = express.Router();
 
 const sessions = require('../model/sessions');
-
-function logError(e) {
-  console.log(e);
-}
+const errors = require('../util/errors');
 
 router.get('/', function(req, res, next) {
   let token = req.query.token;
   sessions.fetchSession(token).then(function(session) {
     res.json(session);
-  }).catch(logError);
+  }).catch(errors.HttpHandler(res));
 });
 
 router.post('/refresh', function(req, res, next) {
   let refreshToken = req.body.refresh_token;
   sessions.refreshSession(refreshToken).then(function(session) {
     res.status(201).json({ token: session.get('token') });
-  }).catch(logError);
+  }).catch(errors.HttpHandler(res));
 });
 
 module.exports = router;

@@ -8,6 +8,16 @@ function LandetError(message) {
 LandetError.prototype = Object.create(Error.prototype);
 LandetError.prototype.constructor = LandetError;
 
+function HttpHandler(res) {
+  return function(error) {
+    if (error instanceof LandetError) {
+      res.status(error.httpStatus).json(error.asJSON);
+    } else {
+      throw error;
+    }
+  }
+}
+
 const BadRequestCode = 400;
 const UnauthorizedCode = 401;
 const ForbiddenCode = 403;
@@ -32,11 +42,18 @@ const User = {
   WrongCredentials: error(ForbiddenCode, "LE-102", "Wrong username or password.")
 };
 
-const Unauthorized = error(UnauthorizedCode, "LE-103", "Unauthorized")
+
+const Unauthorized = {
+  TokenInvalid: error(UnauthorizedCode, "LE-201", "Invalid auth token"),
+  TokenExpired: error(UnauthorizedCode, "LE-202", "Auth token expired"),
+  InvalidRefreshToken: error(UnauthorizedCode, "LE-202", "Invalid refresh token")
+}
 
 
 module.exports = {
   LandetError,
+  HttpHandler,
+
   User,
   Unauthorized
 }

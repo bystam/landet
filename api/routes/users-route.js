@@ -15,13 +15,7 @@ router.post('/create', function(req, res) {
 
   users.createUser({ username, password, name }).then(function(user) {
     res.json(user);
-  }).catch(function(error) {
-    if (error instanceof errors.LandetError) {
-      res.status(error.httpStatus).json(error.asJSON);
-    } else {
-      throw error;
-    }
-  });
+  }).catch(errors.HttpHandler(res));
 });
 
 router.post('/login', function(req, res) {
@@ -32,13 +26,7 @@ router.post('/login', function(req, res) {
     return sessions.create(user);
   }).then(function(session) {
     res.json(session.omit('expiration_date'));
-  }).catch(error => {
-    if (error instanceof errors.LandetError) {
-      res.status(error.httpStatus).json(error.asJSON);
-    } else {
-      throw error;
-    }
-  });
+  }).catch(errors.HttpHandler(res));
 });
 
 module.exports = router;
