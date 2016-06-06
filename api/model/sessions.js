@@ -11,7 +11,7 @@ function create(user) {
   let refreshToken = randomString();
   let expiration = new Date(Date.now() + kSessionTimeoutMilliseconds);
 
-  return user.related('sessions').create({
+  return user.sessions().create({
     token: token,
     refresh_token: refreshToken,
     expiration_date : expiration

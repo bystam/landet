@@ -4,8 +4,14 @@ const User = require('./entities').User;
 const Users = require('./entities').Users;
 const bcrypt = require('bcrypt');
 
+const errors = require('../util/errors');
+
 function createUser(user) {
-  return hash(user.password).then(function(hashed) {
+  return User.forge({ username : user.username }).fetch().then(existing => {
+    if (existing) { throw errors.User.UsernameTaken(); }
+
+    return hash(user.password);
+  }).then(hashed => {
     return User.forge({
       username: user.username,
       hashedpw: hashed,

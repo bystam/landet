@@ -355,7 +355,7 @@
         <attribute name="redirectauthorization" type="bool">0</attribute>
         <attribute name="method" type="string">POST</attribute>
         <attribute name="followredirects" type="bool">0</attribute>
-        <attribute name="body" type="string">[{"data":{"json":"{\\"title\\":\\"Fet fest\\",\\"body\\":\\"Vi festar s\\\\u00e5 j\\\\u00e4vla h\\\\u00e5rt\\",\\"location_id\\":\\"2\\",\\"event_time\\":\\"[{\\\\\\"data\\\\\\":{\\\\\\"format\\\\\\":0,\\\\\\"customFormat\\\\\\":[],\\\\\\"now\\\\\\":0,\\\\\\"useTSeparator\\\\\\":1,\\\\\\"isLocalTime\\\\\\":1,\\\\\\"date\\\\\\":1465405200.758739,\\\\\\"delta\\\\\\":0,\\\\\\"useZForUTC\\\\\\":0},\\\\\\"identifier\\\\\\":\\\\\\"com.luckymarmot.TimestampDynamicValue\\\\\\"}]\\"}"},"identifier":"com.luckymarmot.JSONDynamicValue"}]</attribute>
+        <attribute name="body" type="string">[{"data":{"json":"{\\"title\\":\\"Fet fest 3\\",\\"body\\":\\"Vi festar h\\\\u00e5rdare om m\\\\u00f6jligt fast \\\\u00e4nnu mer\\",\\"location_id\\":\\"2\\",\\"event_time\\":\\"[{\\\\\\"data\\\\\\":{\\\\\\"format\\\\\\":3,\\\\\\"customFormat\\\\\\":[],\\\\\\"now\\\\\\":0,\\\\\\"useTSeparator\\\\\\":1,\\\\\\"isLocalTime\\\\\\":1,\\\\\\"date\\\\\\":1465491600.758739,\\\\\\"delta\\\\\\":0,\\\\\\"useZForUTC\\\\\\":0},\\\\\\"identifier\\\\\\":\\\\\\"com.luckymarmot.TimestampDynamicValue\\\\\\"}]\\"}"},"identifier":"com.luckymarmot.JSONDynamicValue"}]</attribute>
         <attribute name="order" type="int64">6</attribute>
         <attribute name="name" type="string">Events</attribute>
         <relationship name="parent" type="0/1" destination="LMREQUESTTREEITEM"></relationship>

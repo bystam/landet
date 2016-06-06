@@ -6,9 +6,7 @@ const router = express.Router();
 const users = require('../model/users');
 const sessions = require('../model/sessions');
 
-function logError(e) {
-  console.log(e);
-}
+const errors = require('../util/errors');
 
 router.post('/create', function(req, res) {
   let username = req.body.username;
@@ -17,7 +15,13 @@ router.post('/create', function(req, res) {
 
   users.createUser({ username, password, name }).then(function(user) {
     res.json(user);
-  }).catch(logError);
+  }).catch(function(error) {
+    if (error instanceof errors.LandetError) {
+      res.status(error.httpStatus).json(error.asJSON);
+    } else {
+      throw error;
+    }
+  });
 });
 
 router.post('/login', function(req, res) {
@@ -28,7 +32,13 @@ router.post('/login', function(req, res) {
     return sessions.create(user);
   }).then(function(session) {
     res.json(session.omit('expiration_date'));
-  }).catch(logError);
+  }).catch(error => {
+    if (error instanceof errors.LandetError) {
+      res.status(error.httpStatus).json(error.asJSON);
+    } else {
+      throw error;
+    }
+  });
 });
 
 module.exports = router;
