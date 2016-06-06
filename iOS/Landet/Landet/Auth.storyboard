@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <scenes>
+        <!--Login View Controller-->
+        <scene sceneID="Hq7-QA-7pg">
+            <objects>
+                <viewController storyboardIdentifier="LoginViewController" id="nur-oZ-nC1" customClass="LoginViewController" customModule="Landet" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="9uQ-WV-khP"/>
+                        <viewControllerLayoutGuide type="bottom" id="iTO-Cs-eEp"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="e4f-Z8-pYD">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Jbf-uH-XTB">
+                                <rect key="frame" x="20" y="318.5" width="335" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="epX-Yv-gfb">
+                                <rect key="frame" x="20" y="368.5" width="335" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7A4-jk-2Ku">
+                                <rect key="frame" x="168" y="438.5" width="38" height="30"/>
+                                <state key="normal" title="Login"/>
+                                <connections>
+                                    <action selector="loginButtonPressed:" destination="nur-oZ-nC1" eventType="touchUpInside" id="o7t-B8-9A0"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.14509804549999999" green="0.1294117719" blue="0.12549020350000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="epX-Yv-gfb" secondAttribute="trailing" constant="20" id="5TY-dB-WBa"/>
+                            <constraint firstItem="Jbf-uH-XTB" firstAttribute="centerY" secondItem="e4f-Z8-pYD" secondAttribute="centerY" id="BDy-2j-uj6"/>
+                            <constraint firstItem="Jbf-uH-XTB" firstAttribute="centerX" secondItem="e4f-Z8-pYD" secondAttribute="centerX" id="Eq8-gm-o2J"/>
+                            <constraint firstItem="7A4-jk-2Ku" firstAttribute="top" secondItem="epX-Yv-gfb" secondAttribute="bottom" constant="40" id="Euu-gt-ujL"/>
+                            <constraint firstItem="Jbf-uH-XTB" firstAttribute="leading" secondItem="e4f-Z8-pYD" secondAttribute="leading" constant="20" id="MxU-6B-aHb"/>
+                            <constraint firstItem="epX-Yv-gfb" firstAttribute="centerX" secondItem="e4f-Z8-pYD" secondAttribute="centerX" id="Z92-o6-oFd"/>
+                            <constraint firstItem="7A4-jk-2Ku" firstAttribute="centerX" secondItem="e4f-Z8-pYD" secondAttribute="centerX" id="eYX-L6-cSj"/>
+                            <constraint firstItem="epX-Yv-gfb" firstAttribute="top" secondItem="Jbf-uH-XTB" secondAttribute="bottom" constant="20" id="hxM-H4-Rbd"/>
+                            <constraint firstAttribute="trailing" secondItem="Jbf-uH-XTB" secondAttribute="trailing" constant="20" id="kMU-aG-gFP"/>
+                            <constraint firstItem="epX-Yv-gfb" firstAttribute="leading" secondItem="e4f-Z8-pYD" secondAttribute="leading" constant="20" id="q8v-qu-gQf"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="Eq8-gm-o2J"/>
+                                <exclude reference="Z92-o6-oFd"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="passwordTextField" destination="epX-Yv-gfb" id="tIE-2K-feP"/>
+                        <outlet property="usernameTextField" destination="Jbf-uH-XTB" id="Sc9-ie-UUe"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BXU-72-yeO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="883" y="106"/>
+        </scene>
+    </scenes>
+</document>

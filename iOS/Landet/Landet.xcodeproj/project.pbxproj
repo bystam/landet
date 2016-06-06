@@ -28,6 +28,9 @@
 		DB36CDD71D05C15200B94422 /* APIOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB36CDD61D05C15200B94422 /* APIOperation.swift */; };
 		DB36CDDA1D062D1A00B94422 /* CreateEvent.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DB36CDD91D062D1A00B94422 /* CreateEvent.storyboard */; };
 		DB36CDDC1D062D2C00B94422 /* CreateEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB36CDDB1D062D2C00B94422 /* CreateEventViewController.swift */; };
+		DB36CDE01D06306500B94422 /* Auth.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DB36CDDF1D06306500B94422 /* Auth.storyboard */; };
+		DB36CDE31D06308500B94422 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB36CDE21D06308500B94422 /* LoginViewController.swift */; };
+		DB36CDE51D06313100B94422 /* AuthOverlayController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB36CDE41D06313100B94422 /* AuthOverlayController.swift */; };
 		DBD1F8191D045B0D0035A7B4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD1F8181D045B0D0035A7B4 /* AppDelegate.swift */; };
 		DBD1F8201D045B0D0035A7B4 /* AppNavigation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DBD1F81E1D045B0D0035A7B4 /* AppNavigation.storyboard */; };
 		DBD1F8221D045B0D0035A7B4 /* Common.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DBD1F8211D045B0D0035A7B4 /* Common.xcassets */; };
@@ -66,6 +69,9 @@
 		DB36CDD61D05C15200B94422 /* APIOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIOperation.swift; sourceTree = "<group>"; };
 		DB36CDD91D062D1A00B94422 /* CreateEvent.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CreateEvent.storyboard; sourceTree = "<group>"; };
 		DB36CDDB1D062D2C00B94422 /* CreateEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateEventViewController.swift; sourceTree = "<group>"; };
+		DB36CDDF1D06306500B94422 /* Auth.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Auth.storyboard; sourceTree = "<group>"; };
+		DB36CDE21D06308500B94422 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		DB36CDE41D06313100B94422 /* AuthOverlayController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthOverlayController.swift; sourceTree = "<group>"; };
 		DBD1F8151D045B0D0035A7B4 /* Landet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Landet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DBD1F8181D045B0D0035A7B4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DBD1F81F1D045B0D0035A7B4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/AppNavigation.storyboard; sourceTree = "<group>"; };
@@ -177,6 +183,24 @@
 			name = Create;
 			sourceTree = "<group>";
 		};
+		DB36CDDD1D06303C00B94422 /* Modal Flows */ = {
+			isa = PBXGroup;
+			children = (
+				DB36CDDE1D06305800B94422 /* Auth */,
+			);
+			name = "Modal Flows";
+			sourceTree = "<group>";
+		};
+		DB36CDDE1D06305800B94422 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				DB36CDDF1D06306500B94422 /* Auth.storyboard */,
+				DB36CDE41D06313100B94422 /* AuthOverlayController.swift */,
+				DB36CDE21D06308500B94422 /* LoginViewController.swift */,
+			);
+			name = Auth;
+			sourceTree = "<group>";
+		};
 		DBD1F80C1D045B0D0035A7B4 = {
 			isa = PBXGroup;
 			children = (
@@ -201,6 +225,7 @@
 				DBD1F83E1D04600E0035A7B4 /* Common */,
 				DBD1F82C1D045B4A0035A7B4 /* Main Navigation */,
 				DBD1F82D1D045B5F0035A7B4 /* Tabs */,
+				DB36CDDD1D06303C00B94422 /* Modal Flows */,
 				DB0FFBC31D049CEA00DD4B94 /* Util */,
 				DBD1F8231D045B0D0035A7B4 /* LaunchScreen.storyboard */,
 				DBD1F8261D045B0D0035A7B4 /* Info.plist */,
@@ -326,6 +351,7 @@
 				DB0FFBD81D04C34400DD4B94 /* Events.xcassets in Resources */,
 				DBD1F8351D045C520035A7B4 /* Topics.storyboard in Resources */,
 				DBD1F8201D045B0D0035A7B4 /* AppNavigation.storyboard in Resources */,
+				DB36CDE01D06306500B94422 /* Auth.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -340,6 +366,7 @@
 				DBD1F8421D04601E0035A7B4 /* Colors.swift in Sources */,
 				DB0FFBD01D04AEDB00DD4B94 /* RoundRectButton.swift in Sources */,
 				DBD1F8401D0460190035A7B4 /* Theme.swift in Sources */,
+				DB36CDE51D06313100B94422 /* AuthOverlayController.swift in Sources */,
 				DB0FFBCC1D04A53800DD4B94 /* Locations.swift in Sources */,
 				DB0FFBC01D04736B00DD4B94 /* APIClient.swift in Sources */,
 				DB0FFBDF1D04CD3900DD4B94 /* NSDate+Extension.swift in Sources */,
@@ -360,6 +387,7 @@
 				DBD1F83D1D045F5C0035A7B4 /* TopicsTableViewController.swift in Sources */,
 				DB0FFBDD1D04C7AD00DD4B94 /* EventSummaryCell.swift in Sources */,
 				DB0FFBBC1D046FA800DD4B94 /* Session.swift in Sources */,
+				DB36CDE31D06308500B94422 /* LoginViewController.swift in Sources */,
 				DB0FFBD41D04C32B00DD4B94 /* EventsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

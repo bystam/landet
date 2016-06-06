@@ -14,6 +14,10 @@ class EventsTableViewController: UITableViewController {
         tableView.estimatedRowHeight = 76.0
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: 1, height: CGFloat.min))
+    }
+
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
 
         HttpClient.debugHost = "http://192.168.1.174:3000"
 
@@ -28,7 +32,6 @@ class EventsTableViewController: UITableViewController {
                 }
             }
         }
-
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

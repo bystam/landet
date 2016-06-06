@@ -9,11 +9,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     private let appNavigationController = AppNavigationController()
+    private var authOverlayController: AuthOverlayController!
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        
-        installSession()
+
         setupUI()
+        installSession()
         
         return true
     }
@@ -25,6 +26,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         appNavigationController.installInWindow(window)
         window.makeKeyAndVisible()
         self.window = window
+
+        authOverlayController = AuthOverlayController(window: window)
     }
 
     private func installSession() {

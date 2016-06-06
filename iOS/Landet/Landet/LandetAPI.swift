@@ -63,6 +63,13 @@ private class SessionAPI {
 
                 let firstResponse = firstOp.apiResponse
 
+                if firstResponse.error?.landetErrorCode == LandetAPIErrorCode.TokenInvalid {
+                    Session.uninstallCurrentSession()
+                    totalOperation.apiResponse = firstResponse
+                    totalOperationCompletion()
+                    return
+                }
+
                 if firstResponse.error?.landetErrorCode != LandetAPIErrorCode.TokenExpired {
                     totalOperation.apiResponse = firstResponse
                     totalOperationCompletion()
@@ -120,6 +127,8 @@ class EventAPI {
     }()
 
     func loadAll(completion: (events: [Event]?, error: NSError?) -> ()) {
+
+        guard let _ = Session.currentSession else { return }
 
         let operation = SessionAPI.shared.wrapWithAutomaticRefreshingSession(operation: self.apiClient.get("/events"))
 

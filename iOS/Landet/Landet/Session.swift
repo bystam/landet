@@ -4,6 +4,7 @@
 
 import Foundation
 
+let kSessionEstablishedNotification = "kSessionEstablishedNotification"
 let kSessionLostNotification = "kSessionLostNotification"
 
 class Session {
@@ -26,6 +27,7 @@ class Session {
     static func installDefault() {
         if let token = Credentials.token, refreshToken = Credentials.refreshToken {
             currentSession = Session(token: token, refreshToken: refreshToken)
+            NSNotificationCenter.defaultCenter().postNotificationName(kSessionEstablishedNotification, object: nil)
         } else {
             NSNotificationCenter.defaultCenter().postNotificationName(kSessionLostNotification, object: nil)
         }
@@ -35,6 +37,7 @@ class Session {
         Credentials.token = token
         Credentials.refreshToken = refreshToken
         currentSession = Session(token: token, refreshToken: refreshToken)
+        NSNotificationCenter.defaultCenter().postNotificationName(kSessionEstablishedNotification, object: nil)
     }
 
     static func uninstallCurrentSession() {
