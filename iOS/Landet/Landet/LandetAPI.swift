@@ -84,10 +84,33 @@ class EventAPI {
 
     static let shared = EventAPI()
 
-    let apiClient: APIClient = HttpClient()
+    let apiClient: APIClient = {
+        let client = HttpClient()
+        client.requestSetup = { request in
+            if let token = Session.currentSession?.token {
+                request.setValue("Basic \(token)", forHTTPHeaderField: "Authorization")
+            }
+        }
+        return client
+    }()
 
-    func loadAll(completion: (events: [Event]) -> ()) {
-        
+    func loadAll(completion: (events: [Event]?, error: NSError?) -> ()) {
+        let operation = apiClient.get("/events") { (response) in
+            if let error = response.error {
+                completion(events: nil, error: error);
+                return
+            }
+
+            guard let eventData = response.body as? [[String : AnyObject]] else {
+                completion(events: nil, error: kGenericError)
+                return
+            }
+
+            let events = eventData.map { Event(dictionary: $0) }
+            completion(events: events, error: nil)
+        }
+
+        apiQueue.addOperation(operation)
     }
 
 }

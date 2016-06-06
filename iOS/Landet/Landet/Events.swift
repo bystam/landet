@@ -9,7 +9,7 @@ class Event {
     let id: Int
     let title: String
     let body: String
-    let time: NSDate
+    let time: NSDate?
 
     let creator: User
     let location: Location
@@ -18,9 +18,9 @@ class Event {
         self.id = dictionary["id"] as! Int
         self.title = dictionary["title"] as! String
         self.body = dictionary["body"] as! String
-        self.time = dictionary["event_time"] as! NSDate
+        self.time = NSDate.fromISOString(dictionary["event_time"] as! String)
 
-        self.creator = User(dictionary: dictionary["user"] as! [String : AnyObject])
+        self.creator = User(dictionary: dictionary["creator"] as! [String : AnyObject])
         self.location = Location(dictionary: dictionary["location"] as! [String : AnyObject])
     }
 

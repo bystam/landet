@@ -21,6 +21,8 @@
 		DB0FFBD61D04C33600DD4B94 /* Events.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DB0FFBD51D04C33600DD4B94 /* Events.storyboard */; };
 		DB0FFBD81D04C34400DD4B94 /* Events.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DB0FFBD71D04C34400DD4B94 /* Events.xcassets */; };
 		DB0FFBDA1D04C42000DD4B94 /* EventsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB0FFBD91D04C42000DD4B94 /* EventsTableViewController.swift */; };
+		DB0FFBDD1D04C7AD00DD4B94 /* EventSummaryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB0FFBDC1D04C7AD00DD4B94 /* EventSummaryCell.swift */; };
+		DB0FFBDF1D04CD3900DD4B94 /* NSDate+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB0FFBDE1D04CD3900DD4B94 /* NSDate+Extension.swift */; };
 		DBD1F8191D045B0D0035A7B4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD1F8181D045B0D0035A7B4 /* AppDelegate.swift */; };
 		DBD1F8201D045B0D0035A7B4 /* AppNavigation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DBD1F81E1D045B0D0035A7B4 /* AppNavigation.storyboard */; };
 		DBD1F8221D045B0D0035A7B4 /* Common.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DBD1F8211D045B0D0035A7B4 /* Common.xcassets */; };
@@ -52,6 +54,8 @@
 		DB0FFBD51D04C33600DD4B94 /* Events.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Events.storyboard; sourceTree = "<group>"; };
 		DB0FFBD71D04C34400DD4B94 /* Events.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Events.xcassets; sourceTree = "<group>"; };
 		DB0FFBD91D04C42000DD4B94 /* EventsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsTableViewController.swift; sourceTree = "<group>"; };
+		DB0FFBDC1D04C7AD00DD4B94 /* EventSummaryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventSummaryCell.swift; sourceTree = "<group>"; };
+		DB0FFBDE1D04CD3900DD4B94 /* NSDate+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSDate+Extension.swift"; sourceTree = "<group>"; };
 		DBD1F8151D045B0D0035A7B4 /* Landet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Landet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DBD1F8181D045B0D0035A7B4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DBD1F81F1D045B0D0035A7B4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/AppNavigation.storyboard; sourceTree = "<group>"; };
@@ -117,6 +121,7 @@
 			children = (
 				DB0FFBCE1D04AEDB00DD4B94 /* RoundRectButton.swift */,
 				DB0FFBCF1D04AEDB00DD4B94 /* RoundRectView.swift */,
+				DB0FFBDE1D04CD3900DD4B94 /* NSDate+Extension.swift */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -128,8 +133,17 @@
 				DB0FFBD51D04C33600DD4B94 /* Events.storyboard */,
 				DB0FFBD31D04C32B00DD4B94 /* EventsViewController.swift */,
 				DB0FFBD91D04C42000DD4B94 /* EventsTableViewController.swift */,
+				DB0FFBDB1D04C79900DD4B94 /* Cells */,
 			);
 			name = Events;
+			sourceTree = "<group>";
+		};
+		DB0FFBDB1D04C79900DD4B94 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				DB0FFBDC1D04C7AD00DD4B94 /* EventSummaryCell.swift */,
+			);
+			name = Cells;
 			sourceTree = "<group>";
 		};
 		DBD1F80C1D045B0D0035A7B4 = {
@@ -296,6 +310,7 @@
 				DBD1F8401D0460190035A7B4 /* Theme.swift in Sources */,
 				DB0FFBCC1D04A53800DD4B94 /* Locations.swift in Sources */,
 				DB0FFBC01D04736B00DD4B94 /* APIClient.swift in Sources */,
+				DB0FFBDF1D04CD3900DD4B94 /* NSDate+Extension.swift in Sources */,
 				DB0FFBD11D04AEDB00DD4B94 /* RoundRectView.swift in Sources */,
 				DBD1F8311D045BB10035A7B4 /* AppNavigationController.swift in Sources */,
 				DB0FFBC51D049CF700DD4B94 /* Async.swift in Sources */,
@@ -307,6 +322,7 @@
 				DB0FFBC21D04983700DD4B94 /* HttpStatusCodes.swift in Sources */,
 				DBD1F8391D045EFA0035A7B4 /* MapViewController.swift in Sources */,
 				DBD1F83D1D045F5C0035A7B4 /* TopicsTableViewController.swift in Sources */,
+				DB0FFBDD1D04C7AD00DD4B94 /* EventSummaryCell.swift in Sources */,
 				DB0FFBBC1D046FA800DD4B94 /* Session.swift in Sources */,
 				DB0FFBD41D04C32B00DD4B94 /* EventsViewController.swift in Sources */,
 			);

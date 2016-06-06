@@ -68,7 +68,6 @@ class HttpClient {
         }
 
         print("------> \(request.HTTPMethod!) \(request.URL!.absoluteString) ")
-        print("      > \(String(data: request.HTTPBody!, encoding: NSUTF8StringEncoding)!)")
 
         return operation
     }

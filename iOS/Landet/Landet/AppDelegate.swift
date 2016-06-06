@@ -11,6 +11,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private let appNavigationController = AppNavigationController()
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        
+        installSession()
         setupUI()
         
         return true
@@ -23,6 +25,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         appNavigationController.installInWindow(window)
         window.makeKeyAndVisible()
         self.window = window
+    }
+
+    private func installSession() {
+        Session.installDefault()
     }
 }
 
