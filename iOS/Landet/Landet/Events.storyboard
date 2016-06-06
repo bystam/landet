@@ -83,6 +83,14 @@
             </objects>
             <point key="canvasLocation" x="923.5" y="583.5"/>
         </scene>
+        <!--CreateEvent-->
+        <scene sceneID="QrM-Jh-isQ">
+            <objects>
+                <viewControllerPlaceholder storyboardName="CreateEvent" id="DK3-Vf-zH6" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="erT-RQ-Aka" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="799.5" y="142"/>
+        </scene>
         <!--Events-->
         <scene sceneID="TNK-LT-Ycw">
             <objects>
@@ -111,7 +119,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Events" id="elZ-mb-LKa">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="qQt-SG-jTr"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="qQt-SG-jTr">
+                            <connections>
+                                <segue destination="DK3-Vf-zH6" kind="presentation" id="jSR-Ow-iiR"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NVK-RH-xkK" userLabel="First Responder" sceneMemberID="firstResponder"/>

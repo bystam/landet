@@ -5,7 +5,7 @@
 import Foundation
 
 struct APIResponse {
-    let httpStatus: HttpStatusCode
+    let httpStatus: HttpStatusCode?
     let body: AnyObject?
     let error: NSError?
 }

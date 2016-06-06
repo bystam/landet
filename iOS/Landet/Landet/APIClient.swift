@@ -63,8 +63,8 @@ class HttpClient {
                     responseError = apiError
                 }
 
-                let httpResponse = response as! NSHTTPURLResponse
-                let status = HttpStatusCode(rawValue: httpResponse.statusCode)!
+                let httpResponse = response as? NSHTTPURLResponse
+                let status = HttpStatusCode(rawValue: httpResponse?.statusCode ?? 418)!
                 operation.apiResponse = APIResponse(httpStatus: status, body: body, error: responseError)
 
                 operationCompletion()

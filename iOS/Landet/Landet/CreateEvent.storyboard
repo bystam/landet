@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="7O2-as-U9D">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <scenes>
+        <!--Create Event-->
+        <scene sceneID="elt-ce-seJ">
+            <objects>
+                <viewController id="maO-KC-cxi" customClass="CreateEventViewController" customModule="Landet" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="33w-8Q-tXf"/>
+                        <viewControllerLayoutGuide type="bottom" id="gVI-bQ-xnU"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="InV-dv-jL0">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.14509804546833038" green="0.12941177189350128" blue="0.12549020349979401" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Create Event" id="nLa-Zb-WPd">
+                        <barButtonItem key="leftBarButtonItem" systemItem="stop" id="5bZ-dP-5tx">
+                            <connections>
+                                <segue destination="jOj-uU-zIp" kind="unwind" unwindAction="unwindToEventsViewController:" id="UWV-HH-Bh7"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Create" style="done" id="4Dl-fT-pGt"/>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cr9-eS-gWm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="jOj-uU-zIp" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="1136.5" y="514.5"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="LFX-QP-jax">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="7O2-as-U9D" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="C2B-nC-Wwr">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="maO-KC-cxi" kind="relationship" relationship="rootViewController" id="Myo-PF-oMP"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ghm-ar-NoQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="679" y="515"/>
+        </scene>
+    </scenes>
+</document>

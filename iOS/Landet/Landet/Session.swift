@@ -51,20 +51,20 @@ private class Credentials {
 
     static var token: String? {
         get {
-            return NSUserDefaults.standardUserDefaults().objectForKey("Auth.token") as? String
+            return NSUserDefaults.standardUserDefaults().objectForKey("Credentials.token") as? String
         }
         set(newToken) {
-            NSUserDefaults.standardUserDefaults().setObject(newToken, forKey: "Auth.token")
+            NSUserDefaults.standardUserDefaults().setObject(newToken, forKey: "Credentials.token")
             NSUserDefaults.standardUserDefaults().synchronize()
         }
     }
 
     static var refreshToken: String? {
         get {
-            return NSUserDefaults.standardUserDefaults().objectForKey("Auth.refreshToken") as? String
+            return NSUserDefaults.standardUserDefaults().objectForKey("Credentials.refreshToken") as? String
         }
         set(newRefreshToken) {
-            NSUserDefaults.standardUserDefaults().setObject(newRefreshToken, forKey: "Auth.refreshToken")
+            NSUserDefaults.standardUserDefaults().setObject(newRefreshToken, forKey: "Credentials.refreshToken")
             NSUserDefaults.standardUserDefaults().synchronize()
         }
     }

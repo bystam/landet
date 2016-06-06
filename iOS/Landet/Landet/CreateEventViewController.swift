@@ -4,12 +4,9 @@
 
 import UIKit
 
-class EventsViewController: UIViewController {
+class CreateEventViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-    }
-
-    @IBAction func unwindToEventsViewController(segue: UIStoryboardSegue) {
     }
 }
