@@ -33,13 +33,13 @@ function userMatchingCredentials(username, password) {
   let candidate = null;
 
   return User.where({ username: username }).fetch().then(function(user) {
-    if (!user) { return null; }
+    if (!user) { throw errors.User.WrongCredentials(); }
 
     candidate = user;
     return compare(password, user.get('hashedpw'));
   }).then(function(passwordMatch) {
     if (passwordMatch) { return candidate; }
-    else { return null; }
+    else { throw errors.User.WrongCredentials(); }
   });
 }
 
