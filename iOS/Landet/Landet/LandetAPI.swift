@@ -10,7 +10,6 @@ func APIClientFactory() -> HttpClient {
 
 private let apiQueue: NSOperationQueue = {
     let queue = NSOperationQueue()
-    queue.maxConcurrentOperationCount = 4
     return queue
 }()
 
@@ -22,7 +21,10 @@ class UserAPI {
     let apiClient: APIClient = APIClientFactory()
 
     func login(username username: String, password: String, completion: (error: NSError?) -> ()) {
-        let operation = apiClient.post("/users/login", body: [ "username" : username, "password" : password ]) { (response) in
+        let operation = apiClient.post("/users/login", body: [ "username" : username, "password" : password ])
+
+        operation.completionBlock = {
+            let response = operation.apiResponse
 
             if let error = response.error {
                 completion(error: error);
@@ -32,7 +34,7 @@ class UserAPI {
             let sessionData = response.body as! [String : String]
             let token = sessionData["token"]!
             let refreshToken = sessionData["refresh_token"]!
-            
+
             Session.installWith(token: token, refreshToken: refreshToken)
             completion(error: nil)
         }
@@ -47,23 +49,58 @@ private class SessionAPI {
 
     let apiClient: APIClient = APIClientFactory()
 
-    func refresh(session: Session, completion: (error: NSError?) -> ()) {
-        let operation = apiClient.post("/sessions/refresh", body: [ "refresh_token" : session.refreshToken ]) { (response) in
+    func wrapWithAutomaticRefreshingSession(@autoclosure(escaping) operation generator:  () -> APIOperation) -> APIOperation {
 
-            if let error = response.error {
-                completion(error: error);
-                return
+        let session = Session.currentSession!
+
+        let totalOperation = APIOperation()
+
+        totalOperation.asyncTask = { totalOperationCompletion in
+
+            let firstOp = generator()
+            apiQueue.addOperation(firstOp)
+            firstOp.completionBlock = {
+
+                let firstResponse = firstOp.apiResponse
+
+                if firstResponse.error?.landetErrorCode != LandetAPIErrorCode.TokenExpired {
+                    totalOperation.apiResponse = firstResponse
+                    totalOperationCompletion()
+                    return
+                }
+
+
+                let refreshOp = self.apiClient.post("/sessions/refresh", body: [ "refresh_token" : session.refreshToken])
+                apiQueue.addOperation(refreshOp)
+
+                refreshOp.completionBlock = {
+
+                    let refreshResponse = refreshOp.apiResponse
+
+                    if refreshResponse.error?.landetErrorCode == LandetAPIErrorCode.InvalidRefreshToken {
+                        Session.uninstallCurrentSession()
+                        totalOperation.apiResponse = refreshResponse
+                        totalOperationCompletion()
+                        return
+                    }
+
+                    let sessionData = refreshResponse.body as! [String : String]
+                    let token = sessionData["token"]!
+                    session.renew(token: token)
+
+                    let secondOp = generator()
+                    apiQueue.addOperation(secondOp)
+                    secondOp.completionBlock = {
+
+                        totalOperation.apiResponse = secondOp.apiResponse
+                        totalOperationCompletion()
+                        
+                    }
+                }
             }
-
-
-            let sessionData = response.body as! [String : String]
-            let token = sessionData["token"]!
-
-            session.renew(token: token)
-            completion(error: nil)
         }
 
-        apiQueue.addOperation(operation)
+        return totalOperation
     }
 }
 
@@ -83,20 +120,25 @@ class EventAPI {
     }()
 
     func loadAll(completion: (events: [Event]?, error: NSError?) -> ()) {
-        let operation = apiClient.get("/events") { (response) in
 
-            if let error = response.error {
-                completion(events: nil, error: error);
-                return
+        let operation = SessionAPI.shared.wrapWithAutomaticRefreshingSession(operation: self.apiClient.get("/events"))
+
+        operation.completionBlock = {
+
+            var events: [Event]?
+            var error: NSError?
+
+            if let apiError = operation.apiResponse.error {
+                error = apiError
+            }
+            else if let eventData = operation.apiResponse.body as? [[String : AnyObject]] {
+                events = eventData.map(Event.init)
             }
 
-            let eventData = response.body as! [[String : AnyObject]]
-            let events = eventData.map { Event(dictionary: $0) }
-
-            completion(events: events, error: nil)
+            completion(events: events, error: error)
         }
 
         apiQueue.addOperation(operation)
     }
-
 }
+

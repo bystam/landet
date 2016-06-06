@@ -5,6 +5,7 @@ const Sessions = require('./entities').Sessions;
 const crypto = require('crypto');
 const errors = require('../util/errors');
 
+//const kSessionTimeoutMilliseconds = 5 * 1000;
 const kSessionTimeoutMilliseconds = 2 * 60 * 60 * 1000;
 
 function create(user) {

@@ -25,6 +25,7 @@
 		DB0FFBDF1D04CD3900DD4B94 /* NSDate+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB0FFBDE1D04CD3900DD4B94 /* NSDate+Extension.swift */; };
 		DB0FFBE21D05A9BB00DD4B94 /* AsyncOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB0FFBE11D05A9BB00DD4B94 /* AsyncOperation.swift */; };
 		DB0FFBE41D05AA6C00DD4B94 /* LandetAPIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB0FFBE31D05AA6C00DD4B94 /* LandetAPIError.swift */; };
+		DB36CDD71D05C15200B94422 /* APIOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB36CDD61D05C15200B94422 /* APIOperation.swift */; };
 		DBD1F8191D045B0D0035A7B4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD1F8181D045B0D0035A7B4 /* AppDelegate.swift */; };
 		DBD1F8201D045B0D0035A7B4 /* AppNavigation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DBD1F81E1D045B0D0035A7B4 /* AppNavigation.storyboard */; };
 		DBD1F8221D045B0D0035A7B4 /* Common.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DBD1F8211D045B0D0035A7B4 /* Common.xcassets */; };
@@ -60,6 +61,7 @@
 		DB0FFBDE1D04CD3900DD4B94 /* NSDate+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSDate+Extension.swift"; sourceTree = "<group>"; };
 		DB0FFBE11D05A9BB00DD4B94 /* AsyncOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsyncOperation.swift; sourceTree = "<group>"; };
 		DB0FFBE31D05AA6C00DD4B94 /* LandetAPIError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LandetAPIError.swift; sourceTree = "<group>"; };
+		DB36CDD61D05C15200B94422 /* APIOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIOperation.swift; sourceTree = "<group>"; };
 		DBD1F8151D045B0D0035A7B4 /* Landet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Landet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DBD1F8181D045B0D0035A7B4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DBD1F81F1D045B0D0035A7B4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/AppNavigation.storyboard; sourceTree = "<group>"; };
@@ -93,6 +95,7 @@
 			isa = PBXGroup;
 			children = (
 				DB0FFBBF1D04736B00DD4B94 /* APIClient.swift */,
+				DB36CDD61D05C15200B94422 /* APIOperation.swift */,
 				DB0FFBC11D04983700DD4B94 /* HttpStatusCodes.swift */,
 				DB0FFBC61D04A4B800DD4B94 /* Model */,
 				DB0FFBBD1D04719200DD4B94 /* LandetAPI.swift */,
@@ -334,6 +337,7 @@
 				DB0FFBE41D05AA6C00DD4B94 /* LandetAPIError.swift in Sources */,
 				DBD1F8191D045B0D0035A7B4 /* AppDelegate.swift in Sources */,
 				DB0FFBDA1D04C42000DD4B94 /* EventsTableViewController.swift in Sources */,
+				DB36CDD71D05C15200B94422 /* APIOperation.swift in Sources */,
 				DB0FFBBE1D04719200DD4B94 /* LandetAPI.swift in Sources */,
 				DB0FFBC21D04983700DD4B94 /* HttpStatusCodes.swift in Sources */,
 				DBD1F8391D045EFA0035A7B4 /* MapViewController.swift in Sources */,

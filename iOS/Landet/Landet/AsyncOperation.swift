@@ -26,8 +26,9 @@ class AsyncOperation: NSOperation {
 
     private var _cancelled = false
 
-    private var asyncTask: ((completion: () -> ()) -> ())?
-    private var cancelTask: (() -> ())?
+    var asyncTask: ((completion: () -> ()) -> ())?
+    var cancelTask: (() -> ())?
+
 
     override init() {
         state = .Ready
@@ -37,18 +38,6 @@ class AsyncOperation: NSOperation {
     private func finish() {
         state = .Finished
     }
-
-
-    // MARK: - Async task controllers
-
-    func asyncTask(task: (operationCompletion: () -> ()) -> ()) {
-        asyncTask = task
-    }
-
-    func cancelTask(task: () -> ()) {
-        cancelTask = task
-    }
-
 
     // MARK: - Overrides
 

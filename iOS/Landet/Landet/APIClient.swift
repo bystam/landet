@@ -4,22 +4,17 @@
 
 import Foundation
 
-struct APIResponse {
-    let httpStatus: HttpStatusCode
-    let body: AnyObject?
-    let error: NSError?
-}
-
 protocol APIClient {
-    func get(endpoint: String, completion: (response: APIResponse) -> ()) -> NSOperation
-    func post(endpoint: String, body: [String : AnyObject], completion: (response: APIResponse) -> ()) -> NSOperation
-    func put(endpoint: String, body: [String : AnyObject], completion: (response: APIResponse) -> ()) -> NSOperation
-    func delete(endpoint: String, completion: (response: APIResponse) -> ()) -> NSOperation
+    func get(endpoint: String) -> APIOperation
+    func post(endpoint: String, body: [String : AnyObject]) -> APIOperation
+    func put(endpoint: String, body: [String : AnyObject]) -> APIOperation
+    func delete(endpoint: String) -> APIOperation
 }
 
 protocol APIResponseMiddleware {
     func errorInBody(body: AnyObject?) -> NSError?
 }
+
 
 private enum HttpMethod: String {
     case GET, POST, PUT, DELETE
@@ -45,13 +40,12 @@ class HttpClient {
         self.responseMiddleware = responseMiddleware
     }
 
-    private func send(request request: NSURLRequest,
-                              requestCompletion: (body: AnyObject?, response: NSHTTPURLResponse?, error: NSError?) -> ()) -> NSOperation {
+    private func send(request request: NSURLRequest) -> APIOperation {
         let session = HttpClient.sharedUrlSession
-        let operation = AsyncOperation()
-        var task: NSURLSessionTask!
+        let operation = APIOperation()
+        var task: NSURLSessionTask?
 
-        operation.asyncTask { (operationCompletion) in
+        operation.asyncTask = { (operationCompletion) in
             task = session.dataTaskWithRequest(request) { (data, response, error) in
 
                 var responseError = error
@@ -69,16 +63,18 @@ class HttpClient {
                     responseError = apiError
                 }
 
-                // run the response completion block before considering the operation done
-                requestCompletion(body: body, response: response as? NSHTTPURLResponse, error: responseError)
+                let httpResponse = response as! NSHTTPURLResponse
+                let status = HttpStatusCode(rawValue: httpResponse.statusCode)!
+                operation.apiResponse = APIResponse(httpStatus: status, body: body, error: responseError)
+
                 operationCompletion()
             }
 
-            task.resume()
+            task?.resume()
         }
 
-        operation.cancelTask {
-            task.cancel()
+        operation.cancelTask = {
+            task?.cancel()
         }
 
         print("------> \(request.HTTPMethod!) \(request.URL!.absoluteString) ")
@@ -105,39 +101,23 @@ class HttpClient {
 
 extension HttpClient: APIClient {
 
-    func get(endpoint: String, completion: (response: APIResponse) -> ()) -> NSOperation {
+    func get(endpoint: String) -> APIOperation {
         let req = request(method: .GET, towards: endpoint, body: nil)
-
-        return send(request: req) { (body, response, error) in
-            let status = HttpStatusCode(rawValue: response!.statusCode)!
-            completion(response: APIResponse(httpStatus: status, body: body, error: error))
-        }
+        return send(request: req)
     }
 
-    func post(endpoint: String, body: [String : AnyObject], completion: (response: APIResponse) -> ()) -> NSOperation {
+    func post(endpoint: String, body: [String : AnyObject]) -> APIOperation {
         let req = request(method: .POST, towards: endpoint, body: body)
-
-        return send(request: req) { (body, response, error) in
-            let status = HttpStatusCode(rawValue: response!.statusCode)!
-            completion(response: APIResponse(httpStatus: status, body: body, error: error))
-        }
+        return send(request: req)
     }
 
-    func put(endpoint: String, body: [String : AnyObject], completion: (response: APIResponse) -> ()) -> NSOperation {
+    func put(endpoint: String, body: [String : AnyObject]) -> APIOperation {
         let req = request(method: .PUT, towards: endpoint, body: body)
-
-        return send(request: req) { (body, response, error) in
-            let status = HttpStatusCode(rawValue: response!.statusCode)!
-            completion(response: APIResponse(httpStatus: status, body: body, error: error))
-        }
+        return send(request: req)
     }
 
-    func delete(endpoint: String, completion: (response: APIResponse) -> ()) -> NSOperation {
+    func delete(endpoint: String) -> APIOperation {
         let req = request(method: .DELETE, towards: endpoint, body: nil)
-
-        return send(request: req) { (body, response, error) in
-            let status = HttpStatusCode(rawValue: response!.statusCode)!
-            completion(response: APIResponse(httpStatus: status, body: body, error: error))
-        }
+        return send(request: req)
     }
 }

@@ -25,7 +25,10 @@ router.post('/login', function(req, res) {
   users.userMatchingCredentials(username, password).then(function(user) {
     return sessions.create(user);
   }).then(function(session) {
-    res.json(session.omit('expiration_date'));
+    res.status(201).json({
+      token: session.get('token'),
+      refresh_token: session.get('refresh_token')
+    });
   }).catch(errors.HttpHandler(res));
 });
 
