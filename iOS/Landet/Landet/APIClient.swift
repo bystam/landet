@@ -17,6 +17,9 @@ protocol APIClient {
     func delete(endpoint: String, completion: (response: APIResponse) -> ()) -> NSOperation
 }
 
+protocol APIResponseMiddleware {
+    func errorInBody(body: AnyObject?) -> NSError?
+}
 
 private enum HttpMethod: String {
     case GET, POST, PUT, DELETE
@@ -30,10 +33,17 @@ class HttpClient {
         return NSURLSession(configuration: config)
     }()
 
-    static var host = "http://landet.herokuapp.com"
     static var debugHost: String?
 
+    let host: String
+    let responseMiddleware: APIResponseMiddleware?
+
     var requestSetup: ((request: NSMutableURLRequest) -> ())?
+
+    init(host: String, responseMiddleware: APIResponseMiddleware?) {
+        self.host = host
+        self.responseMiddleware = responseMiddleware
+    }
 
     private func send(request request: NSURLRequest,
                               requestCompletion: (body: AnyObject?, response: NSHTTPURLResponse?, error: NSError?) -> ()) -> NSOperation {
@@ -42,21 +52,25 @@ class HttpClient {
         var task: NSURLSessionTask!
 
         operation.asyncTask { (operationCompletion) in
-            task = session.dataTaskWithRequest(request) { (body, response, error) in
+            task = session.dataTaskWithRequest(request) { (data, response, error) in
 
                 var responseError = error
-                var data: AnyObject?
+                var body: AnyObject?
 
-                if let body = body {
+                if let data = data {
                     do {
-                        data = try NSJSONSerialization.JSONObjectWithData(body, options: [])
+                        body = try NSJSONSerialization.JSONObjectWithData(data, options: [])
                     } catch let e as NSError {
                         responseError = responseError ?? e
                     }
                 }
 
+                if let apiError = self.responseMiddleware?.errorInBody(body) {
+                    responseError = apiError
+                }
+
                 // run the response completion block before considering the operation done
-                requestCompletion(body: data, response: response as? NSHTTPURLResponse, error: responseError)
+                requestCompletion(body: body, response: response as? NSHTTPURLResponse, error: responseError)
                 operationCompletion()
             }
 
@@ -73,7 +87,7 @@ class HttpClient {
     }
 
     private func request(method method: HttpMethod, towards endpoint: String, body: AnyObject?) -> NSMutableURLRequest {
-        let url = NSURL(string: (HttpClient.debugHost ?? HttpClient.host) + endpoint)
+        let url = NSURL(string: (HttpClient.debugHost ?? host) + endpoint)
         let request = NSMutableURLRequest(URL: url!, cachePolicy: .ReloadIgnoringLocalCacheData, timeoutInterval: 20.0)
 
         request.HTTPMethod = method.rawValue
@@ -126,85 +140,4 @@ extension HttpClient: APIClient {
             completion(response: APIResponse(httpStatus: status, body: body, error: error))
         }
     }
-}
-
-
-private enum AsyncOperationState: String {
-    case Ready = "isReady"
-    case Executing = "isExecuting"
-    case Finished = "isFinished"
-}
-
-class AsyncOperation: NSOperation {
-
-    private var state: AsyncOperationState {
-        willSet(newState) {
-            willChangeValueForKey(state.rawValue)
-            willChangeValueForKey(newState.rawValue)
-        }
-        didSet(oldState) {
-            didChangeValueForKey(oldState.rawValue)
-            didChangeValueForKey(state.rawValue)
-        }
-    }
-
-    private var _cancelled = false
-
-    private var asyncTask: ((completion: () -> ()) -> ())?
-    private var cancelTask: (() -> ())?
-
-    override init() {
-        state = .Ready
-    }
-
-
-    private func finish() {
-        state = .Finished
-    }
-
-
-    // MARK: - Async task controllers
-
-    func asyncTask(task: (operationCompletion: () -> ()) -> ()) {
-        asyncTask = task
-    }
-
-    func cancelTask(task: () -> ()) {
-        cancelTask = task
-    }
-
-
-    // MARK: - Overrides
-
-    override func start() {
-        if cancelled {
-            finish()
-            return
-        }
-
-        state = .Executing
-
-        if let task = asyncTask {
-            task(completion: finish)
-        } else {
-            finish()
-        }
-
-    }
-
-    override func cancel() {
-        willChangeValueForKey("isCancelled")
-        cancelTask?()
-        _cancelled = true
-        finish()
-        didChangeValueForKey("isCancelled")
-    }
-
-    override var ready: Bool { return state == .Ready }
-    override var executing: Bool { return state == .Executing }
-    override var finished: Bool { return state == .Finished }
-    override var cancelled: Bool { return _cancelled }
-    override var concurrent: Bool { return asynchronous }
-    override var asynchronous: Bool { return true }
-
 }

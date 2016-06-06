@@ -28,9 +28,11 @@ function error(httpStatus, apiCode, message) {
     let error = new LandetError(message);
     error.httpStatus = httpStatus;
     error.asJSON = {
-      status: httpStatus,
-      api_code: apiCode,
-      message: message
+      landet_error = {
+        status: httpStatus,
+        api_code: apiCode,
+        message: message
+      }
     }
 
     return error;
