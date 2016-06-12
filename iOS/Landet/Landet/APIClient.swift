@@ -46,6 +46,9 @@ class HttpClient {
         var task: NSURLSessionTask?
 
         operation.asyncTask = { (operationCompletion) in
+
+            print("------> \(request.HTTPMethod!) \(request.URL!.absoluteString) ")
+
             task = session.dataTaskWithRequest(request) { (data, response, error) in
 
                 var responseError = error
@@ -76,8 +79,6 @@ class HttpClient {
         operation.cancelTask = {
             task?.cancel()
         }
-
-        print("------> \(request.HTTPMethod!) \(request.URL!.absoluteString) ")
 
         return operation
     }

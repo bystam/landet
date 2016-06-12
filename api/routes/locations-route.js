@@ -9,7 +9,6 @@ router.get('/', function(req, res) {
   locations.allLocations().then(function (locations) {
     res.json(locations.toJSON());
   });
-
 });
 
 module.exports = router;

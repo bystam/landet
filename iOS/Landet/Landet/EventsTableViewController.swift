@@ -41,8 +41,6 @@ extension EventsTableViewController {
                 if let events = events {
                     self.dataSource.events = events
                     self.tableView.reloadData()
-                } else {
-                    print(error)
                 }
             }
         }

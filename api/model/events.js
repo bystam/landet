@@ -7,7 +7,7 @@ const EventComment = require('./entities').EventComment;
 const EventComments = require('./entities').EventComments;
 
 function allEvents() {
-  return Events.forge()
+  return Events.query('orderBy', 'event_time')
     .fetch({
       withRelated: [
         'location',
