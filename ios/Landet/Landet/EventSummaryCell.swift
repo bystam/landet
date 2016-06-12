@@ -18,6 +18,8 @@ class EventSummaryCell: UITableViewCell {
     @IBOutlet weak var creatorLabel: UILabel!
     @IBOutlet weak var bodyLabel: UILabel!
 
+    static let preferredHeight: CGFloat = 93.0
+
     override func awakeFromNib() {
         super.awakeFromNib()
     }

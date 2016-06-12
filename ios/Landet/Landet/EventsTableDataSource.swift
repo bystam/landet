@@ -17,8 +17,7 @@ class EventsTableDataSource: NSObject, UITableViewDataSource {
     }
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("EventSummaryCell", forIndexPath: indexPath) as! EventSummaryCell
-
+        let cell: EventSummaryCell = tableView.dequeueLandetCell(.EventSummary, forIndexPath: indexPath)
         cell.configure(event: events[indexPath.row])
         return cell
     }

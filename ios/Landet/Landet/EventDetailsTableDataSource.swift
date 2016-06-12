@@ -4,6 +4,25 @@
 
 import UIKit
 
-class EventDetailsTableDataSource: NSObject {
+class EventDetailsTableDataSource: NSObject, UITableViewDataSource {
 
+    let event: Event
+
+    init(event: Event) {
+        self.event = event
+    }
+
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 2
+    }
+
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return section == 1 ? 1 : 0
+    }
+
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell: EventSummaryCell = tableView.dequeueLandetCell(.EventSummary, forIndexPath: indexPath)
+        cell.configure(event: event)
+        return cell
+    }
 }

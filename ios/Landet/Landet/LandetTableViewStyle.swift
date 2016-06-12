@@ -32,7 +32,7 @@ class LandetTableViewStyle {
 
 extension UITableView {
 
-    func dequeueRetailCell<T: UITableViewCell>(identifier: LandetCellIdentifier, forIndexPath indexPath: NSIndexPath) -> T  {
+    func dequeueLandetCell<T: UITableViewCell>(identifier: LandetCellIdentifier, forIndexPath indexPath: NSIndexPath) -> T  {
         return self.dequeueReusableCellWithIdentifier(identifier.rawValue, forIndexPath: indexPath) as! T
     }
 }

@@ -177,7 +177,6 @@
 				DB0FFBD31D04C32B00DD4B94 /* EventsViewController.swift */,
 				DB0FFBD91D04C42000DD4B94 /* EventsTableViewController.swift */,
 				DBB38A391D0DC0F100BEE506 /* EventsTableDataSource.swift */,
-				DB0FFBDB1D04C79900DD4B94 /* Cells */,
 				DB36CDD81D062D0600B94422 /* Create */,
 				DBB38A2E1D0DB56800BEE506 /* Details */,
 			);
@@ -327,6 +326,7 @@
 		DBD5D7D81D0E0FAB0053DC6A /* Table */ = {
 			isa = PBXGroup;
 			children = (
+				DB0FFBDB1D04C79900DD4B94 /* Cells */,
 				DBD5D7D91D0E0FB90053DC6A /* LandetTableViewStyle.swift */,
 			);
 			name = Table;
