@@ -1,3 +1,7 @@
 <resources>
-    <string name="app_name">landet</string>
+    <string name="app_name">Landet</string>
+
+    <string name="events">Something something events</string>
+    <string name="topics">Something something topics</string>
+    <string name="map">Something something fancy map</string>
 </resources>
