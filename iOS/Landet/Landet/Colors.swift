@@ -11,6 +11,7 @@ class Colors {
     static let yellow = UIColor(rgb: 0xE5DFC5)
     static let brown = UIColor(rgb: 0x848375)
     static let green = UIColor(rgb: 0x91C7A9)
+    static let gray = UIColor(rgb: 0x302A29)
 
 }
 
