@@ -12,10 +12,15 @@ private let formatter: NSDateFormatter = {
 
 class EventSummaryCell: UITableViewCell {
 
+    @IBOutlet weak var cardView: UIView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var timeAndLocationLabel: UILabel!
     @IBOutlet weak var creatorLabel: UILabel!
     @IBOutlet weak var bodyLabel: UILabel!
+
+    override func awakeFromNib() {
+        super.awakeFromNib()
+    }
 
     func configure(event event: Event) {
         titleLabel.text = event.title
@@ -26,5 +31,15 @@ class EventSummaryCell: UITableViewCell {
         creatorLabel.text = "by \(event.creator.name)"
 
         bodyLabel.text = event.body
+    }
+
+    override func setSelected(selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+        cardView.backgroundColor = selected ? Colors.brown : Colors.gray
+    }
+
+    override func setHighlighted(highlighted: Bool, animated: Bool) {
+        super.setHighlighted(highlighted, animated: animated)
+        cardView.backgroundColor = highlighted ? Colors.brown : Colors.gray
     }
 }

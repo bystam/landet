@@ -97,6 +97,7 @@
                                 </constraints>
                                 <connections>
                                     <outlet property="bodyLabel" destination="3Ey-0s-xiM" id="HYS-pT-l4b"/>
+                                    <outlet property="cardView" destination="SMa-b3-Edz" id="Bp1-C7-1Bn"/>
                                     <outlet property="creatorLabel" destination="PaG-Tv-lhL" id="kHe-sX-JoP"/>
                                     <outlet property="timeAndLocationLabel" destination="6ZM-8a-hT5" id="aD3-1a-51r"/>
                                     <outlet property="titleLabel" destination="jpA-wH-0Dh" id="I2J-lp-PGC"/>

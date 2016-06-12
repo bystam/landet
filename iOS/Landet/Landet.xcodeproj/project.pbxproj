@@ -38,6 +38,8 @@
 		DBB38A321D0DB58A00BEE506 /* EventDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB38A311D0DB58A00BEE506 /* EventDetailsViewController.swift */; };
 		DBB38A341D0DB59900BEE506 /* EventDetailsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB38A331D0DB59900BEE506 /* EventDetailsTableViewController.swift */; };
 		DBB38A361D0DB5AF00BEE506 /* EventDetailsTableDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB38A351D0DB5AF00BEE506 /* EventDetailsTableDataSource.swift */; };
+		DBB38A381D0DC04300BEE506 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB38A371D0DC04300BEE506 /* UIViewController+Extension.swift */; };
+		DBB38A3A1D0DC0F100BEE506 /* EventsTableDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB38A391D0DC0F100BEE506 /* EventsTableDataSource.swift */; };
 		DBD1F8191D045B0D0035A7B4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD1F8181D045B0D0035A7B4 /* AppDelegate.swift */; };
 		DBD1F8201D045B0D0035A7B4 /* AppNavigation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DBD1F81E1D045B0D0035A7B4 /* AppNavigation.storyboard */; };
 		DBD1F8221D045B0D0035A7B4 /* Common.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DBD1F8211D045B0D0035A7B4 /* Common.xcassets */; };
@@ -86,6 +88,8 @@
 		DBB38A311D0DB58A00BEE506 /* EventDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDetailsViewController.swift; sourceTree = "<group>"; };
 		DBB38A331D0DB59900BEE506 /* EventDetailsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDetailsTableViewController.swift; sourceTree = "<group>"; };
 		DBB38A351D0DB5AF00BEE506 /* EventDetailsTableDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDetailsTableDataSource.swift; sourceTree = "<group>"; };
+		DBB38A371D0DC04300BEE506 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
+		DBB38A391D0DC0F100BEE506 /* EventsTableDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsTableDataSource.swift; sourceTree = "<group>"; };
 		DBD1F8151D045B0D0035A7B4 /* Landet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Landet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DBD1F8181D045B0D0035A7B4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DBD1F81F1D045B0D0035A7B4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/AppNavigation.storyboard; sourceTree = "<group>"; };
@@ -156,6 +160,7 @@
 				DB0FFBCF1D04AEDB00DD4B94 /* RoundRectView.swift */,
 				DB0FFBDE1D04CD3900DD4B94 /* NSDate+Extension.swift */,
 				DBB38A2A1D0D97B200BEE506 /* LandetTextField.swift */,
+				DBB38A371D0DC04300BEE506 /* UIViewController+Extension.swift */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -167,6 +172,7 @@
 				DB0FFBD51D04C33600DD4B94 /* Events.storyboard */,
 				DB0FFBD31D04C32B00DD4B94 /* EventsViewController.swift */,
 				DB0FFBD91D04C42000DD4B94 /* EventsTableViewController.swift */,
+				DBB38A391D0DC0F100BEE506 /* EventsTableDataSource.swift */,
 				DB0FFBDB1D04C79900DD4B94 /* Cells */,
 				DB36CDD81D062D0600B94422 /* Create */,
 				DBB38A2E1D0DB56800BEE506 /* Details */,
@@ -395,7 +401,9 @@
 				DBB38A291D0D96B400BEE506 /* CreateEventTableViewController.swift in Sources */,
 				DB0FFBC81D04A4C500DD4B94 /* Events.swift in Sources */,
 				DBD1F8421D04601E0035A7B4 /* Colors.swift in Sources */,
+				DBB38A3A1D0DC0F100BEE506 /* EventsTableDataSource.swift in Sources */,
 				DB0FFBD01D04AEDB00DD4B94 /* RoundRectButton.swift in Sources */,
+				DBB38A381D0DC04300BEE506 /* UIViewController+Extension.swift in Sources */,
 				DBD1F8401D0460190035A7B4 /* Theme.swift in Sources */,
 				DB36CDE51D06313100B94422 /* AuthOverlayController.swift in Sources */,
 				DBB38A2D1D0DAA1900BEE506 /* APIUtil.swift in Sources */,

@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="9wg-mg-28d">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Event Details View Controller-->
         <scene sceneID="aNl-Iy-ZKQ">
             <objects>
-                <viewController id="9wg-mg-28d" sceneMemberID="viewController">
+                <viewController id="9wg-mg-28d" customClass="EventDetailsViewController" customModule="Landet" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="AZF-FC-v9u"/>
                         <viewControllerLayoutGuide type="bottom" id="w64-Km-dnj"/>
@@ -38,10 +38,10 @@
             </objects>
             <point key="canvasLocation" x="245" y="377"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Event Details Table View Controller-->
         <scene sceneID="mm1-lJ-C3Q">
             <objects>
-                <tableViewController id="eaZ-g3-Qtd" sceneMemberID="viewController">
+                <tableViewController id="eaZ-g3-Qtd" customClass="EventDetailsTableViewController" customModule="Landet" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="Tfm-Py-vvV">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
