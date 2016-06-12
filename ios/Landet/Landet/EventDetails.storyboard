@@ -24,7 +24,7 @@
                                 </connections>
                             </containerView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.14509804546833038" green="0.12941177189350128" blue="0.12549020349979401" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="HtI-cw-uV3" firstAttribute="top" secondItem="AZF-FC-v9u" secondAttribute="bottom" id="69d-GE-Gic"/>
                             <constraint firstItem="w64-Km-dnj" firstAttribute="top" secondItem="HtI-cw-uV3" secondAttribute="bottom" id="L93-3n-lKj"/>
@@ -45,17 +45,8 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="Tfm-Py-vvV">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="hYo-8z-ekN">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hYo-8z-ekN" id="HWB-ZN-NKJ">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="separatorColor" red="0.66274511814117432" green="0.18431372940540314" blue="0.25490197539329529" alpha="1" colorSpace="calibratedRGB"/>
                         <connections>
                             <outlet property="dataSource" destination="eaZ-g3-Qtd" id="0Z5-cM-bAk"/>
                             <outlet property="delegate" destination="eaZ-g3-Qtd" id="fXJ-Uq-Qt9"/>

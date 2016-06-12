@@ -11,6 +11,7 @@ class EventsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        LandetTableViewStyle.setup(tableView, cells: [.EventSummary])
         tableView.dataSource = dataSource
 
         tableView.estimatedRowHeight = 76.0
