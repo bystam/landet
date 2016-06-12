@@ -1,0 +1,6 @@
+Black - 252120
+Red - A92F41
+Yellow - E5DFC5
+Brown - 848375
+Green - 91C7A9
+Grey - 302A29
