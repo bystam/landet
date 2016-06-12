@@ -55,4 +55,4 @@ function compare(string, hashed) {
 module.exports = {
   createUser,
   userMatchingCredentials
-}
+};
