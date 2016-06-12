@@ -49,7 +49,7 @@ private class SessionAPI {
 
     let apiClient: APIClient = APIClientFactory()
 
-    func wrapWithAutomaticRefreshingSession(@autoclosure(escaping) operation generator:  () -> APIOperation) -> APIOperation {
+    func wrapWithAutomaticRefreshingSession(operation generator:  () -> APIOperation) -> APIOperation {
 
         let session = Session.currentSession!
 
@@ -63,14 +63,14 @@ private class SessionAPI {
 
                 let firstResponse = firstOp.apiResponse
 
-                if firstResponse.error?.landetErrorCode == LandetAPIErrorCode.TokenInvalid {
+                if firstResponse.error?.landetErrorCode == .InvalidToken {
                     Session.uninstallCurrentSession()
                     totalOperation.apiResponse = firstResponse
                     totalOperationCompletion()
                     return
                 }
 
-                if firstResponse.error?.landetErrorCode != LandetAPIErrorCode.TokenExpired {
+                if firstResponse.error?.landetErrorCode != .TokenExpired {
                     totalOperation.apiResponse = firstResponse
                     totalOperationCompletion()
                     return
@@ -84,7 +84,7 @@ private class SessionAPI {
 
                     let refreshResponse = refreshOp.apiResponse
 
-                    if refreshResponse.error?.landetErrorCode == LandetAPIErrorCode.InvalidRefreshToken {
+                    if refreshResponse.error?.landetErrorCode == .InvalidRefreshToken {
                         Session.uninstallCurrentSession()
                         totalOperation.apiResponse = refreshResponse
                         totalOperationCompletion()
@@ -130,7 +130,9 @@ class EventAPI {
 
         guard let _ = Session.currentSession else { return }
 
-        let operation = SessionAPI.shared.wrapWithAutomaticRefreshingSession(operation: self.apiClient.get("/events"))
+        let operation = SessionAPI.shared.wrapWithAutomaticRefreshingSession(operation:  {
+            return self.apiClient.get("/events")
+        })
 
         operation.completionBlock = {
 

@@ -8,7 +8,7 @@ enum LandetAPIErrorCode: String {
     case UsernameTaken = "LE-101"
     case WrongCredentials = "LE-102"
 
-    case TokenInvalid = "LE-201"
+    case InvalidToken = "LE-201"
     case TokenExpired = "LE-202"
     case InvalidRefreshToken = "LE-203"
 };
