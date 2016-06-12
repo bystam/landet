@@ -13,12 +13,18 @@ class EventDetailsTableViewController: UITableViewController {
         super.viewDidLoad()
 
         LandetTableViewStyle.setup(tableView, cells: [.EventSummary])
+        CommentsHeaderView.install(tableView: tableView)
 
         dataSource = EventDetailsTableDataSource(event: event)
         tableView.dataSource = dataSource
 
         tableView.estimatedRowHeight = EventSummaryCell.preferredHeight
         tableView.rowHeight = UITableViewAutomaticDimension
+//        tableView.seac
         tableView.tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: 1, height: CGFloat.min))
+    }
+
+    override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        return section == 1 ? tableView.dequeueReusableHeaderFooterViewWithIdentifier(CommentsHeaderView.reuseIdentifier) : nil
     }
 }

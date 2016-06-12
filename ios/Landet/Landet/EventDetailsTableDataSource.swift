@@ -17,7 +17,7 @@ class EventDetailsTableDataSource: NSObject, UITableViewDataSource {
     }
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return section == 1 ? 1 : 0
+        return section == 0 ? 1 : 0
     }
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
