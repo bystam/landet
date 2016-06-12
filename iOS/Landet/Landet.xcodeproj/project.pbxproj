@@ -31,6 +31,8 @@
 		DB36CDE01D06306500B94422 /* Auth.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DB36CDDF1D06306500B94422 /* Auth.storyboard */; };
 		DB36CDE31D06308500B94422 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB36CDE21D06308500B94422 /* LoginViewController.swift */; };
 		DB36CDE51D06313100B94422 /* AuthOverlayController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB36CDE41D06313100B94422 /* AuthOverlayController.swift */; };
+		DBB38A291D0D96B400BEE506 /* CreateEventTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB38A281D0D96B400BEE506 /* CreateEventTableViewController.swift */; };
+		DBB38A2B1D0D97B200BEE506 /* LandetTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB38A2A1D0D97B200BEE506 /* LandetTextField.swift */; };
 		DBD1F8191D045B0D0035A7B4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD1F8181D045B0D0035A7B4 /* AppDelegate.swift */; };
 		DBD1F8201D045B0D0035A7B4 /* AppNavigation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DBD1F81E1D045B0D0035A7B4 /* AppNavigation.storyboard */; };
 		DBD1F8221D045B0D0035A7B4 /* Common.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DBD1F8211D045B0D0035A7B4 /* Common.xcassets */; };
@@ -72,6 +74,8 @@
 		DB36CDDF1D06306500B94422 /* Auth.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Auth.storyboard; sourceTree = "<group>"; };
 		DB36CDE21D06308500B94422 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		DB36CDE41D06313100B94422 /* AuthOverlayController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthOverlayController.swift; sourceTree = "<group>"; };
+		DBB38A281D0D96B400BEE506 /* CreateEventTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateEventTableViewController.swift; sourceTree = "<group>"; };
+		DBB38A2A1D0D97B200BEE506 /* LandetTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LandetTextField.swift; sourceTree = "<group>"; };
 		DBD1F8151D045B0D0035A7B4 /* Landet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Landet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DBD1F8181D045B0D0035A7B4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DBD1F81F1D045B0D0035A7B4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/AppNavigation.storyboard; sourceTree = "<group>"; };
@@ -140,6 +144,7 @@
 				DB0FFBCE1D04AEDB00DD4B94 /* RoundRectButton.swift */,
 				DB0FFBCF1D04AEDB00DD4B94 /* RoundRectView.swift */,
 				DB0FFBDE1D04CD3900DD4B94 /* NSDate+Extension.swift */,
+				DBB38A2A1D0D97B200BEE506 /* LandetTextField.swift */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -179,6 +184,7 @@
 			children = (
 				DB36CDD91D062D1A00B94422 /* CreateEvent.storyboard */,
 				DB36CDDB1D062D2C00B94422 /* CreateEventViewController.swift */,
+				DBB38A281D0D96B400BEE506 /* CreateEventTableViewController.swift */,
 			);
 			name = Create;
 			sourceTree = "<group>";
@@ -362,6 +368,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DBB38A291D0D96B400BEE506 /* CreateEventTableViewController.swift in Sources */,
 				DB0FFBC81D04A4C500DD4B94 /* Events.swift in Sources */,
 				DBD1F8421D04601E0035A7B4 /* Colors.swift in Sources */,
 				DB0FFBD01D04AEDB00DD4B94 /* RoundRectButton.swift in Sources */,
@@ -389,6 +396,7 @@
 				DB0FFBBC1D046FA800DD4B94 /* Session.swift in Sources */,
 				DB36CDE31D06308500B94422 /* LoginViewController.swift in Sources */,
 				DB0FFBD41D04C32B00DD4B94 /* EventsViewController.swift in Sources */,
+				DBB38A2B1D0D97B200BEE506 /* LandetTextField.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

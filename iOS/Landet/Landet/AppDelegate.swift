@@ -13,15 +13,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
 
-        setupUI()
         installSession()
+        setupUI()
         
         return true
     }
 
+    private func installSession() {
+        HttpClient.debugHost = "http://192.168.1.174:3000"
+        Session.installDefault()
+    }
+
     private func setupUI() {
         Theme.apply()
-        
+
         let window = UIWindow(frame: UIScreen.mainScreen().bounds)
         appNavigationController.installInWindow(window)
         window.makeKeyAndVisible()
@@ -30,8 +35,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         authOverlayController = AuthOverlayController(window: window)
     }
 
-    private func installSession() {
-        Session.installDefault()
-    }
 }
 
