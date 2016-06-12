@@ -14,6 +14,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
 
         installSession()
+        performLaunchCalls()
         setupUI()
         
         return true
@@ -22,6 +23,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private func installSession() {
         HttpClient.debugHost = "http://192.168.1.174:3000"
         Session.installDefault()
+    }
+
+    private func performLaunchCalls() {
+        LocationsService.reload()
     }
 
     private func setupUI() {

@@ -104,33 +104,17 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Starts" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="i01-2J-Vxk" customClass="LandetTextField" customModule="Landet" customModuleProvider="target">
-                                                    <rect key="frame" x="20" y="61.5" width="157.5" height="30"/>
+                                                    <rect key="frame" x="20" y="55.5" width="335" height="40"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="30" id="Kbh-nI-t4q"/>
+                                                        <constraint firstAttribute="height" constant="40" id="Kbh-nI-t4q"/>
                                                     </constraints>
                                                     <color key="textColor" red="0.89803922179999995" green="0.87450981139999995" blue="0.77254903320000001" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Starts" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tLf-q8-1W7">
-                                                    <rect key="frame" x="20" y="48" width="31" height="13.5"/>
-                                                    <fontDescription key="fontDescription" type="system" weight="thin" pointSize="11"/>
-                                                    <color key="textColor" red="0.56862747669219971" green="0.78039216995239258" blue="0.66274511814117432" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Ends" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bXN-v2-SVA" customClass="LandetTextField" customModule="Landet" customModuleProvider="target">
-                                                    <rect key="frame" x="197" y="61.5" width="157.5" height="30"/>
-                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="30" id="bbh-47-lep"/>
-                                                    </constraints>
-                                                    <color key="textColor" red="0.89803922179999995" green="0.87450981139999995" blue="0.77254903320000001" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
-                                                </textField>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ends" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Sv-hi-blF">
-                                                    <rect key="frame" x="197" y="48" width="26" height="13.5"/>
+                                                    <rect key="frame" x="20" y="47" width="31" height="13.5"/>
                                                     <fontDescription key="fontDescription" type="system" weight="thin" pointSize="11"/>
                                                     <color key="textColor" red="0.56862747669219971" green="0.78039216995239258" blue="0.66274511814117432" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -138,15 +122,10 @@
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <constraints>
-                                                <constraint firstAttribute="bottom" secondItem="i01-2J-Vxk" secondAttribute="bottom" constant="8" id="1GH-Dc-1Ug"/>
-                                                <constraint firstAttribute="trailing" secondItem="bXN-v2-SVA" secondAttribute="trailing" constant="20" id="9MK-hQ-gDj"/>
-                                                <constraint firstItem="i01-2J-Vxk" firstAttribute="top" secondItem="tLf-q8-1W7" secondAttribute="bottom" id="B3a-rI-XHC"/>
+                                                <constraint firstAttribute="bottom" secondItem="i01-2J-Vxk" secondAttribute="bottom" constant="4" id="1GH-Dc-1Ug"/>
+                                                <constraint firstAttribute="trailing" secondItem="i01-2J-Vxk" secondAttribute="trailing" constant="20" id="5ad-Kx-36N"/>
+                                                <constraint firstItem="i01-2J-Vxk" firstAttribute="top" secondItem="tLf-q8-1W7" secondAttribute="bottom" constant="-5" id="B3a-rI-XHC"/>
                                                 <constraint firstItem="i01-2J-Vxk" firstAttribute="leading" secondItem="AHy-a0-nL7" secondAttribute="leading" constant="20" id="Rj5-Av-Km1"/>
-                                                <constraint firstItem="bXN-v2-SVA" firstAttribute="leading" secondItem="i01-2J-Vxk" secondAttribute="trailing" constant="20" id="ThC-IT-Vcf"/>
-                                                <constraint firstItem="6Sv-hi-blF" firstAttribute="leading" secondItem="bXN-v2-SVA" secondAttribute="leading" id="cRY-2B-sPJ"/>
-                                                <constraint firstItem="bXN-v2-SVA" firstAttribute="top" secondItem="6Sv-hi-blF" secondAttribute="bottom" id="r5l-XB-WUn"/>
-                                                <constraint firstItem="i01-2J-Vxk" firstAttribute="width" secondItem="bXN-v2-SVA" secondAttribute="width" id="vwF-XM-u5j"/>
-                                                <constraint firstAttribute="bottom" secondItem="bXN-v2-SVA" secondAttribute="bottom" constant="8" id="yOi-cC-8sT"/>
                                                 <constraint firstItem="tLf-q8-1W7" firstAttribute="leading" secondItem="i01-2J-Vxk" secondAttribute="leading" id="yn2-SK-kh3"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -164,8 +143,6 @@
                         <outlet property="fromLabel" destination="tLf-q8-1W7" id="MxW-Y4-nTo"/>
                         <outlet property="fromTimeField" destination="i01-2J-Vxk" id="8s3-X3-pnk"/>
                         <outlet property="nameTextField" destination="8E0-ZK-uJ4" id="fxH-ED-p7c"/>
-                        <outlet property="toLabel" destination="6Sv-hi-blF" id="aw2-i2-viN"/>
-                        <outlet property="toTimeField" destination="bXN-v2-SVA" id="CFh-Kg-UfM"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Uit-Iq-msK" userLabel="First Responder" sceneMemberID="firstResponder"/>

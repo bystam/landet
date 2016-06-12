@@ -10,6 +10,7 @@ func APIClientFactory() -> HttpClient {
 
 private let apiQueue: NSOperationQueue = {
     let queue = NSOperationQueue()
+    queue.maxConcurrentOperationCount = 4
     return queue
 }()
 
@@ -135,21 +136,31 @@ class EventAPI {
         })
 
         operation.completionBlock = {
-
-            var events: [Event]?
-            var error: NSError?
-
-            if let apiError = operation.apiResponse.error {
-                error = apiError
-            }
-            else if let eventData = operation.apiResponse.body as? [[String : AnyObject]] {
-                events = eventData.map(Event.init)
-            }
-
-            completion(events: events, error: error)
+            let res: ([Event]?, NSError?) = APIUtil.parseAsArray(response: operation.apiResponse)
+            completion(events: res.0, error: res.1)
         }
 
         apiQueue.addOperation(operation)
     }
+}
+
+class LocationAPI {
+
+    static let shared = LocationAPI()
+
+    let apiClient = APIClientFactory()
+
+    func loadAll(completion: (locations: [Location]?, error: NSError?) -> ()) {
+
+        let operation = apiClient.get("/locations")
+
+        operation.completionBlock = {
+            let res: ([Location]?, NSError?) = APIUtil.parseAsArray(response: operation.apiResponse)
+            completion(locations: res.0, error: res.1)
+        }
+
+        apiQueue.addOperation(operation)
+    }
+
 }
 

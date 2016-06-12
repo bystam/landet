@@ -33,6 +33,7 @@
 		DB36CDE51D06313100B94422 /* AuthOverlayController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB36CDE41D06313100B94422 /* AuthOverlayController.swift */; };
 		DBB38A291D0D96B400BEE506 /* CreateEventTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB38A281D0D96B400BEE506 /* CreateEventTableViewController.swift */; };
 		DBB38A2B1D0D97B200BEE506 /* LandetTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB38A2A1D0D97B200BEE506 /* LandetTextField.swift */; };
+		DBB38A2D1D0DAA1900BEE506 /* APIUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB38A2C1D0DAA1900BEE506 /* APIUtil.swift */; };
 		DBD1F8191D045B0D0035A7B4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD1F8181D045B0D0035A7B4 /* AppDelegate.swift */; };
 		DBD1F8201D045B0D0035A7B4 /* AppNavigation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DBD1F81E1D045B0D0035A7B4 /* AppNavigation.storyboard */; };
 		DBD1F8221D045B0D0035A7B4 /* Common.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DBD1F8211D045B0D0035A7B4 /* Common.xcassets */; };
@@ -76,6 +77,7 @@
 		DB36CDE41D06313100B94422 /* AuthOverlayController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthOverlayController.swift; sourceTree = "<group>"; };
 		DBB38A281D0D96B400BEE506 /* CreateEventTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateEventTableViewController.swift; sourceTree = "<group>"; };
 		DBB38A2A1D0D97B200BEE506 /* LandetTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LandetTextField.swift; sourceTree = "<group>"; };
+		DBB38A2C1D0DAA1900BEE506 /* APIUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIUtil.swift; sourceTree = "<group>"; };
 		DBD1F8151D045B0D0035A7B4 /* Landet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Landet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DBD1F8181D045B0D0035A7B4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DBD1F81F1D045B0D0035A7B4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/AppNavigation.storyboard; sourceTree = "<group>"; };
@@ -113,6 +115,7 @@
 				DB0FFBC11D04983700DD4B94 /* HttpStatusCodes.swift */,
 				DB0FFBC61D04A4B800DD4B94 /* Model */,
 				DB0FFBBD1D04719200DD4B94 /* LandetAPI.swift */,
+				DBB38A2C1D0DAA1900BEE506 /* APIUtil.swift */,
 				DB0FFBE31D05AA6C00DD4B94 /* LandetAPIError.swift */,
 			);
 			name = API;
@@ -374,6 +377,7 @@
 				DB0FFBD01D04AEDB00DD4B94 /* RoundRectButton.swift in Sources */,
 				DBD1F8401D0460190035A7B4 /* Theme.swift in Sources */,
 				DB36CDE51D06313100B94422 /* AuthOverlayController.swift in Sources */,
+				DBB38A2D1D0DAA1900BEE506 /* APIUtil.swift in Sources */,
 				DB0FFBCC1D04A53800DD4B94 /* Locations.swift in Sources */,
 				DB0FFBC01D04736B00DD4B94 /* APIClient.swift in Sources */,
 				DB0FFBDF1D04CD3900DD4B94 /* NSDate+Extension.swift in Sources */,

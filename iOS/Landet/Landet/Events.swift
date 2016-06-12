@@ -4,7 +4,7 @@
 
 import Foundation
 
-class Event {
+class Event: DictionaryInitializable {
 
     let id: Int
     let title: String
@@ -14,7 +14,7 @@ class Event {
     let creator: User
     let location: Location
 
-    init(dictionary: [String : AnyObject]) {
+    required init(dictionary: [String : AnyObject]) {
         self.id = dictionary["id"] as! Int
         self.title = dictionary["title"] as! String
         self.body = dictionary["body"] as! String

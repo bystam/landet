@@ -11,9 +11,6 @@ class CreateEventTableViewController: UITableViewController {
     @IBOutlet weak var fromTimeField: LandetTextField!
     @IBOutlet weak var fromLabel: UILabel!
     private var fromDatePicker: DatePicker!
-    @IBOutlet weak var toTimeField: LandetTextField!
-    @IBOutlet weak var toLabel: UILabel!
-    private var toDatePicker: DatePicker!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,7 +22,6 @@ class CreateEventTableViewController: UITableViewController {
 
     private func setupTimePickers() {
         fromDatePicker = DatePicker(timeField: fromTimeField, label: fromLabel)
-        toDatePicker = DatePicker(timeField: toTimeField, label: toLabel)
     }
 
     override func viewDidAppear(animated: Bool) {
@@ -35,11 +31,18 @@ class CreateEventTableViewController: UITableViewController {
 }
 
 
-private let dateFormatter: NSDateFormatter = {
+private let formatter: NSDateFormatter = {
     let formatter = NSDateFormatter()
-    formatter.dateStyle = .ShortStyle
-    formatter.timeStyle = .ShortStyle
+    formatter.dateFormat = "EEEE HH:mm"
+    formatter.locale = NSLocale.currentLocale()
     return formatter
+}()
+
+private let parser: NSDateFormatter = {
+    let parser = NSDateFormatter()
+    parser.dateFormat = "yyyy-MM-dd HH:mm"
+    parser.locale = NSLocale.currentLocale()
+    return parser
 }()
 
 private class DatePicker {
@@ -53,6 +56,8 @@ private class DatePicker {
         let picker = UIDatePicker()
         picker.datePickerMode = .DateAndTime
         picker.addTarget(self, action: #selector(dateChanged(_:)), forControlEvents: .ValueChanged)
+        picker.minimumDate = parser.dateFromString("2016-07-14 10:00")
+        picker.maximumDate = parser.dateFromString("2016-07-17 23:00")
         return picker
     }()
 
@@ -66,7 +71,7 @@ private class DatePicker {
     }
 
     @objc func dateChanged(sender: UIDatePicker) {
-        self.timeField.text = dateFormatter.stringFromDate(sender.date)
+        self.timeField.text = formatter.stringFromDate(sender.date)
 
         if label.alpha == 0.0 {
             UIView.animateWithDuration(0.3, animations: {
@@ -75,5 +80,4 @@ private class DatePicker {
             })
         }
     }
-
 }
