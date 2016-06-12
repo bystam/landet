@@ -6,7 +6,8 @@ import Foundation
 
 private let kISOFormatter: NSDateFormatter = {
     let dateFormatter = NSDateFormatter()
-    dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
+    dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
+    dateFormatter.locale = NSLocale.currentLocale()
     return dateFormatter
 }()
 
