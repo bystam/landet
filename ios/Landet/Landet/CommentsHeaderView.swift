@@ -6,7 +6,7 @@ import UIKit
 
 class CommentsHeaderView: UITableViewHeaderFooterView {
 
-    static let preferredHeight: CGFloat = 46.0
+    static let preferredHeight: CGFloat = 56.0
     static let reuseIdentifier = "CommentsHeaderView"
 
     static func install(tableView tableView: UITableView) {

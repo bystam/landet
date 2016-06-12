@@ -6,7 +6,7 @@ import UIKit
 
 enum LandetCellIdentifier: String {
     case EventSummary = "EventSummaryCell"
-
+    case Comment = "CommentCell"
 }
 
 class LandetTableViewStyle {

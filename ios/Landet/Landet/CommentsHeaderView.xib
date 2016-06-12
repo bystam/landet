@@ -42,10 +42,17 @@
                         <constraint firstAttribute="trailing" secondItem="hSW-r4-XDc" secondAttribute="trailing" constant="12" id="LrP-4F-Eie"/>
                         <constraint firstItem="k5T-Ec-5NV" firstAttribute="centerX" secondItem="QuV-ib-ddV" secondAttribute="centerX" id="QM8-RV-oVW"/>
                         <constraint firstItem="k5T-Ec-5NV" firstAttribute="centerY" secondItem="QuV-ib-ddV" secondAttribute="centerY" constant="4" id="f1l-O9-q0Q"/>
+                        <constraint firstItem="k5T-Ec-5NV" firstAttribute="top" secondItem="QuV-ib-ddV" secondAttribute="top" constant="20" id="faV-By-pGG"/>
                         <constraint firstItem="hSW-r4-XDc" firstAttribute="leading" secondItem="k5T-Ec-5NV" secondAttribute="trailing" constant="12" id="m5I-AE-3iB"/>
                         <constraint firstItem="oB8-SK-s8I" firstAttribute="centerY" secondItem="QuV-ib-ddV" secondAttribute="centerY" constant="4" id="qe9-8o-tso"/>
                         <constraint firstItem="hSW-r4-XDc" firstAttribute="centerY" secondItem="QuV-ib-ddV" secondAttribute="centerY" constant="4" id="tz3-P9-z9R"/>
+                        <constraint firstAttribute="bottom" secondItem="k5T-Ec-5NV" secondAttribute="bottom" constant="12" id="wOd-v0-Gib"/>
                     </constraints>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="f1l-O9-q0Q"/>
+                        </mask>
+                    </variation>
                 </view>
             </subviews>
             <constraints>

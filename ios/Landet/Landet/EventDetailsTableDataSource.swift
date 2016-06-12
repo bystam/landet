@@ -17,12 +17,17 @@ class EventDetailsTableDataSource: NSObject, UITableViewDataSource {
     }
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return section == 0 ? 1 : 0
+        return section == 0 ? 1 : 5
     }
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell: EventSummaryCell = tableView.dequeueLandetCell(.EventSummary, forIndexPath: indexPath)
-        cell.configure(event: event)
-        return cell
+        if indexPath.section == 0 {
+            let cell: EventSummaryCell = tableView.dequeueLandetCell(.EventSummary, forIndexPath: indexPath)
+            cell.configure(event: event)
+            return cell
+        } else {
+            return tableView.dequeueLandetCell(.Comment, forIndexPath: indexPath)
+        }
+
     }
 }

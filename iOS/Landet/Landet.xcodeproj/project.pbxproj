@@ -58,6 +58,8 @@
 		DBD5D7DA1D0E0FB90053DC6A /* LandetTableViewStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD5D7D91D0E0FB90053DC6A /* LandetTableViewStyle.swift */; };
 		DBD5D7DE1D0E13640053DC6A /* CommentsHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DBD5D7DC1D0E13640053DC6A /* CommentsHeaderView.xib */; };
 		DBD5D7DF1D0E13640053DC6A /* CommentsHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD5D7DD1D0E13640053DC6A /* CommentsHeaderView.swift */; };
+		DBD5D7E21D0E1B380053DC6A /* CommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD5D7E01D0E1B380053DC6A /* CommentCell.swift */; };
+		DBD5D7E31D0E1B380053DC6A /* CommentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DBD5D7E11D0E1B380053DC6A /* CommentCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -114,6 +116,8 @@
 		DBD5D7D91D0E0FB90053DC6A /* LandetTableViewStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LandetTableViewStyle.swift; sourceTree = "<group>"; };
 		DBD5D7DC1D0E13640053DC6A /* CommentsHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommentsHeaderView.xib; sourceTree = "<group>"; };
 		DBD5D7DD1D0E13640053DC6A /* CommentsHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentsHeaderView.swift; sourceTree = "<group>"; };
+		DBD5D7E01D0E1B380053DC6A /* CommentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentCell.swift; sourceTree = "<group>"; };
+		DBD5D7E11D0E1B380053DC6A /* CommentCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommentCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -192,6 +196,8 @@
 			children = (
 				DBD5D7D41D0E0F6A0053DC6A /* EventSummaryCell.swift */,
 				DBD5D7D51D0E0F6A0053DC6A /* EventSummaryCell.xib */,
+				DBD5D7E01D0E1B380053DC6A /* CommentCell.swift */,
+				DBD5D7E11D0E1B380053DC6A /* CommentCell.xib */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -396,6 +402,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DBD5D7E31D0E1B380053DC6A /* CommentCell.xib in Resources */,
 				DBD1F8441D0468880035A7B4 /* Map.xcassets in Resources */,
 				DBD1F8251D045B0D0035A7B4 /* LaunchScreen.storyboard in Resources */,
 				DBD1F8461D04688E0035A7B4 /* Topics.xcassets in Resources */,
@@ -439,6 +446,7 @@
 				DBD1F83B1D045F020035A7B4 /* TopicsViewController.swift in Sources */,
 				DBD5D7DA1D0E0FB90053DC6A /* LandetTableViewStyle.swift in Sources */,
 				DBB38A341D0DB59900BEE506 /* EventDetailsTableViewController.swift in Sources */,
+				DBD5D7E21D0E1B380053DC6A /* CommentCell.swift in Sources */,
 				DB36CDDC1D062D2C00B94422 /* CreateEventViewController.swift in Sources */,
 				DB0FFBE21D05A9BB00DD4B94 /* AsyncOperation.swift in Sources */,
 				DB0FFBE41D05AA6C00DD4B94 /* LandetAPIError.swift in Sources */,

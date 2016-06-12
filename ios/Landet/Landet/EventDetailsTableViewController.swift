@@ -12,7 +12,7 @@ class EventDetailsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        LandetTableViewStyle.setup(tableView, cells: [.EventSummary])
+        LandetTableViewStyle.setup(tableView, cells: [.EventSummary, .Comment])
         CommentsHeaderView.install(tableView: tableView)
 
         dataSource = EventDetailsTableDataSource(event: event)
@@ -20,7 +20,8 @@ class EventDetailsTableViewController: UITableViewController {
 
         tableView.estimatedRowHeight = EventSummaryCell.preferredHeight
         tableView.rowHeight = UITableViewAutomaticDimension
-//        tableView.seac
+        tableView.estimatedSectionHeaderHeight = CommentsHeaderView.preferredHeight
+        tableView.sectionHeaderHeight = UITableViewAutomaticDimension
         tableView.tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: 1, height: CGFloat.min))
     }
 
