@@ -3,6 +3,9 @@
 const Event = require('./entities').Event;
 const Events = require('./entities').Events;
 
+const EventComment = require('./entities').EventComment;
+const EventComments = require('./entities').EventComments;
+
 function allEvents() {
   return Events.forge()
     .fetch({
@@ -17,7 +20,12 @@ function create(eventData) {
   return Event.forge(eventData).save();
 }
 
+function createComment(commentData) {
+  return EventComment.forge(eventdata).save();
+}
+
 module.exports = {
   allEvents,
-  create
+  create,
+  createComment
 };

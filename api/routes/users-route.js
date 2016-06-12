@@ -6,6 +6,7 @@ const router = express.Router();
 const users = require('../model/users');
 const sessions = require('../model/sessions');
 
+const statuses = require('../util/statuses');
 const errors = require('../util/errors');
 
 router.post('/create', function(req, res) {
@@ -25,7 +26,7 @@ router.post('/login', function(req, res) {
   users.userMatchingCredentials(username, password).then(function(user) {
     return sessions.create(user);
   }).then(function(session) {
-    res.status(201).json({
+    res.status(statuses.Created).json({
       token: session.get('token'),
       refresh_token: session.get('refresh_token')
     });

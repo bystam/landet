@@ -46,7 +46,7 @@ exports.up = function(knex, Promise) {
         knex.schema.createTable('event_comments', function(table) {
           table.increments('id').primary();
           table.string('text');
-          table.dateTime('comment_time');
+          table.timestamp('comment_time');
 
           table.integer('author_id')
                .references('id')
