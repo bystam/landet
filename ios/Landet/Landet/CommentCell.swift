@@ -4,17 +4,22 @@
 
 import UIKit
 
+private let formatter: NSDateFormatter = {
+    let formatter = NSDateFormatter()
+    formatter.dateFormat = "EEEE HH:mm"
+    formatter.locale = NSLocale.currentLocale()
+    return formatter
+}()
+
 class CommentCell: UITableViewCell {
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
+    @IBOutlet weak var userLabel: UILabel!
+    @IBOutlet weak var timestampLabel: UILabel!
+    @IBOutlet weak var commentLabel: UILabel!
 
-    override func setSelected(selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    func configure(comment comment: EventComment) {
+        userLabel.text = comment.author.name
+        timestampLabel.text = formatter.stringFromDate(comment.timestamp)
+        commentLabel.text = comment.text
     }
-    
 }

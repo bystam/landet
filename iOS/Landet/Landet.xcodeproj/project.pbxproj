@@ -30,6 +30,7 @@
 		DB36CDE01D06306500B94422 /* Auth.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DB36CDDF1D06306500B94422 /* Auth.storyboard */; };
 		DB36CDE31D06308500B94422 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB36CDE21D06308500B94422 /* LoginViewController.swift */; };
 		DB36CDE51D06313100B94422 /* AuthOverlayController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB36CDE41D06313100B94422 /* AuthOverlayController.swift */; };
+		DBA9B40A1D11B2F800DB6EBB /* EventComment.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA9B4091D11B2F800DB6EBB /* EventComment.swift */; };
 		DBB38A291D0D96B400BEE506 /* CreateEventTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB38A281D0D96B400BEE506 /* CreateEventTableViewController.swift */; };
 		DBB38A2B1D0D97B200BEE506 /* LandetTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB38A2A1D0D97B200BEE506 /* LandetTextField.swift */; };
 		DBB38A2D1D0DAA1900BEE506 /* APIUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB38A2C1D0DAA1900BEE506 /* APIUtil.swift */; };
@@ -87,6 +88,7 @@
 		DB36CDDF1D06306500B94422 /* Auth.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Auth.storyboard; sourceTree = "<group>"; };
 		DB36CDE21D06308500B94422 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		DB36CDE41D06313100B94422 /* AuthOverlayController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthOverlayController.swift; sourceTree = "<group>"; };
+		DBA9B4091D11B2F800DB6EBB /* EventComment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventComment.swift; sourceTree = "<group>"; };
 		DBB38A281D0D96B400BEE506 /* CreateEventTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateEventTableViewController.swift; sourceTree = "<group>"; };
 		DBB38A2A1D0D97B200BEE506 /* LandetTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LandetTextField.swift; sourceTree = "<group>"; };
 		DBB38A2C1D0DAA1900BEE506 /* APIUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIUtil.swift; sourceTree = "<group>"; };
@@ -160,6 +162,7 @@
 			isa = PBXGroup;
 			children = (
 				DB0FFBC71D04A4C500DD4B94 /* Events.swift */,
+				DBA9B4091D11B2F800DB6EBB /* EventComment.swift */,
 				DB0FFBC91D04A53200DD4B94 /* Users.swift */,
 				DB0FFBCB1D04A53800DD4B94 /* Locations.swift */,
 				DB0FFBBB1D046FA800DD4B94 /* Session.swift */,
@@ -464,6 +467,7 @@
 				DBB38A361D0DB5AF00BEE506 /* EventDetailsTableDataSource.swift in Sources */,
 				DBD1F8391D045EFA0035A7B4 /* MapViewController.swift in Sources */,
 				DBD1F83D1D045F5C0035A7B4 /* TopicsTableViewController.swift in Sources */,
+				DBA9B40A1D11B2F800DB6EBB /* EventComment.swift in Sources */,
 				DBB38A321D0DB58A00BEE506 /* EventDetailsViewController.swift in Sources */,
 				DB0FFBBC1D046FA800DD4B94 /* Session.swift in Sources */,
 				DB36CDE31D06308500B94422 /* LoginViewController.swift in Sources */,

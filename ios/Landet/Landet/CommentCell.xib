@@ -14,13 +14,19 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="61.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8le-zm-lUF">
-                        <rect key="frame" x="15" y="8" width="42" height="24.5"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Frallan Brallman" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8le-zm-lUF">
+                        <rect key="frame" x="15" y="8" width="206" height="24.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" red="0.89803922176361084" green="0.87450981140136719" blue="0.77254903316497803" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3hh-WK-JlP">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" ambiguous="YES" text="today at 18:14" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NJx-PB-Cdl">
+                        <rect key="frame" x="231" y="17.5" width="74" height="13.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                        <color key="textColor" red="0.56862747670000002" green="0.78039217000000005" blue="0.66274511810000003" alpha="0.80000000000000004" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="I love french fries!" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3hh-WK-JlP">
                         <rect key="frame" x="15" y="36.5" width="290" height="17"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" red="0.89803922176361084" green="0.87450981140136719" blue="0.77254903316497803" alpha="1" colorSpace="calibratedRGB"/>
@@ -29,8 +35,11 @@
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 <constraints>
+                    <constraint firstAttribute="trailing" secondItem="NJx-PB-Cdl" secondAttribute="trailing" constant="15" id="4ik-mc-HHf"/>
                     <constraint firstItem="8le-zm-lUF" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="8Ev-8a-fub"/>
                     <constraint firstItem="3hh-WK-JlP" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="CrR-IX-IGS"/>
+                    <constraint firstItem="NJx-PB-Cdl" firstAttribute="leading" secondItem="8le-zm-lUF" secondAttribute="trailing" constant="10" id="brO-t1-4Wg"/>
+                    <constraint firstItem="NJx-PB-Cdl" firstAttribute="baseline" secondItem="8le-zm-lUF" secondAttribute="baseline" id="gFm-5Z-7iP"/>
                     <constraint firstAttribute="bottom" secondItem="3hh-WK-JlP" secondAttribute="bottom" constant="8" id="grh-QP-wUq"/>
                     <constraint firstItem="8le-zm-lUF" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="lWk-dd-SVb"/>
                     <constraint firstItem="3hh-WK-JlP" firstAttribute="top" secondItem="8le-zm-lUF" secondAttribute="bottom" constant="4" id="r5I-g9-cMz"/>
@@ -38,6 +47,11 @@
                 </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <connections>
+                <outlet property="commentLabel" destination="3hh-WK-JlP" id="WHz-mI-dvc"/>
+                <outlet property="timestampLabel" destination="NJx-PB-Cdl" id="vso-1l-9zN"/>
+                <outlet property="userLabel" destination="8le-zm-lUF" id="A82-ep-6hX"/>
+            </connections>
         </tableViewCell>
     </objects>
 </document>
