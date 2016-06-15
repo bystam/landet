@@ -48,7 +48,7 @@ const User = {
 const Unauthorized = {
   TokenInvalid: error(UnauthorizedCode, "LE-201", "Invalid auth token"),
   TokenExpired: error(UnauthorizedCode, "LE-202", "Auth token expired"),
-  InvalidRefreshToken: error(UnauthorizedCode, "LE-202", "Invalid refresh token")
+  InvalidRefreshToken: error(UnauthorizedCode, "LE-203", "Invalid refresh token")
 };
 
 
