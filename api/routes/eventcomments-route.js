@@ -9,7 +9,7 @@ const errors = require('../util/errors');
 
 router.get('/', function(req, res) {
   let eventId = req.query.eventid;
-  return events.allCommentsForEventWithId(eventId).then(function(comment) => {
+  return events.allCommentsForEventWithId(eventId).then(function(comment) {
     res.json(comment);
   }).catch(errors.HttpHandler(res));;
 });
