@@ -7,6 +7,7 @@ import UIKit
 class EventDetailsViewController: UIViewController {
 
     private(set) var event: Event!
+    var comments: [EventComment]?
 
     private(set) var tableViewController: EventDetailsTableViewController!
 
@@ -29,6 +30,16 @@ class EventDetailsViewController: UIViewController {
         title = event.title
 
         observeKeyboard()
+    }
+
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+
+        EventAPI.shared.comments(forEvent: event) { (comments, error) in
+            Async.main {
+                self.comments = comments
+            }
+        }
     }
 
 

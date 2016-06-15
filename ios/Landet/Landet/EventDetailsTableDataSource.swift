@@ -7,6 +7,7 @@ import UIKit
 class EventDetailsTableDataSource: NSObject, UITableViewDataSource {
 
     let event: Event
+    var comments: [EventComment]?
 
     init(event: Event) {
         self.event = event
@@ -17,7 +18,8 @@ class EventDetailsTableDataSource: NSObject, UITableViewDataSource {
     }
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return section == 0 ? 1 : 5
+        if section == 0 { return 1 }
+        return comments?.count ?? 0
     }
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -26,7 +28,9 @@ class EventDetailsTableDataSource: NSObject, UITableViewDataSource {
             cell.configure(event: event)
             return cell
         } else {
-            return tableView.dequeueLandetCell(.Comment, forIndexPath: indexPath)
+            let cell: CommentCell = tableView.dequeueLandetCell(.Comment, forIndexPath: indexPath)
+            cell.configure(comment: comments![indexPath.row])
+            return cell
         }
 
     }

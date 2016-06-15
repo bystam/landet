@@ -8,6 +8,13 @@ class EventDetailsTableViewController: UITableViewController {
 
     var event: Event!
     private var dataSource: EventDetailsTableDataSource!
+
+    var comments: [EventComment]? {
+        didSet {
+            dataSource.comments = comments
+            tableView.reloadSections(NSIndexSet(index: 0), withRowAnimation: .Fade)
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
