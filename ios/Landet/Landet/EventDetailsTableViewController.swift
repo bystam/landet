@@ -10,9 +10,15 @@ class EventDetailsTableViewController: UITableViewController {
     private var dataSource: EventDetailsTableDataSource!
 
     var comments: [EventComment]? {
-        didSet {
+        didSet(oldComments) {
             dataSource.comments = comments
-            tableView.reloadSections(NSIndexSet(index: 1), withRowAnimation: .None)
+
+            let range = ((oldComments?.count ?? 0)..<(comments?.count ?? 0))
+            let inserted = range.map({ NSIndexPath(forRow: $0, inSection: 1) })
+
+            tableView.beginUpdates()
+            tableView.insertRowsAtIndexPaths(inserted, withRowAnimation: .Automatic)
+            tableView.endUpdates()
         }
     }
     
@@ -64,6 +70,7 @@ extension EventDetailsTableViewController {
 extension EventDetailsTableViewController: TextFieldCellDelegate {
 
     func text(text: String, wasEnteredInCell cell: TextFieldCell) {
+        cell.textField.resignFirstResponder()
         cell.lockWithSpinner()
 
         EventAPI.shared.post(comment: text, toEvent: event) { (error) in
