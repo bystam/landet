@@ -1,5 +1,5 @@
 //
-//  Copyright © 2015 Bontouch AB. All rights reserved.
+//  Copyright © 2015 Landet. All rights reserved.
 //
 
 import UIKit
