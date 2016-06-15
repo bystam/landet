@@ -26,13 +26,6 @@ class LoginViewController: UIViewController {
         listenToKeyboard()
     }
 
-    override func viewWillDisappear(animated: Bool) {
-        super.viewWillDisappear(animated)
-
-        usernameTextField.resignFirstResponder()
-        passwordTextField.resignFirstResponder()
-    }
-
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
         return .LightContent
     }
@@ -61,9 +54,13 @@ extension LoginViewController {
         }
 
         UserAPI.shared.login(username: usernameTextField.text ?? "", password: passwordTextField.text ?? "") { (error) in
-            if let error = error {
-                Async.main {
+
+            Async.main {
+                if let error = error {
                     self.displayError(error)
+                } else {
+                    self.usernameTextField.resignFirstResponder()
+                    self.passwordTextField.resignFirstResponder()
                 }
             }
         }

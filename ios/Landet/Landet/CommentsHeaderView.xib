@@ -15,20 +15,20 @@
                     <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
                     <subviews>
                         <view alpha="0.80000000000000004" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oB8-SK-s8I" userLabel="Left line">
-                            <rect key="frame" x="12" y="31.5" width="118" height="1"/>
+                            <rect key="frame" x="12" y="39.5" width="118" height="1"/>
                             <color key="backgroundColor" red="0.56862747669219971" green="0.78039216995239258" blue="0.66274511814117432" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="1" id="7gb-AJ-st7"/>
                             </constraints>
                         </view>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Comments" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k5T-Ec-5NV">
-                            <rect key="frame" x="141.5" y="20.5" width="93" height="23"/>
+                            <rect key="frame" x="141.5" y="28" width="93" height="15.5"/>
                             <fontDescription key="fontDescription" type="system" pointSize="19"/>
                             <color key="textColor" red="0.56862747669219971" green="0.78039216995239258" blue="0.66274511814117432" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <view alpha="0.80000000000000004" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hSW-r4-XDc" userLabel="Left line">
-                            <rect key="frame" x="246" y="31.5" width="117" height="1"/>
+                            <rect key="frame" x="246" y="39.5" width="117" height="1"/>
                             <color key="backgroundColor" red="0.56862747670000002" green="0.78039217000000005" blue="0.66274511810000003" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="1" id="yB1-Cr-tYX"/>
@@ -42,10 +42,10 @@
                         <constraint firstAttribute="trailing" secondItem="hSW-r4-XDc" secondAttribute="trailing" constant="12" id="LrP-4F-Eie"/>
                         <constraint firstItem="k5T-Ec-5NV" firstAttribute="centerX" secondItem="QuV-ib-ddV" secondAttribute="centerX" id="QM8-RV-oVW"/>
                         <constraint firstItem="k5T-Ec-5NV" firstAttribute="centerY" secondItem="QuV-ib-ddV" secondAttribute="centerY" constant="4" id="f1l-O9-q0Q"/>
-                        <constraint firstItem="k5T-Ec-5NV" firstAttribute="top" secondItem="QuV-ib-ddV" secondAttribute="top" constant="20" id="faV-By-pGG"/>
+                        <constraint firstItem="k5T-Ec-5NV" firstAttribute="top" secondItem="QuV-ib-ddV" secondAttribute="top" constant="28" id="faV-By-pGG"/>
                         <constraint firstItem="hSW-r4-XDc" firstAttribute="leading" secondItem="k5T-Ec-5NV" secondAttribute="trailing" constant="12" id="m5I-AE-3iB"/>
-                        <constraint firstItem="oB8-SK-s8I" firstAttribute="centerY" secondItem="QuV-ib-ddV" secondAttribute="centerY" constant="4" id="qe9-8o-tso"/>
-                        <constraint firstItem="hSW-r4-XDc" firstAttribute="centerY" secondItem="QuV-ib-ddV" secondAttribute="centerY" constant="4" id="tz3-P9-z9R"/>
+                        <constraint firstItem="oB8-SK-s8I" firstAttribute="centerY" secondItem="QuV-ib-ddV" secondAttribute="centerY" constant="12" id="qe9-8o-tso"/>
+                        <constraint firstItem="hSW-r4-XDc" firstAttribute="centerY" secondItem="QuV-ib-ddV" secondAttribute="centerY" constant="12" id="tz3-P9-z9R"/>
                         <constraint firstAttribute="bottom" secondItem="k5T-Ec-5NV" secondAttribute="bottom" constant="12" id="wOd-v0-Gib"/>
                     </constraints>
                     <variation key="default">

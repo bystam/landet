@@ -34,6 +34,16 @@ class LocationsService {
         set { locations = newValue }
     }
 
+
+    static func fromID(locationId: LocationID) -> Location? {
+        for location in allLocations {
+            if location.locationId == locationId {
+                return location
+            }
+        }
+        return nil
+    }
+
     static func reload() {
 
         LocationAPI.shared.loadAll { locations, error in

@@ -13,6 +13,8 @@ private let kISOFormatter: NSDateFormatter = {
 
 extension NSDate {
 
+    var ISOString: String { return kISOFormatter.stringFromDate(self) }
+
     static func fromISOString(isoString: String) -> NSDate? {
         return kISOFormatter.dateFromString(isoString)
     }

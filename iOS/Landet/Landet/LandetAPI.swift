@@ -136,6 +136,28 @@ class EventAPI {
         apiQueue.addOperation(operation)
     }
 
+    func create(title title: String, body bodyText: String, location: Location, time: NSDate,
+                      completion: (error: NSError?) -> ()) {
+
+        guard let _ = Session.currentSession else { return }
+
+        let body = [
+            "title" : title,
+            "body" : bodyText,
+            "location_id" : location.id,
+            "event_time" : time.ISOString
+        ]
+        let operation = SessionAPI.shared.wrapWithAutomaticRefreshingSession(operation:  {
+            return self.apiClient.post("/events/create", body: body as! [String : AnyObject])
+        })
+
+        operation.completionBlock = {
+            completion(error: operation.apiResponse.error)
+        }
+
+        apiQueue.addOperation(operation)
+    }
+
     func comments(forEvent event: Event, completion: (comments: [EventComment]?, error: NSError?) -> ()) {
         guard let _ = Session.currentSession else { return }
 

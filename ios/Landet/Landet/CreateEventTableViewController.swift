@@ -11,6 +11,10 @@ class CreateEventTableViewController: UITableViewController {
     @IBOutlet weak var fromTimeField: LandetTextField!
     @IBOutlet weak var fromLabel: UILabel!
     private var fromDatePicker: DatePicker!
+    var time: NSDate? { return fromDatePicker.picker.date }
+
+    @IBOutlet weak var bodyTextView: UITextView!
+    @IBOutlet weak var bodyPlaceholder: UITextView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,6 +22,12 @@ class CreateEventTableViewController: UITableViewController {
         setupTimePickers()
 
         self.tableView.tableFooterView = UIView()
+
+        fromTimeField.keyboardAppearance = .Default
+
+        bodyTextView.textContainerInset = UIEdgeInsetsZero
+        bodyPlaceholder.textContainerInset = UIEdgeInsetsZero
+        bodyTextView.delegate = self
     }
 
     private func setupTimePickers() {
@@ -27,6 +37,13 @@ class CreateEventTableViewController: UITableViewController {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         nameTextField.becomeFirstResponder()
+    }
+}
+
+extension CreateEventTableViewController: UITextViewDelegate {
+
+    func textViewDidChange(textView: UITextView) {
+        bodyPlaceholder.hidden = !textView.text.isEmpty
     }
 }
 
@@ -45,7 +62,7 @@ private let parser: NSDateFormatter = {
     return parser
 }()
 
-private class DatePicker {
+private class DatePicker: NSObject {
 
     weak var timeField: UITextField!
     weak var label: UILabel!
@@ -58,17 +75,28 @@ private class DatePicker {
         picker.addTarget(self, action: #selector(dateChanged(_:)), forControlEvents: .ValueChanged)
         picker.minimumDate = parser.dateFromString("2016-07-14 10:00")
         picker.maximumDate = parser.dateFromString("2016-07-17 23:00")
+
+        picker.setValue(Colors.yellow, forKey: "textColor")
+        picker.backgroundColor = Colors.gray
+
         return picker
     }()
 
     init(timeField: UITextField, label: UILabel) {
+        super.init()
         self.timeField = timeField
         timeField.inputView = picker
+
+        let line = UIView()
+        line.backgroundColor = Colors.yellow.colorWithAlphaComponent(0.3)
+        line.frame = CGRect(x: 0, y: 0, width: 1, height: 1)
+        timeField.inputAccessoryView = line
+
         self.label = label
 
         label.alpha = 0.0
-        label.transform = CGAffineTransformMakeTranslation(0, 20)
     }
+
 
     @objc func dateChanged(sender: UIDatePicker) {
         self.timeField.text = formatter.stringFromDate(sender.date)
@@ -76,7 +104,6 @@ private class DatePicker {
         if label.alpha == 0.0 {
             UIView.animateWithDuration(0.3, animations: {
                 self.label.alpha = 1.0
-                self.label.transform = CGAffineTransformIdentity
             })
         }
     }

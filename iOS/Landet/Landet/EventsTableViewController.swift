@@ -18,7 +18,6 @@ class EventsTableViewController: UITableViewController {
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: 1, height: CGFloat.min))
 
-        reloadData()
     }
 
     override func viewWillAppear(animated: Bool) {
@@ -27,6 +26,10 @@ class EventsTableViewController: UITableViewController {
         smartlyDeselectRows(tableView: tableView)
     }
 
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        reloadData()
+    }
 
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let event = dataSource.events[indexPath.row]
