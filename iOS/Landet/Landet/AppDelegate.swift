@@ -13,7 +13,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
 
-        HttpClient.debugHost = "http://10.0.1.103:3000"
+//        HttpClient.debugHost = "http://10.0.1.103:3000"
 
         installSession()
         performLaunchCalls()
