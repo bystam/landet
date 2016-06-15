@@ -22,6 +22,14 @@ class AuthOverlayController {
         NSNotificationCenter.defaultCenter().removeObserver(self)
     }
 
+    func showIfSessionMissing() {
+        if Session.currentSession == nil && overlayWindow != nil {
+            Async.main {
+                self.dismissOverlayWindow(true)
+            }
+        }
+    }
+
     @objc func sessionWasEstablished(notification: NSNotification) {
         if overlayWindow != nil {
             Async.main {

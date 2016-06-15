@@ -13,6 +13,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
 
+        HttpClient.debugHost = "http://10.0.6.103:3000"
+
         installSession()
         performLaunchCalls()
         setupUI()
@@ -21,7 +23,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     private func installSession() {
-        HttpClient.debugHost = "http://10.0.6.103:3000"
         Session.installDefault()
     }
 
@@ -38,6 +39,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window = window
 
         authOverlayController = AuthOverlayController(window: window)
+        authOverlayController.showIfSessionMissing()
     }
 
 }
