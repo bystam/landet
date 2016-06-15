@@ -9,8 +9,7 @@ enum LandetAPIErrorCode: String {
     case WrongCredentials = "LE-102"
 
     case InvalidToken = "LE-201"
-    case TokenExpired = "LE-202"
-    case InvalidRefreshToken = "LE-203"
+    case InvalidRefreshToken = "LE-202"
 };
 
 let LandetAPIErrorDomain = "kLandetAPIErrorDomain"

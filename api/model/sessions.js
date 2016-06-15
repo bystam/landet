@@ -22,11 +22,11 @@ function create(user) {
 
 function userWithSessionToken(token) {
   return Session.where({ token: token }).fetch().then(function(session) {
-    if (!session) { throw errors.Unauthorized.TokenInvalid(); }
+    if (!session) { throw errors.Unauthorized.InvalidToken(); }
 
     const expiration = session.get('expiration_date');
     if (expiration < Date.now()) {
-      throw errors.Unauthorized.TokenExpired();
+      throw errors.Unauthorized.InvalidToken();
     }
 
     return session.user().fetch();
@@ -35,11 +35,11 @@ function userWithSessionToken(token) {
 
 function fetchSession(token) {
   return Session.where({ token: token }).fetch().then(function(session) {
-    if (!session) { throw errors.Unauthorized.TokenInvalid(); }
+    if (!session) { throw errors.Unauthorized.InvalidToken(); }
 
     const expiration = session.get('expiration_date');
     if (expiration < Date.now()) {
-      throw errors.Unauthorized.TokenExpired();
+      throw errors.Unauthorized.InvalidToken();
     }
 
     return session;

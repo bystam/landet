@@ -64,14 +64,7 @@ private class SessionAPI {
 
                 let firstResponse = firstOp.apiResponse
 
-                if firstResponse.error?.landetErrorCode == .InvalidToken {
-                    Session.uninstallCurrentSession()
-                    totalOperation.apiResponse = firstResponse
-                    totalOperationCompletion()
-                    return
-                }
-
-                if firstResponse.error?.landetErrorCode != .TokenExpired {
+                if firstResponse.error?.landetErrorCode != .InvalidToken {
                     totalOperation.apiResponse = firstResponse
                     totalOperationCompletion()
                     return
