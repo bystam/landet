@@ -11,6 +11,13 @@ class LandetTextField: UITextField {
 
         textColor = Colors.yellow
         keyboardAppearance = .Dark
+
+        if let placeholder = placeholder {
+            let attributes = [
+                NSForegroundColorAttributeName : Colors.yellow.colorWithAlphaComponent(0.3)
+            ]
+            attributedPlaceholder = NSAttributedString(string: placeholder, attributes: attributes)
+        }
     }
 
     override var placeholder: String? {

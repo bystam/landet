@@ -23,9 +23,9 @@ class AuthOverlayController {
     }
 
     func showIfSessionMissing() {
-        if Session.currentSession == nil && overlayWindow != nil {
+        if Session.currentSession == nil && overlayWindow == nil {
             Async.main {
-                self.dismissOverlayWindow(true)
+                self.displayOverlayWithViewController(LoginViewController.create(), animated: true)
             }
         }
     }
