@@ -27,5 +27,23 @@ class EventDetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = event.title
+
+        observeKeyboard()
+    }
+
+
+    private let keyboardObserver = KeyboardObserver()
+    @IBOutlet weak var inputViewSpaceToBottom: NSLayoutConstraint!
+
+    private func observeKeyboard() {
+        keyboardObserver.keyboardWillShow = { size in
+            let space = size.height - self.tabBarController!.tabBar.bounds.height
+            self.inputViewSpaceToBottom.constant = space
+            self.view.layoutIfNeeded()
+        }
+        keyboardObserver.keyboardWillHide = {
+            self.inputViewSpaceToBottom.constant = 0.0
+            self.view.layoutIfNeeded()
+        }
     }
 }

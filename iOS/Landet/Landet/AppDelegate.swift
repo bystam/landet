@@ -21,7 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     private func installSession() {
-        HttpClient.debugHost = "http://192.168.1.174:3000"
+        HttpClient.debugHost = "http://10.0.6.103:3000"
         Session.installDefault()
     }
 

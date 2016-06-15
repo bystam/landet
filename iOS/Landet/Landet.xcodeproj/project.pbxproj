@@ -60,6 +60,7 @@
 		DBD5D7DF1D0E13640053DC6A /* CommentsHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD5D7DD1D0E13640053DC6A /* CommentsHeaderView.swift */; };
 		DBD5D7E21D0E1B380053DC6A /* CommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD5D7E01D0E1B380053DC6A /* CommentCell.swift */; };
 		DBD5D7E31D0E1B380053DC6A /* CommentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DBD5D7E11D0E1B380053DC6A /* CommentCell.xib */; };
+		DBD5D7E51D0E1FFC0053DC6A /* KeyboardObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD5D7E41D0E1FFC0053DC6A /* KeyboardObserver.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -118,6 +119,7 @@
 		DBD5D7DD1D0E13640053DC6A /* CommentsHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentsHeaderView.swift; sourceTree = "<group>"; };
 		DBD5D7E01D0E1B380053DC6A /* CommentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentCell.swift; sourceTree = "<group>"; };
 		DBD5D7E11D0E1B380053DC6A /* CommentCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommentCell.xib; sourceTree = "<group>"; };
+		DBD5D7E41D0E1FFC0053DC6A /* KeyboardObserver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardObserver.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -168,6 +170,7 @@
 		DB0FFBCD1D04AED100DD4B94 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				DBD5D7E41D0E1FFC0053DC6A /* KeyboardObserver.swift */,
 				DB0FFBCE1D04AEDB00DD4B94 /* RoundRectButton.swift */,
 				DB0FFBCF1D04AEDB00DD4B94 /* RoundRectView.swift */,
 				DB0FFBDE1D04CD3900DD4B94 /* NSDate+Extension.swift */,
@@ -428,6 +431,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DBB38A291D0D96B400BEE506 /* CreateEventTableViewController.swift in Sources */,
+				DBD5D7E51D0E1FFC0053DC6A /* KeyboardObserver.swift in Sources */,
 				DB0FFBC81D04A4C500DD4B94 /* Events.swift in Sources */,
 				DBD1F8421D04601E0035A7B4 /* Colors.swift in Sources */,
 				DBB38A3A1D0DC0F100BEE506 /* EventsTableDataSource.swift in Sources */,
