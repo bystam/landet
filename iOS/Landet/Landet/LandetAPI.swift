@@ -135,6 +135,21 @@ class EventAPI {
 
         apiQueue.addOperation(operation)
     }
+
+    func comments(forEvent event: Event, completion: (comments: [EventComment]?, error: NSError?) -> ()) {
+        guard let _ = Session.currentSession else { return }
+
+        let operation = SessionAPI.shared.wrapWithAutomaticRefreshingSession(operation:  {
+            return self.apiClient.get("/events/\(event.id)/comments")
+        })
+
+        operation.completionBlock = {
+            let res: ([EventComment]?, NSError?) = APIUtil.parseAsArray(response: operation.apiResponse)
+            completion(comments: res.0, error: res.1)
+        }
+
+        apiQueue.addOperation(operation)
+    }
 }
 
 class LocationAPI {
