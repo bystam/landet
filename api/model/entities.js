@@ -59,6 +59,7 @@ const Events = bookshelf.Collection.extend({
 
 const EventComment = bookshelf.Model.extend({
   tableName: 'event_comments',
+  hasTimestamps: ['comment_time'],
   author: function() {
     return this.belongsTo(User, 'author_id');
   },

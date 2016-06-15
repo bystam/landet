@@ -8,16 +8,16 @@ const statuses = require('../util/statuses');
 const errors = require('../util/errors');
 
 router.get('/', function(req, res) {
-  let eventId = req.query.eventid;
-  return events.allCommentsForEventWithId(eventId).then(function(comment) {
-    res.json(comment);
+  let eventId = req.params.eventid;
+  return events.allCommentsForEventWithId(eventId).then(function(comments) {
+    res.json(comments);
   }).catch(errors.HttpHandler(res));;
 });
 
 router.post('/create', function(req, res) {
   let commentData = {
     text: req.body.text,
-    event_id: req.query.eventid,
+    event_id: req.params.eventid,
     author_id: req.user.id
   };
 

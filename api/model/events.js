@@ -32,7 +32,7 @@ function allCommentsForEventWithId(eventId) {
 }
 
 function createComment(commentData) {
-  return EventComment.forge(eventdata).save();
+  return EventComment.forge(commentData).save();
 }
 
 module.exports = {

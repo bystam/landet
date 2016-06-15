@@ -12,7 +12,7 @@ class EventDetailsTableViewController: UITableViewController {
     var comments: [EventComment]? {
         didSet {
             dataSource.comments = comments
-            tableView.reloadSections(NSIndexSet(index: 0), withRowAnimation: .Fade)
+            tableView.reloadSections(NSIndexSet(index: 1), withRowAnimation: .None)
         }
     }
     
@@ -29,9 +29,27 @@ class EventDetailsTableViewController: UITableViewController {
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedSectionHeaderHeight = CommentsHeaderView.preferredHeight
         tableView.sectionHeaderHeight = UITableViewAutomaticDimension
+        tableView.sectionFooterHeight = 0.0
         tableView.tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: 1, height: CGFloat.min))
     }
 
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+
+        reloadComments()
+    }
+
+    private func reloadComments(completion: (() -> ())? = nil) {
+        EventAPI.shared.comments(forEvent: event) { (comments, error) in
+            Async.main {
+                self.comments = comments
+                completion?()
+            }
+        }
+    }
+}
+
+extension EventDetailsTableViewController {
     override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         return section == 1 ? tableView.dequeueReusableHeaderFooterViewWithIdentifier(CommentsHeaderView.reuseIdentifier) : nil
     }
@@ -41,26 +59,20 @@ class EventDetailsTableViewController: UITableViewController {
             cell.delegate = self
         }
     }
-
-    // MARK: - Actions
-
 }
 
 extension EventDetailsTableViewController: TextFieldCellDelegate {
 
-    func textWasEntered(inCell cell: TextFieldCell) {
-
+    func text(text: String, wasEnteredInCell cell: TextFieldCell) {
         cell.lockWithSpinner()
-//
-//        dataSource.postingComment = true
-//        tableView.reloadSections(NSIndexSet(index: 2), withRowAnimation: .Fade)
 
-        Async.main(2.0) {
-            cell.unlock()
-//            self.dataSource.postingComment = false
-//            self.tableView.reloadSections(NSIndexSet(index: 2), withRowAnimation: .Fade)
-
+        EventAPI.shared.post(comment: text, toEvent: event) { (error) in
+            self.reloadComments({
+                cell.textField.text = nil
+                cell.unlock()
+            })
         }
+
     }
 }
 

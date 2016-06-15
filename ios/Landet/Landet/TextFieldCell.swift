@@ -5,7 +5,7 @@
 import UIKit
 
 protocol TextFieldCellDelegate: class {
-    func textWasEntered(inCell cell: TextFieldCell)
+    func text(text: String, wasEnteredInCell cell: TextFieldCell)
 }
 
 class TextFieldCell: UITableViewCell {
@@ -29,7 +29,7 @@ extension TextFieldCell: UITextFieldDelegate {
 
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         if let text = textField.text where !text.isEmpty {
-            delegate?.textWasEntered(inCell: self)
+            delegate?.text(text, wasEnteredInCell: self)
         }
         return false
     }
