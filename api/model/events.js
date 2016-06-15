@@ -20,6 +20,10 @@ function create(eventData) {
   return Event.forge(eventData).save();
 }
 
+function allCommentsForEventWithId(eventId) {
+  return Event.where({ id: eventId }).comments().fetch();
+}
+
 function createComment(commentData) {
   return EventComment.forge(eventdata).save();
 }
@@ -27,5 +31,6 @@ function createComment(commentData) {
 module.exports = {
   allEvents,
   create,
+  allCommentsForEventWithId,
   createComment
 };
