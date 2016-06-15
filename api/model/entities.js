@@ -72,6 +72,38 @@ const EventComments = bookshelf.Collection.extend({
   model: EventComment
 });
 
+const Topic = bookshelf.Model.extend({
+  tableName: 'topics',
+  hasTimestamps: true,
+  author: function() {
+    return this.belongsTo(User, 'author_id');
+  },
+  topComment: function() {
+    return this.hasOne(TopicComment, 'top_comment_id');
+  },
+  comments: function() {
+    return this.hasMany(TopicComment, 'topic_id');
+  }
+});
+
+const Topics = bookshelf.Model.extend({
+  model: Topic
+});
+
+const TopicComment = bookshelf.Model.extend({
+  tableName: 'topic_comments',
+  hasTimestamps: true,
+  author: function() {
+    return this.belongsTo(User, 'author_id');
+  },
+  topic: function() {
+    return this.belongsTo(Topic, 'topic_id');
+  }
+});
+
+const TopicComments = bookshelf.Model.extend({
+  model: TopicComment
+});
 
 module.exports = {
   User,
@@ -83,5 +115,9 @@ module.exports = {
   Event,
   Events,
   EventComment,
-  EventComments
+  EventComments,
+  Topic,
+  Topics,
+  TopicComment,
+  TopicComments
 };
