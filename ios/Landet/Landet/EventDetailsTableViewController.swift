@@ -19,7 +19,7 @@ class EventDetailsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        LandetTableViewStyle.setup(tableView, cells: [.EventSummary, .Comment])
+        LandetTableViewStyle.setup(tableView, cells: [.EventSummary, .Comment, .TextField, .Spinner])
         CommentsHeaderView.install(tableView: tableView)
 
         dataSource = EventDetailsTableDataSource(event: event)
@@ -35,4 +35,32 @@ class EventDetailsTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         return section == 1 ? tableView.dequeueReusableHeaderFooterViewWithIdentifier(CommentsHeaderView.reuseIdentifier) : nil
     }
+
+    override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+        if let cell = cell as? TextFieldCell {
+            cell.delegate = self
+        }
+    }
+
+    // MARK: - Actions
+
 }
+
+extension EventDetailsTableViewController: TextFieldCellDelegate {
+
+    func textWasEntered(inCell cell: TextFieldCell) {
+
+        cell.lockWithSpinner()
+//
+//        dataSource.postingComment = true
+//        tableView.reloadSections(NSIndexSet(index: 2), withRowAnimation: .Fade)
+
+        Async.main(2.0) {
+            cell.unlock()
+//            self.dataSource.postingComment = false
+//            self.tableView.reloadSections(NSIndexSet(index: 2), withRowAnimation: .Fade)
+
+        }
+    }
+}
+

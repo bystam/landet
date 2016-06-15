@@ -9,13 +9,17 @@ class LandetTextField: UITextField {
     override func awakeFromNib() {
         super.awakeFromNib()
 
-        let color = Colors.yellow
-        textColor = color
-
+        textColor = Colors.yellow
         keyboardAppearance = .Dark
+    }
 
-        if let placeholder = placeholder {
-            let attributes = [ NSForegroundColorAttributeName : color.colorWithAlphaComponent(0.3) ]
+    override var placeholder: String? {
+        didSet {
+            guard let placeholder = placeholder else { return }
+
+            let attributes = [
+                NSForegroundColorAttributeName : Colors.yellow.colorWithAlphaComponent(0.3)
+            ]
             attributedPlaceholder = NSAttributedString(string: placeholder, attributes: attributes)
         }
     }

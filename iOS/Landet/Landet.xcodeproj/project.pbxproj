@@ -31,6 +31,11 @@
 		DB36CDE31D06308500B94422 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB36CDE21D06308500B94422 /* LoginViewController.swift */; };
 		DB36CDE51D06313100B94422 /* AuthOverlayController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB36CDE41D06313100B94422 /* AuthOverlayController.swift */; };
 		DBA9B40A1D11B2F800DB6EBB /* EventComment.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA9B4091D11B2F800DB6EBB /* EventComment.swift */; };
+		DBA9B40D1D11B9CD00DB6EBB /* TextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA9B40B1D11B9CD00DB6EBB /* TextFieldCell.swift */; };
+		DBA9B40E1D11B9CD00DB6EBB /* TextFieldCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DBA9B40C1D11B9CD00DB6EBB /* TextFieldCell.xib */; };
+		DBA9B4111D11BD5A00DB6EBB /* SpinnerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA9B40F1D11BD5A00DB6EBB /* SpinnerCell.swift */; };
+		DBA9B4121D11BD5A00DB6EBB /* SpinnerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DBA9B4101D11BD5A00DB6EBB /* SpinnerCell.xib */; };
+		DBA9B4141D11C21900DB6EBB /* CGExtras.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA9B4131D11C21900DB6EBB /* CGExtras.swift */; };
 		DBB38A291D0D96B400BEE506 /* CreateEventTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB38A281D0D96B400BEE506 /* CreateEventTableViewController.swift */; };
 		DBB38A2B1D0D97B200BEE506 /* LandetTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB38A2A1D0D97B200BEE506 /* LandetTextField.swift */; };
 		DBB38A2D1D0DAA1900BEE506 /* APIUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB38A2C1D0DAA1900BEE506 /* APIUtil.swift */; };
@@ -89,6 +94,11 @@
 		DB36CDE21D06308500B94422 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		DB36CDE41D06313100B94422 /* AuthOverlayController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthOverlayController.swift; sourceTree = "<group>"; };
 		DBA9B4091D11B2F800DB6EBB /* EventComment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventComment.swift; sourceTree = "<group>"; };
+		DBA9B40B1D11B9CD00DB6EBB /* TextFieldCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldCell.swift; sourceTree = "<group>"; };
+		DBA9B40C1D11B9CD00DB6EBB /* TextFieldCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TextFieldCell.xib; sourceTree = "<group>"; };
+		DBA9B40F1D11BD5A00DB6EBB /* SpinnerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpinnerCell.swift; sourceTree = "<group>"; };
+		DBA9B4101D11BD5A00DB6EBB /* SpinnerCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SpinnerCell.xib; sourceTree = "<group>"; };
+		DBA9B4131D11C21900DB6EBB /* CGExtras.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGExtras.swift; sourceTree = "<group>"; };
 		DBB38A281D0D96B400BEE506 /* CreateEventTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateEventTableViewController.swift; sourceTree = "<group>"; };
 		DBB38A2A1D0D97B200BEE506 /* LandetTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LandetTextField.swift; sourceTree = "<group>"; };
 		DBB38A2C1D0DAA1900BEE506 /* APIUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIUtil.swift; sourceTree = "<group>"; };
@@ -178,6 +188,7 @@
 				DB0FFBCF1D04AEDB00DD4B94 /* RoundRectView.swift */,
 				DB0FFBDE1D04CD3900DD4B94 /* NSDate+Extension.swift */,
 				DBB38A2A1D0D97B200BEE506 /* LandetTextField.swift */,
+				DBA9B4131D11C21900DB6EBB /* CGExtras.swift */,
 				DBB38A371D0DC04300BEE506 /* UIViewController+Extension.swift */,
 			);
 			name = UI;
@@ -204,6 +215,10 @@
 				DBD5D7D51D0E0F6A0053DC6A /* EventSummaryCell.xib */,
 				DBD5D7E01D0E1B380053DC6A /* CommentCell.swift */,
 				DBD5D7E11D0E1B380053DC6A /* CommentCell.xib */,
+				DBA9B40B1D11B9CD00DB6EBB /* TextFieldCell.swift */,
+				DBA9B40C1D11B9CD00DB6EBB /* TextFieldCell.xib */,
+				DBA9B40F1D11BD5A00DB6EBB /* SpinnerCell.swift */,
+				DBA9B4101D11BD5A00DB6EBB /* SpinnerCell.xib */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -419,7 +434,9 @@
 				DBB38A301D0DB57A00BEE506 /* EventDetails.storyboard in Resources */,
 				DB0FFBD61D04C33600DD4B94 /* Events.storyboard in Resources */,
 				DBD5D7D71D0E0F6A0053DC6A /* EventSummaryCell.xib in Resources */,
+				DBA9B40E1D11B9CD00DB6EBB /* TextFieldCell.xib in Resources */,
 				DB0FFBD81D04C34400DD4B94 /* Events.xcassets in Resources */,
+				DBA9B4121D11BD5A00DB6EBB /* SpinnerCell.xib in Resources */,
 				DBD1F8351D045C520035A7B4 /* Topics.storyboard in Resources */,
 				DBD1F8201D045B0D0035A7B4 /* AppNavigation.storyboard in Resources */,
 				DB36CDE01D06306500B94422 /* Auth.storyboard in Resources */,
@@ -443,6 +460,7 @@
 				DBD1F8401D0460190035A7B4 /* Theme.swift in Sources */,
 				DB36CDE51D06313100B94422 /* AuthOverlayController.swift in Sources */,
 				DBB38A2D1D0DAA1900BEE506 /* APIUtil.swift in Sources */,
+				DBA9B4141D11C21900DB6EBB /* CGExtras.swift in Sources */,
 				DB0FFBCC1D04A53800DD4B94 /* Locations.swift in Sources */,
 				DB0FFBC01D04736B00DD4B94 /* APIClient.swift in Sources */,
 				DB0FFBDF1D04CD3900DD4B94 /* NSDate+Extension.swift in Sources */,
@@ -464,12 +482,14 @@
 				DB36CDD71D05C15200B94422 /* APIOperation.swift in Sources */,
 				DB0FFBBE1D04719200DD4B94 /* LandetAPI.swift in Sources */,
 				DB0FFBC21D04983700DD4B94 /* HttpStatusCodes.swift in Sources */,
+				DBA9B40D1D11B9CD00DB6EBB /* TextFieldCell.swift in Sources */,
 				DBB38A361D0DB5AF00BEE506 /* EventDetailsTableDataSource.swift in Sources */,
 				DBD1F8391D045EFA0035A7B4 /* MapViewController.swift in Sources */,
 				DBD1F83D1D045F5C0035A7B4 /* TopicsTableViewController.swift in Sources */,
 				DBA9B40A1D11B2F800DB6EBB /* EventComment.swift in Sources */,
 				DBB38A321D0DB58A00BEE506 /* EventDetailsViewController.swift in Sources */,
 				DB0FFBBC1D046FA800DD4B94 /* Session.swift in Sources */,
+				DBA9B4111D11BD5A00DB6EBB /* SpinnerCell.swift in Sources */,
 				DB36CDE31D06308500B94422 /* LoginViewController.swift in Sources */,
 				DB0FFBD41D04C32B00DD4B94 /* EventsViewController.swift in Sources */,
 				DBB38A2B1D0D97B200BEE506 /* LandetTextField.swift in Sources */,
