@@ -49,6 +49,13 @@ class LoginViewController: UIViewController {
 extension LoginViewController {
 
     @IBAction func loginButtonPressed(sender: AnyObject) {
+        attemptLogin()
+    }
+
+    private func attemptLogin() {
+        usernameTextField.resignFirstResponder()
+        passwordTextField.resignFirstResponder()
+
         UIView.animateWithDuration(0.3) {
             self.errorLabel.alpha = 0.0
         }
@@ -74,5 +81,18 @@ extension LoginViewController {
             self.errorLabel.alpha = 1.0
         }
     }
+}
 
+extension LoginViewController: UITextFieldDelegate {
+
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        if textField == usernameTextField {
+            passwordTextField.becomeFirstResponder()
+        }
+        if textField == passwordTextField {
+            attemptLogin()
+        }
+
+        return true
+    }
 }

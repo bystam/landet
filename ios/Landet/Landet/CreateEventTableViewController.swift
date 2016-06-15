@@ -8,8 +8,8 @@ class CreateEventTableViewController: UITableViewController {
 
     @IBOutlet weak var nameTextField: LandetTextField!
 
-    @IBOutlet weak var fromTimeField: LandetTextField!
-    @IBOutlet weak var fromLabel: UILabel!
+    @IBOutlet weak var timeField: LandetTextField!
+    @IBOutlet weak var timeLabel: UILabel!
     private var fromDatePicker: DatePicker!
     var time: NSDate? { return fromDatePicker.picker.date }
 
@@ -23,7 +23,7 @@ class CreateEventTableViewController: UITableViewController {
 
         self.tableView.tableFooterView = UIView()
 
-        fromTimeField.keyboardAppearance = .Default
+        timeField.keyboardAppearance = .Default
 
         bodyTextView.textContainerInset = UIEdgeInsetsZero
         bodyPlaceholder.textContainerInset = UIEdgeInsetsZero
@@ -31,7 +31,7 @@ class CreateEventTableViewController: UITableViewController {
     }
 
     private func setupTimePickers() {
-        fromDatePicker = DatePicker(timeField: fromTimeField, label: fromLabel)
+        fromDatePicker = DatePicker(timeField: timeField, label: timeLabel)
     }
 
     override func viewDidAppear(animated: Bool) {

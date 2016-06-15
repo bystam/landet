@@ -12,6 +12,11 @@ class CreateEventViewController: UIViewController {
         super.viewDidLoad()
     }
 
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        tableViewController.nameTextField.delegate = self
+    }
+
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "embedTable" {
             tableViewController = segue.destinationViewController as! CreateEventTableViewController
@@ -31,5 +36,16 @@ class CreateEventViewController: UIViewController {
                 self.dismissViewControllerAnimated(true, completion: nil)
             }
         }
+    }
+}
+
+extension CreateEventViewController: UITextFieldDelegate {
+
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        if textField == tableViewController.nameTextField {
+            tableViewController.timeField.becomeFirstResponder()
+        }
+
+        return true
     }
 }

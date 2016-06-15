@@ -88,7 +88,7 @@
                                                         <constraint firstAttribute="height" constant="30" id="Hjc-I3-qL4"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                                    <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="next"/>
                                                     <variation key="default">
                                                         <mask key="constraints">
                                                             <exclude reference="Hjc-I3-qL4"/>
@@ -156,7 +156,7 @@
                                                     </constraints>
                                                     <color key="textColor" red="0.89803922179999995" green="0.87450981139999995" blue="0.77254903320000001" alpha="1" colorSpace="calibratedRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <textInputTraits key="textInputTraits" returnKeyType="next"/>
                                                     <variation key="default">
                                                         <mask key="constraints">
                                                             <exclude reference="Kbh-nI-t4q"/>
@@ -208,7 +208,7 @@
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <color key="textColor" red="0.89803922176361084" green="0.87450981140136719" blue="0.77254903316497803" alpha="0.29999999999999999" colorSpace="calibratedRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done"/>
                                                 </textView>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -240,9 +240,9 @@
                     <connections>
                         <outlet property="bodyPlaceholder" destination="A79-ok-7l4" id="gbo-T8-Gvf"/>
                         <outlet property="bodyTextView" destination="KvL-RD-ofw" id="URo-sO-j95"/>
-                        <outlet property="fromLabel" destination="tLf-q8-1W7" id="MxW-Y4-nTo"/>
-                        <outlet property="fromTimeField" destination="i01-2J-Vxk" id="8s3-X3-pnk"/>
                         <outlet property="nameTextField" destination="8E0-ZK-uJ4" id="fxH-ED-p7c"/>
+                        <outlet property="timeField" destination="i01-2J-Vxk" id="5GY-CY-bFU"/>
+                        <outlet property="timeLabel" destination="tLf-q8-1W7" id="17b-JZ-vIe"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Uit-Iq-msK" userLabel="First Responder" sceneMemberID="firstResponder"/>
