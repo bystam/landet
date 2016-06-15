@@ -21,8 +21,10 @@ function create(eventData) {
 }
 
 function allCommentsForEventWithId(eventId) {
-  return EventComments.query('orderBy', 'comment_time')
-    .fetch({
+  return EventComments.query(qb => {
+    qb.where('event_id', '=', eventId);
+    qb.orderBy('comment_time');
+  }).fetch({
       withRelated: [
         { author: (q) => q.select(['id', 'username', 'name']) }
       ]
