@@ -7,7 +7,6 @@ import android.view.ViewGroup;
 
 import com.landet.landet.BaseFragment;
 import com.landet.landet.R;
-import com.landet.landet.api.ApiResponse;
 import com.landet.landet.data.Event;
 
 import java.util.List;
@@ -40,10 +39,10 @@ public class EventsFragment extends BaseFragment {
     public void onResume() {
         super.onResume();
         mModel.fetchEvents()
-                .subscribe(new Action1<ApiResponse<List<Event>>>() {
+                .subscribe(new Action1<List<Event>>() {
                     @Override
-                    public void call(ApiResponse<List<Event>> listApiResponse) {
-                        Timber.d("success %s", listApiResponse);
+                    public void call(List<Event> eventList) {
+                        Timber.d("success %s", eventList);
                     }
                 }, new Action1<Throwable>() {
                     @Override

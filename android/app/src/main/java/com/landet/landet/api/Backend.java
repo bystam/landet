@@ -65,7 +65,8 @@ public class Backend {
     private <T> ApiResponse<T> getResponseForHttpError(@NonNull Response<T> response) {
         if (response.code() >= 400 && response.code() < 500) { // Request was processed correctly but the api returned an error, build error object from response body
             final ResponseBody responseBody = response.errorBody();
-            ApiError error = mGson.fromJson(new InputStreamReader(responseBody.byteStream()), ApiError.class);
+            WrappedApiError wrappedApiError = mGson.fromJson(new InputStreamReader(responseBody.byteStream()), WrappedApiError.class);
+            ApiError error = wrappedApiError != null ? wrappedApiError.landet_error : null;
             return ApiResponse.<T>newBuilder()
                     .code(response.code())
                     .message(response.message())

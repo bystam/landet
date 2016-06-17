@@ -35,6 +35,9 @@ public class ApiResponse<T> {
         return error;
     }
 
+    public boolean isSuccessful() {
+        return code >= 200 && code < 300;
+    }
 
     public static class Builder<T> {
         private int mCode;
