@@ -3,6 +3,7 @@ package com.landet.landet;
 import android.content.Context;
 
 import com.landet.landet.api.Backend;
+import com.landet.landet.utils.UserManager;
 
 import javax.inject.Singleton;
 
@@ -19,4 +20,6 @@ public interface LandetComponent {
     Context applicationContext();
 
     Backend backend();
+
+    UserManager userManager();
 }

@@ -3,6 +3,7 @@ package com.landet.landet;
 import android.content.Context;
 
 import com.landet.landet.api.Backend;
+import com.landet.landet.utils.UserManager;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -10,6 +11,7 @@ import java.util.concurrent.TimeUnit;
 
 import javax.inject.Singleton;
 
+import dagger.Lazy;
 import dagger.Module;
 import dagger.Provides;
 import okhttp3.Cache;
@@ -46,15 +48,21 @@ public class LandetModule {
 
     @Provides
     @Singleton
-    public OkHttpClient provideOkHttpClient(Context context) {
+    public UserManager provideUserManager(Context context, Lazy<Backend> backend) {
+        return new UserManager(context, backend);
+    }
+
+    @Provides
+    @Singleton
+    public OkHttpClient provideOkHttpClient(Context context, UserManager userManager) {
         return new OkHttpClient.Builder()
                 .cache(new Cache(context.getCacheDir(), EIGHT_MB))
                 .dispatcher(new Dispatcher(mExecutorService))
                 .connectTimeout(CONNECT_TIMEOUT, TimeUnit.SECONDS)
                 .readTimeout(READ_TIMEOUT, TimeUnit.SECONDS)
                 .writeTimeout(WRITE_TIMEOUT, TimeUnit.SECONDS)
-//                .addInterceptor(userManager)
-//                .authenticator(userManager)
+                .addInterceptor(userManager)
+                .authenticator(userManager)
                 .build();
     }
 

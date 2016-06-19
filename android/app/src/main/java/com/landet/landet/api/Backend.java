@@ -1,6 +1,7 @@
 package com.landet.landet.api;
 
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
 import com.google.gson.Gson;
 import com.landet.landet.data.Event;
@@ -37,6 +38,15 @@ public class Backend {
         mApi = retrofit.create(LandetRestApi.class);
     }
 
+    public Observable<ApiResponse<AuthenticationResult>> login(@NonNull String username, @NonNull String password) {
+        return mApi.login(new AuthenticationParameters(username, password))
+                .map(this.<AuthenticationResult>resultToApiResponse());
+    }
+
+    public Observable<ApiResponse<AuthenticationResult>> refreshAuthToken(@Nullable String refreshToken) {
+        return mApi.refreshAuthToken(new AuthenticationParameters(refreshToken))
+                .map(this.<AuthenticationResult>resultToApiResponse());
+    }
 
     public Observable<ApiResponse<List<Event>>> fetchEvents() {
         return mApi.events().map(this.<List<Event>>resultToApiResponse());
