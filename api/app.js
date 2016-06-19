@@ -9,6 +9,7 @@ const users = require('./routes/users-route');
 const sessions = require('./routes/sessions-route');
 const locations = require('./routes/locations-route');
 const events = require('./routes/events-route');
+const topics = require('./routes/topics-route');
 
 const auth = require('./middleware/auth');
 
@@ -30,6 +31,7 @@ app.use('/users', users);
 app.use('/sessions', sessions);
 app.use('/locations', locations);
 app.use('/events', auth.authenticate, events);
+app.use('/topics', auth.authenticate, topics);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

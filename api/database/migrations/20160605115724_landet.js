@@ -62,9 +62,6 @@ exports.up = function(knex, Promise) {
             table.string('body');
             table.timestamps();
 
-            table.integer('top_comment_id')
-                 .references('id')
-                 .inTable('topic_comments');
             table.integer('author_id')
                  .references('id')
                  .inTable('users');
@@ -80,7 +77,16 @@ exports.up = function(knex, Promise) {
                .inTable('users');
           table.integer('topic_id')
                .references('id')
-               .inTable('events');
+               .inTable('topics');
+        }),
+
+        knex.schema.createTable('top_topic_comments', function(table) {
+          table.integer('topic_id')
+               .references('id')
+               .inTable('topics');
+          table.integer('comment_id')
+               .references('id')
+               .inTable('topic_comments');
         }),
     ]);
 };
@@ -90,6 +96,7 @@ exports.down = function(knex, Promise) {
     knex.schema.dropTable('sessions'),
     knex.schema.dropTable('event_comments'),
     knex.schema.dropTable('events'),
+    knex.schema.dropTable('top_topic_comments'),
     knex.schema.dropTable('topic_comments'),
     knex.schema.dropTable('topics'),
     knex.schema.dropTable('locations'),

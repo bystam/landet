@@ -10,9 +10,6 @@ const statuses = require('../util/statuses');
 const comments = require('./eventcomments-route');
 router.use('/:eventid/comments', comments);
 
-function logError(e) {
-  console.log(e);
-}
 
 router.get('/', function(req, res) {
   events.allEvents().then(function(events) {

@@ -11,7 +11,7 @@ function allEvents() {
     .fetch({
       withRelated: [
         'location',
-        { creator: (q) => q.select(['id', 'username', 'name']) }
+        { 'creator': (q) => q.select(['id', 'username', 'name']) }
       ]
     });
 }
@@ -25,7 +25,7 @@ function allCommentsForEventWithId(eventId) {
   .query('orderBy', 'comment_time')
   .fetch({
       withRelated: [
-        { author: (q) => q.select(['id', 'username', 'name']) }
+        { 'author': (q) => q.select(['id', 'username', 'name']) }
       ]
     });
 }
