@@ -79,7 +79,7 @@ const Topic = bookshelf.Model.extend({
     return this.belongsTo(User, 'author_id');
   },
   topComment: function() {
-    return this.hasOne(TopTopicComment, 'topic_id').comment();
+    return this.hasOne(TopTopicComment, 'topic_id');
   },
   comments: function() {
     return this.hasMany(TopicComment, 'topic_id');

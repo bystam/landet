@@ -81,7 +81,7 @@ exports.up = function(knex, Promise) {
         }),
 
         knex.schema.createTable('top_topic_comments', function(table) {
-          table.integer('topic_id')
+          table.integer('topic_id').primary()
                .references('id')
                .inTable('topics');
           table.integer('comment_id')

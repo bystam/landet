@@ -11,9 +11,7 @@ function allTopics() {
   return Topics.forge().fetch({
       withRelated: [
         { 'author': (q) => q.select(['id', 'username', 'name']) },
-        // { 'topComment': (q) => q.orderBy('comment_time', 'DESC') },
-        // { 'topComment.author': (q) => q.select(['id', 'username', 'name']) },
-        // 'topComment'
+        'topComment.comment'
       ]
     });
 }
@@ -29,12 +27,12 @@ function create(topicData) {
 
 function allCommentsForTopicWithId(topicId) {
   return Topic.forge({ id: topicId }).comments()
-  .query('orderBy', 'comment_time')
-  .fetch({
-      withRelated: [
-        { 'author': (q) => q.select(['id', 'username', 'name']) }
-      ]
-    });
+              .query('orderBy', 'comment_time')
+              .fetch({
+                  withRelated: [
+                    { 'author': (q) => q.select(['id', 'username', 'name']) }
+                  ]
+                });
 }
 
 function createComment(commentData) {
