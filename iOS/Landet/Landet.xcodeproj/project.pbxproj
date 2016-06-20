@@ -67,6 +67,9 @@
 		DBD5D7E21D0E1B380053DC6A /* CommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD5D7E01D0E1B380053DC6A /* CommentCell.swift */; };
 		DBD5D7E31D0E1B380053DC6A /* CommentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DBD5D7E11D0E1B380053DC6A /* CommentCell.xib */; };
 		DBD5D7E51D0E1FFC0053DC6A /* KeyboardObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD5D7E41D0E1FFC0053DC6A /* KeyboardObserver.swift */; };
+		DBDCC5061D18874400DD00C0 /* TopicsHeaderCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBDCC5051D18874400DD00C0 /* TopicsHeaderCollectionViewController.swift */; };
+		DBDCC5081D18875A00DD00C0 /* TopicsHeader.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DBDCC5071D18875A00DD00C0 /* TopicsHeader.storyboard */; };
+		DBDCC50A1D188A7800DD00C0 /* TopicsHeaderCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBDCC5091D188A7800DD00C0 /* TopicsHeaderCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -132,6 +135,9 @@
 		DBD5D7E01D0E1B380053DC6A /* CommentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentCell.swift; sourceTree = "<group>"; };
 		DBD5D7E11D0E1B380053DC6A /* CommentCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommentCell.xib; sourceTree = "<group>"; };
 		DBD5D7E41D0E1FFC0053DC6A /* KeyboardObserver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardObserver.swift; sourceTree = "<group>"; };
+		DBDCC5051D18874400DD00C0 /* TopicsHeaderCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopicsHeaderCollectionViewController.swift; sourceTree = "<group>"; };
+		DBDCC5071D18875A00DD00C0 /* TopicsHeader.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TopicsHeader.storyboard; sourceTree = "<group>"; };
+		DBDCC5091D188A7800DD00C0 /* TopicsHeaderCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopicsHeaderCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -330,7 +336,8 @@
 				DBD1F8451D04688E0035A7B4 /* Topics.xcassets */,
 				DBD1F8341D045C520035A7B4 /* Topics.storyboard */,
 				DBD1F83A1D045F020035A7B4 /* TopicsViewController.swift */,
-				DBD1F83C1D045F5C0035A7B4 /* TopicsTableViewController.swift */,
+				DBDCC5041D1886FB00DD00C0 /* Topic table */,
+				DBDCC5031D1886F200DD00C0 /* Topic header */,
 			);
 			name = Topics;
 			sourceTree = "<group>";
@@ -363,6 +370,24 @@
 				DBD5D7D91D0E0FB90053DC6A /* LandetTableViewStyle.swift */,
 			);
 			name = Table;
+			sourceTree = "<group>";
+		};
+		DBDCC5031D1886F200DD00C0 /* Topic header */ = {
+			isa = PBXGroup;
+			children = (
+				DBDCC5071D18875A00DD00C0 /* TopicsHeader.storyboard */,
+				DBDCC5051D18874400DD00C0 /* TopicsHeaderCollectionViewController.swift */,
+				DBDCC5091D188A7800DD00C0 /* TopicsHeaderCollectionViewCell.swift */,
+			);
+			name = "Topic header";
+			sourceTree = "<group>";
+		};
+		DBDCC5041D1886FB00DD00C0 /* Topic table */ = {
+			isa = PBXGroup;
+			children = (
+				DBD1F83C1D045F5C0035A7B4 /* TopicsTableViewController.swift */,
+			);
+			name = "Topic table";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -424,6 +449,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DBD5D7E31D0E1B380053DC6A /* CommentCell.xib in Resources */,
+				DBDCC5081D18875A00DD00C0 /* TopicsHeader.storyboard in Resources */,
 				DBD1F8441D0468880035A7B4 /* Map.xcassets in Resources */,
 				DBD1F8251D045B0D0035A7B4 /* LaunchScreen.storyboard in Resources */,
 				DBD1F8461D04688E0035A7B4 /* Topics.xcassets in Resources */,
@@ -468,7 +494,9 @@
 				DBD1F8311D045BB10035A7B4 /* AppNavigationController.swift in Sources */,
 				DB0FFBC51D049CF700DD4B94 /* Async.swift in Sources */,
 				DB0FFBCA1D04A53200DD4B94 /* Users.swift in Sources */,
+				DBDCC50A1D188A7800DD00C0 /* TopicsHeaderCollectionViewCell.swift in Sources */,
 				DBD1F83B1D045F020035A7B4 /* TopicsViewController.swift in Sources */,
+				DBDCC5061D18874400DD00C0 /* TopicsHeaderCollectionViewController.swift in Sources */,
 				DBD5D7DA1D0E0FB90053DC6A /* LandetTableViewStyle.swift in Sources */,
 				DBB38A341D0DB59900BEE506 /* EventDetailsTableViewController.swift in Sources */,
 				DBD5D7E21D0E1B380053DC6A /* CommentCell.swift in Sources */,
