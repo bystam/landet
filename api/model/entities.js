@@ -78,8 +78,8 @@ const Topic = bookshelf.Model.extend({
   author: function() {
     return this.belongsTo(User, 'author_id');
   },
-  topComment: function() {
-    return this.hasOne(TopTopicComment, 'topic_id');
+  top_comment: function() {
+    return this.hasOne(TopicComment).through(TopTopicComment, 'topic_id', 'comment_id');
   },
   comments: function() {
     return this.hasMany(TopicComment, 'topic_id');

@@ -9,11 +9,13 @@ const TopTopicComment = require('./entities').TopTopicComment;
 
 function allTopics() {
   return Topics.forge().fetch({
-      withRelated: [
-        { 'author': (q) => q.select(['id', 'username', 'name']) },
-        'topComment.comment'
-      ]
-    });
+    columns: ['id', 'title', 'body', 'author_id'],
+    withRelated: [
+      { 'author': (q) => q.select(['id', 'username', 'name']) },
+      { 'top_comment': (q) => q.select(['text', 'comment_time', 'author_id']) },
+      { 'top_comment.author': (q) => q.select(['id', 'username', 'name']) }
+    ]
+  });
 }
 
 function create(topicData) {
