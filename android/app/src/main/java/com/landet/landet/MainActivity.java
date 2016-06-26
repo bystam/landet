@@ -1,5 +1,6 @@
 package com.landet.landet;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
@@ -24,6 +25,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends BaseActivity {
+    private static final int REQUEST_CODE_LOGIN = 1;
 
     private Toolbar toolbar;
     private TabLayout tabLayout;
@@ -71,9 +73,22 @@ public class MainActivity extends BaseActivity {
         openLoginActivityIfLoggedOut();
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        switch (requestCode) {
+            case REQUEST_CODE_LOGIN:
+                if (resultCode != RESULT_OK) {
+                    finish();
+                }
+                break;
+            default:
+                super.onActivityResult(requestCode, resultCode, data);
+        }
+    }
+
     private void openLoginActivityIfLoggedOut() {
         if (!mUserManager.isLoggedIn()) {
-            startActivityForResult(LoginOrRegisterActivity.buildIntent(this, true), 1);
+            startActivityForResult(LoginOrRegisterActivity.buildIntent(this, true), REQUEST_CODE_LOGIN);
         }
     }
 
