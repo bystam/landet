@@ -1,6 +1,6 @@
 package com.landet.landet.data;
 
-public class User {
+public class User extends DataWithId {
     private String username;
     private String password;
     private String name;

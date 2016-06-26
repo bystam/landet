@@ -4,8 +4,11 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.landet.landet.data.Event;
 import com.landet.landet.data.User;
+
+import org.joda.time.DateTime;
 
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -28,10 +31,12 @@ public class Backend {
     private LandetRestApi mApi;
 
     public Backend(@NonNull OkHttpClient okHttpClient) {
-        mGson = new Gson();
+        mGson = new GsonBuilder()
+                .registerTypeAdapter(DateTime.class, new DateTimeTypeConverter())
+                .create();
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(LandetRestApi.URL)
-                .addConverterFactory(GsonConverterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create(mGson))
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                 .client(okHttpClient)
                 .build();
