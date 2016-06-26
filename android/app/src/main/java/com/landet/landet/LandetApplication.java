@@ -2,6 +2,8 @@ package com.landet.landet;
 
 import android.app.Application;
 
+import net.danlew.android.joda.JodaTimeAndroid;
+
 import timber.log.Timber;
 
 public class LandetApplication extends Application {
@@ -10,6 +12,8 @@ public class LandetApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        JodaTimeAndroid.init(this);
+
         LandetModule landetModule = new LandetModule(this);
         mLandetComponent = DaggerLandetComponent.builder()
                 .landetModule(landetModule)

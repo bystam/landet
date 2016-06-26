@@ -11,4 +11,24 @@ public class Event extends DataWithId {
     private DateTime eventTime;
     private User creator;
     private Location location;
+
+    public String getTitle() {
+        return title;
+    }
+
+    public String getBody() {
+        return body;
+    }
+
+    public DateTime getEventTime() {
+        return eventTime;
+    }
+
+    public User getCreator() {
+        return creator;
+    }
+
+    public Location getLocation() {
+        return location;
+    }
 }

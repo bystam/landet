@@ -1,6 +1,8 @@
 package com.landet.landet.events;
 
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +19,7 @@ import timber.log.Timber;
 
 public class EventsFragment extends BaseFragment {
     private EventModel mModel;
+    private EventsAdapter mEventsAdapter;
 
     public EventsFragment() {
         // Required empty public constructor
@@ -32,7 +35,12 @@ public class EventsFragment extends BaseFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_events, container, false);
+        View view = inflater.inflate(R.layout.fragment_events, container, false);
+        final RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.recycler_view);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        mEventsAdapter = new EventsAdapter(getContext());
+        recyclerView.setAdapter(mEventsAdapter);
+        return view;
     }
 
     @Override
@@ -43,6 +51,7 @@ public class EventsFragment extends BaseFragment {
                     @Override
                     public void call(List<Event> eventList) {
                         Timber.d("success %s", eventList);
+                        mEventsAdapter.setItems(eventList);
                     }
                 }, new Action1<Throwable>() {
                     @Override
