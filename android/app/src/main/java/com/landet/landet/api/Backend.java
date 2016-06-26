@@ -5,6 +5,7 @@ import android.support.annotation.Nullable;
 
 import com.google.gson.Gson;
 import com.landet.landet.data.Event;
+import com.landet.landet.data.User;
 
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -41,6 +42,11 @@ public class Backend {
     public Observable<ApiResponse<AuthenticationResult>> login(@NonNull String username, @NonNull String password) {
         return mApi.login(new AuthenticationParameters(username, password))
                 .map(this.<AuthenticationResult>resultToApiResponse());
+    }
+
+    public Observable<ApiResponse<User>> register(@NonNull String username, @NonNull String password, @NonNull String name) {
+        return mApi.register(new User(username, password, name))
+                .map(this.<User>resultToApiResponse());
     }
 
     public Observable<ApiResponse<AuthenticationResult>> refreshAuthToken(@Nullable String refreshToken) {

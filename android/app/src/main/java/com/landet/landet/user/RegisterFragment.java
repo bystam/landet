@@ -4,7 +4,6 @@ import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TextInputLayout;
-import android.util.Patterns;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -121,9 +120,9 @@ public class RegisterFragment extends BaseFragment {
         }
         if (field == mUsername) {
             final String username = mUsername.getText().toString().trim();
-            if (mUsernameTouched && (username.length() == 0 || !Patterns.EMAIL_ADDRESS.matcher(username).matches())) {
+            if (mUsernameTouched && (username.length() == 0)) {
                 if (showError) {
-                    mUsernameLayout.setError(getString(R.string.error_invalid_email));
+                    mUsernameLayout.setError(getString(R.string.error_invalid_username));
                 }
                 return false;
             } else {

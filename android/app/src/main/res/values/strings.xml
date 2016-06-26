@@ -10,7 +10,7 @@
     <string name="title_logout">Logga ut</string>
     <string name="login_failed">Inloggningen misslyckades</string>
     <string name="register_failed">Registreringen misslyckades</string>
-    <string name="error_invalid_email">Ogiltig e-post</string>
+    <string name="error_invalid_username">Ogiltigt användarnamn</string>
     <string name="error_no_password">Tomt lösenord</string>
     <string name="error_no_name">Fyll i ett namn</string>
     <string name="error_invalid_password">Det där duger inte</string>

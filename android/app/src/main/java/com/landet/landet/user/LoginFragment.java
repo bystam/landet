@@ -83,7 +83,7 @@ public class LoginFragment extends BaseFragment {
         mHasValidated = true;
         boolean valid = true;
         if (mEmailField.getText().toString().trim().length() == 0) {
-            mEmailLayout.setError(getString(R.string.error_invalid_email));
+            mEmailLayout.setError(getString(R.string.error_invalid_username));
             valid = false;
         } else {
             mEmailLayout.setError(null);

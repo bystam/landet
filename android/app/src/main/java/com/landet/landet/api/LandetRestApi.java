@@ -1,6 +1,7 @@
 package com.landet.landet.api;
 
 import com.landet.landet.data.Event;
+import com.landet.landet.data.User;
 
 import java.util.List;
 
@@ -15,6 +16,9 @@ public interface LandetRestApi {
 
     @POST("users/login")
     Observable<Result<AuthenticationResult>> login(@Body AuthenticationParameters authenticationParameters);
+
+    @POST("users/create")
+    Observable<Result<User>> register(@Body User user);
 
     @POST("sessions/refresh")
     Observable<Result<AuthenticationResult>> refreshAuthToken(@Body AuthenticationParameters authenticationParameters);

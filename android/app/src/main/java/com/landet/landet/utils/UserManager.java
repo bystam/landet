@@ -12,6 +12,7 @@ import com.landet.landet.LandetApplication;
 import com.landet.landet.api.ApiResponse;
 import com.landet.landet.api.AuthenticationResult;
 import com.landet.landet.api.Backend;
+import com.landet.landet.data.User;
 
 import java.io.IOException;
 
@@ -59,8 +60,23 @@ public class UserManager implements Authenticator, Interceptor {
                 });
     }
 
-    public Observable<Void> register(@NonNull String username, @NonNull String password, @NonNull String name) {
-        return Observable.empty();
+    public Observable<Void> register(@NonNull final String username, @NonNull final String password, @NonNull String name) {
+        return mBackend.get().register(username, password, name)
+                .flatMap(new Func1<ApiResponse<User>, Observable<User>>() {
+                    @Override
+                    public Observable<User> call(ApiResponse<User> apiResponse) {
+                        if (apiResponse.isSuccessful()) {
+                            return Observable.just(apiResponse.getBody());
+                        } else {
+                            return Observable.error(apiResponse.getError());
+                        }
+                    }
+                }).flatMap(new Func1<User, Observable<Void>>() {
+                    @Override
+                    public Observable<Void> call(User user) {
+                        return login(username, password);
+                    }
+                });
     }
 
     public void logout() {
