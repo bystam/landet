@@ -4,4 +4,23 @@
     <string name="events">Something something events</string>
     <string name="topics">Something something topics</string>
     <string name="map">Something something fancy map</string>
+
+    <string name="title_login">Logga in</string>
+    <string name="title_register">Skapa användare</string>
+    <string name="title_logout">Logga ut</string>
+    <string name="login_failed">Inloggningen misslyckades</string>
+    <string name="register_failed">Registreringen misslyckades</string>
+    <string name="error_invalid_email">Ogiltig e-post</string>
+    <string name="error_no_password">Tomt lösenord</string>
+    <string name="error_no_name">Fyll i ett namn</string>
+    <string name="error_invalid_password">Det där duger inte</string>
+    <string name="error_passwords_dont_match">Inte samma lösen</string>
+    <string name="logging_in">Loggar in&#8230;</string>
+    <string name="login_button_text">Logga in</string>
+    <string name="registering">Skapar användare&#8230;</string>
+    <string name="register_button_text">Skapa användare</string>
+    <string name="hint_profile_name">Namn</string>
+    <string name="hint_profile_username">Användarnamn</string>
+    <string name="hint_profile_password">Lösenord</string>
+    <string name="hint_profile_confirm_password">Bekräfta lösenord</string>
 </resources>

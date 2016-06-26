@@ -59,8 +59,16 @@ public class UserManager implements Authenticator, Interceptor {
                 });
     }
 
+    public Observable<Void> register(@NonNull String username, @NonNull String password, @NonNull String name) {
+        return Observable.empty();
+    }
+
     public void logout() {
         storeAuthToken(null, null);
+    }
+
+    public boolean isLoggedIn() {
+        return getAuthToken() != null;
     }
 
     @Override

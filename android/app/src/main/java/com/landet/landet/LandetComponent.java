@@ -13,6 +13,7 @@ import okhttp3.OkHttpClient;
 @Component(modules = LandetModule.class)
 @Singleton
 public interface LandetComponent {
+    void inject(BaseActivity baseActivity);
     void inject(BaseFragment baseFragment);
 
     OkHttpClient okHttpClient();
