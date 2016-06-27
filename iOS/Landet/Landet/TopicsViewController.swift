@@ -20,6 +20,8 @@ class TopicsViewController: UIViewController {
         super.viewDidLoad()
 
         tableViewController.tableView.contentInset.top = kHeaderHeight + kCommentViewHeight
+
+        loadAllTopics()
     }
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -47,4 +49,18 @@ extension TopicsViewController: TopicsTableViewControllerScrollDelegate {
         headerHeightConstraint.constant = headerHeight
         headerViewController.respondToHeight(headerHeight)
     }
+}
+
+extension TopicsViewController {
+
+    func loadAllTopics() {
+        TopicAPI.shared.loadAll { (topics, error) in
+            Async.main {
+                if let topics = topics {
+                    self.headerViewController.topics = topics
+                }
+            }
+        }
+    }
+
 }

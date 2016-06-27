@@ -6,7 +6,9 @@ import UIKit
 
 class TopicsHeaderViewController: UIViewController {
 
-    var topics = [Topic]()
+    var topics = [Topic]() {
+        didSet { collectionView.reloadData() }
+    }
 
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var currentTopicLabel: UILabel!
