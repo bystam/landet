@@ -25,6 +25,10 @@
 		DB0FFBE21D05A9BB00DD4B94 /* AsyncOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB0FFBE11D05A9BB00DD4B94 /* AsyncOperation.swift */; };
 		DB0FFBE41D05AA6C00DD4B94 /* LandetAPIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB0FFBE31D05AA6C00DD4B94 /* LandetAPIError.swift */; };
 		DB2E69901D217ACB00753FDE /* Topics.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2E698F1D217ACB00753FDE /* Topics.swift */; };
+		DB2E69941D217F6E00753FDE /* SpinnerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2E69921D217F6E00753FDE /* SpinnerCollectionViewCell.swift */; };
+		DB2E69951D217F6E00753FDE /* SpinnerCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB2E69931D217F6E00753FDE /* SpinnerCollectionViewCell.xib */; };
+		DB2E69981D21805100753FDE /* LandetCollectionViewStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2E69971D21805100753FDE /* LandetCollectionViewStyle.swift */; };
+		DB2E699A1D21810400753FDE /* TopicsHeaderCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB2E69991D21810400753FDE /* TopicsHeaderCollectionViewCell.xib */; };
 		DB36CDD71D05C15200B94422 /* APIOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB36CDD61D05C15200B94422 /* APIOperation.swift */; };
 		DB36CDDA1D062D1A00B94422 /* CreateEvent.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DB36CDD91D062D1A00B94422 /* CreateEvent.storyboard */; };
 		DB36CDDC1D062D2C00B94422 /* CreateEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB36CDDB1D062D2C00B94422 /* CreateEventViewController.swift */; };
@@ -67,7 +71,7 @@
 		DBD5D7E21D0E1B380053DC6A /* CommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD5D7E01D0E1B380053DC6A /* CommentCell.swift */; };
 		DBD5D7E31D0E1B380053DC6A /* CommentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DBD5D7E11D0E1B380053DC6A /* CommentCell.xib */; };
 		DBD5D7E51D0E1FFC0053DC6A /* KeyboardObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD5D7E41D0E1FFC0053DC6A /* KeyboardObserver.swift */; };
-		DBDCC5061D18874400DD00C0 /* TopicsHeaderCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBDCC5051D18874400DD00C0 /* TopicsHeaderCollectionViewController.swift */; };
+		DBDCC5061D18874400DD00C0 /* TopicsHeaderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBDCC5051D18874400DD00C0 /* TopicsHeaderViewController.swift */; };
 		DBDCC5081D18875A00DD00C0 /* TopicsHeader.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DBDCC5071D18875A00DD00C0 /* TopicsHeader.storyboard */; };
 		DBDCC50A1D188A7800DD00C0 /* TopicsHeaderCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBDCC5091D188A7800DD00C0 /* TopicsHeaderCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
@@ -91,6 +95,10 @@
 		DB0FFBE11D05A9BB00DD4B94 /* AsyncOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsyncOperation.swift; sourceTree = "<group>"; };
 		DB0FFBE31D05AA6C00DD4B94 /* LandetAPIError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LandetAPIError.swift; sourceTree = "<group>"; };
 		DB2E698F1D217ACB00753FDE /* Topics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Topics.swift; sourceTree = "<group>"; };
+		DB2E69921D217F6E00753FDE /* SpinnerCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpinnerCollectionViewCell.swift; sourceTree = "<group>"; };
+		DB2E69931D217F6E00753FDE /* SpinnerCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SpinnerCollectionViewCell.xib; sourceTree = "<group>"; };
+		DB2E69971D21805100753FDE /* LandetCollectionViewStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LandetCollectionViewStyle.swift; sourceTree = "<group>"; };
+		DB2E69991D21810400753FDE /* TopicsHeaderCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TopicsHeaderCollectionViewCell.xib; sourceTree = "<group>"; };
 		DB36CDD61D05C15200B94422 /* APIOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIOperation.swift; sourceTree = "<group>"; };
 		DB36CDD91D062D1A00B94422 /* CreateEvent.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CreateEvent.storyboard; sourceTree = "<group>"; };
 		DB36CDDB1D062D2C00B94422 /* CreateEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateEventViewController.swift; sourceTree = "<group>"; };
@@ -135,7 +143,7 @@
 		DBD5D7E01D0E1B380053DC6A /* CommentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentCell.swift; sourceTree = "<group>"; };
 		DBD5D7E11D0E1B380053DC6A /* CommentCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommentCell.xib; sourceTree = "<group>"; };
 		DBD5D7E41D0E1FFC0053DC6A /* KeyboardObserver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardObserver.swift; sourceTree = "<group>"; };
-		DBDCC5051D18874400DD00C0 /* TopicsHeaderCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopicsHeaderCollectionViewController.swift; sourceTree = "<group>"; };
+		DBDCC5051D18874400DD00C0 /* TopicsHeaderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopicsHeaderViewController.swift; sourceTree = "<group>"; };
 		DBDCC5071D18875A00DD00C0 /* TopicsHeader.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TopicsHeader.storyboard; sourceTree = "<group>"; };
 		DBDCC5091D188A7800DD00C0 /* TopicsHeaderCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopicsHeaderCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -236,6 +244,26 @@
 				DB0FFBC41D049CF700DD4B94 /* Async.swift */,
 			);
 			name = Concurrency;
+			sourceTree = "<group>";
+		};
+		DB2E69911D217F2800753FDE /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				DBDCC5091D188A7800DD00C0 /* TopicsHeaderCollectionViewCell.swift */,
+				DB2E69991D21810400753FDE /* TopicsHeaderCollectionViewCell.xib */,
+				DB2E69921D217F6E00753FDE /* SpinnerCollectionViewCell.swift */,
+				DB2E69931D217F6E00753FDE /* SpinnerCollectionViewCell.xib */,
+			);
+			name = Cells;
+			sourceTree = "<group>";
+		};
+		DB2E69961D21804300753FDE /* Collection */ = {
+			isa = PBXGroup;
+			children = (
+				DB2E69911D217F2800753FDE /* Cells */,
+				DB2E69971D21805100753FDE /* LandetCollectionViewStyle.swift */,
+			);
+			name = Collection;
 			sourceTree = "<group>";
 		};
 		DB36CDD81D062D0600B94422 /* Create */ = {
@@ -359,6 +387,7 @@
 				DBD1F83F1D0460190035A7B4 /* Theme.swift */,
 				DBD1F8411D04601E0035A7B4 /* Colors.swift */,
 				DBD5D7D81D0E0FAB0053DC6A /* Table */,
+				DB2E69961D21804300753FDE /* Collection */,
 			);
 			name = Common;
 			sourceTree = "<group>";
@@ -376,8 +405,7 @@
 			isa = PBXGroup;
 			children = (
 				DBDCC5071D18875A00DD00C0 /* TopicsHeader.storyboard */,
-				DBDCC5051D18874400DD00C0 /* TopicsHeaderCollectionViewController.swift */,
-				DBDCC5091D188A7800DD00C0 /* TopicsHeaderCollectionViewCell.swift */,
+				DBDCC5051D18874400DD00C0 /* TopicsHeaderViewController.swift */,
 			);
 			name = "Topic header";
 			sourceTree = "<group>";
@@ -454,6 +482,7 @@
 				DBD1F8251D045B0D0035A7B4 /* LaunchScreen.storyboard in Resources */,
 				DBD1F8461D04688E0035A7B4 /* Topics.xcassets in Resources */,
 				DBD5D7DE1D0E13640053DC6A /* CommentsHeaderView.xib in Resources */,
+				DB2E69951D217F6E00753FDE /* SpinnerCollectionViewCell.xib in Resources */,
 				DBD1F8221D045B0D0035A7B4 /* Common.xcassets in Resources */,
 				DBD1F8371D045C580035A7B4 /* Map.storyboard in Resources */,
 				DB36CDDA1D062D1A00B94422 /* CreateEvent.storyboard in Resources */,
@@ -464,6 +493,7 @@
 				DB0FFBD81D04C34400DD4B94 /* Events.xcassets in Resources */,
 				DBA9B4121D11BD5A00DB6EBB /* SpinnerCell.xib in Resources */,
 				DBD1F8351D045C520035A7B4 /* Topics.storyboard in Resources */,
+				DB2E699A1D21810400753FDE /* TopicsHeaderCollectionViewCell.xib in Resources */,
 				DBD1F8201D045B0D0035A7B4 /* AppNavigation.storyboard in Resources */,
 				DB36CDE01D06306500B94422 /* Auth.storyboard in Resources */,
 			);
@@ -496,14 +526,16 @@
 				DB0FFBCA1D04A53200DD4B94 /* Users.swift in Sources */,
 				DBDCC50A1D188A7800DD00C0 /* TopicsHeaderCollectionViewCell.swift in Sources */,
 				DBD1F83B1D045F020035A7B4 /* TopicsViewController.swift in Sources */,
-				DBDCC5061D18874400DD00C0 /* TopicsHeaderCollectionViewController.swift in Sources */,
+				DBDCC5061D18874400DD00C0 /* TopicsHeaderViewController.swift in Sources */,
 				DBD5D7DA1D0E0FB90053DC6A /* LandetTableViewStyle.swift in Sources */,
 				DBB38A341D0DB59900BEE506 /* EventDetailsTableViewController.swift in Sources */,
 				DBD5D7E21D0E1B380053DC6A /* CommentCell.swift in Sources */,
 				DB36CDDC1D062D2C00B94422 /* CreateEventViewController.swift in Sources */,
 				DB0FFBE21D05A9BB00DD4B94 /* AsyncOperation.swift in Sources */,
 				DB0FFBE41D05AA6C00DD4B94 /* LandetAPIError.swift in Sources */,
+				DB2E69981D21805100753FDE /* LandetCollectionViewStyle.swift in Sources */,
 				DB2E69901D217ACB00753FDE /* Topics.swift in Sources */,
+				DB2E69941D217F6E00753FDE /* SpinnerCollectionViewCell.swift in Sources */,
 				DBD5D7D61D0E0F6A0053DC6A /* EventSummaryCell.swift in Sources */,
 				DBD5D7DF1D0E13640053DC6A /* CommentsHeaderView.swift in Sources */,
 				DBD1F8191D045B0D0035A7B4 /* AppDelegate.swift in Sources */,

@@ -4,7 +4,7 @@
 
 import UIKit
 
-enum LandetCellIdentifier: String {
+enum LandetTableCellIdentifier: String {
     case EventSummary = "EventSummaryCell"
     case Comment = "CommentCell"
     case TextField = "TextFieldCell"
@@ -13,7 +13,7 @@ enum LandetCellIdentifier: String {
 
 class LandetTableViewStyle {
 
-    static func setup(tableView: UITableView, cells: [LandetCellIdentifier]) {
+    static func setup(tableView: UITableView, cells: [LandetTableCellIdentifier]) {
         tableView.backgroundColor = Colors.black
         tableView.separatorColor = Colors.red
 
@@ -34,7 +34,7 @@ class LandetTableViewStyle {
 
 extension UITableView {
 
-    func dequeueLandetCell<T: UITableViewCell>(identifier: LandetCellIdentifier, forIndexPath indexPath: NSIndexPath) -> T  {
+    func dequeueLandetCell<T: UITableViewCell>(identifier: LandetTableCellIdentifier, forIndexPath indexPath: NSIndexPath) -> T  {
         return self.dequeueReusableCellWithIdentifier(identifier.rawValue, forIndexPath: indexPath) as! T
     }
 }
