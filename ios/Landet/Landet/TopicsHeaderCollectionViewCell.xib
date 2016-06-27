@@ -52,6 +52,9 @@
                 <constraint firstItem="Ib8-Gg-OZn" firstAttribute="centerX" secondItem="bRu-zS-BaU" secondAttribute="centerX" id="UCg-jW-RHg"/>
                 <constraint firstItem="imz-m7-RbW" firstAttribute="centerY" secondItem="bRu-zS-BaU" secondAttribute="centerY" id="q85-XL-xaz"/>
             </constraints>
+            <connections>
+                <outlet property="titleLabel" destination="Ib8-Gg-OZn" id="JBC-4T-8sC"/>
+            </connections>
         </collectionViewCell>
     </objects>
 </document>
