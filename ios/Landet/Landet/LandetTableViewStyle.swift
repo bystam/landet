@@ -15,7 +15,7 @@ class LandetTableViewStyle {
 
     static func setup(tableView: UITableView, cells: [LandetTableCellIdentifier]) {
         tableView.backgroundColor = Colors.black
-        tableView.separatorColor = Colors.red
+        tableView.separatorColor = Colors.gray
 
         if tableView.style == .Grouped {
             // avoid the 35pt top and bottom margin in grouped table views

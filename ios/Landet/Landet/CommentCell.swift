@@ -17,7 +17,13 @@ class CommentCell: UITableViewCell {
     @IBOutlet weak var timestampLabel: UILabel!
     @IBOutlet weak var commentLabel: UILabel!
 
-    func configure(comment comment: EventComment) {
+    func configure(eventComment comment: EventComment) {
+        userLabel.text = comment.author.name
+        timestampLabel.text = formatter.stringFromDate(comment.timestamp)
+        commentLabel.text = comment.text
+    }
+
+    func configure(topicComment comment: TopicComment) {
         userLabel.text = comment.author.name
         timestampLabel.text = formatter.stringFromDate(comment.timestamp)
         commentLabel.text = comment.text

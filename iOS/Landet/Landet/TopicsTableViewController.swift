@@ -13,8 +13,16 @@ class TopicsTableViewController: UITableViewController {
 
     weak var scrollDelegate: TopicsTableViewControllerScrollDelegate?
 
+    var comments = [TopicComment]() {
+        didSet {
+            tableView.reloadData()
+        }
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        LandetTableViewStyle.setup(tableView, cells: [.Comment])
     }
 }
 
@@ -32,13 +40,12 @@ extension TopicsTableViewController {
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 15
+        return comments.count
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = UITableViewCell()
-        cell.backgroundColor = UIColor.clearColor()
-        cell.contentView.backgroundColor = UIColor.clearColor()
+        let cell: CommentCell = tableView.dequeueLandetCell(.Comment, forIndexPath: indexPath)
+        cell.configure(topicComment: comments[indexPath.row])
         return cell
     }
 

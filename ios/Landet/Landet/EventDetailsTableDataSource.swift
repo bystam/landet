@@ -34,7 +34,7 @@ class EventDetailsTableDataSource: NSObject, UITableViewDataSource {
         }
         else if indexPath.section == 1  {
             let cell: CommentCell = tableView.dequeueLandetCell(.Comment, forIndexPath: indexPath)
-            cell.configure(comment: comments![indexPath.row])
+            cell.configure(eventComment: comments![indexPath.row])
             return cell
         }
         else if indexPath.section == 2 {

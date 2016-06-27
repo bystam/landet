@@ -52,7 +52,15 @@ extension TopicsViewController: UITextFieldDelegate {
 
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         guard let text = textField.text where !text.isEmpty else { return false }
+        postComment(text)
         return true
+    }
+
+    private func postComment(comment: String) {
+        guard let topic = headerViewController.currentTopic else { return }
+        TopicAPI.shared.post(comment: comment, toTopic: topic) { (error) in
+            self.loadCommentsForCurrentTopic()
+        }
     }
 
 }
@@ -79,7 +87,21 @@ extension TopicsViewController {
                     self.headerViewController.topics = topics
                 }
             }
+
+            self.loadCommentsForCurrentTopic()
         }
     }
 
+    func loadCommentsForCurrentTopic() {
+        guard let topic = headerViewController.currentTopic else { return }
+
+        TopicAPI.shared.comments(forTopic: topic) { (comments, error) in
+            if let comments = comments {
+                Async.main {
+                    self.tableViewController.comments = comments
+                }
+            }
+        }
+
+    }
 }
