@@ -4,8 +4,17 @@
 
 import Foundation
 
-func APIClientFactory() -> HttpClient {
-    return HttpClient(host: "http://landet.herokuapp.com", responseMiddleware: LandetAPIErrorMiddleware())
+func APIClientFactory(withAuthHeader authHeader: Bool = false) -> HttpClient {
+    let client = HttpClient(host: "http://landet.herokuapp.com",
+                            responseMiddleware: LandetAPIErrorMiddleware())
+    if authHeader {
+        client.requestSetup = { request in
+            if let token = Session.currentSession?.token {
+                request.setValue("Basic \(token)", forHTTPHeaderField: "Authorization")
+            }
+        }
+    }
+    return client
 }
 
 private let apiQueue: NSOperationQueue = {
@@ -105,20 +114,83 @@ private class SessionAPI {
     }
 }
 
+class TopicAPI {
+
+    static let shared = TopicAPI()
+
+    let apiClient = APIClientFactory(withAuthHeader: true)
+
+    func loadAll(completion: (topics: [Topic]?, error: NSError?) -> ()) {
+
+        guard let _ = Session.currentSession else { return }
+
+        let operation = SessionAPI.shared.wrapWithAutomaticRefreshingSession(operation:  {
+            return self.apiClient.get("/topics")
+        })
+
+        operation.completionBlock = {
+            let res: ([Topic]?, NSError?) = APIUtil.parseAsArray(response: operation.apiResponse)
+            completion(topics: res.0, error: res.1)
+        }
+
+        apiQueue.addOperation(operation)
+    }
+
+    func create(title title: String, body bodyText: String, location: Location, time: NSDate,
+                      completion: (error: NSError?) -> ()) {
+
+        guard let _ = Session.currentSession else { return }
+
+        let body = [ "title" : title ]
+        let operation = SessionAPI.shared.wrapWithAutomaticRefreshingSession(operation:  {
+            return self.apiClient.post("/topics/create", body: body)
+        })
+
+        operation.completionBlock = {
+            completion(error: operation.apiResponse.error)
+        }
+
+        apiQueue.addOperation(operation)
+    }
+
+    func comments(forTopic topic: Topic, completion: (comments: [TopicComment]?, error: NSError?) -> ()) {
+        guard let _ = Session.currentSession else { return }
+
+        let operation = SessionAPI.shared.wrapWithAutomaticRefreshingSession(operation:  {
+            return self.apiClient.get("/topics/\(topic.id)/comments")
+        })
+
+        operation.completionBlock = {
+            let res: ([TopicComment]?, NSError?) = APIUtil.parseAsArray(response: operation.apiResponse)
+            completion(comments: res.0, error: res.1)
+        }
+
+        apiQueue.addOperation(operation)
+    }
+
+    func post(comment text: String, toTopic topic: Topic,
+                      completion: (error: NSError?) -> ()) {
+
+        guard let _ = Session.currentSession else { return }
+
+        let operation = SessionAPI.shared.wrapWithAutomaticRefreshingSession(operation:  {
+            return self.apiClient.post("/topics/\(topic.id)/comments/create", body: [ "text" : text ])
+        })
+
+        operation.completionBlock = {
+            completion(error: operation.apiResponse.error)
+        }
+        
+        apiQueue.addOperation(operation)
+    }
+}
+
+
 class EventAPI {
 
     static let shared = EventAPI()
 
-    let apiClient: APIClient = {
-        let client = APIClientFactory()
-        client.requestSetup = { request in
-            if let token = Session.currentSession?.token {
-                request.setValue("Basic \(token)", forHTTPHeaderField: "Authorization")
-            }
-        }
-        
-        return client
-    }()
+    let apiClient = APIClientFactory(withAuthHeader: true)
 
     func loadAll(completion: (events: [Event]?, error: NSError?) -> ()) {
 
