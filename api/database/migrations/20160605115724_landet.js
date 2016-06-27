@@ -59,7 +59,6 @@ exports.up = function(knex, Promise) {
         knex.schema.createTable('topics', function(table) {
             table.increments('id').primary();
             table.string('title');
-            table.string('body');
             table.timestamps();
 
             table.integer('author_id')
