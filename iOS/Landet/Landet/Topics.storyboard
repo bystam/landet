@@ -69,10 +69,7 @@
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Write a comment..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TDa-IT-pqk" customClass="LandetTextField" customModule="Landet" customModuleProvider="target">
                                         <rect key="frame" x="16" y="4" width="343" height="42"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                        <connections>
-                                            <action selector="beganEditingComment:" destination="MSb-0N-y0H" eventType="editingDidBegin" id="Rh8-mJ-sfI"/>
-                                        </connections>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="send"/>
                                     </textField>
                                 </subviews>
                                 <color key="backgroundColor" red="0.14509804546833038" green="0.12941177189350128" blue="0.12549020349979401" alpha="1" colorSpace="calibratedRGB"/>
@@ -114,6 +111,7 @@
                     <navigationItem key="navigationItem" title="Topics" id="VU8-Ew-DpC"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
+                        <outlet property="addCommentTextField" destination="TDa-IT-pqk" id="ed0-ro-lRK"/>
                         <outlet property="addCommentView" destination="Wf9-J3-FJu" id="NOU-Nt-3ey"/>
                         <outlet property="headerHeightConstraint" destination="RF2-Mz-vxT" id="jeh-m9-F3E"/>
                     </connections>

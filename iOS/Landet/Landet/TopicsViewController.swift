@@ -15,14 +15,15 @@ class TopicsViewController: UIViewController {
     @IBOutlet weak var headerHeightConstraint: NSLayoutConstraint!
 
     @IBOutlet weak var addCommentView: UIView!
+    @IBOutlet weak var addCommentTextField: LandetTextField!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         tableViewController.tableView.contentInset.top = kHeaderHeight + kCommentViewHeight
+        addCommentTextField.delegate = self
 
         loadAllTopics()
-        observeKeyboard()
     }
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -37,26 +38,23 @@ class TopicsViewController: UIViewController {
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
         return .LightContent
     }
-
-    private let keyboardObserver = KeyboardObserver()
-
-    private func observeKeyboard() {
-        keyboardObserver.keyboardWillShow = { [weak self] _ in
-            guard let strongSelf = self else { return }
-
-            var offsetY = (strongSelf.headerViewController.defaultHeight - strongSelf.headerViewController.minHeight)
-            offsetY -= strongSelf.tableViewController.tableView.contentInset.top
-            strongSelf.tableViewController.tableView.contentOffset = CGPoint(x: 0, y: offsetY)
-            strongSelf.view.layoutIfNeeded()
-        }
-    }
 }
 
-// actions
-extension TopicsViewController {
+extension TopicsViewController: UITextFieldDelegate {
 
-    @IBAction func beganEditingComment(sender: AnyObject) {
+    func textFieldDidBeginEditing(textField: UITextField) {
+        let tableView = tableViewController.tableView
+
+        var offsetY = (headerViewController.defaultHeight - headerViewController.minHeight)
+        offsetY -= tableView.contentInset.top
+        tableView.setContentOffset(CGPoint(x: 0, y: offsetY), animated: true)
     }
+
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        guard let text = textField.text where !text.isEmpty else { return false }
+        return true
+    }
+
 }
 
 extension TopicsViewController: TopicsTableViewControllerScrollDelegate {
