@@ -421,12 +421,12 @@
         <attribute name="redirectauthorization" type="bool">0</attribute>
         <attribute name="method" type="string">POST</attribute>
         <attribute name="followredirects" type="bool">0</attribute>
-        <attribute name="body" type="string">[{"data":{"json":"{\\"title\\":\\"Fet fest 3\\",\\"body\\":\\"Vi festar h\\\\u00e5rdare om m\\\\u00f6jligt fast \\\\u00e4nnu mer\\"}"},"identifier":"com.luckymarmot.JSONDynamicValue"}]</attribute>
+        <attribute name="body" type="string">[{"data":{"json":"{\\"title\\":\\"Fet fest 3\\"\\/*,\\"body\\":\\"Vi festar h\\\\u00e5rdare om m\\\\u00f6jligt fast \\\\u00e4nnu mer\\"*\\/}"},"identifier":"com.luckymarmot.JSONDynamicValue"}]</attribute>
         <attribute name="order" type="int64">9</attribute>
         <attribute name="name" type="string">Topics</attribute>
         <relationship name="parent" type="0/1" destination="LMREQUESTTREEITEM"></relationship>
         <relationship name="children" type="0/0" destination="LMREQUESTTREEITEM"></relationship>
-        <relationship name="headers" type="0/0" destination="LMKEYVALUE" idrefs="z139 z138 z141"></relationship>
+        <relationship name="headers" type="0/0" destination="LMKEYVALUE" idrefs="z141 z139 z138"></relationship>
     </object>
     <object type="LMKEYVALUE" id="z141">
         <attribute name="value" type="string">application/json</attribute>
