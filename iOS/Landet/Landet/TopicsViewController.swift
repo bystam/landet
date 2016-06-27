@@ -22,6 +22,7 @@ class TopicsViewController: UIViewController {
         tableViewController.tableView.contentInset.top = kHeaderHeight + kCommentViewHeight
 
         loadAllTopics()
+        observeKeyboard()
     }
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -35,6 +36,26 @@ class TopicsViewController: UIViewController {
 
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
         return .LightContent
+    }
+
+    private let keyboardObserver = KeyboardObserver()
+
+    private func observeKeyboard() {
+        keyboardObserver.keyboardWillShow = { [weak self] _ in
+            guard let strongSelf = self else { return }
+
+            var offsetY = (strongSelf.headerViewController.defaultHeight - strongSelf.headerViewController.minHeight)
+            offsetY -= strongSelf.tableViewController.tableView.contentInset.top
+            strongSelf.tableViewController.tableView.contentOffset = CGPoint(x: 0, y: offsetY)
+            strongSelf.view.layoutIfNeeded()
+        }
+    }
+}
+
+// actions
+extension TopicsViewController {
+
+    @IBAction func beganEditingComment(sender: AnyObject) {
     }
 }
 

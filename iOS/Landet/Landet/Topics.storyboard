@@ -70,6 +70,9 @@
                                         <rect key="frame" x="16" y="4" width="343" height="42"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <action selector="beganEditingComment:" destination="MSb-0N-y0H" eventType="editingDidBegin" id="Rh8-mJ-sfI"/>
+                                        </connections>
                                     </textField>
                                 </subviews>
                                 <color key="backgroundColor" red="0.14509804546833038" green="0.12941177189350128" blue="0.12549020349979401" alpha="1" colorSpace="calibratedRGB"/>
@@ -103,8 +106,8 @@
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
-                                <exclude reference="oZd-iW-gIl"/>
                                 <exclude reference="k5Y-bC-osq"/>
+                                <exclude reference="oZd-iW-gIl"/>
                             </mask>
                         </variation>
                     </view>
