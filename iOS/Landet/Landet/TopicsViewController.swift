@@ -9,6 +9,8 @@ private let kCommentViewHeight: CGFloat = 50
 
 class TopicsViewController: UIViewController {
 
+    let topicsRepository = TopicsRepository()
+
     private var tableViewController: TopicsTableViewController!
 
     private var headerViewController: TopicsHeaderViewController!
@@ -23,15 +25,17 @@ class TopicsViewController: UIViewController {
         tableViewController.tableView.contentInset.top = kHeaderHeight + kCommentViewHeight
         addCommentTextField.delegate = self
 
-        loadAllTopics()
+        topicsRepository.load()
     }
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "embedTable" {
             tableViewController = segue.destinationViewController as! TopicsTableViewController
             tableViewController.scrollDelegate = self
+            tableViewController.topicsRepository = topicsRepository
         } else if segue.identifier == "embedHeader" {
             headerViewController = segue.destinationViewController as! TopicsHeaderViewController
+            headerViewController.topicsRepository = topicsRepository
         }
     }
 
@@ -57,12 +61,9 @@ extension TopicsViewController: UITextFieldDelegate {
     }
 
     private func postComment(comment: String) {
-        guard let topic = headerViewController.currentTopic else { return }
-        TopicAPI.shared.post(comment: comment, toTopic: topic) { (error) in
-            self.loadCommentsForCurrentTopic()
-        }
+        guard let topic = topicsRepository.currentTopic else { return }
+        topicsRepository.commentsRepository.post(comment: comment, toTopic: topic)
     }
-
 }
 
 extension TopicsViewController: TopicsTableViewControllerScrollDelegate {
@@ -75,33 +76,5 @@ extension TopicsViewController: TopicsTableViewControllerScrollDelegate {
 
         headerHeightConstraint.constant = headerHeight
         headerViewController.respondToHeight(headerHeight)
-    }
-}
-
-extension TopicsViewController {
-
-    func loadAllTopics() {
-        TopicAPI.shared.loadAll { (topics, error) in
-            Async.main {
-                if let topics = topics {
-                    self.headerViewController.topics = topics
-                }
-            }
-
-            self.loadCommentsForCurrentTopic()
-        }
-    }
-
-    func loadCommentsForCurrentTopic() {
-        guard let topic = headerViewController.currentTopic else { return }
-
-        TopicAPI.shared.comments(forTopic: topic) { (comments, error) in
-            if let comments = comments {
-                Async.main {
-                    self.tableViewController.comments = comments
-                }
-            }
-        }
-
     }
 }

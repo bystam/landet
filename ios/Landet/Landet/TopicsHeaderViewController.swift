@@ -20,18 +20,7 @@ class TopicsHeaderViewController: UIViewController {
     let minHeight: CGFloat = 60
     let itemWidth = UIScreen.mainScreen().bounds.width
 
-    var topics = [Topic]() {
-        didSet {
-            collectionView.reloadData()
-            currentTopicLabel.text = topics.first?.title
-        }
-    }
-    var currentTopic: Topic? {
-        let offsetMiddle = collectionView.contentOffset.x + itemWidth/2
-        let index = Int(offsetMiddle / itemWidth)
-        guard index >= 0 && index < topics.count else { return nil }
-        return topics[index]
-    }
+    var topicsRepository: TopicsRepository!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,6 +28,8 @@ class TopicsHeaderViewController: UIViewController {
 
         collectionView.dataSource = self
         collectionView.delegate = self
+
+        topicsRepository.delegate = self
     }
 }
 
@@ -53,6 +44,19 @@ extension TopicsHeaderViewController {
     }
 }
 
+extension TopicsHeaderViewController: TopicsRepositoryDelegate {
+
+    func repositoryLoadedTopics(repository: TopicsRepository) {
+        collectionView.reloadData()
+        repository.currentTopic = repository.topics.first
+
+    }
+
+    func repositoryChangedTopic(repository: TopicsRepository) {
+        currentTopicLabel.text = repository.currentTopic?.title
+    }
+}
+
 extension TopicsHeaderViewController: UICollectionViewDataSource {
 
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
@@ -60,17 +64,17 @@ extension TopicsHeaderViewController: UICollectionViewDataSource {
     }
 
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return topics.isEmpty ? 1 : topics.count
+        return topicsRepository.topics.isEmpty ? 1 : topicsRepository.topics.count
     }
 
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        if topics.isEmpty {
+        if topicsRepository.topics.isEmpty {
             let cell: SpinnerCollectionViewCell = collectionView.dequeueLandetCell(.Spinner, forIndexPath: indexPath)
             cell.spin()
             return cell
         }
         let cell: TopicsHeaderCollectionViewCell = collectionView.dequeueLandetCell(.TopicHeader, forIndexPath: indexPath)
-        cell.configure(topic: topics[indexPath.item])
+        cell.configure(topic: topicsRepository.topics[indexPath.item])
         return cell
     }
 }
@@ -79,6 +83,10 @@ extension TopicsHeaderViewController: UICollectionViewDataSource {
 extension TopicsHeaderViewController: UICollectionViewDelegate {
 
     func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
-        currentTopicLabel.text = currentTopic?.title
+        let offsetMiddle = collectionView.contentOffset.x + itemWidth/2
+        let index = Int(offsetMiddle / itemWidth)
+        guard index >= 0 && index < topicsRepository.topics.count else { return }
+
+        topicsRepository.currentTopic = topicsRepository.topics[index]
     }
 }

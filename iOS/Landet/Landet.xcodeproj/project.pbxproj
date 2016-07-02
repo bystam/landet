@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DB057AFE1D28698300A1E08A /* TopicsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB057AFD1D28698300A1E08A /* TopicsRepository.swift */; };
 		DB0FFBBC1D046FA800DD4B94 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB0FFBBB1D046FA800DD4B94 /* Session.swift */; };
 		DB0FFBBE1D04719200DD4B94 /* LandetAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB0FFBBD1D04719200DD4B94 /* LandetAPI.swift */; };
 		DB0FFBC01D04736B00DD4B94 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB0FFBBF1D04736B00DD4B94 /* APIClient.swift */; };
@@ -77,6 +78,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		DB057AFD1D28698300A1E08A /* TopicsRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopicsRepository.swift; sourceTree = "<group>"; };
 		DB0FFBBB1D046FA800DD4B94 /* Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		DB0FFBBD1D04719200DD4B94 /* LandetAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LandetAPI.swift; sourceTree = "<group>"; };
 		DB0FFBBF1D04736B00DD4B94 /* APIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
@@ -364,6 +366,7 @@
 				DBD1F8451D04688E0035A7B4 /* Topics.xcassets */,
 				DBD1F8341D045C520035A7B4 /* Topics.storyboard */,
 				DBD1F83A1D045F020035A7B4 /* TopicsViewController.swift */,
+				DB057AFD1D28698300A1E08A /* TopicsRepository.swift */,
 				DBDCC5041D1886FB00DD00C0 /* Topic table */,
 				DBDCC5031D1886F200DD00C0 /* Topic header */,
 			);
@@ -525,6 +528,7 @@
 				DB0FFBC51D049CF700DD4B94 /* Async.swift in Sources */,
 				DB0FFBCA1D04A53200DD4B94 /* Users.swift in Sources */,
 				DBDCC50A1D188A7800DD00C0 /* TopicsHeaderCollectionViewCell.swift in Sources */,
+				DB057AFE1D28698300A1E08A /* TopicsRepository.swift in Sources */,
 				DBD1F83B1D045F020035A7B4 /* TopicsViewController.swift in Sources */,
 				DBDCC5061D18874400DD00C0 /* TopicsHeaderViewController.swift in Sources */,
 				DBD5D7DA1D0E0FB90053DC6A /* LandetTableViewStyle.swift in Sources */,

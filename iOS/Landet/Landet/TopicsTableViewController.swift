@@ -13,16 +13,26 @@ class TopicsTableViewController: UITableViewController {
 
     weak var scrollDelegate: TopicsTableViewControllerScrollDelegate?
 
-    var comments = [TopicComment]() {
-        didSet {
-            tableView.reloadData()
-        }
+    var topicsRepository: TopicsRepository!
+
+    private var comments: [TopicComment] {
+        guard let topic = topicsRepository.currentTopic else { return [] }
+        return topicsRepository.commentsRepository.comments[topic.id] ?? []
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         LandetTableViewStyle.setup(tableView, cells: [.Comment])
+
+        topicsRepository.commentsRepository.delegate = self
+    }
+}
+
+extension TopicsTableViewController: TopicCommentsRepositoryDelegate {
+
+    func repositoryLoadedComments(repository: TopicCommentsRepository) {
+        tableView.reloadData()
     }
 }
 
