@@ -41,10 +41,10 @@
                         <viewControllerLayoutGuide type="bottom" id="7Gx-Dc-nJp"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="rOv-aC-zFV">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="umA-0z-xW6">
+                            <containerView opaque="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="umA-0z-xW6">
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <connections>
                                     <segue destination="civ-To-oMR" kind="embed" id="06g-0U-d5T"/>
@@ -59,6 +59,7 @@
                             <constraint firstAttribute="trailing" secondItem="umA-0z-xW6" secondAttribute="trailing" id="icr-XZ-9PX"/>
                         </constraints>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <navigationItem key="navigationItem" title="Events" id="elZ-mb-LKa">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="qQt-SG-jTr">
                             <connections>

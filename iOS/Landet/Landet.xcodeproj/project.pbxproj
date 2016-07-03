@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		DB057AFE1D28698300A1E08A /* TopicsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB057AFD1D28698300A1E08A /* TopicsRepository.swift */; };
+		DB057B011D29656000A1E08A /* ImageHeader.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DB057B001D29656000A1E08A /* ImageHeader.storyboard */; };
+		DB057B031D29657400A1E08A /* ImageHeaderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB057B021D29657400A1E08A /* ImageHeaderViewController.swift */; };
 		DB0FFBBC1D046FA800DD4B94 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB0FFBBB1D046FA800DD4B94 /* Session.swift */; };
 		DB0FFBBE1D04719200DD4B94 /* LandetAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB0FFBBD1D04719200DD4B94 /* LandetAPI.swift */; };
 		DB0FFBC01D04736B00DD4B94 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB0FFBBF1D04736B00DD4B94 /* APIClient.swift */; };
@@ -79,6 +81,8 @@
 
 /* Begin PBXFileReference section */
 		DB057AFD1D28698300A1E08A /* TopicsRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopicsRepository.swift; sourceTree = "<group>"; };
+		DB057B001D29656000A1E08A /* ImageHeader.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ImageHeader.storyboard; sourceTree = "<group>"; };
+		DB057B021D29657400A1E08A /* ImageHeaderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageHeaderViewController.swift; sourceTree = "<group>"; };
 		DB0FFBBB1D046FA800DD4B94 /* Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		DB0FFBBD1D04719200DD4B94 /* LandetAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LandetAPI.swift; sourceTree = "<group>"; };
 		DB0FFBBF1D04736B00DD4B94 /* APIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
@@ -161,6 +165,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DB057AFF1D29655100A1E08A /* Image */ = {
+			isa = PBXGroup;
+			children = (
+				DB057B001D29656000A1E08A /* ImageHeader.storyboard */,
+				DB057B021D29657400A1E08A /* ImageHeaderViewController.swift */,
+			);
+			name = Image;
+			sourceTree = "<group>";
+		};
 		DB0FFBBA1D046F9A00DD4B94 /* API */ = {
 			isa = PBXGroup;
 			children = (
@@ -389,6 +402,7 @@
 				DBD1F8211D045B0D0035A7B4 /* Common.xcassets */,
 				DBD1F83F1D0460190035A7B4 /* Theme.swift */,
 				DBD1F8411D04601E0035A7B4 /* Colors.swift */,
+				DB057AFF1D29655100A1E08A /* Image */,
 				DBD5D7D81D0E0FAB0053DC6A /* Table */,
 				DB2E69961D21804300753FDE /* Collection */,
 			);
@@ -484,6 +498,7 @@
 				DBD1F8441D0468880035A7B4 /* Map.xcassets in Resources */,
 				DBD1F8251D045B0D0035A7B4 /* LaunchScreen.storyboard in Resources */,
 				DBD1F8461D04688E0035A7B4 /* Topics.xcassets in Resources */,
+				DB057B011D29656000A1E08A /* ImageHeader.storyboard in Resources */,
 				DBD5D7DE1D0E13640053DC6A /* CommentsHeaderView.xib in Resources */,
 				DB2E69951D217F6E00753FDE /* SpinnerCollectionViewCell.xib in Resources */,
 				DBD1F8221D045B0D0035A7B4 /* Common.xcassets in Resources */,
@@ -549,6 +564,7 @@
 				DB0FFBC21D04983700DD4B94 /* HttpStatusCodes.swift in Sources */,
 				DBA9B40D1D11B9CD00DB6EBB /* TextFieldCell.swift in Sources */,
 				DBB38A361D0DB5AF00BEE506 /* EventDetailsTableDataSource.swift in Sources */,
+				DB057B031D29657400A1E08A /* ImageHeaderViewController.swift in Sources */,
 				DBD1F8391D045EFA0035A7B4 /* MapViewController.swift in Sources */,
 				DBD1F83D1D045F5C0035A7B4 /* TopicsTableViewController.swift in Sources */,
 				DBB38A321D0DB58A00BEE506 /* EventDetailsViewController.swift in Sources */,

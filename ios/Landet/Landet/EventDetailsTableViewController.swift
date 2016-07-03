@@ -4,10 +4,16 @@
 
 import UIKit
 
+protocol EventDetailsTableViewControllerDelegate: class {
+    func tableViewController(tableViewController: EventDetailsTableViewController, didScrollToOffset offset: CGPoint)
+}
+
 class EventDetailsTableViewController: UITableViewController {
 
     var event: Event!
     private var dataSource: EventDetailsTableDataSource!
+
+    weak var delegate: EventDetailsTableViewControllerDelegate?
 
     var comments: [EventComment]? {
         didSet(oldComments) {
@@ -52,6 +58,13 @@ class EventDetailsTableViewController: UITableViewController {
                 completion?()
             }
         }
+    }
+}
+
+extension EventDetailsTableViewController { // UIScrollViewDelegate
+
+    override func scrollViewDidScroll(scrollView: UIScrollView) {
+        delegate?.tableViewController(self, didScrollToOffset: scrollView.contentOffset)
     }
 }
 

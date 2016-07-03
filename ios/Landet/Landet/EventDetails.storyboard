@@ -8,7 +8,7 @@
         <!--Event Details View Controller-->
         <scene sceneID="aNl-Iy-ZKQ">
             <objects>
-                <viewController id="9wg-mg-28d" customClass="EventDetailsViewController" customModule="Landet" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController extendedLayoutIncludesOpaqueBars="YES" automaticallyAdjustsScrollViewInsets="NO" id="9wg-mg-28d" customClass="EventDetailsViewController" customModule="Landet" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="AZF-FC-v9u"/>
                         <viewControllerLayoutGuide type="bottom" id="w64-Km-dnj"/>
@@ -18,21 +18,37 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HtI-cw-uV3">
-                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <connections>
                                     <segue destination="eaZ-g3-Qtd" kind="embed" identifier="embedTable" id="sOf-aK-eFy"/>
+                                </connections>
+                            </containerView>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FzP-1p-Pl8">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="250"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="250" id="SwM-AL-aCE"/>
+                                </constraints>
+                                <connections>
+                                    <segue destination="Xk2-Cx-o3U" kind="embed" identifier="embedHeader" id="THB-IR-RwF"/>
                                 </connections>
                             </containerView>
                         </subviews>
                         <color key="backgroundColor" red="0.14509804546833038" green="0.12941177189350128" blue="0.12549020349979401" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="HtI-cw-uV3" firstAttribute="top" secondItem="AZF-FC-v9u" secondAttribute="bottom" id="69d-GE-Gic"/>
+                            <constraint firstItem="FzP-1p-Pl8" firstAttribute="leading" secondItem="lcQ-fW-UKZ" secondAttribute="leading" id="5Df-Kn-Pr4"/>
+                            <constraint firstAttribute="trailing" secondItem="FzP-1p-Pl8" secondAttribute="trailing" id="60F-Nb-DMJ"/>
+                            <constraint firstItem="FzP-1p-Pl8" firstAttribute="top" secondItem="lcQ-fW-UKZ" secondAttribute="top" id="KTM-JZ-1Gq"/>
                             <constraint firstItem="HtI-cw-uV3" firstAttribute="leading" secondItem="lcQ-fW-UKZ" secondAttribute="leading" id="XcG-fb-1h9"/>
                             <constraint firstItem="w64-Km-dnj" firstAttribute="top" secondItem="HtI-cw-uV3" secondAttribute="bottom" id="fNK-wk-Xp8"/>
                             <constraint firstAttribute="trailing" secondItem="HtI-cw-uV3" secondAttribute="trailing" id="v9Q-Hm-WvV"/>
+                            <constraint firstItem="HtI-cw-uV3" firstAttribute="top" secondItem="lcQ-fW-UKZ" secondAttribute="top" id="vcq-m4-01L"/>
                         </constraints>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout" top="YES"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="headerViewHeight" destination="SwM-AL-aCE" id="pky-Mb-DqX"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1NP-nf-y3B" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -43,7 +59,7 @@
             <objects>
                 <tableViewController id="eaZ-g3-Qtd" customClass="EventDetailsTableViewController" customModule="Landet" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="prototypes" style="grouped" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="Tfm-Py-vvV">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <connections>
@@ -51,6 +67,7 @@
                             <outlet property="delegate" destination="eaZ-g3-Qtd" id="fXJ-Uq-Qt9"/>
                         </connections>
                     </tableView>
+                    <extendedEdge key="edgesForExtendedLayout" top="YES"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ad8-Yj-UQS" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" id="NAz-F9-iEO">
@@ -61,6 +78,14 @@
                 </textField>
             </objects>
             <point key="canvasLocation" x="732.5" y="376.5"/>
+        </scene>
+        <!--ImageHeader-->
+        <scene sceneID="X3h-8P-J5K">
+            <objects>
+                <viewControllerPlaceholder storyboardName="ImageHeader" id="Xk2-Cx-o3U" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dIi-8M-a0Y" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="244.5" y="794"/>
         </scene>
     </scenes>
 </document>
