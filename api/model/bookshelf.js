@@ -14,6 +14,8 @@ if (db === 'heroku_dev') {
 const knex = require('knex')(knexConfig);
 const bookshelf = require('bookshelf')(knex);
 
+bookshelf.plugin('visibility');
+
 knex.migrate.latest({
   directory: './database/migrations'
 });

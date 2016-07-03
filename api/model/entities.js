@@ -5,16 +5,9 @@ const bookshelf = require('./bookshelf').bookshelf;
 const User = bookshelf.Model.extend({
   tableName: 'users',
   hasTimestamps: true,
+  hidden: ['hashedpw', 'created_at', 'updated_at'],
   sessions: function() {
     return this.hasMany(Session, 'user_id');
-  },
-
-  serialize: function() {
-    return {
-      id: this.id,
-      username: this.get('username'),
-      name: this.get('name')
-    }
   }
 });
 
