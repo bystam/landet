@@ -7,6 +7,14 @@ const User = bookshelf.Model.extend({
   hasTimestamps: true,
   sessions: function() {
     return this.hasMany(Session, 'user_id');
+  },
+
+  serialize: function() {
+    return {
+      id: this.id,
+      username: this.get('username'),
+      name: this.get('name')
+    }
   }
 });
 
@@ -78,9 +86,6 @@ const Topic = bookshelf.Model.extend({
   author: function() {
     return this.belongsTo(User, 'author_id');
   },
-  top_comment: function() {
-    return this.hasOne(TopicComment).through(TopTopicComment, 'topic_id', 'comment_id');
-  },
   comments: function() {
     return this.hasMany(TopicComment, 'topic_id');
   }
@@ -105,17 +110,6 @@ const TopicComments = bookshelf.Collection.extend({
   model: TopicComment
 });
 
-const TopTopicComment = bookshelf.Model.extend({
-  tableName: 'top_topic_comments',
-  idAttribute: 'topic_id',
-  topic: function() {
-    return this.belongsTo(Topic, 'topic_id');
-  },
-  comment: function() {
-    return this.belongsTo(TopicComment, 'comment_id');
-  }
-});
-
 module.exports = {
   User,
   Users,
@@ -131,5 +125,4 @@ module.exports = {
   Topics,
   TopicComment,
   TopicComments,
-  TopTopicComment
 };

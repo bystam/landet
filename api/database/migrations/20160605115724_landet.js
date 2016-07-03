@@ -79,14 +79,6 @@ exports.up = function(knex, Promise) {
                .inTable('topics');
         }),
 
-        knex.schema.createTable('top_topic_comments', function(table) {
-          table.integer('topic_id').primary()
-               .references('id')
-               .inTable('topics');
-          table.integer('comment_id')
-               .references('id')
-               .inTable('topic_comments');
-        }),
     ]).then(function() {
       // create the default locations
       return knex('locations').insert([
@@ -109,7 +101,6 @@ exports.down = function(knex, Promise) {
     knex.schema.dropTable('sessions'),
     knex.schema.dropTable('event_comments'),
     knex.schema.dropTable('events'),
-    knex.schema.dropTable('top_topic_comments'),
     knex.schema.dropTable('topic_comments'),
     knex.schema.dropTable('topics'),
     knex.schema.dropTable('locations'),

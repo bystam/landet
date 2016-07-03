@@ -9,10 +9,7 @@ const EventComments = require('./entities').EventComments;
 function allEvents() {
   return Events.query('orderBy', 'event_time')
     .fetch({
-      withRelated: [
-        'location',
-        { 'creator': (q) => q.select(['id', 'username', 'name']) }
-      ]
+      withRelated: [ 'location', 'creator' ]
     });
 }
 
@@ -24,9 +21,7 @@ function allCommentsForEventWithId(eventId) {
   return Event.forge({ id: eventId }).comments()
   .query('orderBy', 'comment_time')
   .fetch({
-      withRelated: [
-        { 'author': (q) => q.select(['id', 'username', 'name']) }
-      ]
+      withRelated: [ 'author' ]
     });
 }
 

@@ -20,7 +20,6 @@ router.get('/', function(req, res) {
 router.post('/create', function(req, res) {
   let topicData = {
     title: req.body.title,
-    body: req.body.body,
     author_id: req.user.id
   };
 
