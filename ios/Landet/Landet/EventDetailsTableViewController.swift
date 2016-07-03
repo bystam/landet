@@ -86,13 +86,15 @@ extension EventDetailsTableViewController: TextFieldCellDelegate {
         cell.textField.resignFirstResponder()
         cell.lockWithSpinner()
 
-        EventAPI.shared.post(comment: text, toEvent: event) { (error) in
-            self.reloadComments({
-                cell.textField.text = nil
-                cell.unlock()
-            })
+        // dispatch to make sure keyboard is gone
+        Async.main(0.45) {
+            EventAPI.shared.post(comment: text, toEvent: self.event) { (error) in
+                self.reloadComments({
+                    cell.textField.text = nil
+                    cell.unlock()
+                })
+            }
         }
-
     }
 }
 
