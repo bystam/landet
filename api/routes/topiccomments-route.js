@@ -9,9 +9,14 @@ const errors = require('../util/errors');
 
 router.get('/', function(req, res) {
   let topicId = req.params.topicid;
-  return topics.allCommentsForTopicWithId(topicId).then(function(comments) {
+  let pagingData = {
+    before: req.query.pageBefore,
+    after: req.query.after
+  };
+
+  return topics.commentsForTopicId(topicId, pagingData).then(function(comments) {
     res.json(comments);
-  }).catch(errors.HttpHandler(res));;
+  }).catch(errors.HttpHandler(res));
 });
 
 router.post('/create', function(req, res) {

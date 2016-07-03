@@ -50,11 +50,17 @@ const Unauthorized = {
   InvalidRefreshToken: error(UnauthorizedCode, "LE-202", "Invalid refresh token")
 };
 
+const Topic = {
+  MaxOneCommentPagingAllowed: error(BadRequestCode, "LE-401",
+      "Can page using either after or beforePage but not both"),
+
+}
 
 module.exports = {
   LandetError,
   HttpHandler,
 
   User,
-  Unauthorized
+  Unauthorized,
+  Topic
 };
