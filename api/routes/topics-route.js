@@ -13,7 +13,7 @@ router.use('/:topicid/comments', comments);
 
 router.get('/', function(req, res) {
   topics.allTopics().then(function(topics) {
-    res.json(topics.toJSON({ omitPivot : true }));
+    res.json(topics);
   }).catch(errors.HttpHandler(res));;
 });
 

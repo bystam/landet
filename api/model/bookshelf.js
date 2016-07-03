@@ -3,7 +3,7 @@
 const knexConfigs = require('../database/knexfile');
 
 let knexConfig = null;
-const db = process.env.LANDET_DB
+const db = process.env.LANDET_DB;
 
 if (db === 'heroku_dev') {
   knexConfig = knexConfigs.heroku_dev;
