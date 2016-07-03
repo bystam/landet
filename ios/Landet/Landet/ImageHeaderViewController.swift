@@ -37,7 +37,10 @@ extension ImageHeaderViewController { // Image
 
             if let data = data where data.length > 0 {
                 let image = UIImage(data: data)
-                self?.presentImage(image)
+
+                Async.main {
+                    self?.presentImage(image)
+                }
             }
         }
 
