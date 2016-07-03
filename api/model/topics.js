@@ -19,7 +19,7 @@ function create(topicData) {
 
 function allCommentsForTopicWithId(topicId) {
   return Topic.forge({ id: topicId }).comments()
-              .query('orderBy', '-comment_time')
+              .query('orderBy', 'comment_time', 'DESC')
               .fetch({
                   withRelated: [ 'author' ]
                 });
