@@ -15,15 +15,13 @@ class TopicsTableViewController: UITableViewController {
 
     var topicsRepository: TopicsRepository!
 
-    private var comments: [TopicComment] {
-        guard let topic = topicsRepository.currentTopic else { return [] }
-        return topicsRepository.commentsRepository.comments[topic.id] ?? []
-    }
-
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        LandetTableViewStyle.setup(tableView, cells: [.Comment])
+        LandetTableViewStyle.setup(tableView, cells: [.Comment, .Spinner])
+
+        tableView.estimatedRowHeight = 62
+        tableView.rowHeight = UITableViewAutomaticDimension
 
         topicsRepository.commentsRepository.delegate = self
     }
@@ -33,7 +31,7 @@ extension TopicsTableViewController: TopicCommentsRepositoryDelegate {
 
     func repository(repository: TopicCommentsRepository, didChangeToTopic topic: Topic) {
         tableView.beginUpdates()
-        tableView.reloadSections(NSIndexSet(index: 0), withRowAnimation: .Fade)
+        tableView.reloadSections(NSIndexSet(indexesInRange: NSMakeRange(0, 2)), withRowAnimation: .Fade)
         tableView.endUpdates()
     }
 
@@ -41,6 +39,7 @@ extension TopicsTableViewController: TopicCommentsRepositoryDelegate {
         tableView.beginUpdates()
         let newCommentIndexPaths = range.map({ NSIndexPath(forRow: $0, inSection: 0) })
         tableView.insertRowsAtIndexPaths(newCommentIndexPaths, withRowAnimation: .Automatic)
+        tableView.reloadSections(NSIndexSet(index: 1), withRowAnimation: .Automatic)
         tableView.endUpdates()
 
     }
@@ -56,23 +55,37 @@ extension TopicsTableViewController { // UIScrollViewDelegate
     }
 }
 
-extension TopicsTableViewController { // UITableViewDataSource, UITableViewDelegate
+extension TopicsTableViewController { // UITableViewDataSource
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1
+        return 2
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return comments.count
+        if section == 1 { return topicsRepository.commentsRepository.canLoadMore ? 1 : 0 }
+        return topicsRepository.commentsRepository.comments.count
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        if indexPath.section == 1 {
+            let cell: SpinnerCell = tableView.dequeueLandetCell(.Spinner, forIndexPath: indexPath)
+            cell.spin()
+            cell.separatorInset = UIEdgeInsets(top: 0, left: view.bounds.width, bottom: 0, right: 0)
+            return cell
+        }
+
         let cell: CommentCell = tableView.dequeueLandetCell(.Comment, forIndexPath: indexPath)
-        cell.configure(topicComment: comments[indexPath.row])
+        cell.configure(topicComment: topicsRepository.commentsRepository.comments[indexPath.row])
         return cell
     }
 
-    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 60
+}
+
+extension TopicsTableViewController { // UITableViewDelegate
+
+    override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+        if indexPath.section == 1 {
+            topicsRepository.commentsRepository.loadNextPage()
+        }
     }
 }

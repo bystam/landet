@@ -42,4 +42,15 @@ class APIUtil {
         return (objects, error)
     }
 
+    static func parseArray<T: DictionaryInitializable>(json json: AnyObject, key: String) -> [T]? {
+        guard let json = json as? [String : AnyObject] else { return nil }
+        guard let array = json[key] as? [[String : AnyObject]] else { return nil }
+
+        return array.map(T.init)
+    }
+
+    static func parseBool(json json: AnyObject, key: String) -> Bool {
+        guard let json = json as? [String : AnyObject] else { return false }
+        return (json[key] as? Bool) ?? false
+    }
 }

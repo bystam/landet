@@ -154,7 +154,7 @@ class TopicAPI {
     }
 
     func comments(forTopic topic: Topic, before: NSDate?, orAfter after: NSDate?,
-                           completion: (comments: [TopicComment]?, error: NSError?) -> ()) {
+                           completion: (comments: [TopicComment]?, hasMore: Bool, error: NSError?) -> ()) {
         guard let _ = Session.currentSession else { return }
 
         var path = "/topics/\(topic.id)/comments"
@@ -170,8 +170,11 @@ class TopicAPI {
         })
 
         operation.completionBlock = {
-            let res: ([TopicComment]?, NSError?) = APIUtil.parseAsArray(response: operation.apiResponse)
-            completion(comments: res.0, error: res.1)
+            let body = operation.apiResponse.body ?? [:]
+            let comments: [TopicComment]? = APIUtil.parseArray(json: body, key: "comments")
+            let hasMore = APIUtil.parseBool(json: body, key: "hasMore")
+
+            completion(comments: comments, hasMore: hasMore, error: operation.apiResponse.error)
         }
 
         apiQueue.addOperation(operation)
