@@ -18,7 +18,7 @@ class Event: DictionaryInitializable {
         self.id = dictionary["id"] as! Int
         self.title = dictionary["title"] as! String
         self.body = dictionary["body"] as! String
-        self.time = NSDate.fromISOString(dictionary["event_time"] as! String)!
+        self.time = NSDate.fromUTCString(dictionary["event_time"] as! String)!
 
         self.creator = User(dictionary: dictionary["creator"] as! [String : AnyObject])
         self.location = Location(dictionary: dictionary["location"] as! [String : AnyObject])
@@ -37,7 +37,7 @@ class EventComment: DictionaryInitializable {
     required init(dictionary: [String : AnyObject]) {
         self.id = dictionary["id"] as! Int
         self.text = dictionary["text"] as! String
-        self.timestamp = NSDate.fromISOString(dictionary["comment_time"] as! String)!
+        self.timestamp = NSDate.fromUTCString(dictionary["comment_time"] as! String)!
 
         self.author = User(dictionary: dictionary["author"] as! [String : AnyObject])
     }

@@ -14,9 +14,7 @@ class TopicsHeaderViewController: UIViewController {
         }
     }
 
-    lazy var defaultHeight: CGFloat = {
-        return self.collectionView.bounds.height
-    }()
+    lazy var defaultHeight: CGFloat = { return self.collectionView.bounds.height }()
     let minHeight: CGFloat = 60
     let itemWidth = UIScreen.mainScreen().bounds.width
 

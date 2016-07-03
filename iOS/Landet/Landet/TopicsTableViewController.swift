@@ -31,19 +31,26 @@ class TopicsTableViewController: UITableViewController {
 
 extension TopicsTableViewController: TopicCommentsRepositoryDelegate {
 
+    func repository(repository: TopicCommentsRepository, loadedNewCommentsInRange range: Range<Int>) {
+        tableView.beginUpdates()
+        let newCommentIndexPaths = range.map({ NSIndexPath(forRow: $0, inSection: 0) })
+        tableView.insertRowsAtIndexPaths(newCommentIndexPaths, withRowAnimation: .Automatic)
+        tableView.endUpdates()
+
+    }
     func repositoryLoadedComments(repository: TopicCommentsRepository) {
         tableView.reloadData()
     }
 }
 
-extension TopicsTableViewController {
+extension TopicsTableViewController { // UIScrollViewDelegate
 
     override func scrollViewDidScroll(scrollView: UIScrollView) {
         scrollDelegate?.topicsTableViewController(self, didScrollToOffset: scrollView.contentOffset)
     }
 }
 
-extension TopicsTableViewController {
+extension TopicsTableViewController { // UITableViewDataSource, UITableViewDelegate
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1

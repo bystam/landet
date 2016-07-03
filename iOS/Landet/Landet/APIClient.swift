@@ -47,7 +47,7 @@ class HttpClient {
 
         operation.asyncTask = { (operationCompletion) in
 
-            print("------> \(request.HTTPMethod!) \(request.URL!.absoluteString) ")
+            print("---->>> \(request.HTTPMethod!) \(request.URL!.absoluteString) ")
 
             task = session.dataTaskWithRequest(request) { (data, response, error) in
 

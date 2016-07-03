@@ -31,7 +31,7 @@ class TopicComment: DictionaryInitializable {
     required init(dictionary: [String : AnyObject]) {
         self.id = dictionary["id"] as! Int
         self.text = dictionary["text"] as! String
-        self.timestamp = NSDate.fromISOString(dictionary["comment_time"] as! String)!
+        self.timestamp = NSDate.fromUTCString(dictionary["comment_time"] as! String)!
 
         self.author = User(dictionary: dictionary["author"] as! [String : AnyObject])
     }

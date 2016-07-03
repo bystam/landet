@@ -153,11 +153,20 @@ class TopicAPI {
         apiQueue.addOperation(operation)
     }
 
-    func comments(forTopic topic: Topic, completion: (comments: [TopicComment]?, error: NSError?) -> ()) {
+    func comments(forTopic topic: Topic, before: NSDate?, orAfter after: NSDate?,
+                           completion: (comments: [TopicComment]?, error: NSError?) -> ()) {
         guard let _ = Session.currentSession else { return }
 
+        var path = "/topics/\(topic.id)/comments"
+        if let before = before {
+            path += "?pageBefore=\(before.UTCString)"
+        }
+        else if let after = after {
+            path += "?after=\(after.UTCString)"
+        }
+
         let operation = SessionAPI.shared.wrapWithAutomaticRefreshingSession(operation:  {
-            return self.apiClient.get("/topics/\(topic.id)/comments")
+            return self.apiClient.get(path)
         })
 
         operation.completionBlock = {
@@ -217,7 +226,7 @@ class EventAPI {
             "title" : title,
             "body" : bodyText,
             "location_id" : location.id,
-            "event_time" : time.ISOString
+            "event_time" : time.UTCString
         ]
         let operation = SessionAPI.shared.wrapWithAutomaticRefreshingSession(operation:  {
             return self.apiClient.post("/events/create", body: body as! [String : AnyObject])
