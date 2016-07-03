@@ -36,7 +36,13 @@ class TopicsViewController: UIViewController {
         tableViewController.tableView.tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: 1, height: kHeaderHeight + kCommentViewHeight))
         addCommentTextField.delegate = self
 
+        observeKeybaord()
+
         topicsRepository.load()
+    }
+
+    override func viewDidDisappear(animated: Bool) {
+        addCommentTextField.resignFirstResponder()
     }
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -53,32 +59,52 @@ class TopicsViewController: UIViewController {
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
         return .LightContent
     }
+
+
+    // observe keyboard
+
+    let keyboardObserver = KeyboardObserver()
+    var showingKeyboard = false
+
+    private func observeKeybaord() {
+
+        var headerHeightBeforeShrink: CGFloat?
+
+        keyboardObserver.keyboardWillShow = { [weak self] _ in
+            guard let strongSelf = self else { return }
+            strongSelf.showingKeyboard = true
+
+            strongSelf.tableBlockingView?.alpha = 1.0
+
+            headerHeightBeforeShrink = strongSelf.headerViewController.view.bounds.height
+            let shrink = headerHeightBeforeShrink! - strongSelf.headerViewController.minHeight
+
+            if shrink > 0.0 {
+                strongSelf.headerHeightConstraint.constant = strongSelf.headerViewController.minHeight
+                strongSelf.headerViewController.respondToHeight(strongSelf.headerViewController.minHeight)
+                strongSelf.tableViewController.view.transform = CGAffineTransformMakeTranslation(0, -shrink)
+                strongSelf.view.layoutIfNeeded()
+            }
+        }
+
+        keyboardObserver.keyboardWillHide = { [weak self] in
+            guard let strongSelf = self else { return }
+            strongSelf.showingKeyboard = false
+
+            strongSelf.tableViewController.view.transform = CGAffineTransformIdentity
+            strongSelf.tableBlockingView?.alpha = 0.0
+
+            if let heightBefore = headerHeightBeforeShrink where heightBefore > 0 {
+                headerHeightBeforeShrink = nil
+                strongSelf.headerHeightConstraint.constant = heightBefore
+                strongSelf.headerViewController.respondToHeight(heightBefore)
+                strongSelf.view.layoutIfNeeded()
+            }
+        }
+    }
 }
 
 extension TopicsViewController: UITextFieldDelegate {
-
-    func textFieldDidBeginEditing(textField: UITextField) {
-        let tableView = tableViewController.tableView
-
-        let offsetY = (headerViewController.defaultHeight - headerViewController.minHeight)
-        tableView.setContentOffset(CGPoint(x: 0, y: offsetY), animated: true)
-
-        blockTable()
-    }
-
-    func textFieldDidEndEditing(textField: UITextField) {
-        unblockTable()
-
-        tableViewController.tableView.setContentOffset(CGPoint.zero, animated: true)
-    }
-
-    private func blockTable() {
-        tableBlockingView?.alpha = 1.0
-    }
-
-    private func unblockTable() {
-        tableBlockingView?.alpha = 0.0
-    }
 
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         guard let text = textField.text where !text.isEmpty else { return false }
@@ -94,6 +120,8 @@ extension TopicsViewController: TopicsTableViewControllerScrollDelegate {
 
     func topicsTableViewController(tableViewController: TopicsTableViewController,
                                    didScrollToOffset offset: CGPoint) {
+        guard !showingKeyboard else { return }
+
         let headerHeight = max(headerViewController.defaultHeight - offset.y,
                                headerViewController.minHeight)
 
