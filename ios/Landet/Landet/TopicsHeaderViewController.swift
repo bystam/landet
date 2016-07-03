@@ -28,6 +28,8 @@ class TopicsHeaderViewController: UIViewController {
         collectionView.delegate = self
 
         topicsRepository.delegate = self
+
+        currentTopicLabel.alpha = 0.0
     }
 }
 

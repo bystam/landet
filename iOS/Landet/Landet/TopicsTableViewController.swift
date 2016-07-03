@@ -31,6 +31,12 @@ class TopicsTableViewController: UITableViewController {
 
 extension TopicsTableViewController: TopicCommentsRepositoryDelegate {
 
+    func repository(repository: TopicCommentsRepository, didChangeToTopic topic: Topic) {
+        tableView.beginUpdates()
+        tableView.reloadSections(NSIndexSet(index: 0), withRowAnimation: .Fade)
+        tableView.endUpdates()
+    }
+
     func repository(repository: TopicCommentsRepository, loadedNewCommentsInRange range: Range<Int>) {
         tableView.beginUpdates()
         let newCommentIndexPaths = range.map({ NSIndexPath(forRow: $0, inSection: 0) })

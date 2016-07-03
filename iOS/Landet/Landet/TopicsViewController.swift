@@ -19,10 +19,21 @@ class TopicsViewController: UIViewController {
     @IBOutlet weak var addCommentView: UIView!
     @IBOutlet weak var addCommentTextField: LandetTextField!
 
+    private lazy var tableBlockingView: UIView? = {
+        let blockingView = UIView(frame: self.view.bounds)
+        blockingView.alpha = 0.0
+        blockingView.autoresizingMask = [.FlexibleHeight, .FlexibleWidth]
+
+        blockingView.addGestureRecognizer(UITapGestureRecognizer(target: self.addCommentTextField, action: #selector(resignFirstResponder)))
+
+        self.view.insertSubview(blockingView, aboveSubview: self.tableViewController.view.superview!)
+        return blockingView
+    }()
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        tableViewController.tableView.contentInset.top = kHeaderHeight + kCommentViewHeight
+        tableViewController.tableView.tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: 1, height: kHeaderHeight + kCommentViewHeight))
         addCommentTextField.delegate = self
 
         topicsRepository.load()
@@ -49,20 +60,33 @@ extension TopicsViewController: UITextFieldDelegate {
     func textFieldDidBeginEditing(textField: UITextField) {
         let tableView = tableViewController.tableView
 
-        var offsetY = (headerViewController.defaultHeight - headerViewController.minHeight)
-        offsetY -= tableView.contentInset.top
+        let offsetY = (headerViewController.defaultHeight - headerViewController.minHeight)
         tableView.setContentOffset(CGPoint(x: 0, y: offsetY), animated: true)
+
+        blockTable()
+    }
+
+    func textFieldDidEndEditing(textField: UITextField) {
+        unblockTable()
+
+        tableViewController.tableView.setContentOffset(CGPoint.zero, animated: true)
+    }
+
+    private func blockTable() {
+        tableBlockingView?.alpha = 1.0
+    }
+
+    private func unblockTable() {
+        tableBlockingView?.alpha = 0.0
     }
 
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         guard let text = textField.text where !text.isEmpty else { return false }
-        postComment(text)
-        return true
-    }
+        guard let topic = topicsRepository.currentTopic else { return false }
+        textField.text = nil
 
-    private func postComment(comment: String) {
-        guard let topic = topicsRepository.currentTopic else { return }
-        topicsRepository.commentsRepository.post(comment: comment, toTopic: topic)
+        topicsRepository.commentsRepository.post(comment: text, toTopic: topic)
+        return true
     }
 }
 
@@ -70,8 +94,7 @@ extension TopicsViewController: TopicsTableViewControllerScrollDelegate {
 
     func topicsTableViewController(tableViewController: TopicsTableViewController,
                                    didScrollToOffset offset: CGPoint) {
-        let offsetY = tableViewController.tableView.contentInset.top + offset.y
-        let headerHeight = max(headerViewController.defaultHeight - offsetY,
+        let headerHeight = max(headerViewController.defaultHeight - offset.y,
                                headerViewController.minHeight)
 
         headerHeightConstraint.constant = headerHeight

@@ -17,8 +17,11 @@ class TopicsRepository {
     var currentTopic: Topic? {
         didSet {
             guard let topic = currentTopic where topic !== oldValue else { return }
-            commentsRepository.loadIntitial(forTopic: topic)
+
             delegate?.repositoryChangedTopic(self)
+
+            commentsRepository.topic = topic
+            commentsRepository.loadNewComments()
         }
     }
 
@@ -43,6 +46,7 @@ class TopicsRepository {
 
 
 protocol TopicCommentsRepositoryDelegate: class {
+    func repository(repository: TopicCommentsRepository, didChangeToTopic topic: Topic)
     func repository(repository: TopicCommentsRepository, loadedNewCommentsInRange range: Range<Int>)
 }
 
@@ -51,24 +55,13 @@ class TopicCommentsRepository {
     weak var delegate: TopicCommentsRepositoryDelegate?
 
     private(set) var comments = [Int : [TopicComment]]()
-
-    func loadIntitial(forTopic topic: Topic) {
-        TopicAPI.shared.comments(forTopic: topic, before: nil, orAfter: nil) { [weak self] (comments, error) in
-            Async.main {
-                guard let strongSelf = self else { return }
-
-                if let e = error {
-                    print(e)
-                }
-                else if let comments = comments {
-                    strongSelf.comments[topic.id] = comments
-                    strongSelf.delegate?.repository(strongSelf, loadedNewCommentsInRange: (0..<comments.count))
-                }
-            }
+    private var topic: Topic! {
+        didSet {
+            delegate?.repository(self, didChangeToTopic: topic)
         }
     }
 
-    func loadNextPage(forTopic topic: Topic) {
+    func loadNextPage() {
 
         let before = comments[topic.id]?.last?.timestamp
 
@@ -80,17 +73,17 @@ class TopicCommentsRepository {
                     print(e)
                 }
                 else if let comments = comments {
-                    let oldCount = strongSelf.comments[topic.id]!.count
+                    let oldCount = strongSelf.comments[strongSelf.topic.id]!.count
                     let newCount = oldCount + comments.count
 
-                    strongSelf.comments[topic.id]?.appendContentsOf(comments)
+                    strongSelf.comments[strongSelf.topic.id]?.appendContentsOf(comments)
                     strongSelf.delegate?.repository(strongSelf, loadedNewCommentsInRange: (oldCount..<newCount))
                 }
             }
         }
     }
 
-    func loadNewComments(forTopic topic: Topic) {
+    func loadNewComments() {
 
         let after = comments[topic.id]?.first?.timestamp
 
@@ -102,7 +95,10 @@ class TopicCommentsRepository {
                     print(e)
                 }
                 else if let comments = comments {
-                    strongSelf.comments[topic.id]?.insertContentsOf(comments, at: 0)
+                    var existing = strongSelf.comments[strongSelf.topic.id] ?? []
+                    existing.insertContentsOf(comments, at: 0)
+
+                    strongSelf.comments[strongSelf.topic.id] = existing
                     strongSelf.delegate?.repository(strongSelf, loadedNewCommentsInRange: (0..<comments.count))
                 }
             }
@@ -111,7 +107,7 @@ class TopicCommentsRepository {
 
     func post(comment comment: String, toTopic topic: Topic) {
         TopicAPI.shared.post(comment: comment, toTopic: topic) { [weak self] (error) in
-            self?.loadNewComments(forTopic: topic)
+            self?.loadNewComments()
         }
     }
 }
