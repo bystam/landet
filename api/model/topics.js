@@ -24,16 +24,18 @@ function commentsForTopicId(topicId, pagingData) {
     throw errors.Topic.MaxOneCommentPagingAllowed();
   }
 
+  const kPageSize = 10
+
   let query = function(q) {
     q.orderBy('comment_time', 'DESC')
 
     if (pagingData.before) {
       q.where('comment_time', '<', pagingData.before);
-      q.limit(10);
+      q.limit(kPageSize);
     } else if (pagingData.after) {
       q.where('comment_time', '>', pagingData.after);
     } else {
-      q.limit(10);
+      q.limit(kPageSize);
     }
   }
 
@@ -41,6 +43,11 @@ function commentsForTopicId(topicId, pagingData) {
               .query(query)
               .fetch({
                   withRelated: [ 'author' ]
+                }).then(function(comments) {
+                  return {
+                    comments: comments,
+                    hasMore: comments.length == kPageSize
+                  }
                 });
 }
 
