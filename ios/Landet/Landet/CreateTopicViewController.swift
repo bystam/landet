@@ -76,6 +76,7 @@ private class CreateTopicAnimator: NSObject, UIViewControllerAnimatedTransitioni
             let createTopicVC = toVC as! CreateTopicViewController
             fromVC.view.userInteractionEnabled = false
 
+            fromVC.beginAppearanceTransition(false, animated: true)
             createTopicVC.beginAppearanceTransition(true, animated: true)
 
             toVC.view.frame = fromVC.view.frame
@@ -101,13 +102,21 @@ private class CreateTopicAnimator: NSObject, UIViewControllerAnimatedTransitioni
                 createTopicVC.circleView.transform = CGAffineTransformIdentity
             }, completion: { _ in
                 transitionContext.completeTransition(!transitionContext.transitionWasCancelled())
-                createTopicVC.endAppearanceTransition()
+                toVC.endAppearanceTransition()
+                fromVC.endAppearanceTransition()
             })
 
         } else {
 
+            fromVC.beginAppearanceTransition(false, animated: false)
+            toVC.beginAppearanceTransition(true, animated: false)
+
             toVC.view.userInteractionEnabled = true
             transitionContext.completeTransition(!transitionContext.transitionWasCancelled())
+
+            toVC.endAppearanceTransition()
+            fromVC.endAppearanceTransition()
+
         }
     }
 }

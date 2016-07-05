@@ -19,6 +19,9 @@ class TopicsViewController: UIViewController {
     @IBOutlet weak var addCommentView: UIView!
     @IBOutlet weak var addCommentTextField: LandetTextField!
 
+    let keyboardObserver = KeyboardObserver()
+    var showingKeyboard = false
+
     private lazy var tableBlockingView: UIView? = {
         let blockingView = UIView(frame: self.view.bounds)
         blockingView.alpha = 0.0
@@ -36,12 +39,23 @@ class TopicsViewController: UIViewController {
         tableViewController.tableView.tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: 1, height: kHeaderHeight + kCommentViewHeight))
         addCommentTextField.delegate = self
 
-        observeKeybaord()
+        observeKeyboard()
 
         topicsRepository.load()
     }
 
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        keyboardObserver.enabled = true
+    }
+
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        keyboardObserver.enabled = false
+    }
+
     override func viewDidDisappear(animated: Bool) {
+        super.viewDidDisappear(animated)
         addCommentTextField.resignFirstResponder()
     }
 
@@ -63,10 +77,7 @@ class TopicsViewController: UIViewController {
 
     // observe keyboard
 
-    let keyboardObserver = KeyboardObserver()
-    var showingKeyboard = false
-
-    private func observeKeybaord() {
+    private func observeKeyboard() {
 
         var headerHeightBeforeShrink: CGFloat?
 
@@ -101,6 +112,8 @@ class TopicsViewController: UIViewController {
                 strongSelf.view.layoutIfNeeded()
             }
         }
+
+        keyboardObserver.enabled = false
     }
 }
 
