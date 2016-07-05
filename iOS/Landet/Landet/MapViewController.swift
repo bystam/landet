@@ -33,6 +33,9 @@ class MapViewController: UIViewController {
         scrollView.minimumZoomScale = view.bounds.size.height / image.size.height
         scrollView.maximumZoomScale = 2.0
 
+        scrollView.contentOffset = CGPoint(x: imageView.center.x - scrollView.bounds.width/2,
+                                           y: imageView.center.y - scrollView.bounds.height/2)
+
         self.imageView = imageView
 
         imageView.alpha = 0.0
