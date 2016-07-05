@@ -28,19 +28,28 @@ class TopicsRepository {
     let commentsRepository = TopicCommentsRepository()
 
     func load() {
-        TopicAPI.shared.loadAll { [weak self] (topics, error) in
-            Async.main {
-                guard let strongSelf = self else { return }
 
-                if let e = error {
-                    print(e)
-                }
-                else if let topics = topics {
-                    strongSelf.topics = topics
-                    strongSelf.delegate?.repositoryLoadedTopics(strongSelf)
+        let op = AsyncOperation()
+        op.asyncTask = { completion in
+
+            TopicAPI.shared.loadAll { [weak self] (topics, error) in
+                Async.main {
+                    guard let strongSelf = self else { return }
+
+                    if let e = error {
+                        print(e)
+                    }
+                    else if let topics = topics {
+                        strongSelf.topics = topics
+                        strongSelf.delegate?.repositoryLoadedTopics(strongSelf)
+                    }
+
+                    completion()
                 }
             }
         }
+
+        NSOperationQueue.mainQueue().addOperation(op)
     }
 }
 
@@ -80,52 +89,68 @@ class TopicCommentsRepository {
 
     func loadNextPage() {
 
-        let before = topicToComments[topic.id]?.last?.timestamp
+        let op = AsyncOperation()
+        op.asyncTask = { completion in
 
-        TopicAPI.shared.comments(forTopic: topic, before: before, orAfter: nil) { [weak self] (comments, hasMore, error) in
-            Async.main {
-                guard let strongSelf = self else { return }
+            let before = self.topicToComments[self.topic.id]?.last?.timestamp
 
-                if let e = error {
-                    print(e)
-                }
-                else if let comments = comments {
-                    var existing = strongSelf.topicToComments[strongSelf.topic.id] ?? []
-                    let oldCount = existing.count
+            TopicAPI.shared.comments(forTopic: self.topic, before: before, orAfter: nil) { [weak self] (comments, hasMore, error) in
+                Async.main {
+                    guard let strongSelf = self else { return }
 
-                    existing.appendContentsOf(comments)
-                    let newCount = existing.count
+                    if let e = error {
+                        print(e)
+                    }
+                    else if let comments = comments {
+                        var existing = strongSelf.topicToComments[strongSelf.topic.id] ?? []
+                        let oldCount = existing.count
 
-                    strongSelf.topicToComments[strongSelf.topic.id] = existing
-                    strongSelf.topicToHasMore[strongSelf.topic.id] = hasMore
+                        existing.appendContentsOf(comments)
+                        let newCount = existing.count
 
-                    strongSelf.delegate?.repository(strongSelf, loadedNewCommentsInRange: (oldCount..<newCount))
+                        strongSelf.topicToComments[strongSelf.topic.id] = existing
+                        strongSelf.topicToHasMore[strongSelf.topic.id] = hasMore
+
+                        strongSelf.delegate?.repository(strongSelf, loadedNewCommentsInRange: (oldCount..<newCount))
+                    }
+
+                    completion()
                 }
             }
         }
+
+        NSOperationQueue.mainQueue().addOperation(op)
     }
 
     func loadNewComments() {
 
-        let after = topicToComments[topic.id]?.first?.timestamp
+        let op = AsyncOperation()
+        op.asyncTask = { completion in
 
-        TopicAPI.shared.comments(forTopic: topic, before: nil, orAfter: after) { [weak self] (comments, hasMore, error) in
-            Async.main {
-                guard let strongSelf = self else { return }
+            let after = self.topicToComments[self.topic.id]?.first?.timestamp
 
-                if let e = error {
-                    print(e)
-                }
-                else if let comments = comments {
-                    var existing = strongSelf.topicToComments[strongSelf.topic.id] ?? []
-                    existing.insertContentsOf(comments, at: 0)
+            TopicAPI.shared.comments(forTopic: self.topic, before: nil, orAfter: after) { [weak self] (comments, hasMore, error) in
+                Async.main {
+                    guard let strongSelf = self else { return }
 
-                    strongSelf.topicToComments[strongSelf.topic.id] = existing
+                    if let e = error {
+                        print(e)
+                    }
+                    else if let comments = comments {
+                        var existing = strongSelf.topicToComments[strongSelf.topic.id] ?? []
+                        existing.insertContentsOf(comments, at: 0)
 
-                    strongSelf.delegate?.repository(strongSelf, loadedNewCommentsInRange: (0..<comments.count))
+                        strongSelf.topicToComments[strongSelf.topic.id] = existing
+
+                        strongSelf.delegate?.repository(strongSelf, loadedNewCommentsInRange: (0..<comments.count))
+                    }
+
+                    completion()
                 }
             }
         }
+
+        NSOperationQueue.mainQueue().addOperation(op)
     }
 
     func post(comment comment: String, toTopic topic: Topic) {

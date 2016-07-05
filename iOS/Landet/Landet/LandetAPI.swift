@@ -65,7 +65,7 @@ class UserAPI {
             completion(error: operation.apiResponse.error)
         }
 
-        apiQueue .addOperation(operation)
+        apiQueue.addOperation(operation)
     }
 }
 
