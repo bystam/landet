@@ -26,10 +26,10 @@ class CreateEventViewController: UIViewController {
     @IBAction func createButtonPressed(sender: AnyObject) {
         guard let title = tableViewController.nameTextField.text else { return }
         guard let time = tableViewController.time else { return }
-        guard let sauna = LocationsService.fromID(.SAUNA) else { return }
+        guard let location = tableViewController.location else { return }
         guard let body = tableViewController.bodyTextView.text else { return }
 
-        EventAPI.shared.create(title: title, body: body, location: sauna, time: time) { (error) in
+        EventAPI.shared.create(title: title, body: body, location: location, time: time) { (error) in
             if let error = error {
                 print(error)
             } else {

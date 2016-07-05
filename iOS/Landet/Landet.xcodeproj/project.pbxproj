@@ -38,6 +38,8 @@
 		DB36CDE01D06306500B94422 /* Auth.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DB36CDDF1D06306500B94422 /* Auth.storyboard */; };
 		DB36CDE31D06308500B94422 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB36CDE21D06308500B94422 /* LoginViewController.swift */; };
 		DB36CDE51D06313100B94422 /* AuthOverlayController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB36CDE41D06313100B94422 /* AuthOverlayController.swift */; };
+		DB764B7C1D2C309400D0D638 /* DatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB764B7B1D2C309400D0D638 /* DatePicker.swift */; };
+		DB764B7E1D2C30B600D0D638 /* LocationPIcker.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB764B7D1D2C30B600D0D638 /* LocationPIcker.swift */; };
 		DBA9B40D1D11B9CD00DB6EBB /* TextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA9B40B1D11B9CD00DB6EBB /* TextFieldCell.swift */; };
 		DBA9B40E1D11B9CD00DB6EBB /* TextFieldCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DBA9B40C1D11B9CD00DB6EBB /* TextFieldCell.xib */; };
 		DBA9B4111D11BD5A00DB6EBB /* SpinnerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA9B40F1D11BD5A00DB6EBB /* SpinnerCell.swift */; };
@@ -111,6 +113,8 @@
 		DB36CDDF1D06306500B94422 /* Auth.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Auth.storyboard; sourceTree = "<group>"; };
 		DB36CDE21D06308500B94422 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		DB36CDE41D06313100B94422 /* AuthOverlayController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthOverlayController.swift; sourceTree = "<group>"; };
+		DB764B7B1D2C309400D0D638 /* DatePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePicker.swift; sourceTree = "<group>"; };
+		DB764B7D1D2C30B600D0D638 /* LocationPIcker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationPIcker.swift; sourceTree = "<group>"; };
 		DBA9B40B1D11B9CD00DB6EBB /* TextFieldCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldCell.swift; sourceTree = "<group>"; };
 		DBA9B40C1D11B9CD00DB6EBB /* TextFieldCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TextFieldCell.xib; sourceTree = "<group>"; };
 		DBA9B40F1D11BD5A00DB6EBB /* SpinnerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpinnerCell.swift; sourceTree = "<group>"; };
@@ -191,6 +195,8 @@
 		DB0FFBC31D049CEA00DD4B94 /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				DB764B7A1D2C308900D0D638 /* Location picker */,
+				DB764B791D2C308400D0D638 /* Date picker */,
 				DB0FFBE01D05A9AC00DD4B94 /* Concurrency */,
 				DB0FFBCD1D04AED100DD4B94 /* UI */,
 			);
@@ -307,6 +313,22 @@
 				DB36CDE21D06308500B94422 /* LoginViewController.swift */,
 			);
 			name = Auth;
+			sourceTree = "<group>";
+		};
+		DB764B791D2C308400D0D638 /* Date picker */ = {
+			isa = PBXGroup;
+			children = (
+				DB764B7B1D2C309400D0D638 /* DatePicker.swift */,
+			);
+			name = "Date picker";
+			sourceTree = "<group>";
+		};
+		DB764B7A1D2C308900D0D638 /* Location picker */ = {
+			isa = PBXGroup;
+			children = (
+				DB764B7D1D2C30B600D0D638 /* LocationPIcker.swift */,
+			);
+			name = "Location picker";
 			sourceTree = "<group>";
 		};
 		DBB38A2E1D0DB56800BEE506 /* Details */ = {
@@ -553,6 +575,7 @@
 				DB0FFBE21D05A9BB00DD4B94 /* AsyncOperation.swift in Sources */,
 				DB0FFBE41D05AA6C00DD4B94 /* LandetAPIError.swift in Sources */,
 				DB2E69981D21805100753FDE /* LandetCollectionViewStyle.swift in Sources */,
+				DB764B7C1D2C309400D0D638 /* DatePicker.swift in Sources */,
 				DB2E69901D217ACB00753FDE /* Topics.swift in Sources */,
 				DB2E69941D217F6E00753FDE /* SpinnerCollectionViewCell.swift in Sources */,
 				DBD5D7D61D0E0F6A0053DC6A /* EventSummaryCell.swift in Sources */,
@@ -566,6 +589,7 @@
 				DBB38A361D0DB5AF00BEE506 /* EventDetailsTableDataSource.swift in Sources */,
 				DB057B031D29657400A1E08A /* ImageHeaderViewController.swift in Sources */,
 				DBD1F8391D045EFA0035A7B4 /* MapViewController.swift in Sources */,
+				DB764B7E1D2C30B600D0D638 /* LocationPIcker.swift in Sources */,
 				DBD1F83D1D045F5C0035A7B4 /* TopicsTableViewController.swift in Sources */,
 				DBB38A321D0DB58A00BEE506 /* EventDetailsViewController.swift in Sources */,
 				DB0FFBBC1D046FA800DD4B94 /* Session.swift in Sources */,
