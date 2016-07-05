@@ -41,7 +41,7 @@ class MapViewController: UIViewController {
         imageView.alpha = 0.0
         UIView.animateWithDuration(0.2) {
             imageView.alpha = 1.0
-            self.activityIndicator.stopAnimating()
+            self.activityIndicator.alpha = 0.0
         }
     }
 }
