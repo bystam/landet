@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="b4H-Ph-lCB">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+    </dependencies>
+    <scenes>
+        <!--Create Topic View Controller-->
+        <scene sceneID="OKy-QT-YEa">
+            <objects>
+                <viewController id="b4H-Ph-lCB" customClass="CreateTopicViewController" customModule="Landet" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="m3o-iK-p6a"/>
+                        <viewControllerLayoutGuide type="bottom" id="DQw-gC-nwe"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="2iI-vE-nuN">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OSC-xV-bPe">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.69999999999999996" colorSpace="calibratedRGB"/>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What's on your mind?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jFY-Yu-ioa">
+                                <rect key="frame" x="84.5" y="107" width="207" height="26.5"/>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="22"/>
+                                <color key="textColor" red="0.66274511814117432" green="0.18431372940540314" blue="0.25490197539329529" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HGf-U1-TzH" customClass="RoundRectView" customModule="Landet" customModuleProvider="target">
+                                <rect key="frame" x="67" y="173.5" width="240" height="240"/>
+                                <subviews>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Kan man svälja en hel postatis hel?" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="9mh-Vs-9l7">
+                                        <rect key="frame" x="40" y="40" width="160" height="160"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="160" id="77O-lq-1br"/>
+                                            <constraint firstAttribute="width" constant="160" id="Z5v-nJ-K4v"/>
+                                        </constraints>
+                                        <color key="textColor" red="0.66274511814117432" green="0.18431372940540314" blue="0.25490197539329529" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences" keyboardAppearance="alert" returnKeyType="done"/>
+                                    </textView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.14509804546833038" green="0.12941177189350128" blue="0.12549020349979401" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="HGf-U1-TzH" secondAttribute="height" id="DfC-CR-rLf"/>
+                                    <constraint firstItem="9mh-Vs-9l7" firstAttribute="centerX" secondItem="HGf-U1-TzH" secondAttribute="centerX" id="Fhk-jC-gf5"/>
+                                    <constraint firstAttribute="height" constant="128" id="IPq-LY-VfE"/>
+                                    <constraint firstItem="9mh-Vs-9l7" firstAttribute="centerY" secondItem="HGf-U1-TzH" secondAttribute="centerY" id="Zec-Ue-ezI"/>
+                                    <constraint firstAttribute="width" constant="240" id="wPP-Dv-WlH"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="120"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" red="0.66274511814117432" green="0.18431372940540314" blue="0.25490197539329529" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="IPq-LY-VfE"/>
+                                    </mask>
+                                </variation>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="OSC-xV-bPe" secondAttribute="trailing" id="8JI-c6-JcR"/>
+                            <constraint firstItem="DQw-gC-nwe" firstAttribute="top" secondItem="OSC-xV-bPe" secondAttribute="bottom" id="Dib-30-JS4"/>
+                            <constraint firstItem="HGf-U1-TzH" firstAttribute="centerX" secondItem="2iI-vE-nuN" secondAttribute="centerX" id="Hwj-i3-1zE"/>
+                            <constraint firstItem="HGf-U1-TzH" firstAttribute="centerY" secondItem="2iI-vE-nuN" secondAttribute="centerY" constant="-40" id="iqV-FR-6Yo"/>
+                            <constraint firstItem="OSC-xV-bPe" firstAttribute="leading" secondItem="2iI-vE-nuN" secondAttribute="leading" id="rRa-Hf-JZA"/>
+                            <constraint firstItem="jFY-Yu-ioa" firstAttribute="centerX" secondItem="2iI-vE-nuN" secondAttribute="centerX" id="vws-ic-eJ7"/>
+                            <constraint firstItem="HGf-U1-TzH" firstAttribute="top" secondItem="jFY-Yu-ioa" secondAttribute="bottom" constant="40" id="xGE-vA-Dmg"/>
+                            <constraint firstItem="OSC-xV-bPe" firstAttribute="top" secondItem="2iI-vE-nuN" secondAttribute="top" id="zDX-3x-3OU"/>
+                        </constraints>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="backgroundView" destination="OSC-xV-bPe" id="2c4-6N-TWd"/>
+                        <outlet property="circleView" destination="HGf-U1-TzH" id="01T-JV-x8b"/>
+                        <outlet property="textView" destination="9mh-Vs-9l7" id="mRW-eX-499"/>
+                        <outlet property="titleLabel" destination="jFY-Yu-ioa" id="SD7-AG-mKp"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0RY-nx-fVC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="219" y="605"/>
+        </scene>
+    </scenes>
+</document>

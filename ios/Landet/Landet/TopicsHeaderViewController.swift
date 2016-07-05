@@ -89,4 +89,13 @@ extension TopicsHeaderViewController: UICollectionViewDelegate {
 
         topicsRepository.currentTopic = topicsRepository.topics[index]
     }
+
+    func scrollViewDidScroll(scrollView: UIScrollView) {
+        let rightEdgeOffset = scrollView.contentOffset.x + scrollView.bounds.width
+        let beyondRightEdge = rightEdgeOffset - scrollView.contentSize.width
+
+        if beyondRightEdge > 100 {
+            presentViewController(CreateTopicViewController.create(), animated: true, completion: nil)
+        }
+    }
 }
