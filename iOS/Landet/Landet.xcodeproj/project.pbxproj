@@ -40,6 +40,7 @@
 		DB36CDE51D06313100B94422 /* AuthOverlayController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB36CDE41D06313100B94422 /* AuthOverlayController.swift */; };
 		DB764B7C1D2C309400D0D638 /* DatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB764B7B1D2C309400D0D638 /* DatePicker.swift */; };
 		DB764B7E1D2C30B600D0D638 /* LocationPIcker.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB764B7D1D2C30B600D0D638 /* LocationPIcker.swift */; };
+		DB764B801D2C39AC00D0D638 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB764B7F1D2C39AC00D0D638 /* ImageLoader.swift */; };
 		DBA9B40D1D11B9CD00DB6EBB /* TextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA9B40B1D11B9CD00DB6EBB /* TextFieldCell.swift */; };
 		DBA9B40E1D11B9CD00DB6EBB /* TextFieldCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DBA9B40C1D11B9CD00DB6EBB /* TextFieldCell.xib */; };
 		DBA9B4111D11BD5A00DB6EBB /* SpinnerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA9B40F1D11BD5A00DB6EBB /* SpinnerCell.swift */; };
@@ -115,6 +116,7 @@
 		DB36CDE41D06313100B94422 /* AuthOverlayController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthOverlayController.swift; sourceTree = "<group>"; };
 		DB764B7B1D2C309400D0D638 /* DatePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePicker.swift; sourceTree = "<group>"; };
 		DB764B7D1D2C30B600D0D638 /* LocationPIcker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationPIcker.swift; sourceTree = "<group>"; };
+		DB764B7F1D2C39AC00D0D638 /* ImageLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
 		DBA9B40B1D11B9CD00DB6EBB /* TextFieldCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldCell.swift; sourceTree = "<group>"; };
 		DBA9B40C1D11B9CD00DB6EBB /* TextFieldCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TextFieldCell.xib; sourceTree = "<group>"; };
 		DBA9B40F1D11BD5A00DB6EBB /* SpinnerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpinnerCell.swift; sourceTree = "<group>"; };
@@ -195,6 +197,7 @@
 		DB0FFBC31D049CEA00DD4B94 /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				DB764B7F1D2C39AC00D0D638 /* ImageLoader.swift */,
 				DB764B7A1D2C308900D0D638 /* Location picker */,
 				DB764B791D2C308400D0D638 /* Date picker */,
 				DB0FFBE01D05A9AC00DD4B94 /* Concurrency */,
@@ -584,6 +587,7 @@
 				DB0FFBDA1D04C42000DD4B94 /* EventsTableViewController.swift in Sources */,
 				DB36CDD71D05C15200B94422 /* APIOperation.swift in Sources */,
 				DB0FFBBE1D04719200DD4B94 /* LandetAPI.swift in Sources */,
+				DB764B801D2C39AC00D0D638 /* ImageLoader.swift in Sources */,
 				DB0FFBC21D04983700DD4B94 /* HttpStatusCodes.swift in Sources */,
 				DBA9B40D1D11B9CD00DB6EBB /* TextFieldCell.swift in Sources */,
 				DBB38A361D0DB5AF00BEE506 /* EventDetailsTableDataSource.swift in Sources */,

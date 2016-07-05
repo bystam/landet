@@ -21,30 +21,9 @@ class ImageHeaderViewController: UIViewController {
         activityIndicator.startAnimating()
         imageView.alpha = 0.0
 
-        loadImage()
-    }
-
-    func respondToHeight(height: CGFloat) {
-        imageViewHeight.constant = max(defaultHeight, height)
-        imageView.alpha = 1.0 - (defaultHeight - height) / (defaultHeight - minHeight)
-    }
-}
-
-extension ImageHeaderViewController { // Image
-
-    private func loadImage() {
-        let task = NSURLSession.sharedSession().dataTaskWithURL(imageUrl) { [weak self] (data, res, error) in
-
-            if let data = data where data.length > 0 {
-                let image = UIImage(data: data)
-
-                Async.main {
-                    self?.presentImage(image)
-                }
-            }
+        ImageLoader.loadImage(imageUrl) { [weak self] (image) in
+            self?.presentImage(image)
         }
-
-        task.resume()
     }
 
     private func presentImage(image: UIImage?) {
@@ -54,5 +33,10 @@ extension ImageHeaderViewController { // Image
             self.imageView.alpha = 1.0
             self.activityIndicator.alpha = 0.0
         }
+    }
+
+    func respondToHeight(height: CGFloat) {
+        imageViewHeight.constant = max(defaultHeight, height)
+        imageView.alpha = 1.0 - (defaultHeight - height) / (defaultHeight - minHeight)
     }
 }
