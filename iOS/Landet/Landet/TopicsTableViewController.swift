@@ -84,7 +84,7 @@ extension TopicsTableViewController { // UITableViewDataSource
 extension TopicsTableViewController { // UITableViewDelegate
 
     override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
-        if indexPath.section == 1 {
+        if indexPath.section == 1 && indexPath.row == 0 {
             topicsRepository.commentsRepository.loadNextPage()
         }
     }

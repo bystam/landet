@@ -69,7 +69,7 @@ class TopicCommentsRepository {
     }
     var canLoadMore: Bool {
         guard let topic = topic else { return false }
-        return topicToHasMore[topic.id] ?? true
+        return topicToHasMore[topic.id] ?? false
     }
 
     func loadInitial() {
