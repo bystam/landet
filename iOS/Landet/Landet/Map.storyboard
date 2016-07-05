@@ -17,6 +17,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="5qZ-Di-8qF">
+                                <rect key="frame" x="169" y="315" width="37" height="37"/>
+                                <color key="color" red="0.66274511814117432" green="0.18431372940540314" blue="0.25490197539329529" alpha="1" colorSpace="calibratedRGB"/>
+                            </activityIndicatorView>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="63M-sp-qGw">
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                             </scrollView>
@@ -24,13 +28,16 @@
                         <color key="backgroundColor" red="0.14509803921568626" green="0.12941176470588234" blue="0.12549019607843137" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="63M-sp-qGw" firstAttribute="top" secondItem="QVq-fQ-YXT" secondAttribute="bottom" id="7Cj-jE-SgM"/>
+                            <constraint firstItem="5qZ-Di-8qF" firstAttribute="centerY" secondItem="Qbe-V6-Chj" secondAttribute="centerY" id="Loz-jB-YxB"/>
                             <constraint firstItem="63M-sp-qGw" firstAttribute="leading" secondItem="Qbe-V6-Chj" secondAttribute="leading" id="UOU-kn-2K5"/>
                             <constraint firstItem="N11-DJ-63Z" firstAttribute="top" secondItem="63M-sp-qGw" secondAttribute="bottom" id="avP-ua-Fbt"/>
                             <constraint firstAttribute="trailing" secondItem="63M-sp-qGw" secondAttribute="trailing" id="gBM-uM-Vy7"/>
+                            <constraint firstItem="5qZ-Di-8qF" firstAttribute="centerX" secondItem="Qbe-V6-Chj" secondAttribute="centerX" id="s2T-Jx-YCn"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Map" id="Ffh-KA-OdK"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="5qZ-Di-8qF" id="2SV-2E-0OS"/>
                         <outlet property="scrollView" destination="63M-sp-qGw" id="dQk-kQ-bbu"/>
                     </connections>
                 </viewController>

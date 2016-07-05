@@ -6,6 +6,8 @@ import UIKit
 
 class MapViewController: UIViewController {
 
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+
     @IBOutlet weak var scrollView: UIScrollView!
     private weak var imageView: UIImageView?
     
@@ -14,6 +16,7 @@ class MapViewController: UIViewController {
 
         scrollView.delegate = self
 
+        activityIndicator.startAnimating()
         let url = NSURL(string: "http://www.theodora.com/maps/new9/time_zones_4.jpg")!
         ImageLoader.loadImage(url) { (image) in
             self.setMapImage(image)
@@ -31,6 +34,12 @@ class MapViewController: UIViewController {
         scrollView.maximumZoomScale = 2.0
 
         self.imageView = imageView
+
+        imageView.alpha = 0.0
+        UIView.animateWithDuration(0.2) {
+            imageView.alpha = 1.0
+            self.activityIndicator.stopAnimating()
+        }
     }
 }
 
