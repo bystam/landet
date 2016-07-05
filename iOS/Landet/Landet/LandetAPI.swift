@@ -51,6 +51,22 @@ class UserAPI {
 
         apiQueue.addOperation(operation)
     }
+
+    func signup(displayName name: String, username: String, password: String, completion: (error: NSError?) -> ()) {
+
+        let body = [
+            "name" : name,
+            "username" : username,
+            "password" : password
+        ]
+        let operation = apiClient.post("/users/create", body: body)
+
+        operation.completionBlock = {
+            completion(error: operation.apiResponse.error)
+        }
+
+        apiQueue .addOperation(operation)
+    }
 }
 
 private class SessionAPI {
