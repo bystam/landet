@@ -4,12 +4,20 @@
 
 import UIKit
 
-enum LandetTableCellIdentifier: String {
-    case EventSummary = "EventSummaryCell"
-    case Comment = "CommentCell"
-    case TextField = "TextFieldCell"
-    case Spinner = "SpinnerCell"
+struct LandetTableCellIdentifier {
+
+    static let EventSummary = LandetTableCellIdentifier("EventSummaryCell")
+    static let Comment = LandetTableCellIdentifier("CommentCell")
+    static let TextField = LandetTableCellIdentifier("TextFieldCell")
+    static let Spinner = LandetTableCellIdentifier("SpinnerCell")
+
+    private let string: String
+
+    init(_ identifier: String) {
+        self.string = identifier
+    }
 }
+
 
 class LandetTableViewStyle {
 
@@ -27,7 +35,7 @@ class LandetTableViewStyle {
         }
 
         cells.forEach { identifier in
-            tableView.registerNib(UINib(nibName: identifier.rawValue, bundle: nil), forCellReuseIdentifier: identifier.rawValue)
+            tableView.registerNib(UINib(nibName: identifier.string, bundle: nil), forCellReuseIdentifier: identifier.string)
         }
     }
 }
@@ -35,6 +43,6 @@ class LandetTableViewStyle {
 extension UITableView {
 
     func dequeueLandetCell<T: UITableViewCell>(identifier: LandetTableCellIdentifier, forIndexPath indexPath: NSIndexPath) -> T  {
-        return self.dequeueReusableCellWithIdentifier(identifier.rawValue, forIndexPath: indexPath) as! T
+        return self.dequeueReusableCellWithIdentifier(identifier.string, forIndexPath: indexPath) as! T
     }
 }

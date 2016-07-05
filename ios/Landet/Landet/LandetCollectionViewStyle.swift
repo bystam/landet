@@ -4,9 +4,15 @@
 
 import UIKit
 
-enum LandetCollectionCellIdentifier: String {
-    case Spinner = "SpinnerCollectionViewCell"
-    case TopicHeader = "TopicsHeaderCollectionViewCell"
+struct LandetCollectionCellIdentifier {
+    static let Spinner = LandetCollectionCellIdentifier("SpinnerCollectionViewCell")
+    static let TopicHeader = LandetCollectionCellIdentifier("TopicsHeaderCollectionViewCell")
+
+    private let string: String
+
+    init(_ identifier: String) {
+        self.string = identifier
+    }
 }
 
 class LandetCollectionViewStyle {
@@ -15,7 +21,7 @@ class LandetCollectionViewStyle {
         collectionView.backgroundColor = Colors.black
 
         cells.forEach { identifier in
-            collectionView.registerNib(UINib(nibName: identifier.rawValue, bundle: nil), forCellWithReuseIdentifier: identifier.rawValue)
+            collectionView.registerNib(UINib(nibName: identifier.string, bundle: nil), forCellWithReuseIdentifier: identifier.string)
         }
     }
 }
@@ -23,6 +29,6 @@ class LandetCollectionViewStyle {
 extension UICollectionView {
 
     func dequeueLandetCell<T: UICollectionViewCell>(identifier: LandetCollectionCellIdentifier, forIndexPath indexPath: NSIndexPath) -> T  {
-        return self.dequeueReusableCellWithReuseIdentifier(identifier.rawValue, forIndexPath: indexPath) as! T
+        return self.dequeueReusableCellWithReuseIdentifier(identifier.string, forIndexPath: indexPath) as! T
     }
 }
