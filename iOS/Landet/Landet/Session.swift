@@ -25,12 +25,12 @@ class Session {
     }
 
     static func installDefault() {
-//        if let token = Credentials.token, refreshToken = Credentials.refreshToken{
-//            currentSession = Session(token: token, refreshToken: refreshToken)
-//            NSNotificationCenter.defaultCenter().postNotificationName(kSessionEstablishedNotification, object: nil)
-//        } else {
+        if let token = Credentials.token, refreshToken = Credentials.refreshToken{
+            currentSession = Session(token: token, refreshToken: refreshToken)
+            NSNotificationCenter.defaultCenter().postNotificationName(kSessionEstablishedNotification, object: nil)
+        } else {
             NSNotificationCenter.defaultCenter().postNotificationName(kSessionLostNotification, object: nil)
-//        }
+        }
     }
 
     static func installWith(token token: String, refreshToken: String) {
