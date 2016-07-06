@@ -19,6 +19,7 @@ import android.view.MenuItem;
 import android.widget.TextView;
 
 import com.landet.landet.events.EventsFragment;
+import com.landet.landet.topics.TopicsFragment;
 import com.landet.landet.user.LoginOrRegisterActivity;
 
 import java.util.ArrayList;
