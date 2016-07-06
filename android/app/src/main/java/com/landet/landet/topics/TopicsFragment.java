@@ -12,6 +12,7 @@ import android.widget.Toast;
 import com.landet.landet.BaseFragment;
 import com.landet.landet.R;
 import com.landet.landet.data.Topic;
+import com.landet.landet.data.TopicCommentListWrapper;
 
 import java.util.List;
 
@@ -43,6 +44,7 @@ public class TopicsFragment extends BaseFragment {
             @Override
             public void onItemClicked(@NonNull Topic item) {
                 Toast.makeText(getContext(), item.getTitle(), Toast.LENGTH_SHORT).show();
+                fetchCommentsForTopic(item); //TODO Move this to a better place
             }
         });
         recyclerView.setAdapter(mAdapter);
@@ -64,6 +66,21 @@ public class TopicsFragment extends BaseFragment {
                     @Override
                     public void call(Throwable throwable) {
                         Timber.d(throwable, "failed to fetch topics");
+                    }
+                });
+    }
+
+    private void fetchCommentsForTopic(@NonNull Topic topic) {
+        mModel.fetchTopicComments(topic)
+                .subscribe(new Action1<TopicCommentListWrapper>() {
+                    @Override
+                    public void call(TopicCommentListWrapper topicComments) {
+                        Timber.d("comments %s, %s: ", topicComments.hasMore(), topicComments.getComments());
+                    }
+                }, new Action1<Throwable>() {
+                    @Override
+                    public void call(Throwable throwable) {
+                        Timber.d(throwable, "Failed to load topic comments");
                     }
                 });
     }

@@ -5,7 +5,7 @@ import android.support.annotation.NonNull;
 import com.landet.landet.api.ApiResponse;
 import com.landet.landet.api.Backend;
 import com.landet.landet.data.Topic;
-import com.landet.landet.data.TopicComment;
+import com.landet.landet.data.TopicCommentListWrapper;
 
 import java.util.List;
 
@@ -38,11 +38,11 @@ public class TopicModel {
                 .observeOn(AndroidSchedulers.mainThread());
     }
 
-    public Observable<List<TopicComment>> fetchTopicComments(@NonNull Topic topic) {
+    public Observable<TopicCommentListWrapper> fetchTopicComments(@NonNull Topic topic) {
         return mBackend.fetchTopicComments(topic)
-                .flatMap(new Func1<ApiResponse<List<TopicComment>>, Observable<List<TopicComment>>>() {
+                .flatMap(new Func1<ApiResponse<TopicCommentListWrapper>, Observable<TopicCommentListWrapper>>() {
                     @Override
-                    public Observable<List<TopicComment>> call(ApiResponse<List<TopicComment>> apiResponse) {
+                    public Observable<TopicCommentListWrapper> call(ApiResponse<TopicCommentListWrapper> apiResponse) {
                         if (apiResponse.isSuccessful()) {
                             return Observable.just(apiResponse.getBody());
                         } else {

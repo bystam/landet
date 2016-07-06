@@ -3,7 +3,7 @@ package com.landet.landet.api;
 import com.landet.landet.data.Event;
 import com.landet.landet.data.EventComment;
 import com.landet.landet.data.Topic;
-import com.landet.landet.data.TopicComment;
+import com.landet.landet.data.TopicCommentListWrapper;
 import com.landet.landet.data.User;
 
 import java.util.List;
@@ -37,5 +37,5 @@ public interface LandetRestApi {
     Observable<Result<List<Topic>>> topics();
 
     @GET("topics/{topicId}/comments")
-    Observable<Result<List<TopicComment>>> topicComments(@Path("topicId") Long topicId);
+    Observable<Result<TopicCommentListWrapper>> topicComments(@Path("topicId") Long topicId);
 }

@@ -8,7 +8,7 @@ import com.google.gson.GsonBuilder;
 import com.landet.landet.data.Event;
 import com.landet.landet.data.EventComment;
 import com.landet.landet.data.Topic;
-import com.landet.landet.data.TopicComment;
+import com.landet.landet.data.TopicCommentListWrapper;
 import com.landet.landet.data.User;
 
 import org.joda.time.DateTime;
@@ -77,9 +77,9 @@ public class Backend {
                 .map(this.<List<Topic>>resultToApiResponse());
     }
 
-    public Observable<ApiResponse<List<TopicComment>>> fetchTopicComments(@NonNull Topic topic) {
+    public Observable<ApiResponse<TopicCommentListWrapper>> fetchTopicComments(@NonNull Topic topic) {
         return mApi.topicComments(topic.getId())
-                .map(this.<List<TopicComment>>resultToApiResponse());
+                .map(this.<TopicCommentListWrapper>resultToApiResponse());
     }
 
     @NonNull
