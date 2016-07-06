@@ -42,6 +42,15 @@
                                 <color key="textColor" red="0.66274511814117432" green="0.18431372940540314" blue="0.25490197539329529" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9hj-Ej-fTy">
+                                <rect key="frame" x="321" y="212" width="46" height="30"/>
+                                <state key="normal" title="Create">
+                                    <color key="titleColor" red="0.66274511814117432" green="0.18431372940540314" blue="0.25490197539329529" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="createButtonPressed:" destination="DP7-mu-pMd" eventType="touchUpInside" id="UHE-Zk-oQh"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.14509804546833038" green="0.12941177189350128" blue="0.12549020349979401" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -51,6 +60,8 @@
                             <constraint firstItem="Gr6-xo-Ndd" firstAttribute="top" secondItem="PSa-E0-eWf" secondAttribute="topMargin" constant="8" id="PMo-jo-x5L"/>
                             <constraint firstItem="kAJ-5e-3oe" firstAttribute="centerX" secondItem="PSa-E0-eWf" secondAttribute="centerX" id="S4I-Wy-n5C"/>
                             <constraint firstItem="kAJ-5e-3oe" firstAttribute="centerY" secondItem="PSa-E0-eWf" secondAttribute="centerY" id="T5h-FL-wTz"/>
+                            <constraint firstAttribute="trailing" secondItem="9hj-Ej-fTy" secondAttribute="trailing" constant="8" id="h8v-wy-hYn"/>
+                            <constraint firstItem="CNi-ss-VUB" firstAttribute="top" secondItem="9hj-Ej-fTy" secondAttribute="bottom" constant="8" id="jKp-pO-WZO"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">

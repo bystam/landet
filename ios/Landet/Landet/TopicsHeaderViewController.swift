@@ -31,6 +31,11 @@ class TopicsHeaderViewController: UIViewController {
 
         currentTopicLabel.alpha = 0.0
     }
+
+    @IBAction func createButtonPressed(sender: AnyObject) {
+        presentViewController(CreateTopicViewController.create(),
+                              animated: true, completion: nil)
+    }
 }
 
 // Public
@@ -88,14 +93,5 @@ extension TopicsHeaderViewController: UICollectionViewDelegate {
         guard index >= 0 && index < topicsRepository.topics.count else { return }
 
         topicsRepository.currentTopic = topicsRepository.topics[index]
-    }
-
-    func scrollViewDidScroll(scrollView: UIScrollView) {
-        let rightEdgeOffset = scrollView.contentOffset.x + scrollView.bounds.width
-        let beyondRightEdge = rightEdgeOffset - scrollView.contentSize.width
-
-        if beyondRightEdge > 100 {
-            presentViewController(CreateTopicViewController.create(), animated: true, completion: nil)
-        }
     }
 }

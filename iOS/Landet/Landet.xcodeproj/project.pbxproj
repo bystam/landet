@@ -48,6 +48,7 @@
 		DBA9B4111D11BD5A00DB6EBB /* SpinnerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA9B40F1D11BD5A00DB6EBB /* SpinnerCell.swift */; };
 		DBA9B4121D11BD5A00DB6EBB /* SpinnerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DBA9B4101D11BD5A00DB6EBB /* SpinnerCell.xib */; };
 		DBA9B4141D11C21900DB6EBB /* CGExtras.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA9B4131D11C21900DB6EBB /* CGExtras.swift */; };
+		DBAE84511D2D5F10000DF24D /* CreateTopicAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBAE84501D2D5F10000DF24D /* CreateTopicAnimator.swift */; };
 		DBB38A291D0D96B400BEE506 /* CreateEventTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB38A281D0D96B400BEE506 /* CreateEventTableViewController.swift */; };
 		DBB38A2B1D0D97B200BEE506 /* LandetTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB38A2A1D0D97B200BEE506 /* LandetTextField.swift */; };
 		DBB38A2D1D0DAA1900BEE506 /* APIUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB38A2C1D0DAA1900BEE506 /* APIUtil.swift */; };
@@ -126,6 +127,7 @@
 		DBA9B40F1D11BD5A00DB6EBB /* SpinnerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpinnerCell.swift; sourceTree = "<group>"; };
 		DBA9B4101D11BD5A00DB6EBB /* SpinnerCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SpinnerCell.xib; sourceTree = "<group>"; };
 		DBA9B4131D11C21900DB6EBB /* CGExtras.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGExtras.swift; sourceTree = "<group>"; };
+		DBAE84501D2D5F10000DF24D /* CreateTopicAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateTopicAnimator.swift; sourceTree = "<group>"; };
 		DBB38A281D0D96B400BEE506 /* CreateEventTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateEventTableViewController.swift; sourceTree = "<group>"; };
 		DBB38A2A1D0D97B200BEE506 /* LandetTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LandetTextField.swift; sourceTree = "<group>"; };
 		DBB38A2C1D0DAA1900BEE506 /* APIUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIUtil.swift; sourceTree = "<group>"; };
@@ -343,6 +345,7 @@
 			children = (
 				DB764B821D2C4C4600D0D638 /* CreateTopic.storyboard */,
 				DB764B841D2C4C5300D0D638 /* CreateTopicViewController.swift */,
+				DBAE84501D2D5F10000DF24D /* CreateTopicAnimator.swift */,
 			);
 			name = Create;
 			sourceTree = "<group>";
@@ -586,6 +589,7 @@
 				DB057AFE1D28698300A1E08A /* TopicsRepository.swift in Sources */,
 				DBD1F83B1D045F020035A7B4 /* TopicsViewController.swift in Sources */,
 				DBDCC5061D18874400DD00C0 /* TopicsHeaderViewController.swift in Sources */,
+				DBAE84511D2D5F10000DF24D /* CreateTopicAnimator.swift in Sources */,
 				DBD5D7DA1D0E0FB90053DC6A /* LandetTableViewStyle.swift in Sources */,
 				DBB38A341D0DB59900BEE506 /* EventDetailsTableViewController.swift in Sources */,
 				DBD5D7E21D0E1B380053DC6A /* CommentCell.swift in Sources */,
