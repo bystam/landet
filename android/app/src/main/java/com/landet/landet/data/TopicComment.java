@@ -27,7 +27,6 @@ public class TopicComment extends DataWithId implements Parcelable {
         return author;
     }
 
-
     @Override
     public int describeContents() { return 0; }
 
