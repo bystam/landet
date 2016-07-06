@@ -27,7 +27,7 @@ class TopicsRepository {
 
     let commentsRepository = TopicCommentsRepository()
 
-    func load() {
+    func load(callback: ((error: NSError?) -> ())? = nil) {
 
         let op = AsyncOperation()
         op.asyncTask = { completion in
@@ -45,11 +45,22 @@ class TopicsRepository {
                     }
 
                     completion()
+                    callback?(error: error)
                 }
             }
         }
 
         NSOperationQueue.mainQueue().addOperation(op)
+    }
+
+    func create(topicText text: String, callback:( error: NSError?) -> ()) {
+        TopicAPI.shared.create(title: text) { (error) in
+            if let error = error {
+                callback(error: error)
+            } else {
+                self.load(callback)
+            }
+        }
     }
 }
 

@@ -152,8 +152,7 @@ class TopicAPI {
         apiQueue.addOperation(operation)
     }
 
-    func create(title title: String, body bodyText: String, location: Location, time: NSDate,
-                      completion: (error: NSError?) -> ()) {
+    func create(title title: String, completion: (error: NSError?) -> ()) {
 
         guard let _ = Session.currentSession else { return }
 

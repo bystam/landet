@@ -33,8 +33,9 @@ class TopicsHeaderViewController: UIViewController {
     }
 
     @IBAction func createButtonPressed(sender: AnyObject) {
-        presentViewController(CreateTopicViewController.create(),
-                              animated: true, completion: nil)
+        let createVC = CreateTopicViewController.create()
+        createVC.topicsRepository = topicsRepository
+        presentViewController(createVC, animated: true, completion: nil)
     }
 }
 

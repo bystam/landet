@@ -6,6 +6,8 @@ import UIKit
 
 class CreateTopicViewController: UIViewController {
 
+    var topicsRepository: TopicsRepository!
+
     @IBOutlet weak var backgroundView: UIView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var circleView: RoundRectView!
@@ -24,6 +26,8 @@ class CreateTopicViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        textView.delegate = self
 
         let tapToDismiss = UITapGestureRecognizer(target: self, action: #selector(backgroundViewTapped(_:)))
         backgroundView.addGestureRecognizer(tapToDismiss)
@@ -45,6 +49,23 @@ class CreateTopicViewController: UIViewController {
 
     @objc private func backgroundViewTapped(tap: UITapGestureRecognizer) {
         dismissViewControllerAnimated(true, completion: nil)
+    }
+}
+
+extension CreateTopicViewController: UITextViewDelegate {
+
+    func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
+
+        if text != "\n" { return true }
+
+        guard let text = textView.text where !text.isEmpty else { return false }
+
+        topicsRepository.create(topicText: text) { (error) in
+            guard error == nil else { return }
+            self.dismissViewControllerAnimated(true, completion: nil)
+        }
+
+        return false
     }
 }
 
