@@ -1,6 +1,8 @@
 package com.landet.landet.events;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -38,7 +40,14 @@ public class EventsFragment extends BaseFragment {
         View view = inflater.inflate(R.layout.fragment_events, container, false);
         final RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        mEventsAdapter = new EventsAdapter(getContext());
+        mEventsAdapter = new EventsAdapter(getContext(), new EventsAdapter.EventsListener() {
+            @Override
+            public void onEventClicked(@NonNull Event event) {
+                final Intent intent = new Intent(getContext(), EventDetailsActivity.class);
+                intent.putExtra("event", event);
+                startActivity(intent);
+            }
+        });
         recyclerView.setAdapter(mEventsAdapter);
         return view;
     }

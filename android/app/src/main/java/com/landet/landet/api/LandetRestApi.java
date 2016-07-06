@@ -1,6 +1,7 @@
 package com.landet.landet.api;
 
 import com.landet.landet.data.Event;
+import com.landet.landet.data.EventComment;
 import com.landet.landet.data.User;
 
 import java.util.List;
@@ -9,6 +10,7 @@ import retrofit2.adapter.rxjava.Result;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.Path;
 import rx.Observable;
 
 public interface LandetRestApi {
@@ -25,4 +27,7 @@ public interface LandetRestApi {
 
     @GET("events")
     Observable<Result<List<Event>>> events();
+
+    @GET("events/{eventId}/comments")
+    Observable<Result<List<EventComment>>> eventComments(@Path("eventId") Long eventId);
 }

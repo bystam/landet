@@ -6,6 +6,7 @@ import android.support.annotation.Nullable;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.landet.landet.data.Event;
+import com.landet.landet.data.EventComment;
 import com.landet.landet.data.User;
 
 import org.joda.time.DateTime;
@@ -60,7 +61,13 @@ public class Backend {
     }
 
     public Observable<ApiResponse<List<Event>>> fetchEvents() {
-        return mApi.events().map(this.<List<Event>>resultToApiResponse());
+        return mApi.events()
+                .map(this.<List<Event>>resultToApiResponse());
+    }
+
+    public Observable<ApiResponse<List<EventComment>>> fetchEventComments(@NonNull Event event) {
+        return mApi.eventComments(event.getId())
+                .map(this.<List<EventComment>>resultToApiResponse());
     }
 
     @NonNull

@@ -15,11 +15,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.EventViewHolder> {
+    private EventsListener mListener;
     private List<Event> mEvents;
     private Context mContext;
 
-    public EventsAdapter(@NonNull Context context) {
+    public EventsAdapter(@NonNull Context context, EventsListener listener) {
         mEvents = new ArrayList<>();
+        mListener = listener;
         mContext = context;
     }
 
@@ -56,6 +58,19 @@ public class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.EventViewH
         public EventViewHolder(View itemView) {
             super(itemView);
             title = (TextView) itemView.findViewById(R.id.title);
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Event event = getItem(getAdapterPosition());
+                    if (event != null && mListener != null) {
+                        mListener.onEventClicked(event);
+                    }
+                }
+            });
         }
+    }
+
+    public interface EventsListener {
+        void onEventClicked(@NonNull Event event);
     }
 }
