@@ -14,6 +14,10 @@ public class Location extends DataWithId implements Parcelable {
 
     public Location() {}
 
+    public String getName() {
+        return name;
+    }
+
     @Override
     public int describeContents() { return 0; }
 

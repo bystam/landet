@@ -23,4 +23,6 @@
     <string name="hint_profile_username">Användarnamn</string>
     <string name="hint_profile_password">Lösenord</string>
     <string name="hint_profile_confirm_password">Bekräfta lösenord</string>
+    <string name="time_at_place">%1$s at %2$s</string>
+    <string name="by_author">by %s</string>
 </resources>
