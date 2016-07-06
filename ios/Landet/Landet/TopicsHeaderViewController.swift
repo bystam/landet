@@ -7,6 +7,7 @@ import UIKit
 class TopicsHeaderViewController: UIViewController {
 
     @IBOutlet weak var currentTopicLabel: UILabel!
+    @IBOutlet weak var createTopicButton: UIButton!
     @IBOutlet weak var collectionView: UICollectionView! {
         didSet {
             let flowLayout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
@@ -45,6 +46,7 @@ extension TopicsHeaderViewController {
     func respondToHeight(height: CGFloat) {
         let shrink = max(defaultHeight - height, CGFloat(0))
         collectionView.alpha = 1.0 - (shrink / 80)
+        createTopicButton.alpha = 1.0 - (shrink / 80)
 
         currentTopicLabel.alpha = 1.0 - ((height - minHeight) / 80)
     }

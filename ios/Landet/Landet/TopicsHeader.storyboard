@@ -73,6 +73,7 @@
                     <size key="freeformSize" width="375" height="250"/>
                     <connections>
                         <outlet property="collectionView" destination="kAJ-5e-3oe" id="Wqg-LL-7kW"/>
+                        <outlet property="createTopicButton" destination="9hj-Ej-fTy" id="ig1-1q-fdm"/>
                         <outlet property="currentTopicLabel" destination="Gr6-xo-Ndd" id="zuD-JN-XhI"/>
                     </connections>
                 </viewController>
