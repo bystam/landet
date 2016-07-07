@@ -24,7 +24,9 @@ class EventDetailsTableViewController: UITableViewController {
             let range = ((oldComments?.count ?? 0)..<(comments?.count ?? 0))
             let inserted = range.map({ NSIndexPath(forRow: $0, inSection: 1) })
 
-            tableView.insertRowsAtIndexPaths(inserted, withRowAnimation: .Automatic)
+            if inserted.count > 0 {
+                tableView.insertRowsAtIndexPaths(inserted, withRowAnimation: .Automatic)
+            }
         }
     }
     
