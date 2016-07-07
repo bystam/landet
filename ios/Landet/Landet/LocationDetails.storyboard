@@ -47,18 +47,23 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nRG-aO-MMB" customClass="RoundRectButton" customModule="Landet" customModuleProvider="target">
-                                <rect key="frame" x="20" y="403.5" width="335" height="60"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <rect key="frame" x="20" y="413" width="335" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="bdS-mi-hD8"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="thin" pointSize="20"/>
                                 <state key="normal" title="Close">
-                                    <color key="titleColor" red="0.66274511814117432" green="0.18431372940540314" blue="0.25490197539329529" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" red="0.89803922176361084" green="0.87450981140136719" blue="0.77254903316497803" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                         <real key="value" value="8"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" red="0.89803922176361084" green="0.87450981140136719" blue="0.77254903316497803" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="1"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
@@ -75,7 +80,7 @@
                             <constraint firstItem="WZg-0B-32h" firstAttribute="top" secondItem="j9i-wr-OWx" secondAttribute="bottom" id="RiC-n5-SKl"/>
                             <constraint firstItem="j9i-wr-OWx" firstAttribute="top" secondItem="w1M-eq-ylA" secondAttribute="top" id="TLd-yi-Cke"/>
                             <constraint firstItem="hUy-R9-lWG" firstAttribute="leading" secondItem="w1M-eq-ylA" secondAttribute="leading" constant="20" id="iMP-CL-YJb"/>
-                            <constraint firstItem="nRG-aO-MMB" firstAttribute="top" secondItem="hUy-R9-lWG" secondAttribute="bottom" constant="20" id="jsD-Rq-1tL"/>
+                            <constraint firstItem="nRG-aO-MMB" firstAttribute="top" secondItem="hUy-R9-lWG" secondAttribute="bottom" constant="30" id="jsD-Rq-1tL"/>
                             <constraint firstItem="hUy-R9-lWG" firstAttribute="centerY" secondItem="w1M-eq-ylA" secondAttribute="centerY" constant="-70" id="kRu-bl-0U7"/>
                             <constraint firstAttribute="trailing" secondItem="hUy-R9-lWG" secondAttribute="trailing" constant="20" id="zGo-ky-fU7"/>
                         </constraints>
