@@ -24,9 +24,7 @@ class EventDetailsTableViewController: UITableViewController {
             let range = ((oldComments?.count ?? 0)..<(comments?.count ?? 0))
             let inserted = range.map({ NSIndexPath(forRow: $0, inSection: 1) })
 
-            tableView.beginUpdates()
             tableView.insertRowsAtIndexPaths(inserted, withRowAnimation: .Automatic)
-            tableView.endUpdates()
         }
     }
     
@@ -43,7 +41,6 @@ class EventDetailsTableViewController: UITableViewController {
         tableView.estimatedSectionHeaderHeight = CommentsHeaderView.preferredHeight
         tableView.sectionHeaderHeight = UITableViewAutomaticDimension
         tableView.sectionFooterHeight = 0.0
-        tableView.tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: 1, height: CGFloat.min))
     }
 
     override func viewDidAppear(animated: Bool) {
