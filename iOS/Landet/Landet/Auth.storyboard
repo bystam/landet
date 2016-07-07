@@ -50,7 +50,7 @@
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Jbf-uH-XTB" customClass="LandetTextField" customModule="Landet" customModuleProvider="target">
                                                 <rect key="frame" x="20" y="0.0" width="295" height="50"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next"/>
                                             </textField>
                                         </subviews>
                                         <color key="backgroundColor" red="0.18753568828105927" green="0.16636671125888824" blue="0.16167490184307098" alpha="1" colorSpace="calibratedRGB"/>
@@ -68,7 +68,7 @@
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="epX-Yv-gfb" customClass="LandetTextField" customModule="Landet" customModuleProvider="target">
                                                 <rect key="frame" x="20" y="0.0" width="295" height="50"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                <textInputTraits key="textInputTraits" returnKeyType="done" secureTextEntry="YES"/>
+                                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" secureTextEntry="YES"/>
                                             </textField>
                                         </subviews>
                                         <color key="backgroundColor" red="0.1875356883" green="0.1663667113" blue="0.16167490179999999" alpha="1" colorSpace="calibratedRGB"/>
