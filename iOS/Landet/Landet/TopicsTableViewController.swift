@@ -30,9 +30,8 @@ class TopicsTableViewController: UITableViewController {
 extension TopicsTableViewController: TopicCommentsRepositoryDelegate {
 
     func repository(repository: TopicCommentsRepository, didChangeToTopic topic: Topic) {
-        tableView.beginUpdates()
+        tableView.setContentOffset(CGPoint.zero, animated: true)
         tableView.reloadSections(NSIndexSet(indexesInRange: NSMakeRange(0, 2)), withRowAnimation: .Fade)
-        tableView.endUpdates()
     }
 
     func repository(repository: TopicCommentsRepository, loadedNewCommentsInRange range: Range<Int>) {

@@ -15,6 +15,8 @@ class EventDetailsTableViewController: UITableViewController {
 
     weak var delegate: EventDetailsTableViewControllerDelegate?
 
+    private var cachedHeights = [NSIndexPath : CGFloat]()
+
     var comments: [EventComment]? {
         didSet(oldComments) {
             dataSource.comments = comments
@@ -37,7 +39,6 @@ class EventDetailsTableViewController: UITableViewController {
         dataSource = EventDetailsTableDataSource(event: event)
         tableView.dataSource = dataSource
 
-        tableView.estimatedRowHeight = EventSummaryCell.preferredHeight
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedSectionHeaderHeight = CommentsHeaderView.preferredHeight
         tableView.sectionHeaderHeight = UITableViewAutomaticDimension
@@ -69,6 +70,11 @@ extension EventDetailsTableViewController { // UIScrollViewDelegate
 }
 
 extension EventDetailsTableViewController {
+
+    override func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return cachedHeights[indexPath] ?? CommentCell.preferredHeight
+    }
+
     override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         return section == 1 ? tableView.dequeueReusableHeaderFooterViewWithIdentifier(CommentsHeaderView.reuseIdentifier) : nil
     }
@@ -77,6 +83,8 @@ extension EventDetailsTableViewController {
         if let cell = cell as? TextFieldCell {
             cell.delegate = self
         }
+
+        cachedHeights[indexPath] = cell.bounds.height
     }
 }
 

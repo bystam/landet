@@ -17,6 +17,8 @@ class CommentCell: UITableViewCell {
     @IBOutlet weak var timestampLabel: UILabel!
     @IBOutlet weak var commentLabel: UILabel!
 
+    static let preferredHeight: CGFloat = 62.0
+
     func configure(eventComment comment: EventComment) {
         userLabel.text = comment.author.name
         timestampLabel.text = formatter.stringFromDate(comment.timestamp)
