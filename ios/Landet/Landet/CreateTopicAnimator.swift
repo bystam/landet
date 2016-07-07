@@ -26,7 +26,7 @@ class CreateTopicAnimator: NSObject, UIViewControllerAnimatedTransitioning {
             fromVC.view.userInteractionEnabled = false
 
             fromVC.beginAppearanceTransition(false, animated: true)
-            createTopicVC.beginAppearanceTransition(true, animated: true)
+            toVC.beginAppearanceTransition(true, animated: true)
 
             toVC.view.frame = fromVC.view.frame
             container.addSubview(toVC.view)

@@ -60,7 +60,19 @@ class MapViewController: UIViewController {
             let pinView = UIImageView(image: pin)
             pinView.center = p
             scrollViewContent?.addSubview(pinView)
+
+            pinView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(pinWasTapped(_:))))
+            pinView.userInteractionEnabled = true
         }
+    }
+
+    @objc private func pinWasTapped(sender: AnyObject) {
+        showDetailsForLocation(LocationsService.fromID(.SAUNA)!)
+    }
+
+    private func showDetailsForLocation(location: Location) {
+        let detailsVC = LocationDetailsViewController.fromStoryboard(location: location)
+        presentViewController(detailsVC, animated: true, completion: nil)
     }
 }
 

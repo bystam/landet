@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="FKx-Aq-IWA">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <scenes>
+        <!--Location Details View Controller-->
+        <scene sceneID="2bl-2c-hJj">
+            <objects>
+                <viewController id="FKx-Aq-IWA" customClass="LocationDetailsViewController" customModule="Landet" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="4d4-s4-dSb"/>
+                        <viewControllerLayoutGuide type="bottom" id="WZg-0B-32h"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="w1M-eq-ylA">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j9i-wr-OWx">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="sdA-Gw-wJg">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                </view>
+                                <blurEffect style="dark"/>
+                            </visualEffectView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hUy-R9-lWG" customClass="RoundRectView" customModule="Landet" customModuleProvider="target">
+                                <rect key="frame" x="20" y="143" width="335" height="240"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FHg-Jo-EJJ">
+                                        <rect key="frame" x="0.0" y="0.0" width="335" height="240"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="FHg-Jo-EJJ" secondAttribute="trailing" id="6xT-Gd-4wo"/>
+                                    <constraint firstItem="FHg-Jo-EJJ" firstAttribute="top" secondItem="hUy-R9-lWG" secondAttribute="top" id="FC4-fw-uUA"/>
+                                    <constraint firstAttribute="bottom" secondItem="FHg-Jo-EJJ" secondAttribute="bottom" id="PZP-H3-O2d"/>
+                                    <constraint firstItem="FHg-Jo-EJJ" firstAttribute="leading" secondItem="hUy-R9-lWG" secondAttribute="leading" id="Uyd-T9-xEB"/>
+                                    <constraint firstAttribute="height" constant="240" id="fa5-9L-Q2e"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="8"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nRG-aO-MMB" customClass="RoundRectButton" customModule="Landet" customModuleProvider="target">
+                                <rect key="frame" x="20" y="403.5" width="335" height="60"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="bdS-mi-hD8"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="20"/>
+                                <state key="normal" title="Close">
+                                    <color key="titleColor" red="0.66274511814117432" green="0.18431372940540314" blue="0.25490197539329529" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="8"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="closeButtonPressed:" destination="FKx-Aq-IWA" eventType="touchUpInside" id="QaR-Pq-GlI"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="nRG-aO-MMB" firstAttribute="leading" secondItem="w1M-eq-ylA" secondAttribute="leading" constant="20" id="4yk-LY-NyD"/>
+                            <constraint firstAttribute="trailing" secondItem="j9i-wr-OWx" secondAttribute="trailing" id="6id-6i-JW7"/>
+                            <constraint firstAttribute="trailing" secondItem="nRG-aO-MMB" secondAttribute="trailing" constant="20" id="6lh-bg-mja"/>
+                            <constraint firstItem="j9i-wr-OWx" firstAttribute="leading" secondItem="w1M-eq-ylA" secondAttribute="leading" id="MrX-yE-XUO"/>
+                            <constraint firstItem="WZg-0B-32h" firstAttribute="top" secondItem="j9i-wr-OWx" secondAttribute="bottom" id="RiC-n5-SKl"/>
+                            <constraint firstItem="j9i-wr-OWx" firstAttribute="top" secondItem="w1M-eq-ylA" secondAttribute="top" id="TLd-yi-Cke"/>
+                            <constraint firstItem="hUy-R9-lWG" firstAttribute="leading" secondItem="w1M-eq-ylA" secondAttribute="leading" constant="20" id="iMP-CL-YJb"/>
+                            <constraint firstItem="nRG-aO-MMB" firstAttribute="top" secondItem="hUy-R9-lWG" secondAttribute="bottom" constant="20" id="jsD-Rq-1tL"/>
+                            <constraint firstItem="hUy-R9-lWG" firstAttribute="centerY" secondItem="w1M-eq-ylA" secondAttribute="centerY" constant="-70" id="kRu-bl-0U7"/>
+                            <constraint firstAttribute="trailing" secondItem="hUy-R9-lWG" secondAttribute="trailing" constant="20" id="zGo-ky-fU7"/>
+                        </constraints>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="blurView" destination="j9i-wr-OWx" id="JWh-w1-BUH"/>
+                        <outlet property="closeButton" destination="nRG-aO-MMB" id="fTf-4y-3TU"/>
+                        <outlet property="imageContainer" destination="hUy-R9-lWG" id="rSG-8F-9b8"/>
+                        <outlet property="imageView" destination="FHg-Jo-EJJ" id="dpC-ln-Kak"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3AL-8n-7T2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="143" y="436"/>
+        </scene>
+    </scenes>
+</document>
