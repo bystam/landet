@@ -6,7 +6,7 @@ import UIKit
 
 private let formatter: NSDateFormatter = {
     let formatter = NSDateFormatter()
-    formatter.dateFormat = "HH:mm"
+    formatter.dateFormat = "EEEE HH:mm"
     return formatter
 }()
 
