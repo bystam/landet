@@ -18,10 +18,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OSC-xV-bPe">
+                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vaj-oL-2sh">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.69999999999999996" colorSpace="calibratedRGB"/>
-                            </view>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="eWI-zg-DEn">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                </view>
+                                <blurEffect style="dark"/>
+                            </visualEffectView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What's on your mind?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jFY-Yu-ioa">
                                 <rect key="frame" x="84.5" y="107" width="207" height="26.5"/>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="22"/>
@@ -43,7 +47,7 @@
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences" keyboardAppearance="alert" returnKeyType="done"/>
                                     </textView>
                                 </subviews>
-                                <color key="backgroundColor" red="0.14509804546833038" green="0.12941177189350128" blue="0.12549020349979401" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="HGf-U1-TzH" secondAttribute="height" id="DfC-CR-rLf"/>
                                     <constraint firstItem="9mh-Vs-9l7" firstAttribute="centerX" secondItem="HGf-U1-TzH" secondAttribute="centerX" id="Fhk-jC-gf5"/>
@@ -71,19 +75,19 @@
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="OSC-xV-bPe" secondAttribute="trailing" id="8JI-c6-JcR"/>
-                            <constraint firstItem="DQw-gC-nwe" firstAttribute="top" secondItem="OSC-xV-bPe" secondAttribute="bottom" id="Dib-30-JS4"/>
+                            <constraint firstItem="Vaj-oL-2sh" firstAttribute="top" secondItem="2iI-vE-nuN" secondAttribute="top" id="Cbc-f7-BhP"/>
                             <constraint firstItem="HGf-U1-TzH" firstAttribute="centerX" secondItem="2iI-vE-nuN" secondAttribute="centerX" id="Hwj-i3-1zE"/>
+                            <constraint firstAttribute="trailing" secondItem="Vaj-oL-2sh" secondAttribute="trailing" id="WG6-s1-WgW"/>
+                            <constraint firstItem="Vaj-oL-2sh" firstAttribute="leading" secondItem="2iI-vE-nuN" secondAttribute="leading" id="Zu5-bV-xiR"/>
                             <constraint firstItem="HGf-U1-TzH" firstAttribute="centerY" secondItem="2iI-vE-nuN" secondAttribute="centerY" constant="-40" id="iqV-FR-6Yo"/>
-                            <constraint firstItem="OSC-xV-bPe" firstAttribute="leading" secondItem="2iI-vE-nuN" secondAttribute="leading" id="rRa-Hf-JZA"/>
                             <constraint firstItem="jFY-Yu-ioa" firstAttribute="centerX" secondItem="2iI-vE-nuN" secondAttribute="centerX" id="vws-ic-eJ7"/>
                             <constraint firstItem="HGf-U1-TzH" firstAttribute="top" secondItem="jFY-Yu-ioa" secondAttribute="bottom" constant="40" id="xGE-vA-Dmg"/>
-                            <constraint firstItem="OSC-xV-bPe" firstAttribute="top" secondItem="2iI-vE-nuN" secondAttribute="top" id="zDX-3x-3OU"/>
+                            <constraint firstItem="DQw-gC-nwe" firstAttribute="top" secondItem="Vaj-oL-2sh" secondAttribute="bottom" id="zRd-y9-5MS"/>
                         </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
-                        <outlet property="backgroundView" destination="OSC-xV-bPe" id="2c4-6N-TWd"/>
+                        <outlet property="blurView" destination="Vaj-oL-2sh" id="jFo-sZ-Hfu"/>
                         <outlet property="circleView" destination="HGf-U1-TzH" id="01T-JV-x8b"/>
                         <outlet property="textView" destination="9mh-Vs-9l7" id="mRW-eX-499"/>
                         <outlet property="titleLabel" destination="jFY-Yu-ioa" id="SD7-AG-mKp"/>

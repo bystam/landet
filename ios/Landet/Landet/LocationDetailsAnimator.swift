@@ -43,12 +43,12 @@ class LocationDetailsAnimator: NSObject, UIViewControllerAnimatedTransitioning {
                 detailsVC.blurView.effect = effect
             })
 
-            UIView.animateWithDuration(0.6, delay: 0.2, usingSpringWithDamping: 0.8, initialSpringVelocity: 2.0, options: [], animations: {
+            UIView.animateWithDuration(0.6, delay: 0.2, usingSpringWithDamping: 0.6, initialSpringVelocity: 2.0, options: [], animations: {
                 detailsVC.imageContainer.alpha = 1.0
                 detailsVC.imageContainer.transform = CGAffineTransformIdentity
             }, completion: nil)
 
-            UIView.animateWithDuration(0.6, delay: 0.4, usingSpringWithDamping: 0.8, initialSpringVelocity: 2.0, options: [], animations: {
+            UIView.animateWithDuration(0.6, delay: 0.4, usingSpringWithDamping: 0.6, initialSpringVelocity: 2.0, options: [], animations: {
                 detailsVC.closeButton.alpha = 1.0
                 detailsVC.closeButton.transform = CGAffineTransformIdentity
             }, completion: { _ in

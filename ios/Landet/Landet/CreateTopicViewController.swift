@@ -8,7 +8,7 @@ class CreateTopicViewController: UIViewController {
 
     var topicsRepository: TopicsRepository!
 
-    @IBOutlet weak var backgroundView: UIView!
+    @IBOutlet weak var blurView: UIVisualEffectView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var circleView: RoundRectView!
     @IBOutlet weak var textView: UITextView!
@@ -30,7 +30,7 @@ class CreateTopicViewController: UIViewController {
         textView.delegate = self
 
         let tapToDismiss = UITapGestureRecognizer(target: self, action: #selector(backgroundViewTapped(_:)))
-        backgroundView.addGestureRecognizer(tapToDismiss)
+        blurView.addGestureRecognizer(tapToDismiss)
     }
 
     override func viewWillAppear(animated: Bool) {

@@ -23,7 +23,6 @@ class CreateTopicAnimator: NSObject, UIViewControllerAnimatedTransitioning {
 
         if presenting {
             let createTopicVC = toVC as! CreateTopicViewController
-            fromVC.view.userInteractionEnabled = false
 
             fromVC.beginAppearanceTransition(false, animated: true)
             toVC.beginAppearanceTransition(true, animated: true)
@@ -31,37 +30,26 @@ class CreateTopicAnimator: NSObject, UIViewControllerAnimatedTransitioning {
             toVC.view.frame = fromVC.view.frame
             container.addSubview(toVC.view)
 
-            let header = headerVC(inVC: fromVC)
-            let circle = createCircle(inVC: header, container: container)
+            let effect = createTopicVC.blurView.effect
+            createTopicVC.blurView.effect = nil
 
-            let width = fromVC.view.bounds.width
-
-            circle.transform = CGAffineTransformMakeTranslation(width, 0)
-
-            createTopicVC.backgroundView.alpha = 0.0
-            createTopicVC.titleLabel.alpha = 0.0
-            createTopicVC.titleLabel.transform = CGAffineTransformMakeTranslation(0, 30)
             createTopicVC.circleView.alpha = 0.0
+            createTopicVC.circleView.transform = CGAffineTransformMakeTranslation(0, 40)
+            createTopicVC.titleLabel.alpha = 0.0
+            createTopicVC.titleLabel.transform = CGAffineTransformMakeTranslation(0, 40)
 
-            UIView.animateKeyframesWithDuration(0.8, delay: 0.0, options: [], animations: {
-                UIView.addKeyframeWithRelativeStartTime(0.0, relativeDuration: 0.4, animations: {
-                    circle.transform = CGAffineTransformIdentity
-                    header.collectionView.transform = CGAffineTransformMakeTranslation(-width, 0)
-                })
-                UIView.addKeyframeWithRelativeStartTime(0.4, relativeDuration: 0.4, animations: {
-                    circle.transform = transform(fromRect: circle.frame, toRect: createTopicVC.circleView.frame)
-                    createTopicVC.backgroundView.alpha = 1.0
-                })
-                UIView.addKeyframeWithRelativeStartTime(0.8, relativeDuration: 0.2, animations: {
-                    createTopicVC.circleView.alpha = 1.0
-                })
-            }, completion: { _ in
-                circle.removeFromSuperview()
+            UIView.animateWithDuration(0.4, animations: {
+                createTopicVC.blurView.effect = effect
             })
 
-            UIView.animateWithDuration(0.6, delay: 0.4, usingSpringWithDamping: 0.8, initialSpringVelocity: 2.0, options: [], animations: {
+            UIView.animateWithDuration(0.6, delay: 0.2, usingSpringWithDamping: 0.6, initialSpringVelocity: 2.0, options: [], animations: {
                 createTopicVC.titleLabel.alpha = 1.0
                 createTopicVC.titleLabel.transform = CGAffineTransformIdentity
+            }, completion: nil)
+
+            UIView.animateWithDuration(0.6, delay: 0.4, usingSpringWithDamping: 0.6, initialSpringVelocity: 2.0, options: [], animations: {
+                createTopicVC.circleView.alpha = 1.0
+                createTopicVC.circleView.transform = CGAffineTransformIdentity
             }, completion: { _ in
                 transitionContext.completeTransition(!transitionContext.transitionWasCancelled())
                 toVC.endAppearanceTransition()
@@ -71,24 +59,27 @@ class CreateTopicAnimator: NSObject, UIViewControllerAnimatedTransitioning {
         } else {
 
             let createTopicVC = fromVC as! CreateTopicViewController
-            let header = headerVC(inVC: toVC)
 
-            UIView.animateWithDuration(0.5, animations: {
-                createTopicVC.backgroundView.alpha = 0.0
-                createTopicVC.titleLabel.alpha = 0.0
+            fromVC.beginAppearanceTransition(false, animated: true)
+            toVC.beginAppearanceTransition(true, animated: true)
+
+            UIView.animateWithDuration(0.3, animations: {
                 createTopicVC.circleView.alpha = 0.0
-                header.collectionView.transform = CGAffineTransformIdentity
+                createTopicVC.circleView.transform = CGAffineTransformMakeTranslation(0, 40)
+            })
 
-            }, completion: { (_) in
-                toVC.view.userInteractionEnabled = true
+            UIView.animateWithDuration(0.3, delay: 0.1, options: [], animations: {
+                createTopicVC.titleLabel.alpha = 0.0
+                createTopicVC.titleLabel.transform = CGAffineTransformMakeTranslation(0, 40)
+                }, completion: nil)
+
+            UIView.animateWithDuration(0.3, delay: 0.2, options: [], animations: {
+                createTopicVC.blurView.effect = nil
+            }, completion: { _ in
                 transitionContext.completeTransition(!transitionContext.transitionWasCancelled())
-
                 toVC.endAppearanceTransition()
                 fromVC.endAppearanceTransition()
             })
-
-            fromVC.beginAppearanceTransition(false, animated: false)
-            toVC.beginAppearanceTransition(true, animated: false)
         }
     }
 
