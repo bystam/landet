@@ -9,18 +9,30 @@ import com.google.gson.JsonSerializationContext;
 import com.google.gson.JsonSerializer;
 
 import org.joda.time.DateTime;
+import org.joda.time.DateTimeZone;
+import org.joda.time.format.DateTimeFormat;
+import org.joda.time.format.DateTimeFormatter;
 
 import java.lang.reflect.Type;
 
+import timber.log.Timber;
+
 public class DateTimeTypeConverter implements JsonSerializer<DateTime>, JsonDeserializer<DateTime> {
+    private static DateTimeFormatter isoDateFormat = DateTimeFormat.forPattern("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
+
+    public static String toString(DateTime dateTime) {
+        final String s = dateTime != null ? isoDateFormat.print(dateTime) : null;
+        Timber.d(s);
+        return s;
+    }
     // No need for an InstanceCreator since DateTime provides a no-args constructor
     @Override
     public JsonElement serialize(DateTime src, Type srcType, JsonSerializationContext context) {
-        return new JsonPrimitive(src.toString());
+        return new JsonPrimitive(toString(src));
     }
     @Override
     public DateTime deserialize(JsonElement json, Type type, JsonDeserializationContext context)
             throws JsonParseException {
-        return new DateTime(json.getAsString());
+        return new DateTime(json.getAsString(), DateTimeZone.UTC);
     }
 }

@@ -80,7 +80,9 @@ public class Backend {
     public Observable<ApiResponse<TopicCommentListWrapper>> fetchTopicComments(@NonNull Topic topic,
                                                                                @Nullable DateTime before,
                                                                                @Nullable DateTime after) {
-        return mApi.topicComments(topic.getId(), before, after)
+        return mApi.topicComments(topic.getId(),
+                                  DateTimeTypeConverter.toString(before),
+                                  DateTimeTypeConverter.toString(after))
                 .map(this.<TopicCommentListWrapper>resultToApiResponse());
     }
 

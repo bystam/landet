@@ -44,7 +44,7 @@ public class TopicsFragment extends BaseFragment {
             @Override
             public void onItemClicked(@NonNull Topic item) {
                 Toast.makeText(getContext(), item.getTitle(), Toast.LENGTH_SHORT).show();
-                fetchNewerCommentsForTopic(item); //TODO Move this to a better place
+                fetchOlderCommentsForTopic(item); //TODO Move this to a better place
             }
         });
         recyclerView.setAdapter(mAdapter);
@@ -61,11 +61,45 @@ public class TopicsFragment extends BaseFragment {
                     public void call(List<Topic> topics) {
                         Timber.d("topics: %s", topics);
                         mAdapter.setItems(topics);
+                        if (!topics.isEmpty()) {
+                            setActiveTopic(topics.get(0));
+                        }
                     }
                 }, new Action1<Throwable>() {
                     @Override
                     public void call(Throwable throwable) {
                         Timber.d(throwable, "failed to fetch topics");
+                    }
+                });
+    }
+
+    private void setActiveTopic(Topic topic) {
+        //TODO what does this even mean?
+        mModel.initialLoad(topic)
+                .subscribe(new Action1<List<TopicComment>>() {
+                    @Override
+                    public void call(List<TopicComment> topicComments) {
+                        Timber.d("Comments %s", topicComments);
+                    }
+                }, new Action1<Throwable>() {
+                    @Override
+                    public void call(Throwable throwable) {
+                        Timber.d("Failed to fetch comments");
+                    }
+                });
+    }
+
+    private void fetchOlderCommentsForTopic(@NonNull Topic topic) {
+        mModel.fetchOlderTopicComments(topic)
+                .subscribe(new Action1<List<TopicComment>>() {
+                    @Override
+                    public void call(List<TopicComment> topicComments) {
+                        Timber.d("comments %s: ", topicComments);
+                    }
+                }, new Action1<Throwable>() {
+                    @Override
+                    public void call(Throwable throwable) {
+                        Timber.d(throwable, "Failed to load topic comments");
                     }
                 });
     }
