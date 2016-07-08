@@ -1,0 +1,16 @@
+{
+  "url" : "http://landet.herokuapp.com/map.png",
+
+  "locations": [
+    {
+      "id" : "SAUNA",
+      "x" : 1400,
+      "y" : 210
+    },
+    {
+      "id" : "HOUSE",
+      "x" : 1000,
+      "y" : 1400
+    }
+  ]
+}
