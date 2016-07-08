@@ -16,9 +16,23 @@
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="imz-m7-RbW" customClass="RoundRectView" customModule="Landet" customModuleProvider="target">
                         <rect key="frame" x="87" y="25" width="200" height="200"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kan man svälja en hel potatis hel?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ib8-Gg-OZn">
+                                <rect key="frame" x="35" y="35" width="130" height="130"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="130" id="2zE-sm-Qgl"/>
+                                    <constraint firstAttribute="width" constant="130" id="NqZ-Wq-wKb"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
+                                <color key="textColor" red="0.66274511810000003" green="0.18431372939999999" blue="0.25490197539999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="200" id="3pw-c2-2Px"/>
+                            <constraint firstItem="Ib8-Gg-OZn" firstAttribute="centerY" secondItem="imz-m7-RbW" secondAttribute="centerY" id="9ae-PV-nw3"/>
+                            <constraint firstItem="Ib8-Gg-OZn" firstAttribute="centerX" secondItem="imz-m7-RbW" secondAttribute="centerX" id="E7Q-Z1-xI1"/>
                             <constraint firstAttribute="height" constant="200" id="H1x-IZ-Mbt"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>
@@ -33,26 +47,15 @@
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </view>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kan man svälja en hel potatis hel?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ib8-Gg-OZn">
-                        <rect key="frame" x="122" y="59.5" width="130" height="130"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="130" id="2zE-sm-Qgl"/>
-                            <constraint firstAttribute="width" constant="130" id="NqZ-Wq-wKb"/>
-                        </constraints>
-                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
-                        <color key="textColor" red="0.66274511810000003" green="0.18431372939999999" blue="0.25490197539999998" alpha="1" colorSpace="calibratedRGB"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             </view>
             <constraints>
                 <constraint firstItem="imz-m7-RbW" firstAttribute="centerX" secondItem="bRu-zS-BaU" secondAttribute="centerX" id="6aZ-Si-oiT"/>
-                <constraint firstItem="Ib8-Gg-OZn" firstAttribute="centerY" secondItem="bRu-zS-BaU" secondAttribute="centerY" id="DMW-mQ-6di"/>
-                <constraint firstItem="Ib8-Gg-OZn" firstAttribute="centerX" secondItem="bRu-zS-BaU" secondAttribute="centerX" id="UCg-jW-RHg"/>
                 <constraint firstItem="imz-m7-RbW" firstAttribute="centerY" secondItem="bRu-zS-BaU" secondAttribute="centerY" id="q85-XL-xaz"/>
             </constraints>
             <connections>
+                <outlet property="circleView" destination="imz-m7-RbW" id="9yh-Sr-ZRV"/>
                 <outlet property="titleLabel" destination="Ib8-Gg-OZn" id="JBC-4T-8sC"/>
             </connections>
         </collectionViewCell>

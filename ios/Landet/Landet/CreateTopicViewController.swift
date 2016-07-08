@@ -13,6 +13,8 @@ class CreateTopicViewController: UIViewController {
     @IBOutlet weak var circleView: RoundRectView!
     @IBOutlet weak var textView: UITextView!
 
+    private var didCreate = false
+
     static func create() -> CreateTopicViewController {
         let storyboard = UIStoryboard(name: "CreateTopic", bundle: nil)
         return storyboard.instantiateInitialViewController() as! CreateTopicViewController
@@ -60,9 +62,14 @@ extension CreateTopicViewController: UITextViewDelegate {
 
         guard let text = textView.text where !text.isEmpty else { return false }
 
+        textView.resignFirstResponder()
         topicsRepository.create(topicText: text) { (error) in
-            guard error == nil else { return }
-            self.dismissViewControllerAnimated(true, completion: nil)
+            if let _ = error {
+                textView.becomeFirstResponder()
+            } else {
+                self.didCreate = true
+                self.dismissViewControllerAnimated(true, completion: nil)
+            }
         }
 
         return false
@@ -76,6 +83,6 @@ extension CreateTopicViewController: UIViewControllerTransitioningDelegate {
     }
 
     func animationControllerForDismissedController(dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        return CreateTopicAnimator(presenting: false)
+        return CreateTopicAnimator(presenting: false, didCreate: didCreate)
     }
 }
