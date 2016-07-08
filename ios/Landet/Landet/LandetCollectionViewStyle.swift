@@ -6,7 +6,6 @@ import UIKit
 
 struct LandetCollectionCellIdentifier {
     static let Spinner = LandetCollectionCellIdentifier("SpinnerCollectionViewCell")
-    static let TopicHeader = LandetCollectionCellIdentifier("TopicsHeaderCollectionViewCell")
 
     private let string: String
 

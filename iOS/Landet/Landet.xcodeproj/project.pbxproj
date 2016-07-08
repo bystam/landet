@@ -285,8 +285,6 @@
 		DB2E69911D217F2800753FDE /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				DBDCC5091D188A7800DD00C0 /* TopicsHeaderCollectionViewCell.swift */,
-				DB2E69991D21810400753FDE /* TopicsHeaderCollectionViewCell.xib */,
 				DB2E69921D217F6E00753FDE /* SpinnerCollectionViewCell.swift */,
 				DB2E69931D217F6E00753FDE /* SpinnerCollectionViewCell.xib */,
 			);
@@ -482,6 +480,8 @@
 			children = (
 				DBDCC5071D18875A00DD00C0 /* TopicsHeader.storyboard */,
 				DBDCC5051D18874400DD00C0 /* TopicsHeaderViewController.swift */,
+				DBDCC5091D188A7800DD00C0 /* TopicsHeaderCollectionViewCell.swift */,
+				DB2E69991D21810400753FDE /* TopicsHeaderCollectionViewCell.xib */,
 			);
 			name = "Topic header";
 			sourceTree = "<group>";

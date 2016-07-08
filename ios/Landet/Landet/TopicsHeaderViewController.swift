@@ -98,3 +98,7 @@ extension TopicsHeaderViewController: UICollectionViewDelegate {
         topicsRepository.currentTopic = topicsRepository.topics[index]
     }
 }
+
+private extension LandetCollectionCellIdentifier {
+    static let TopicHeader = LandetCollectionCellIdentifier("TopicsHeaderCollectionViewCell")
+}
