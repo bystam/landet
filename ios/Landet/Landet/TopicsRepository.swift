@@ -93,8 +93,10 @@ class TopicCommentsRepository {
     }
 
     func loadInitial() {
-        if comments.count < 10 {
+        if comments.isEmpty {
             loadNextPage()
+        } else {
+            loadNewComments()
         }
     }
 
