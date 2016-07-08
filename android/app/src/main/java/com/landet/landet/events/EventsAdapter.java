@@ -52,9 +52,10 @@ public class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.EventViewH
     public void onBindViewHolder(EventViewHolder holder, int position) {
         Event event = getItem(position);
         holder.title.setText(event.getTitle());
+        String day = event.getEventTime().dayOfWeek().getAsText();
         String time = DateTimeFormat.forPattern("HH:mm").print(event.getEventTime());
         String place = event.getLocation().getName();
-        holder.timePlace.setText(mContext.getString(R.string.time_at_place, time, place));
+        holder.timePlace.setText(mContext.getString(R.string.day_time_at_place, day, time, place));
         holder.author.setText(mContext.getString(R.string.by_author, event.getCreator().getName()));
         holder.body.setText(event.getBody());
     }
@@ -70,7 +71,7 @@ public class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.EventViewH
             title = (TextView) itemView.findViewById(R.id.title);
             timePlace = (TextView) itemView.findViewById(R.id.time_place);
             author = (TextView) itemView.findViewById(R.id.author);
-            body = (TextView) itemView.findViewById(R.id.content);
+            body = (TextView) itemView.findViewById(R.id.body);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
