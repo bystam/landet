@@ -16,12 +16,15 @@ class TopicsRepository {
     private(set) var topics = [Topic]()
     var currentTopic: Topic? {
         didSet {
-            guard let topic = currentTopic where topic !== oldValue else { return }
+            guard currentTopic !== oldValue else { return }
 
             delegate?.repositoryChangedTopic(self)
 
-            commentsRepository.topic = topic
-            commentsRepository.loadInitial()
+            commentsRepository.topic = currentTopic
+
+            if currentTopic != nil {
+                commentsRepository.loadInitial()
+            }
         }
     }
 
@@ -66,7 +69,7 @@ class TopicsRepository {
 
 
 protocol TopicCommentsRepositoryDelegate: class {
-    func repository(repository: TopicCommentsRepository, didChangeToTopic topic: Topic)
+    func repository(repository: TopicCommentsRepository, didChangeToTopic topic: Topic?)
     func repository(repository: TopicCommentsRepository, loadedNewCommentsInRange range: Range<Int>)
 }
 
@@ -77,7 +80,7 @@ class TopicCommentsRepository {
     private var topicToComments = [Int : [TopicComment]]()
     private var topicToHasMore = [Int : Bool]()
 
-    private var topic: Topic! {
+    private var topic: Topic? {
         didSet {
             delegate?.repository(self, didChangeToTopic: topic)
         }
@@ -102,12 +105,14 @@ class TopicCommentsRepository {
 
     func loadNextPage() {
 
+        guard let topic = topic else { return }
+
         let op = AsyncOperation()
         op.asyncTask = { completion in
 
-            let before = self.topicToComments[self.topic.id]?.last?.timestamp
+            let before = self.topicToComments[topic.id]?.last?.timestamp
 
-            TopicAPI.shared.comments(forTopic: self.topic, before: before, orAfter: nil) { [weak self] (comments, hasMore, error) in
+            TopicAPI.shared.comments(forTopic: topic, before: before, orAfter: nil) { [weak self] (comments, hasMore, error) in
                 Async.main {
                     guard let strongSelf = self else { return }
 
@@ -115,14 +120,14 @@ class TopicCommentsRepository {
                         print(e)
                     }
                     else if let comments = comments {
-                        var existing = strongSelf.topicToComments[strongSelf.topic.id] ?? []
+                        var existing = strongSelf.topicToComments[topic.id] ?? []
                         let oldCount = existing.count
 
                         existing.appendContentsOf(comments)
                         let newCount = existing.count
 
-                        strongSelf.topicToComments[strongSelf.topic.id] = existing
-                        strongSelf.topicToHasMore[strongSelf.topic.id] = hasMore
+                        strongSelf.topicToComments[topic.id] = existing
+                        strongSelf.topicToHasMore[topic.id] = hasMore
 
                         strongSelf.delegate?.repository(strongSelf, loadedNewCommentsInRange: (oldCount..<newCount))
                     }
@@ -137,12 +142,14 @@ class TopicCommentsRepository {
 
     func loadNewComments() {
 
+        guard let topic = topic else { return }
+
         let op = AsyncOperation()
         op.asyncTask = { completion in
 
-            let after = self.topicToComments[self.topic.id]?.first?.timestamp
+            let after = self.topicToComments[topic.id]?.first?.timestamp
 
-            TopicAPI.shared.comments(forTopic: self.topic, before: nil, orAfter: after) { [weak self] (comments, hasMore, error) in
+            TopicAPI.shared.comments(forTopic: topic, before: nil, orAfter: after) { [weak self] (comments, hasMore, error) in
                 Async.main {
                     guard let strongSelf = self else { return }
 
@@ -150,10 +157,10 @@ class TopicCommentsRepository {
                         print(e)
                     }
                     else if let comments = comments {
-                        var existing = strongSelf.topicToComments[strongSelf.topic.id] ?? []
+                        var existing = strongSelf.topicToComments[topic.id] ?? []
                         existing.insertContentsOf(comments, at: 0)
 
-                        strongSelf.topicToComments[strongSelf.topic.id] = existing
+                        strongSelf.topicToComments[topic.id] = existing
 
                         strongSelf.delegate?.repository(strongSelf, loadedNewCommentsInRange: (0..<comments.count))
                     }

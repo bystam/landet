@@ -27,6 +27,8 @@
 		DB0FFBDF1D04CD3900DD4B94 /* NSDate+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB0FFBDE1D04CD3900DD4B94 /* NSDate+Extension.swift */; };
 		DB0FFBE21D05A9BB00DD4B94 /* AsyncOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB0FFBE11D05A9BB00DD4B94 /* AsyncOperation.swift */; };
 		DB0FFBE41D05AA6C00DD4B94 /* LandetAPIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB0FFBE31D05AA6C00DD4B94 /* LandetAPIError.swift */; };
+		DB22B20A1D30124A007FE73C /* CreateTopicCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB22B2081D30124A007FE73C /* CreateTopicCollectionViewCell.swift */; };
+		DB22B20B1D30124A007FE73C /* CreateTopicCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB22B2091D30124A007FE73C /* CreateTopicCollectionViewCell.xib */; };
 		DB2E69901D217ACB00753FDE /* Topics.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2E698F1D217ACB00753FDE /* Topics.swift */; };
 		DB2E69941D217F6E00753FDE /* SpinnerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2E69921D217F6E00753FDE /* SpinnerCollectionViewCell.swift */; };
 		DB2E69951D217F6E00753FDE /* SpinnerCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB2E69931D217F6E00753FDE /* SpinnerCollectionViewCell.xib */; };
@@ -109,6 +111,8 @@
 		DB0FFBDE1D04CD3900DD4B94 /* NSDate+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSDate+Extension.swift"; sourceTree = "<group>"; };
 		DB0FFBE11D05A9BB00DD4B94 /* AsyncOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsyncOperation.swift; sourceTree = "<group>"; };
 		DB0FFBE31D05AA6C00DD4B94 /* LandetAPIError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LandetAPIError.swift; sourceTree = "<group>"; };
+		DB22B2081D30124A007FE73C /* CreateTopicCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateTopicCollectionViewCell.swift; sourceTree = "<group>"; };
+		DB22B2091D30124A007FE73C /* CreateTopicCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CreateTopicCollectionViewCell.xib; sourceTree = "<group>"; };
 		DB2E698F1D217ACB00753FDE /* Topics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Topics.swift; sourceTree = "<group>"; };
 		DB2E69921D217F6E00753FDE /* SpinnerCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpinnerCollectionViewCell.swift; sourceTree = "<group>"; };
 		DB2E69931D217F6E00753FDE /* SpinnerCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SpinnerCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -482,6 +486,8 @@
 				DBDCC5051D18874400DD00C0 /* TopicsHeaderViewController.swift */,
 				DBDCC5091D188A7800DD00C0 /* TopicsHeaderCollectionViewCell.swift */,
 				DB2E69991D21810400753FDE /* TopicsHeaderCollectionViewCell.xib */,
+				DB22B2081D30124A007FE73C /* CreateTopicCollectionViewCell.swift */,
+				DB22B2091D30124A007FE73C /* CreateTopicCollectionViewCell.xib */,
 			);
 			name = "Topic header";
 			sourceTree = "<group>";
@@ -572,6 +578,7 @@
 				DB0FFBD81D04C34400DD4B94 /* Events.xcassets in Resources */,
 				DBA9B4121D11BD5A00DB6EBB /* SpinnerCell.xib in Resources */,
 				DBD1F8351D045C520035A7B4 /* Topics.storyboard in Resources */,
+				DB22B20B1D30124A007FE73C /* CreateTopicCollectionViewCell.xib in Resources */,
 				DB2E699A1D21810400753FDE /* TopicsHeaderCollectionViewCell.xib in Resources */,
 				DBD1F8201D045B0D0035A7B4 /* AppNavigation.storyboard in Resources */,
 				DB36CDE01D06306500B94422 /* Auth.storyboard in Resources */,
@@ -617,6 +624,7 @@
 				DB0FFBE21D05A9BB00DD4B94 /* AsyncOperation.swift in Sources */,
 				DB764B851D2C4C5300D0D638 /* CreateTopicViewController.swift in Sources */,
 				DB0FFBE41D05AA6C00DD4B94 /* LandetAPIError.swift in Sources */,
+				DB22B20A1D30124A007FE73C /* CreateTopicCollectionViewCell.swift in Sources */,
 				DB2E69981D21805100753FDE /* LandetCollectionViewStyle.swift in Sources */,
 				DB764B7C1D2C309400D0D638 /* DatePicker.swift in Sources */,
 				DB2E69901D217ACB00753FDE /* Topics.swift in Sources */,

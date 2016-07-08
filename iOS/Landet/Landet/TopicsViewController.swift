@@ -41,6 +41,7 @@ class TopicsViewController: UIViewController {
 
         observeKeyboard()
 
+        setTextFieldEnabled(false)
         topicsRepository.load()
     }
 
@@ -66,12 +67,21 @@ class TopicsViewController: UIViewController {
             tableViewController.topicsRepository = topicsRepository
         } else if segue.identifier == "embedHeader" {
             headerViewController = segue.destinationViewController as! TopicsHeaderViewController
+            headerViewController.headerDelegate = self
             headerViewController.topicsRepository = topicsRepository
         }
     }
 
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
         return .LightContent
+    }
+
+    func setTextFieldEnabled(enabled: Bool) {
+        addCommentTextField.userInteractionEnabled = enabled
+
+        UIView.animateWithDuration(0.2) { 
+            self.addCommentTextField.alpha = enabled ? 1.0 : 0.3
+        }
     }
 
 
@@ -140,5 +150,12 @@ extension TopicsViewController: TopicsTableViewControllerScrollDelegate {
 
         headerHeightConstraint.constant = headerHeight
         headerViewController.respondToHeight(headerHeight)
+    }
+}
+
+extension TopicsViewController: TopicsHeaderViewControllerDelegate {
+
+    func header(header: TopicsHeaderViewController, startedDisplayingTopic topic: Topic?) {
+        setTextFieldEnabled(topic != nil)
     }
 }
