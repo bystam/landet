@@ -6,6 +6,8 @@ import com.landet.landet.data.Topic;
 import com.landet.landet.data.TopicCommentListWrapper;
 import com.landet.landet.data.User;
 
+import org.joda.time.DateTime;
+
 import java.util.List;
 
 import retrofit2.adapter.rxjava.Result;
@@ -13,6 +15,7 @@ import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
+import retrofit2.http.Query;
 import rx.Observable;
 
 public interface LandetRestApi {
@@ -37,5 +40,8 @@ public interface LandetRestApi {
     Observable<Result<List<Topic>>> topics();
 
     @GET("topics/{topicId}/comments")
-    Observable<Result<TopicCommentListWrapper>> topicComments(@Path("topicId") Long topicId);
+    Observable<Result<TopicCommentListWrapper>> topicComments(
+            @Path("topicId") Long topicId,
+            @Query("before") DateTime before,
+            @Query("after") DateTime after);
 }
