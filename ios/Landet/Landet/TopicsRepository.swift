@@ -129,7 +129,9 @@ class TopicCommentsRepository {
                         strongSelf.topicToComments[topic.id] = existing
                         strongSelf.topicToHasMore[topic.id] = hasMore
 
-                        strongSelf.delegate?.repository(strongSelf, loadedNewCommentsInRange: (oldCount..<newCount))
+                        if strongSelf.topic === topic {
+                            strongSelf.delegate?.repository(strongSelf, loadedNewCommentsInRange: (oldCount..<newCount))
+                        }
                     }
 
                     completion()
@@ -162,7 +164,9 @@ class TopicCommentsRepository {
 
                         strongSelf.topicToComments[topic.id] = existing
 
-                        strongSelf.delegate?.repository(strongSelf, loadedNewCommentsInRange: (0..<comments.count))
+                        if strongSelf.topic === topic {
+                            strongSelf.delegate?.repository(strongSelf, loadedNewCommentsInRange: (0..<comments.count))
+                        }
                     }
 
                     completion()
