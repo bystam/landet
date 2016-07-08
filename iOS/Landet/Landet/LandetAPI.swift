@@ -307,5 +307,23 @@ class LocationAPI {
         apiQueue.addOperation(operation)
     }
 
+    func loadAll(completion: (imageUrl: String?, locations: [MapLocation]?, error: NSError?) -> ()) {
+
+        let operation = apiClient.get("/map_content.json")
+
+        operation.completionBlock = {
+            guard let body = operation.apiResponse.body else {
+                completion(imageUrl: nil, locations: nil, error: operation.apiResponse.error)
+                return
+            }
+
+            let imageUrl = (body as? [String : AnyObject])?["url"] as? String
+            let locations: [MapLocation]? = APIUtil.parseArray(json: body, key: "locations")
+
+            completion(imageUrl: imageUrl, locations: locations, error: nil)
+        }
+
+        apiQueue.addOperation(operation)
+    }
 }
 

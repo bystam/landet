@@ -11,17 +11,36 @@ class MapViewController: UIViewController {
     @IBOutlet weak var scrollView: UIScrollView!
     private weak var imageView: UIImageView?
     private weak var scrollViewContent: UIView?
+
+    private var iconToLocation = [UIView : MapLocation]()
+
+    private var loading = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        scrollView.delegate = self
+        scrollView.delegate = self  
+    }
 
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+
+        if loading || imageView?.image != nil { return }
+
+        loading = true
         activityIndicator.startAnimating()
-        let url = NSURL(string: "http://www.theodora.com/maps/new9/time_zones_4.jpg")!
-        ImageLoader.loadImage(url) { (image) in
-            self.setMapImage(image)
-            self.placePins()
+
+        LocationAPI.shared.loadAll { (imageUrl, locations, error) in
+            guard let imageUrl = imageUrl else { return }
+            guard let url = NSURL(string: imageUrl) else { return }
+
+            ImageLoader.loadImage(url) { (image) in
+
+                self.setMapImage(image)
+                self.placePins(locations ?? [])
+
+                self.loading = false
+            }
         }
     }
 
@@ -51,11 +70,11 @@ class MapViewController: UIViewController {
         }
     }
 
-    private func placePins() {
+    private func placePins(locations: [MapLocation]) {
         let pin = UIImage(named: "pin")
-        for _ in 0..<3 {
-            let p = CGPoint(x: random() % Int(scrollView.contentSize.width),
-                            y: random() % Int(scrollView.contentSize.height))
+
+        for location in locations {
+            let p = CGPoint(x: location.x, y: location.y)
 
             let pinView = UIImageView(image: pin)
             pinView.center = p
@@ -63,11 +82,13 @@ class MapViewController: UIViewController {
 
             pinView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(pinWasTapped(_:))))
             pinView.userInteractionEnabled = true
+            iconToLocation[pinView] = location
         }
     }
 
-    @objc private func pinWasTapped(sender: AnyObject) {
-        showDetailsForLocation(LocationsService.fromID(.SAUNA)!)
+    @objc private func pinWasTapped(sender: UITapGestureRecognizer) {
+        let mapLocation = iconToLocation[sender.view!]!
+        showDetailsForLocation(LocationsService.fromID(mapLocation.locationId)!)
     }
 
     private func showDetailsForLocation(location: Location) {
@@ -80,10 +101,5 @@ extension MapViewController: UIScrollViewDelegate {
 
     func viewForZoomingInScrollView(scrollView: UIScrollView) -> UIView? {
         return scrollViewContent
-    }
-
-    func scrollViewDidEndZooming(scrollView: UIScrollView, withView view: UIView?,
-                                 atScale scale: CGFloat) {
-        print(scale)
     }
 }
