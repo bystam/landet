@@ -13,6 +13,8 @@ class CreateTopicViewController: UIViewController {
     @IBOutlet weak var circleView: RoundRectView!
     @IBOutlet weak var textView: UITextView!
 
+    @IBOutlet weak var textViewHeight: NSLayoutConstraint!
+
     private var didCreate = false
 
     static func create() -> CreateTopicViewController {
@@ -56,9 +58,22 @@ class CreateTopicViewController: UIViewController {
 
 extension CreateTopicViewController: UITextViewDelegate {
 
+    func textViewDidChange(textView: UITextView) {
+        let width = textView.bounds.width
+        let size = textView.sizeThatFits(CGSize(width: width, height: CGFloat.max))
+
+        guard size.height != textViewHeight.constant else { return }
+
+        UIView.animateWithDuration(0.1, animations: {
+            self.textViewHeight.constant = size.height
+        })
+    }
+
     func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
 
-        if text != "\n" { return true }
+        if text == "" { return true }
+
+        if text != "\n" { return textView.text.characters.count < 80 }
 
         guard let text = textView.text where !text.isEmpty else { return false }
 

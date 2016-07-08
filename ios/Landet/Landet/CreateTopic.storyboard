@@ -35,11 +35,11 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HGf-U1-TzH" customClass="RoundRectView" customModule="Landet" customModuleProvider="target">
                                 <rect key="frame" x="67" y="173.5" width="240" height="240"/>
                                 <subviews>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Kan man svälja en hel postatis hel?" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="9mh-Vs-9l7">
-                                        <rect key="frame" x="40" y="40" width="160" height="160"/>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="9mh-Vs-9l7">
+                                        <rect key="frame" x="40" y="105" width="160" height="30"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="160" id="77O-lq-1br"/>
+                                            <constraint firstAttribute="height" constant="30" id="DBR-dz-ofc"/>
                                             <constraint firstAttribute="width" constant="160" id="Z5v-nJ-K4v"/>
                                         </constraints>
                                         <color key="textColor" red="0.66274511814117432" green="0.18431372940540314" blue="0.25490197539329529" alpha="1" colorSpace="calibratedRGB"/>
@@ -51,7 +51,6 @@
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="HGf-U1-TzH" secondAttribute="height" id="DfC-CR-rLf"/>
                                     <constraint firstItem="9mh-Vs-9l7" firstAttribute="centerX" secondItem="HGf-U1-TzH" secondAttribute="centerX" id="Fhk-jC-gf5"/>
-                                    <constraint firstAttribute="height" constant="128" id="IPq-LY-VfE"/>
                                     <constraint firstItem="9mh-Vs-9l7" firstAttribute="centerY" secondItem="HGf-U1-TzH" secondAttribute="centerY" id="Zec-Ue-ezI"/>
                                     <constraint firstAttribute="width" constant="240" id="wPP-Dv-WlH"/>
                                 </constraints>
@@ -66,11 +65,6 @@
                                         <color key="value" red="0.66274511814117432" green="0.18431372940540314" blue="0.25490197539329529" alpha="1" colorSpace="calibratedRGB"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="IPq-LY-VfE"/>
-                                    </mask>
-                                </variation>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -90,6 +84,7 @@
                         <outlet property="blurView" destination="Vaj-oL-2sh" id="jFo-sZ-Hfu"/>
                         <outlet property="circleView" destination="HGf-U1-TzH" id="01T-JV-x8b"/>
                         <outlet property="textView" destination="9mh-Vs-9l7" id="mRW-eX-499"/>
+                        <outlet property="textViewHeight" destination="DBR-dz-ofc" id="GUl-Ng-auh"/>
                         <outlet property="titleLabel" destination="jFY-Yu-ioa" id="SD7-AG-mKp"/>
                     </connections>
                 </viewController>
