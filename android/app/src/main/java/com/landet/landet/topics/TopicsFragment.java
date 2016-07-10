@@ -16,13 +16,16 @@ import com.landet.landet.data.TopicComment;
 
 import java.util.List;
 
+import rx.Subscription;
 import rx.functions.Action1;
+import rx.subscriptions.CompositeSubscription;
 import timber.log.Timber;
 
 
 public class TopicsFragment extends BaseFragment {
     private TopicModel mModel;
     private TopicsAdapter mAdapter;
+    private CompositeSubscription mCompositeSubscription;
 
     public TopicsFragment() {
         // Required empty public constructor
@@ -32,6 +35,7 @@ public class TopicsFragment extends BaseFragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mModel = new TopicModel(mBackend);
+        mCompositeSubscription = new CompositeSubscription();
     }
 
     @Override
@@ -58,8 +62,14 @@ public class TopicsFragment extends BaseFragment {
         fetchTopics();
     }
 
+    @Override
+    public void onPause() {
+        super.onPause();
+        mCompositeSubscription.clear();
+    }
+
     private void fetchTopics() {
-        mModel.fetchTopics()
+        final Subscription subscription = mModel.fetchTopics()
                 .subscribe(new Action1<List<Topic>>() {
                     @Override
                     public void call(List<Topic> topics) {
@@ -75,10 +85,11 @@ public class TopicsFragment extends BaseFragment {
                         Timber.d(throwable, "failed to fetch topics");
                     }
                 });
+        mCompositeSubscription.add(subscription);
     }
 
     private void createTopic(@NonNull Topic topic) {
-        mModel.createTopic(topic)
+        final Subscription subscription = mModel.createTopic(topic)
                 .subscribe(new Action1<Topic>() {
                     @Override
                     public void call(Topic topic) {
@@ -90,11 +101,12 @@ public class TopicsFragment extends BaseFragment {
                         Timber.d("Failed to create topic");
                     }
                 });
+        mCompositeSubscription.add(subscription);
     }
 
     //Call this when swiping to a new topic. Will load comments for that topic.
     private void setActiveTopic(Topic topic) {
-        mModel.initialLoad(topic)
+        final Subscription subscription = mModel.initialLoad(topic)
                 .subscribe(new Action1<List<TopicComment>>() {
                     @Override
                     public void call(List<TopicComment> topicComments) {
@@ -107,11 +119,12 @@ public class TopicsFragment extends BaseFragment {
                         Timber.d("Failed to fetch comments");
                     }
                 });
+        mCompositeSubscription.add(subscription);
     }
 
     // Call when swiping to the bottom of a list of comments to load older ones
     private void fetchOlderCommentsForTopic(@NonNull Topic topic) {
-        mModel.fetchOlderTopicComments(topic)
+        final Subscription subscription = mModel.fetchOlderTopicComments(topic)
                 .subscribe(new Action1<List<TopicComment>>() {
                     @Override
                     public void call(List<TopicComment> topicComments) {
@@ -124,11 +137,12 @@ public class TopicsFragment extends BaseFragment {
                         Timber.d(throwable, "Failed to load topic comments");
                     }
                 });
+        mCompositeSubscription.add(subscription);
     }
 
     // Call when posting a message or when you want the latest comments for some other reason
     private void fetchNewerCommentsForTopic(@NonNull Topic topic) {
-        mModel.fetchNewerTopicComments(topic)
+        final Subscription subscription = mModel.fetchNewerTopicComments(topic)
                 .subscribe(new Action1<List<TopicComment>>() {
                     @Override
                     public void call(List<TopicComment> topicComments) {
@@ -141,10 +155,11 @@ public class TopicsFragment extends BaseFragment {
                         Timber.d(throwable, "Failed to load topic comments");
                     }
                 });
+        mCompositeSubscription.add(subscription);
     }
 
     private void postComment(@NonNull final Topic topic, @NonNull TopicComment comment) {
-        mModel.postComment(topic, comment)
+        final Subscription subscription = mModel.postComment(topic, comment)
                 .subscribe(new Action1<TopicComment>() {
                     @Override
                     public void call(TopicComment comment) {
@@ -157,5 +172,6 @@ public class TopicsFragment extends BaseFragment {
                         Timber.d("Failed to post comment");
                     }
                 });
+        mCompositeSubscription.add(subscription);
     }
 }

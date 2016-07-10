@@ -15,13 +15,16 @@ import com.landet.landet.data.Event;
 
 import java.util.List;
 
+import rx.Subscription;
 import rx.functions.Action1;
+import rx.subscriptions.CompositeSubscription;
 import timber.log.Timber;
 
 
 public class EventsFragment extends BaseFragment {
     private EventModel mModel;
     private EventsAdapter mEventsAdapter;
+    private CompositeSubscription mCompositeSubscription;
 
     public EventsFragment() {
         // Required empty public constructor
@@ -31,6 +34,7 @@ public class EventsFragment extends BaseFragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mModel = new EventModel(mBackend);
+        mCompositeSubscription = new CompositeSubscription();
     }
 
     @Override
@@ -55,7 +59,17 @@ public class EventsFragment extends BaseFragment {
     @Override
     public void onResume() {
         super.onResume();
-        mModel.fetchEvents()
+        fetchEvents();
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        mCompositeSubscription.clear();
+    }
+
+    private void fetchEvents() {
+        final Subscription subscription = mModel.fetchEvents()
                 .subscribe(new Action1<List<Event>>() {
                     @Override
                     public void call(List<Event> eventList) {
@@ -68,5 +82,6 @@ public class EventsFragment extends BaseFragment {
                         Timber.d(throwable, "error");
                     }
                 });
+        mCompositeSubscription.add(subscription);
     }
 }
