@@ -9,6 +9,7 @@ class ImageHeaderViewController: UIViewController {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var imageViewHeight: NSLayoutConstraint!
+    @IBOutlet weak var navbarFadeView: UIImageView!
 
     lazy var defaultHeight: CGFloat = { return self.view.bounds.height }()
     let minHeight: CGFloat = 64.0
@@ -37,6 +38,8 @@ class ImageHeaderViewController: UIViewController {
 
     func respondToHeight(height: CGFloat) {
         imageViewHeight.constant = max(defaultHeight, height)
-        imageView.alpha = 1.0 - (defaultHeight - height) / (defaultHeight - minHeight)
+        let alpha = 1.0 - (defaultHeight - height) / (defaultHeight - minHeight)
+        imageView.alpha = alpha
+        navbarFadeView.alpha = alpha
     }
 }

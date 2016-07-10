@@ -69,6 +69,7 @@
                         <outlet property="activityIndicator" destination="EC4-2K-ukJ" id="Ptm-cU-B3l"/>
                         <outlet property="imageView" destination="Noj-RM-K34" id="Lul-OI-ttT"/>
                         <outlet property="imageViewHeight" destination="D3D-cx-tIz" id="hOe-jB-nFq"/>
+                        <outlet property="navbarFadeView" destination="ivN-lr-tQu" id="ITw-F1-p7G"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XSK-b0-tai" userLabel="First Responder" sceneMemberID="firstResponder"/>
