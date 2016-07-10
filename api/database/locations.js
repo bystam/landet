@@ -4,7 +4,7 @@ module.exports = {
     {
       enum_id : 'HOUSE',
       name : 'Huset',
-      image_url : 'http://cdn.home-designing.com/wp-content/uploads/2010/11/Fairy-Tale-Cottage-Home-in-the-forrest.jpg'
+      image_url : 'http://landet.herokuapp.com/locations/house.jpg'
     },
     {
       enum_id : 'SAUNA',
