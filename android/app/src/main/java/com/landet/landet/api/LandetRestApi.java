@@ -2,6 +2,7 @@ package com.landet.landet.api;
 
 import com.landet.landet.data.Event;
 import com.landet.landet.data.EventComment;
+import com.landet.landet.data.Location;
 import com.landet.landet.data.Topic;
 import com.landet.landet.data.TopicComment;
 import com.landet.landet.data.TopicCommentListWrapper;
@@ -57,4 +58,7 @@ public interface LandetRestApi {
 
     @POST("topics/{topicId}/comments")
     Observable<Result<TopicComment>> postTopicComment(@Path("topicId") Long topicId, @Body TopicComment comment);
+
+    @GET("locations")
+    Observable<Result<List<Location>>> locations();
 }
