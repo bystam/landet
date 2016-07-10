@@ -1,4 +1,4 @@
-git subtree push --prefix api/ heroku master
+git push heroku `git subtree split --prefix api/ master`:master --force
 
 if [ "$1" = "resetdb" ]
 then
