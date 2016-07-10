@@ -163,6 +163,8 @@ public class UserManager implements Authenticator, Interceptor {
     private boolean requestNeedsAuthToken(@NonNull Request request) {
         if (request.url().pathSegments().contains("events")) {
             return true;
+        } else if (request.url().pathSegments().contains("topics")) {
+            return true;
         }
         return false;
     }
