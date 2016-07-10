@@ -59,7 +59,7 @@ class UserAPI {
             "username" : username,
             "password" : password
         ]
-        let operation = apiClient.post("/users/create", body: body)
+        let operation = apiClient.post("/users", body: body)
 
         operation.completionBlock = {
             completion(error: operation.apiResponse.error)
@@ -158,7 +158,7 @@ class TopicAPI {
 
         let body = [ "title" : title ]
         let operation = SessionAPI.shared.wrapWithAutomaticRefreshingSession(operation:  {
-            return self.apiClient.post("/topics/create", body: body)
+            return self.apiClient.post("/topics", body: body)
         })
 
         operation.completionBlock = {
@@ -201,7 +201,7 @@ class TopicAPI {
         guard let _ = Session.currentSession else { return }
 
         let operation = SessionAPI.shared.wrapWithAutomaticRefreshingSession(operation:  {
-            return self.apiClient.post("/topics/\(topic.id)/comments/create", body: [ "text" : text ])
+            return self.apiClient.post("/topics/\(topic.id)/comments", body: [ "text" : text ])
         })
 
         operation.completionBlock = {
@@ -247,7 +247,7 @@ class EventAPI {
             "event_time" : time.UTCString
         ]
         let operation = SessionAPI.shared.wrapWithAutomaticRefreshingSession(operation:  {
-            return self.apiClient.post("/events/create", body: body as! [String : AnyObject])
+            return self.apiClient.post("/events", body: body as! [String : AnyObject])
         })
 
         operation.completionBlock = {
@@ -278,7 +278,7 @@ class EventAPI {
         guard let _ = Session.currentSession else { return }
 
         let operation = SessionAPI.shared.wrapWithAutomaticRefreshingSession(operation:  {
-            return self.apiClient.post("/events/\(event.id)/comments/create", body: [ "text" : text ])
+            return self.apiClient.post("/events/\(event.id)/comments", body: [ "text" : text ])
         })
 
         operation.completionBlock = {
