@@ -22,6 +22,10 @@ public class Location extends DataWithId implements Parcelable {
         return imageUrl;
     }
 
+    public String getEnumId() {
+        return enumId;
+    }
+
     @Override
     public int describeContents() { return 0; }
 

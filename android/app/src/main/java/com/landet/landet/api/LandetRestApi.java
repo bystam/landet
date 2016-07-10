@@ -3,6 +3,7 @@ package com.landet.landet.api;
 import com.landet.landet.data.Event;
 import com.landet.landet.data.EventComment;
 import com.landet.landet.data.Location;
+import com.landet.landet.data.MapContent;
 import com.landet.landet.data.Topic;
 import com.landet.landet.data.TopicComment;
 import com.landet.landet.data.TopicCommentListWrapper;
@@ -61,4 +62,7 @@ public interface LandetRestApi {
 
     @GET("locations")
     Observable<Result<List<Location>>> locations();
+
+    @GET("map_content.json")
+    Observable<Result<MapContent>> mapContent();
 }

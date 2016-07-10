@@ -8,6 +8,7 @@ import com.google.gson.GsonBuilder;
 import com.landet.landet.data.Event;
 import com.landet.landet.data.EventComment;
 import com.landet.landet.data.Location;
+import com.landet.landet.data.MapContent;
 import com.landet.landet.data.Topic;
 import com.landet.landet.data.TopicComment;
 import com.landet.landet.data.TopicCommentListWrapper;
@@ -111,6 +112,11 @@ public class Backend {
     public Observable<ApiResponse<List<Location>>> fetchLocations() {
         return mApi.locations()
                 .map(this.<List<Location>>resultToApiResponse());
+    }
+
+    public Observable<ApiResponse<MapContent>> fetchMapContent() {
+        return mApi.mapContent()
+                .map(this.<MapContent>resultToApiResponse());
     }
 
     @NonNull

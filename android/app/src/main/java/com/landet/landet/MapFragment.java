@@ -7,6 +7,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.landet.landet.data.Location;
+import com.landet.landet.data.MapContent;
+import com.landet.landet.data.MapLocation;
 import com.landet.landet.locations.LocationModel;
 import com.landet.landet.utils.ZoomableViewGroup;
 import com.squareup.picasso.Callback;
@@ -22,6 +24,7 @@ public class MapFragment extends BaseFragment {
     private LocationModel mLocationModel;
     private ZoomableViewGroup zoomable;
     private ImageView map;
+    private MapContent mMapContent;
 
     public MapFragment() {
         // Required empty public constructor
@@ -45,11 +48,23 @@ public class MapFragment extends BaseFragment {
     }
 
     private void readMapData() {
-
+        mLocationModel.fetchMapContent()
+                .subscribe(new Action1<MapContent>() {
+                    @Override
+                    public void call(MapContent mapContent) {
+                        mMapContent = mapContent;
+                        loadMapImage(mapContent);
+                    }
+                }, new Action1<Throwable>() {
+                    @Override
+                    public void call(Throwable throwable) {
+                        Timber.d(throwable, "Failed to load map content");
+                    }
+                });
     }
 
-    private void loadMapImage() {
-        Picasso.with(getContext()).load("http://landet.herokuapp.com/map.png").into(map, new Callback() {
+    private void loadMapImage(MapContent mapContent) {
+        Picasso.with(getContext()).load(mapContent.getUrl()).into(map, new Callback() {
             @Override
             public void onSuccess() {
                 addIcons();
@@ -57,7 +72,7 @@ public class MapFragment extends BaseFragment {
 
             @Override
             public void onError() {
-
+                Timber.d("Failed to load map image");
             }
         });
     }
@@ -67,12 +82,22 @@ public class MapFragment extends BaseFragment {
                 .subscribe(new Action1<List<Location>>() {
                     @Override
                     public void call(List<Location> locations) {
-                        //TODO measure width and place out icons
-                        if (locations != null && !locations.isEmpty()) {
-                            final Location location = locations.get(0);
-                            ImageView icon = new ImageView(getContext());
-                            icon.setImageResource(R.drawable.topics);
-                            zoomable.addView(icon);
+                        if (locations != null && !locations.isEmpty() && mMapContent != null) {
+                            for (Location location : locations) {
+                                for (MapLocation mapLocation : mMapContent.getLocations()) {
+                                    if (mapLocation.getId().equals(location.getEnumId())) {
+                                        ImageView icon = new ImageView(getContext());
+                                        icon.setImageResource(getIconDrawable(location));
+                                        icon.setAdjustViewBounds(true);
+                                        icon.setX(mapLocation.getX() - 100);
+                                        icon.setY(mapLocation.getY() - 100);
+                                        icon.setMaxWidth(200);
+                                        icon.setMaxHeight(200);
+                                        icon.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+                                        zoomable.addView(icon);
+                                    }
+                                }
+                            }
                         }
                     }
                 }, new Action1<Throwable>() {
@@ -81,5 +106,21 @@ public class MapFragment extends BaseFragment {
                         Timber.d("Failed to load locations");
                     }
                 });
+    }
+
+    private int getIconDrawable(Location location) {
+        switch (location.getEnumId()) {
+            case "SAUNA":
+            case "HOUSE":
+            case "NEW_GUESTHOUSE":
+            case "OLD_GUESTHOUSE":
+            case "TOOLSHED":
+                return R.drawable.house;
+            case "FRONT_LAWN":
+            case "BACK_LAWN":
+            case "OUTSIDE_TABLEGROUP":
+            default:
+                return R.drawable.landmark;
+        }
     }
 }
