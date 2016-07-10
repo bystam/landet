@@ -17,7 +17,7 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="imz-m7-RbW" customClass="RoundRectView" customModule="Landet" customModuleProvider="target">
                         <rect key="frame" x="87" y="25" width="200" height="200"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kan man svälja en hel potatis hel?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ib8-Gg-OZn">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kan man svälja en hel potatis hel?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Ib8-Gg-OZn">
                                 <rect key="frame" x="35" y="35" width="130" height="130"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="130" id="2zE-sm-Qgl"/>
