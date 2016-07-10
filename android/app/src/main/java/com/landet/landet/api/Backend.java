@@ -78,6 +78,11 @@ public class Backend {
                 .map(this.<List<EventComment>>resultToApiResponse());
     }
 
+    public Observable<ApiResponse<EventComment>> postEventComment(@NonNull Event event, @NonNull EventComment comment) {
+        return mApi.postEventComment(event.getId(), comment)
+                .map(this.<EventComment>resultToApiResponse());
+    }
+
     public Observable<ApiResponse<List<Topic>>> fetchTopics() {
         return mApi.topics()
                 .map(this.<List<Topic>>resultToApiResponse());
