@@ -28,6 +28,7 @@ class TopicsViewController: UIViewController {
         blockingView.autoresizingMask = [.FlexibleHeight, .FlexibleWidth]
 
         blockingView.addGestureRecognizer(UITapGestureRecognizer(target: self.addCommentTextField, action: #selector(resignFirstResponder)))
+        blockingView.addGestureRecognizer(UIPanGestureRecognizer(target: self.addCommentTextField, action: #selector(resignFirstResponder)))
 
         self.view.insertSubview(blockingView, aboveSubview: self.tableViewController.view.superview!)
         return blockingView
