@@ -16,7 +16,6 @@ class EventsTableViewController: UITableViewController {
         LandetTableViewStyle.setup(tableView, cells: [.EventSummary])
         tableView.dataSource = dataSource
 
-//        tableView.estimatedRowHeight = EventSummaryCell.preferredHeight
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: 1, height: CGFloat.min))
 

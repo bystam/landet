@@ -45,6 +45,8 @@
 		DB764B801D2C39AC00D0D638 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB764B7F1D2C39AC00D0D638 /* ImageLoader.swift */; };
 		DB764B831D2C4C4600D0D638 /* CreateTopic.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DB764B821D2C4C4600D0D638 /* CreateTopic.storyboard */; };
 		DB764B851D2C4C5300D0D638 /* CreateTopicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB764B841D2C4C5300D0D638 /* CreateTopicViewController.swift */; };
+		DB9592181D32635500E852D2 /* EventDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB9592161D32635500E852D2 /* EventDetailsCell.swift */; };
+		DB9592191D32635500E852D2 /* EventDetailsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB9592171D32635500E852D2 /* EventDetailsCell.xib */; };
 		DB95E2861D2EED3300EBC34E /* LocationDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB95E2851D2EED3300EBC34E /* LocationDetailsViewController.swift */; };
 		DB95E2881D2EED4300EBC34E /* LocationDetailsAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB95E2871D2EED4300EBC34E /* LocationDetailsAnimator.swift */; };
 		DB95E28A1D2EEDCA00EBC34E /* LocationDetails.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DB95E2891D2EEDCA00EBC34E /* LocationDetails.storyboard */; };
@@ -129,6 +131,8 @@
 		DB764B7F1D2C39AC00D0D638 /* ImageLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
 		DB764B821D2C4C4600D0D638 /* CreateTopic.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CreateTopic.storyboard; sourceTree = "<group>"; };
 		DB764B841D2C4C5300D0D638 /* CreateTopicViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateTopicViewController.swift; sourceTree = "<group>"; };
+		DB9592161D32635500E852D2 /* EventDetailsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDetailsCell.swift; sourceTree = "<group>"; };
+		DB9592171D32635500E852D2 /* EventDetailsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventDetailsCell.xib; sourceTree = "<group>"; };
 		DB95E2851D2EED3300EBC34E /* LocationDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationDetailsViewController.swift; sourceTree = "<group>"; };
 		DB95E2871D2EED4300EBC34E /* LocationDetailsAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationDetailsAnimator.swift; sourceTree = "<group>"; };
 		DB95E2891D2EEDCA00EBC34E /* LocationDetails.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LocationDetails.storyboard; sourceTree = "<group>"; };
@@ -377,6 +381,8 @@
 				DBB38A351D0DB5AF00BEE506 /* EventDetailsTableDataSource.swift */,
 				DBD5D7DD1D0E13640053DC6A /* CommentsHeaderView.swift */,
 				DBD5D7DC1D0E13640053DC6A /* CommentsHeaderView.xib */,
+				DB9592161D32635500E852D2 /* EventDetailsCell.swift */,
+				DB9592171D32635500E852D2 /* EventDetailsCell.xib */,
 			);
 			name = Details;
 			sourceTree = "<group>";
@@ -571,6 +577,7 @@
 				DBD1F8221D045B0D0035A7B4 /* Common.xcassets in Resources */,
 				DBD1F8371D045C580035A7B4 /* Map.storyboard in Resources */,
 				DB36CDDA1D062D1A00B94422 /* CreateEvent.storyboard in Resources */,
+				DB9592191D32635500E852D2 /* EventDetailsCell.xib in Resources */,
 				DBB38A301D0DB57A00BEE506 /* EventDetails.storyboard in Resources */,
 				DB0FFBD61D04C33600DD4B94 /* Events.storyboard in Resources */,
 				DBD5D7D71D0E0F6A0053DC6A /* EventSummaryCell.xib in Resources */,
@@ -601,6 +608,7 @@
 				DBB38A381D0DC04300BEE506 /* UIViewController+Extension.swift in Sources */,
 				DBD1F8401D0460190035A7B4 /* Theme.swift in Sources */,
 				DB36CDE51D06313100B94422 /* AuthOverlayController.swift in Sources */,
+				DB9592181D32635500E852D2 /* EventDetailsCell.swift in Sources */,
 				DBB38A2D1D0DAA1900BEE506 /* APIUtil.swift in Sources */,
 				DB95E2881D2EED4300EBC34E /* LocationDetailsAnimator.swift in Sources */,
 				DBA9B4141D11C21900DB6EBB /* CGExtras.swift in Sources */,

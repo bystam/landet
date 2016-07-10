@@ -28,7 +28,7 @@ class EventDetailsTableDataSource: NSObject, UITableViewDataSource {
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
-            let cell: EventSummaryCell = tableView.dequeueLandetCell(.EventSummary, forIndexPath: indexPath)
+            let cell: EventDetailsCell = tableView.dequeueLandetCell(.EventDetails, forIndexPath: indexPath)
             cell.configure(event: event)
             return cell
         }
@@ -53,4 +53,8 @@ class EventDetailsTableDataSource: NSObject, UITableViewDataSource {
         }
 
     }
+}
+
+extension LandetTableCellIdentifier {
+    static let EventDetails = LandetTableCellIdentifier("EventDetailsCell")
 }

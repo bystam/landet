@@ -33,7 +33,7 @@ class EventDetailsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        LandetTableViewStyle.setup(tableView, cells: [.EventSummary, .Comment, .TextField, .Spinner])
+        LandetTableViewStyle.setup(tableView, cells: [.EventDetails, .Comment, .TextField, .Spinner])
         CommentsHeaderView.install(tableView: tableView)
 
         dataSource = EventDetailsTableDataSource(event: event)
