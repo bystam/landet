@@ -2,11 +2,11 @@ package com.landet.landet.topics;
 
 import android.support.annotation.NonNull;
 
-import com.landet.landet.api.ApiResponse;
 import com.landet.landet.api.Backend;
 import com.landet.landet.data.Topic;
 import com.landet.landet.data.TopicComment;
 import com.landet.landet.data.TopicCommentListWrapper;
+import com.landet.landet.utils.ModelUtils;
 
 import org.joda.time.DateTime;
 
@@ -27,16 +27,7 @@ public class TopicModel {
 
     public Observable<List<Topic>> fetchTopics() {
         return mBackend.fetchTopics()
-                .flatMap(new Func1<ApiResponse<List<Topic>>, Observable<List<Topic>>>() {
-                    @Override
-                    public Observable<List<Topic>> call(ApiResponse<List<Topic>> apiResponse) {
-                        if (apiResponse.isSuccessful()) {
-                            return Observable.just(apiResponse.getBody());
-                        } else {
-                            return Observable.error(apiResponse.getError());
-                        }
-                    }
-                })
+                .flatMap(ModelUtils.<List<Topic>>mapApiResponseToObservable())
                 .subscribeOn(Schedulers.io())
                 .unsubscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread());
@@ -44,16 +35,7 @@ public class TopicModel {
 
     public Observable<Topic> createTopic(@NonNull Topic topic) {
         return mBackend.createTopic(topic)
-                .flatMap(new Func1<ApiResponse<Topic>, Observable<Topic>>() {
-                    @Override
-                    public Observable<Topic> call(ApiResponse<Topic> apiResponse) {
-                        if (apiResponse.isSuccessful()) {
-                            return Observable.just(apiResponse.getBody());
-                        } else {
-                            return Observable.error(apiResponse.getError());
-                        }
-                    }
-                })
+                .flatMap(ModelUtils.<Topic>mapApiResponseToObservable())
                 .subscribeOn(Schedulers.io())
                 .unsubscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread());
@@ -61,16 +43,7 @@ public class TopicModel {
 
     public Observable<TopicComment> postComment(@NonNull Topic topic, @NonNull TopicComment comment) {
         return mBackend.postComment(topic, comment)
-                .flatMap(new Func1<ApiResponse<TopicComment>, Observable<TopicComment>>() {
-                    @Override
-                    public Observable<TopicComment> call(ApiResponse<TopicComment> apiResponse) {
-                        if (apiResponse.isSuccessful()) {
-                            return Observable.just(apiResponse.getBody());
-                        } else {
-                            return Observable.error(apiResponse.getError());
-                        }
-                    }
-                })
+                .flatMap(ModelUtils.<TopicComment>mapApiResponseToObservable())
                 .subscribeOn(Schedulers.io())
                 .unsubscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread());
@@ -95,16 +68,7 @@ public class TopicModel {
         DateTime oldestComment = mCache.getOldestCommentDateTime(topic);
 
         return mBackend.fetchTopicComments(topic, oldestComment, null)
-                .flatMap(new Func1<ApiResponse<TopicCommentListWrapper>, Observable<TopicCommentListWrapper>>() {
-                    @Override
-                    public Observable<TopicCommentListWrapper> call(ApiResponse<TopicCommentListWrapper> apiResponse) {
-                        if (apiResponse.isSuccessful()) {
-                            return Observable.just(apiResponse.getBody());
-                        } else {
-                            return Observable.error(apiResponse.getError());
-                        }
-                    }
-                })
+                .flatMap(ModelUtils.<TopicCommentListWrapper>mapApiResponseToObservable())
                 .subscribeOn(Schedulers.io())
                 .unsubscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -121,16 +85,7 @@ public class TopicModel {
         DateTime newestComment = mCache.getNewestCommentDateTime(topic);
 
         return mBackend.fetchTopicComments(topic, null, newestComment)
-                .flatMap(new Func1<ApiResponse<TopicCommentListWrapper>, Observable<TopicCommentListWrapper>>() {
-                    @Override
-                    public Observable<TopicCommentListWrapper> call(ApiResponse<TopicCommentListWrapper> apiResponse) {
-                        if (apiResponse.isSuccessful()) {
-                            return Observable.just(apiResponse.getBody());
-                        } else {
-                            return Observable.error(apiResponse.getError());
-                        }
-                    }
-                })
+                .flatMap(ModelUtils.<TopicCommentListWrapper>mapApiResponseToObservable())
                 .subscribeOn(Schedulers.io())
                 .unsubscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())

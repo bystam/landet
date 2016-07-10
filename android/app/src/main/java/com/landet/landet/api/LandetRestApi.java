@@ -33,6 +33,9 @@ public interface LandetRestApi {
     @GET("events")
     Observable<Result<List<Event>>> events();
 
+    @POST("events")
+    Observable<Result<Event>> createEvent(@Body Event event);
+
     @GET("events/{eventId}/comments")
     Observable<Result<List<EventComment>>> eventComments(@Path("eventId") Long eventId);
 
