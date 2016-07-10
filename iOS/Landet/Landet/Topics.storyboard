@@ -72,7 +72,7 @@
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="send"/>
                                     </textField>
                                 </subviews>
-                                <color key="backgroundColor" red="0.14509804546833038" green="0.12941177189350128" blue="0.12549020349979401" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="tbO-bt-Aa5" secondAttribute="trailing" constant="4" id="3Qb-QV-ok1"/>
                                     <constraint firstItem="TDa-IT-pqk" firstAttribute="leading" secondItem="tbO-bt-Aa5" secondAttribute="leading" constant="12" id="9kM-Il-f1Z"/>
