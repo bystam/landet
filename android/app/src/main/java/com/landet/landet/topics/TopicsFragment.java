@@ -1,8 +1,10 @@
 package com.landet.landet.topics;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -56,6 +58,16 @@ public class TopicsFragment extends BaseFragment {
             }
         });
         recyclerView.setAdapter(mAdapter);
+
+        FloatingActionButton fab = (FloatingActionButton) view.findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), CreateTopicActivity.class);
+                startActivityForResult(intent, 1);
+            }
+        });
+
         return view;
     }
 
@@ -70,6 +82,14 @@ public class TopicsFragment extends BaseFragment {
     public void onPause() {
         super.onPause();
         mCompositeSubscription.clear();
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 1 && resultCode == Activity.RESULT_OK) {
+            fetchTopics();
+        }
     }
 
     private void fetchTopics() {
@@ -87,22 +107,6 @@ public class TopicsFragment extends BaseFragment {
                     @Override
                     public void call(Throwable throwable) {
                         Timber.d(throwable, "failed to fetch topics");
-                    }
-                });
-        mCompositeSubscription.add(subscription);
-    }
-
-    private void createTopic(@NonNull Topic topic) {
-        final Subscription subscription = mModel.createTopic(topic)
-                .subscribe(new Action1<Topic>() {
-                    @Override
-                    public void call(Topic topic) {
-                        fetchTopics();
-                    }
-                }, new Action1<Throwable>() {
-                    @Override
-                    public void call(Throwable throwable) {
-                        Timber.d("Failed to create topic");
                     }
                 });
         mCompositeSubscription.add(subscription);

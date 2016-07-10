@@ -38,4 +38,5 @@
     <string name="create">Create</string>
     <string name="pick_date">Pick date</string>
     <string name="pick_time">Pick time</string>
+    <string name="create_new_topic">Create a new topic</string>
 </resources>
