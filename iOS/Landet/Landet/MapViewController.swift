@@ -50,6 +50,7 @@ class MapViewController: UIViewController {
 
         let content = UIView(frame: CGRect(x: 0, y: 0, width: image.size.width, height: image.size.height))
         content.addSubview(imageView)
+        content.tintColor = Colors.yellow
         scrollViewContent = content
 
         scrollView.addSubview(content)
@@ -71,7 +72,7 @@ class MapViewController: UIViewController {
     }
 
     private func placePins(locations: [MapLocation]) {
-        let pin = UIImage(named: "pin")
+        let pin = UIImage(named: "landmark")
 
         for location in locations {
             let p = CGPoint(x: location.x, y: location.y)

@@ -49,11 +49,13 @@ class MapLocation: DictionaryInitializable {
     let locationId: LocationID
     let x: Int
     let y: Int
+    let icon: String
 
     required init(dictionary: [String : AnyObject]) {
         self.locationId = LocationID(rawValue: dictionary["id"] as! String)!
         self.x = dictionary["x"] as! Int
         self.y = dictionary["y"] as! Int
+        self.icon = dictionary["y"] as! String
     }
 }
 
