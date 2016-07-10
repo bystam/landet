@@ -147,7 +147,7 @@
     </object>
     <object type="LMREQUEST" id="z112">
         <attribute name="uuid" type="string">D934074E-CB24-4C23-881E-7AECAB2FC40A</attribute>
-        <attribute name="url" type="string">["http:\\/\\/",{"data":{"environmentVariable":"A0D95C30-26C2-4117-82A8-C2330C014A51"},"identifier":"com.luckymarmot.EnvironmentVariableDynamicValue"},"\\/users\\/create"]</attribute>
+        <attribute name="url" type="string">["http:\\/\\/",{"data":{"environmentVariable":"A0D95C30-26C2-4117-82A8-C2330C014A51"},"identifier":"com.luckymarmot.EnvironmentVariableDynamicValue"},"\\/users"]</attribute>
         <attribute name="storecookies" type="bool">1</attribute>
         <attribute name="sendcookies" type="bool">1</attribute>
         <attribute name="redirectmethod" type="bool">0</attribute>
@@ -414,14 +414,14 @@
     </object>
     <object type="LMREQUEST" id="z140">
         <attribute name="uuid" type="string">B07806E8-6F5F-4949-ACCB-E70CDE5E907E</attribute>
-        <attribute name="url" type="string">["http:\\/\\/",{"data":{"environmentVariable":"A0D95C30-26C2-4117-82A8-C2330C014A51"},"identifier":"com.luckymarmot.EnvironmentVariableDynamicValue"},"\\/topics\\/create"]</attribute>
+        <attribute name="url" type="string">["http:\\/\\/",{"data":{"environmentVariable":"A0D95C30-26C2-4117-82A8-C2330C014A51"},"identifier":"com.luckymarmot.EnvironmentVariableDynamicValue"},"\\/topics"]</attribute>
         <attribute name="storecookies" type="bool">1</attribute>
         <attribute name="sendcookies" type="bool">1</attribute>
         <attribute name="redirectmethod" type="bool">0</attribute>
         <attribute name="redirectauthorization" type="bool">0</attribute>
         <attribute name="method" type="string">POST</attribute>
         <attribute name="followredirects" type="bool">0</attribute>
-        <attribute name="body" type="string">[{"data":{"json":"{\\"title\\":\\"Kan man sv\\\\u00e4lja 4 potatisar p\\\\u00e5 mindre \\\\u00e4n 4 sekunder?\\"\\/*,\\"body\\":\\"Vi festar h\\\\u00e5rdare om m\\\\u00f6jligt fast \\\\u00e4nnu mer\\"*\\/}"},"identifier":"com.luckymarmot.JSONDynamicValue"}]</attribute>
+        <attribute name="body" type="string">[{"data":{"json":"{\\"title\\":\\"Kan man sv\\\\u00e4lja 4 potatisar p\\\\u00e5 mindre \\\\u00e4n 5 sekunder?\\"\\/*,\\"body\\":\\"Vi festar h\\\\u00e5rdare om m\\\\u00f6jligt fast \\\\u00e4nnu mer\\"*\\/}"},"identifier":"com.luckymarmot.JSONDynamicValue"}]</attribute>
         <attribute name="order" type="int64">9</attribute>
         <attribute name="name" type="string">Topics</attribute>
         <relationship name="parent" type="0/1" destination="LMREQUESTTREEITEM"></relationship>
@@ -532,7 +532,7 @@
     </object>
     <object type="LMREQUEST" id="z150">
         <attribute name="uuid" type="string">7B17E583-DCE9-4CCD-A82B-65D0002C73C9</attribute>
-        <attribute name="url" type="string">["http:\\/\\/",{"data":{"environmentVariable":"A0D95C30-26C2-4117-82A8-C2330C014A51"},"identifier":"com.luckymarmot.EnvironmentVariableDynamicValue"},"\\/topics\\/1\\/comments\\/create"]</attribute>
+        <attribute name="url" type="string">["http:\\/\\/",{"data":{"environmentVariable":"A0D95C30-26C2-4117-82A8-C2330C014A51"},"identifier":"com.luckymarmot.EnvironmentVariableDynamicValue"},"\\/topics\\/1\\/comments"]</attribute>
         <attribute name="storecookies" type="bool">1</attribute>
         <attribute name="sendcookies" type="bool">1</attribute>
         <attribute name="redirectmethod" type="bool">0</attribute>
@@ -544,7 +544,7 @@
         <attribute name="name" type="string">Topics</attribute>
         <relationship name="parent" type="0/1" destination="LMREQUESTTREEITEM"></relationship>
         <relationship name="children" type="0/0" destination="LMREQUESTTREEITEM"></relationship>
-        <relationship name="headers" type="0/0" destination="LMKEYVALUE" idrefs="z153 z152 z151"></relationship>
+        <relationship name="headers" type="0/0" destination="LMKEYVALUE" idrefs="z152 z153 z151"></relationship>
     </object>
     <object type="LMKEYVALUE" id="z151">
         <attribute name="value" type="string">application/json</attribute>
