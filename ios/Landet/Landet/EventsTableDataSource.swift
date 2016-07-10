@@ -23,3 +23,7 @@ class EventsTableDataSource: NSObject, UITableViewDataSource {
     }
 
 }
+
+extension LandetTableCellIdentifier {
+    static let EventSummary = LandetTableCellIdentifier("EventSummaryCell")
+}

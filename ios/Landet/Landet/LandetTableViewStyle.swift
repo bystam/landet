@@ -6,7 +6,6 @@ import UIKit
 
 struct LandetTableCellIdentifier {
 
-    static let EventSummary = LandetTableCellIdentifier("EventSummaryCell")
     static let Comment = LandetTableCellIdentifier("CommentCell")
     static let TextField = LandetTableCellIdentifier("TextFieldCell")
     static let Spinner = LandetTableCellIdentifier("SpinnerCell")

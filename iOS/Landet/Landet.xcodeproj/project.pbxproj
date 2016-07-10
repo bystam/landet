@@ -260,6 +260,8 @@
 				DB0FFBD31D04C32B00DD4B94 /* EventsViewController.swift */,
 				DB0FFBD91D04C42000DD4B94 /* EventsTableViewController.swift */,
 				DBB38A391D0DC0F100BEE506 /* EventsTableDataSource.swift */,
+				DBD5D7D41D0E0F6A0053DC6A /* EventSummaryCell.swift */,
+				DBD5D7D51D0E0F6A0053DC6A /* EventSummaryCell.xib */,
 				DB36CDD81D062D0600B94422 /* Create */,
 				DBB38A2E1D0DB56800BEE506 /* Details */,
 			);
@@ -269,8 +271,6 @@
 		DB0FFBDB1D04C79900DD4B94 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				DBD5D7D41D0E0F6A0053DC6A /* EventSummaryCell.swift */,
-				DBD5D7D51D0E0F6A0053DC6A /* EventSummaryCell.xib */,
 				DBD5D7E01D0E1B380053DC6A /* CommentCell.swift */,
 				DBD5D7E11D0E1B380053DC6A /* CommentCell.xib */,
 				DBA9B40B1D11B9CD00DB6EBB /* TextFieldCell.swift */,
