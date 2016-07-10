@@ -5,78 +5,86 @@ exports.up = function(knex, Promise) {
 
         knex.schema.createTable('users', function(table) {
             table.increments('id').primary();
-            table.string('username').unique();
-            table.string('hashedpw');
-            table.string('name');
+            table.string('username').unique().notNullable();
+            table.string('hashedpw').notNullable();
+            table.string('name').notNullable();
             table.timestamps();
         }),
 
         knex.schema.createTable('sessions', function(table) {
           table.increments('id').primary();
-          table.string('token');
-          table.string('refresh_token');
-          table.dateTime('expiration_date');
+          table.string('token').notNullable();
+          table.string('refresh_token').notNullable();
+          table.dateTime('expiration_date').notNullable();
 
           table.integer('user_id')
                .references('id')
-               .inTable('users');
+               .inTable('users')
+               .notNullable();
         }),
 
         knex.schema.createTable('locations', function(table) {
           table.increments('id').primary();
-          table.string('enum_id').unique();
-          table.string('name');
-          table.string('image_url');
+          table.string('enum_id').unique().notNullable();
+          table.string('name').notNullable();
+          table.string('image_url').notNullable();
         }),
 
         knex.schema.createTable('events', function(table) {
             table.increments('id').primary();
-            table.string('title');
-            table.string('body');
-            table.dateTime('event_time');
+            table.string('title').notNullable();
+            table.string('body').notNullable();
+            table.dateTime('event_time').notNullable();
 
             table.integer('creator_id')
                  .references('id')
-                 .inTable('users');
+                 .inTable('users')
+                 .notNullable();
             table.integer('location_id')
                  .references('id')
-                 .inTable('locations');
+                 .inTable('locations')
+                 .notNullable();
         }),
 
         knex.schema.createTable('event_comments', function(table) {
           table.increments('id').primary();
-          table.string('text');
+          table.string('text').notNullable();
           table.timestamp('comment_time');
 
           table.integer('author_id')
                .references('id')
-               .inTable('users');
+               .inTable('users')
+               .notNullable();
           table.integer('event_id')
                .references('id')
-               .inTable('events');
+               .inTable('events')
+               .notNullable();
         }),
 
         knex.schema.createTable('topics', function(table) {
             table.increments('id').primary();
-            table.string('title');
+            table.string('title').notNullable();
             table.timestamps();
 
             table.integer('author_id')
                  .references('id')
-                 .inTable('users');
+                 .inTable('users')
+                 .notNullable();
         }),
 
         knex.schema.createTable('topic_comments', function(table) {
           table.increments('id').primary();
-          table.string('text');
-          table.timestamp('comment_time');
+          table.string('text').notNullable();
+          table.timestamp('comment_time').notNullable();
 
           table.integer('author_id')
                .references('id')
-               .inTable('users');
+               .inTable('users')
+               .notNullable();
           table.integer('topic_id')
                .references('id')
-               .inTable('topics');
+               .inTable('topics')
+               .notNullable();
         }),
 
     ]).then(function() {
