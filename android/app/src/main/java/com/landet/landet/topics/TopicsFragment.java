@@ -55,6 +55,10 @@ public class TopicsFragment extends BaseFragment {
     public void onResume() {
         super.onResume();
 
+        fetchTopics();
+    }
+
+    private void fetchTopics() {
         mModel.fetchTopics()
                 .subscribe(new Action1<List<Topic>>() {
                     @Override
@@ -69,6 +73,21 @@ public class TopicsFragment extends BaseFragment {
                     @Override
                     public void call(Throwable throwable) {
                         Timber.d(throwable, "failed to fetch topics");
+                    }
+                });
+    }
+
+    private void createTopic(@NonNull Topic topic) {
+        mModel.createTopic(topic)
+                .subscribe(new Action1<Topic>() {
+                    @Override
+                    public void call(Topic topic) {
+                        fetchTopics();
+                    }
+                }, new Action1<Throwable>() {
+                    @Override
+                    public void call(Throwable throwable) {
+                        Timber.d("Failed to create topic");
                     }
                 });
     }
