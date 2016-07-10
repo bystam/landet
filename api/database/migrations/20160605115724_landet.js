@@ -81,18 +81,7 @@ exports.up = function(knex, Promise) {
 
     ]).then(function() {
       // create the default locations
-      return knex('locations').insert([
-        {
-          enum_id : 'HOUSE',
-          name : 'Huset',
-          image_url : 'http://media.theagencyre.com/wp-content/uploads/Carolwood-01.jpg'
-        },
-        {
-          enum_id : 'SAUNA',
-          name : 'Bastun',
-          image_url : 'http://www.spa-london.org/wp-content/uploads/2014/12/partisans-grotto-sauna-toronto-canada-designboom-02.jpg'
-        }
-      ]);
+      return knex('locations').insert(require('../locations').locations);
     });
 };
 

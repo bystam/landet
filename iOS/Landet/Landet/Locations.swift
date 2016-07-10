@@ -5,7 +5,9 @@
 import Foundation
 
 enum LocationID: String {
-    case SAUNA, HOUSE
+    case SAUNA, HOUSE, FRONT_LAWN, BACK_LAWN,
+         NEW_GUESTHOUSE, OLD_GUESTHOUSE, TOOLSHED,
+         OUTSIDE_TABLEGROUP
 }
 
 

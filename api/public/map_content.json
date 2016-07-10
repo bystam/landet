@@ -3,16 +3,52 @@
 
   "locations": [
     {
-      "id" : "SAUNA",
-      "x" : 1400,
-      "y" : 210,
-      "icon" : "house"
-    },
-    {
       "id" : "HOUSE",
       "x" : 1000,
       "y" : 1400,
       "icon" : "house"
+    },
+    {
+      "id" : "SAUNA",
+      "x" : 1350,
+      "y" : 210,
+      "icon" : "house"
+    },
+    {
+      "id" : "FRONT_LAWN",
+      "x" : 1000,
+      "y" : 1800,
+      "icon" : "landmark"
+    },
+    {
+      "id" : "BACK_LAWN",
+      "x" : 650,
+      "y" : 650,
+      "icon" : "landmark"
+    },
+    {
+      "id" : "NEW_GUESTHOUSE",
+      "x" : 900,
+      "y" : 100,
+      "icon" : "house"
+    },
+    {
+      "id" : "OLD_GUESTHOUSE",
+      "x" : 150,
+      "y" : 300,
+      "icon" : "house"
+    },
+    {
+      "id" : "TOOLSHED",
+      "x" : 350,
+      "y" : 120,
+      "icon" : "house"
+    },
+    {
+      "id" : "OUTSIDE_TABLEGROUP",
+      "x" : 1000,
+      "y" : 950,
+      "icon" : "landmark"
     }
   ]
 }
