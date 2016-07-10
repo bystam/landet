@@ -23,22 +23,22 @@ module.exports = {
     },
     {
       enum_id : 'NEW_GUESTHOUSE',
-      name : 'Bastun',
+      name : 'Nya gäststugan',
       image_url : 'http://landet.herokuapp.com/locations/new-guesthouse.jpg'
     },
     {
       enum_id : 'OLD_GUESTHOUSE',
-      name : 'Bastun',
+      name : 'Gamla gäststugan',
       image_url : 'http://landet.herokuapp.com/locations/old-guesthouse.jpg'
     },
     {
       enum_id : 'TOOLSHED',
-      name : 'Bastun',
+      name : 'Förrådet',
       image_url : 'http://landet.herokuapp.com/locations/toolshed.jpg'
     },
     {
       enum_id : 'OUTSIDE_TABLEGROUP',
-      name : 'Bastun',
+      name : 'Uteplatsen',
       image_url : 'http://landet.herokuapp.com/locations/outside-tablegroup.jpg'
     }
   ]
