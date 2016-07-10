@@ -4,6 +4,9 @@
 
 import UIKit
 
+private let kCreateSection = 0
+private let kTopicsSection = 1
+
 protocol TopicsHeaderViewControllerDelegate: class {
     func header(header: TopicsHeaderViewController, startedDisplayingTopic topic: Topic?)
 }
@@ -36,6 +39,9 @@ class TopicsHeaderViewController: UIViewController {
         topicsRepository.delegate = self
 
         currentTopicLabel.alpha = 0.0
+
+        collectionView.scrollToItemAtIndexPath(NSIndexPath(forItem: 0, inSection: kTopicsSection),
+                                               atScrollPosition: .CenteredHorizontally, animated: false)
     }
 }
 
@@ -72,12 +78,12 @@ extension TopicsHeaderViewController: UICollectionViewDataSource {
     }
 
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if section == 1 { return 1 }
+        if section == kCreateSection { return 1 }
         return topicsRepository.topics.isEmpty ? 1 : topicsRepository.topics.count
     }
 
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        if indexPath.section == 1 {
+        if indexPath.section == kCreateSection {
             return collectionView.dequeueLandetCell(.Create, forIndexPath: indexPath)
         }
 

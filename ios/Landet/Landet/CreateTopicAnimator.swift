@@ -69,11 +69,11 @@ class CreateTopicAnimator: NSObject, UIViewControllerAnimatedTransitioning {
 
                 let headerVC = findHeaderVC(inVC: toVC)
 
-                let lastTopicIndex = NSIndexPath(forItem: headerVC.collectionView.numberOfItemsInSection(0)-1, inSection: 0)
-                headerVC.collectionView.scrollToItemAtIndexPath(lastTopicIndex, atScrollPosition: .CenteredHorizontally, animated: false)
+                let newTopicIndex = NSIndexPath(forItem: 0, inSection: 1)
+                headerVC.collectionView.scrollToItemAtIndexPath(newTopicIndex, atScrollPosition: .CenteredHorizontally, animated: false)
                 headerVC.collectionView.layoutIfNeeded()
 
-                let topicCell = headerVC.collectionView.cellForItemAtIndexPath(lastTopicIndex) as! TopicsHeaderCollectionViewCell
+                let topicCell = headerVC.collectionView.cellForItemAtIndexPath(newTopicIndex) as! TopicsHeaderCollectionViewCell
                 topicCell.circleView.transform = CGAffineTransformMakeScale(0.00001, 0.00001)
 
                 UIView.animateWithDuration(0.4, delay: 0, usingSpringWithDamping: 1.0, initialSpringVelocity: 2.0, options: [], animations: {
