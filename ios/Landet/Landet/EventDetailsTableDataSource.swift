@@ -44,7 +44,7 @@ class EventDetailsTableDataSource: NSObject, UITableViewDataSource {
                 return cell
             } else {
                 let cell: TextFieldCell = tableView.dequeueLandetCell(.TextField, forIndexPath: indexPath)
-                cell.configure(placeholder: "Write comment...")
+                cell.configure(placeholder: "Write a comment...")
                 return cell
             }
         }
