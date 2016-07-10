@@ -35,7 +35,6 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="250" id="K7G-lh-Cg9"/>
-                                    <constraint firstAttribute="width" constant="375" id="X7H-gW-a3e"/>
                                 </constraints>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="Fff-B1-mer">
                                     <size key="itemSize" width="375" height="249"/>
@@ -64,14 +63,17 @@
                             <constraint firstItem="Gr6-xo-Ndd" firstAttribute="top" secondItem="PSa-E0-eWf" secondAttribute="topMargin" constant="8" id="PMo-jo-x5L"/>
                             <constraint firstItem="kAJ-5e-3oe" firstAttribute="centerX" secondItem="PSa-E0-eWf" secondAttribute="centerX" id="S4I-Wy-n5C"/>
                             <constraint firstItem="kAJ-5e-3oe" firstAttribute="centerY" secondItem="PSa-E0-eWf" secondAttribute="centerY" id="T5h-FL-wTz"/>
+                            <constraint firstAttribute="trailing" secondItem="kAJ-5e-3oe" secondAttribute="trailing" id="Tms-bu-Zgx"/>
                             <constraint firstItem="ncS-Tq-sHI" firstAttribute="centerX" secondItem="PSa-E0-eWf" secondAttribute="centerXWithinMargins" id="cSL-0O-NQg"/>
                             <constraint firstItem="voh-Us-mVf" firstAttribute="bottom" secondItem="ncS-Tq-sHI" secondAttribute="bottom" id="dxG-sY-mPe"/>
+                            <constraint firstItem="kAJ-5e-3oe" firstAttribute="leading" secondItem="PSa-E0-eWf" secondAttribute="leading" id="nOU-yg-LrK"/>
                             <constraint firstItem="ncS-Tq-sHI" firstAttribute="centerY" secondItem="PSa-E0-eWf" secondAttribute="centerY" id="pUp-Al-ZJ5"/>
                             <constraint firstItem="voh-Us-mVf" firstAttribute="top" secondItem="ncS-Tq-sHI" secondAttribute="top" id="vyv-DL-Q5i"/>
                             <constraint firstItem="voh-Us-mVf" firstAttribute="trailing" secondItem="ncS-Tq-sHI" secondAttribute="trailing" id="zMJ-PD-CRy"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
+                                <exclude reference="S4I-Wy-n5C"/>
                                 <exclude reference="PMo-jo-x5L"/>
                             </mask>
                         </variation>

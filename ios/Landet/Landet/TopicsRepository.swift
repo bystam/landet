@@ -5,8 +5,8 @@
 import Foundation
 
 protocol TopicsRepositoryDelegate: class {
-    func repositoryLoadedTopics(repository: TopicsRepository)
-    func repositoryChangedTopic(repository: TopicsRepository)
+    func repository(repository: TopicsRepository, loadedTopics topics: [Topic])
+    func repository(repository: TopicsRepository, changedToTopic topic: Topic?)
 }
 
 class TopicsRepository {
@@ -18,7 +18,7 @@ class TopicsRepository {
         didSet {
             guard currentTopic !== oldValue else { return }
 
-            delegate?.repositoryChangedTopic(self)
+            delegate?.repository(self, changedToTopic: currentTopic)
 
             commentsRepository.topic = currentTopic
 
@@ -44,7 +44,7 @@ class TopicsRepository {
                     }
                     else if let topics = topics {
                         strongSelf.topics = topics
-                        strongSelf.delegate?.repositoryLoadedTopics(strongSelf)
+                        strongSelf.delegate?.repository(strongSelf, loadedTopics: topics)
                     }
 
                     completion()

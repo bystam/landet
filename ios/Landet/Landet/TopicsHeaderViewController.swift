@@ -58,15 +58,14 @@ extension TopicsHeaderViewController {
 
 extension TopicsHeaderViewController: TopicsRepositoryDelegate {
 
-    func repositoryLoadedTopics(repository: TopicsRepository) {
+    func repository(repository: TopicsRepository, loadedTopics topics: [Topic]) {
         collectionView.reloadData()
-        repository.currentTopic = repository.topics.first
+        repository.currentTopic = topics.first
 
     }
 
-    func repositoryChangedTopic(repository: TopicsRepository) {
-        currentTopicLabel.text = repository.currentTopic?.title
-
+    func repository(repository: TopicsRepository, changedToTopic topic: Topic?) {
+        currentTopicLabel.text = topic?.title
         headerDelegate?.header(self, startedDisplayingTopic: repository.currentTopic)
     }
 }
