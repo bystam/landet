@@ -112,9 +112,9 @@ extension TopicsHeaderViewController: UICollectionViewDelegate {
     }
 
     func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
-        let offsetMiddle = collectionView.contentOffset.x + itemWidth/2
-        let index = Int(offsetMiddle / itemWidth)
+        guard let indexPath = collectionView.indexPathsForVisibleItems().first else { return }
 
+        let index = indexPath.section == kTopicsSection ? indexPath.item : -1
         if index >= 0 && index < topicsRepository.topics.count {
             topicsRepository.currentTopic = topicsRepository.topics[index]
         } else {
