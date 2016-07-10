@@ -73,13 +73,14 @@ public class TopicsFragment extends BaseFragment {
                 });
     }
 
+    //Call this when swiping to a new topic. Will load comments for that topic.
     private void setActiveTopic(Topic topic) {
-        //TODO what does this even mean?
         mModel.initialLoad(topic)
                 .subscribe(new Action1<List<TopicComment>>() {
                     @Override
                     public void call(List<TopicComment> topicComments) {
                         Timber.d("Comments %s", topicComments);
+                        //TODO Set the comments in the adapter
                     }
                 }, new Action1<Throwable>() {
                     @Override
@@ -89,12 +90,14 @@ public class TopicsFragment extends BaseFragment {
                 });
     }
 
+    // Call when swiping to the bottom of a list of comments to load older ones
     private void fetchOlderCommentsForTopic(@NonNull Topic topic) {
         mModel.fetchOlderTopicComments(topic)
                 .subscribe(new Action1<List<TopicComment>>() {
                     @Override
                     public void call(List<TopicComment> topicComments) {
                         Timber.d("comments %s: ", topicComments);
+                        //TODO Set the comments in the adapter
                     }
                 }, new Action1<Throwable>() {
                     @Override
@@ -104,12 +107,14 @@ public class TopicsFragment extends BaseFragment {
                 });
     }
 
+    // Call when posting a message or when you want the latest comments for some other reason
     private void fetchNewerCommentsForTopic(@NonNull Topic topic) {
         mModel.fetchNewerTopicComments(topic)
                 .subscribe(new Action1<List<TopicComment>>() {
                     @Override
                     public void call(List<TopicComment> topicComments) {
                         Timber.d("comments %s: ", topicComments);
+                        //TODO Set the comments in the adapter
                     }
                 }, new Action1<Throwable>() {
                     @Override

@@ -15,15 +15,11 @@ import org.joda.time.format.DateTimeFormatter;
 
 import java.lang.reflect.Type;
 
-import timber.log.Timber;
-
 public class DateTimeTypeConverter implements JsonSerializer<DateTime>, JsonDeserializer<DateTime> {
     private static DateTimeFormatter isoDateFormat = DateTimeFormat.forPattern("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
 
     public static String toString(DateTime dateTime) {
-        final String s = dateTime != null ? isoDateFormat.print(dateTime) : null;
-        Timber.d(s);
-        return s;
+        return dateTime != null ? isoDateFormat.print(dateTime) : null;
     }
     // No need for an InstanceCreator since DateTime provides a no-args constructor
     @Override
