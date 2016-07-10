@@ -37,7 +37,7 @@ class MapViewController: UIViewController {
             ImageLoader.loadImage(url) { (image) in
 
                 self.setMapImage(image)
-                self.placePins(locations ?? [])
+                self.placeLocations(locations ?? [])
 
                 self.loading = false
             }
@@ -71,13 +71,11 @@ class MapViewController: UIViewController {
         }
     }
 
-    private func placePins(locations: [MapLocation]) {
-        let pin = UIImage(named: "landmark")
-
+    private func placeLocations(locations: [MapLocation]) {
         for location in locations {
             let p = CGPoint(x: location.x, y: location.y)
 
-            let pinView = UIImageView(image: pin)
+            let pinView = UIImageView(image: UIImage(named: location.icon))
             pinView.center = p
             scrollViewContent?.addSubview(pinView)
 

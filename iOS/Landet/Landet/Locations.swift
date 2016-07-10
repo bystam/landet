@@ -55,7 +55,7 @@ class MapLocation: DictionaryInitializable {
         self.locationId = LocationID(rawValue: dictionary["id"] as! String)!
         self.x = dictionary["x"] as! Int
         self.y = dictionary["y"] as! Int
-        self.icon = dictionary["y"] as! String
+        self.icon = dictionary["icon"] as! String
     }
 }
 
