@@ -19,22 +19,22 @@ import java.util.List;
 /**
  * Created by shayan on 08/07/16.
  */
-public class EventCommentsAdapter extends RecyclerView.Adapter<EventCommentsAdapter.EventCommentsViewHolder> {
+public class EventCommentAdapter extends RecyclerView.Adapter<EventCommentAdapter.CommentViewHolder> {
     private Context mContext;
     private List<EventComment> mComments = new ArrayList<>();
 
-    public EventCommentsAdapter(@NonNull Context context) {
+    public EventCommentAdapter(@NonNull Context context) {
         mContext = context;
     }
 
     @Override
-    public EventCommentsViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public CommentViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(mContext).inflate(R.layout.list_item_comment, parent, false);
-        return new EventCommentsViewHolder(view);
+        return new CommentViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(EventCommentsViewHolder holder, int position) {
+    public void onBindViewHolder(CommentViewHolder holder, int position) {
         EventComment comment = getItem(position);
         holder.author.setText(comment.getAuthor().getName());
         String day = comment.getDateTime().dayOfWeek().getAsText();
@@ -58,12 +58,12 @@ public class EventCommentsAdapter extends RecyclerView.Adapter<EventCommentsAdap
         return mComments.size();
     }
 
-    public class EventCommentsViewHolder extends RecyclerView.ViewHolder {
+    public class CommentViewHolder extends RecyclerView.ViewHolder {
         public final TextView author;
         public final TextView dateTime;
         public final TextView body;
 
-        public EventCommentsViewHolder(View view) {
+        public CommentViewHolder(View view) {
             super(view);
             author = (TextView) view.findViewById(R.id.author);
             dateTime = (TextView) view.findViewById(R.id.date_time);

@@ -26,7 +26,7 @@ import timber.log.Timber;
 public class EventDetailsActivity extends BaseActivity {
     private EventModel mModel;
     private Event mEvent;
-    private EventCommentsAdapter mAdapter;
+    private EventCommentAdapter mAdapter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -42,7 +42,7 @@ public class EventDetailsActivity extends BaseActivity {
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
 
-        mAdapter = new EventCommentsAdapter(this);
+        mAdapter = new EventCommentAdapter(this);
         RecyclerView view = (RecyclerView) findViewById(R.id.comments);
         view.setLayoutManager(new LinearLayoutManager(this));
         view.setAdapter(mAdapter);
@@ -57,7 +57,7 @@ public class EventDetailsActivity extends BaseActivity {
         TextView body = (TextView) findViewById(R.id.body);
 
         toolbar.setTitle(mEvent.getTitle());
-        Picasso.with(this).load("http://media.theagencyre.com/wp-content/uploads/Carolwood-01.jpg").into(headerImage);
+        Picasso.with(this).load(mEvent.getLocation().getImageUrl()).into(headerImage);
         title.setText(mEvent.getTitle());
         String day = mEvent.getEventTime().dayOfWeek().getAsText();
         String time = DateTimeFormat.forPattern("HH:mm").print(mEvent.getEventTime());

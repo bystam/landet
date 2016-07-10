@@ -18,6 +18,10 @@ public class Location extends DataWithId implements Parcelable {
         return name;
     }
 
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
     @Override
     public int describeContents() { return 0; }
 

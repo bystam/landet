@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/landetBlack"
+    android:paddingTop="16dp"
+    android:paddingStart="16dp"
+    android:paddingEnd="16dp">
+
+    <TextView
+        android:id="@+id/title"
+        android:transitionName="topic_circle"
+        android:padding="20dp"
+        android:layout_height="@dimen/topic_circle_big_size"
+        android:layout_width="@dimen/topic_circle_big_size"
+        android:layout_marginBottom="16dp"
+        android:textColor="@color/landetYellow"
+        android:textSize="16sp"
+        android:layout_gravity="center"
+        android:background="@drawable/topic_big_circle"
+        android:gravity="center_vertical|center_horizontal"
+        android:maxLines="4"
+        android:ellipsize="end"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        tools:text="Hur många bävrar får plats i Sala egentligen?"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="text|textCapSentences"
+        android:hint="@string/write_a_comment"/>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/comments"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:listitem="@layout/list_item_comment"/>
+
+</LinearLayout>

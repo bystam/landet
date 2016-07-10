@@ -1,13 +1,14 @@
 package com.landet.landet.topics;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.v7.widget.LinearLayoutManager;
+import android.support.v4.app.ActivityOptionsCompat;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.landet.landet.BaseFragment;
 import com.landet.landet.R;
@@ -43,12 +44,15 @@ public class TopicsFragment extends BaseFragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_topics, container, false);
         final RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.recycler_view);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2));
         mAdapter = new TopicsAdapter(getContext(), new TopicsAdapter.Listener() {
             @Override
-            public void onItemClicked(@NonNull Topic item) {
-                Toast.makeText(getContext(), item.getTitle(), Toast.LENGTH_SHORT).show();
-                fetchOlderCommentsForTopic(item); //TODO Move this to a better place
+            public void onItemClicked(@NonNull Topic topic, View view) {
+                final Intent intent = new Intent(getContext(), TopicDetailsActivity.class);
+                intent.putExtra("topic", topic);
+                ActivityOptionsCompat options = ActivityOptionsCompat.
+                        makeSceneTransitionAnimation(getActivity(), view, "topic_circle");
+                startActivity(intent, options.toBundle());
             }
         });
         recyclerView.setAdapter(mAdapter);

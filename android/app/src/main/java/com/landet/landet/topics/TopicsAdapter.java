@@ -55,7 +55,7 @@ public class TopicsAdapter extends RecyclerView.Adapter<TopicsAdapter.ViewHolder
     public class ViewHolder extends RecyclerView.ViewHolder {
         private TextView title;
 
-        public ViewHolder(View itemView) {
+        public ViewHolder(final View itemView) {
             super(itemView);
             title = (TextView) itemView.findViewById(R.id.title);
             itemView.setOnClickListener(new View.OnClickListener() {
@@ -63,7 +63,7 @@ public class TopicsAdapter extends RecyclerView.Adapter<TopicsAdapter.ViewHolder
                 public void onClick(View v) {
                     Topic item = getItem(getAdapterPosition());
                     if (item != null && mListener != null) {
-                        mListener.onItemClicked(item);
+                        mListener.onItemClicked(item, itemView);
                     }
                 }
             });
@@ -71,6 +71,6 @@ public class TopicsAdapter extends RecyclerView.Adapter<TopicsAdapter.ViewHolder
     }
 
     public interface Listener {
-        void onItemClicked(@NonNull Topic item);
+        void onItemClicked(@NonNull Topic item, View view);
     }
 }
