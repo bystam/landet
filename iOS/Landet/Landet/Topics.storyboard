@@ -10,7 +10,7 @@
             <objects>
                 <tableViewController id="1xX-rB-Ipa" customClass="TopicsTableViewController" customModule="Landet" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="nbJ-OA-cf0">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <connections>
@@ -45,13 +45,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AeT-3U-XbG">
-                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <connections>
                                     <segue destination="1xX-rB-Ipa" kind="embed" identifier="embedTable" id="DQu-T2-mrS"/>
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="A0m-bg-R55">
-                                <rect key="frame" x="0.0" y="20" width="375" height="250"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="250"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="250" id="RF2-Mz-vxT"/>
                                 </constraints>
@@ -60,7 +60,7 @@
                                 </connections>
                             </containerView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wf9-J3-FJu">
-                                <rect key="frame" x="0.0" y="270" width="375" height="50"/>
+                                <rect key="frame" x="0.0" y="250" width="375" height="50"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tbO-bt-Aa5">
                                         <rect key="frame" x="4" y="4" width="367" height="42"/>
@@ -90,23 +90,15 @@
                         <constraints>
                             <constraint firstItem="AeT-3U-XbG" firstAttribute="leading" secondItem="mdJ-u2-OjR" secondAttribute="leading" id="1mT-Oo-ZRf"/>
                             <constraint firstItem="dDR-hd-pzr" firstAttribute="top" secondItem="AeT-3U-XbG" secondAttribute="bottom" id="5m0-Ry-796"/>
-                            <constraint firstItem="AeT-3U-XbG" firstAttribute="top" secondItem="JSA-oJ-LCh" secondAttribute="bottom" id="8tc-qR-q9N"/>
+                            <constraint firstItem="AeT-3U-XbG" firstAttribute="top" secondItem="mdJ-u2-OjR" secondAttribute="top" id="6Sf-vz-ZFT"/>
                             <constraint firstItem="A0m-bg-R55" firstAttribute="leading" secondItem="mdJ-u2-OjR" secondAttribute="leading" id="Asv-5S-BvK"/>
                             <constraint firstItem="Wf9-J3-FJu" firstAttribute="top" secondItem="A0m-bg-R55" secondAttribute="bottom" id="C26-3v-HqV"/>
                             <constraint firstAttribute="trailing" secondItem="Wf9-J3-FJu" secondAttribute="trailing" id="Gdh-DX-1Qg"/>
-                            <constraint firstItem="A0m-bg-R55" firstAttribute="top" secondItem="JSA-oJ-LCh" secondAttribute="bottom" id="QgO-iA-J8o"/>
                             <constraint firstItem="Wf9-J3-FJu" firstAttribute="leading" secondItem="mdJ-u2-OjR" secondAttribute="leading" id="SwK-3Y-9S6"/>
-                            <constraint firstItem="A0m-bg-R55" firstAttribute="top" secondItem="mdJ-u2-OjR" secondAttribute="top" id="k5Y-bC-osq"/>
-                            <constraint firstItem="AeT-3U-XbG" firstAttribute="top" secondItem="mdJ-u2-OjR" secondAttribute="top" id="oZd-iW-gIl"/>
+                            <constraint firstItem="A0m-bg-R55" firstAttribute="top" secondItem="mdJ-u2-OjR" secondAttribute="top" id="iVp-iw-LdZ"/>
                             <constraint firstAttribute="trailing" secondItem="A0m-bg-R55" secondAttribute="trailing" id="rk1-uc-1zD"/>
                             <constraint firstAttribute="trailing" secondItem="AeT-3U-XbG" secondAttribute="trailing" id="s5z-12-OdD"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="k5Y-bC-osq"/>
-                                <exclude reference="oZd-iW-gIl"/>
-                            </mask>
-                        </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Topics" id="VU8-Ew-DpC"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>

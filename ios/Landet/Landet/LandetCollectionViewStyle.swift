@@ -17,8 +17,6 @@ struct LandetCollectionCellIdentifier {
 class LandetCollectionViewStyle {
 
     static func setup(collectionView: UICollectionView, cells: [LandetCollectionCellIdentifier]) {
-        collectionView.backgroundColor = Colors.black
-
         cells.forEach { identifier in
             collectionView.registerNib(UINib(nibName: identifier.string, bundle: nil), forCellWithReuseIdentifier: identifier.string)
         }
