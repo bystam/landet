@@ -15,6 +15,10 @@ public class EventComment extends DataWithId implements Parcelable {
 
     public EventComment() {}
 
+    public EventComment(String comment) {
+        text = comment;
+    }
+
     public String getText() {
         return text;
     }

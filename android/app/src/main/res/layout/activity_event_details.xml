@@ -65,7 +65,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:layout_marginBottom="16dp"
+                android:layout_marginBottom="8dp"
                 android:gravity="center">
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -85,8 +85,21 @@
                     android:textSize="24sp"
                     android:background="@color/landetBlack"
                     android:textColor="@color/landetGreen"
-                    android:text="@string/comments_header"/>
+                    android:text="@string/comments_header"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"/>
             </RelativeLayout>
+
+            <EditText
+                android:id="@+id/write_comment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text|textCapSentences"
+                android:imeActionLabel="Send"
+                android:imeActionId="4"
+                android:imeOptions="actionSend"
+                android:hint="@string/write_a_comment"
+                android:layout_marginBottom="8dp"/>
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/comments"
