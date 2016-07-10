@@ -14,22 +14,22 @@
                 <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QuV-ib-ddV">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
                     <subviews>
-                        <view alpha="0.80000000000000004" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oB8-SK-s8I" userLabel="Left line">
-                            <rect key="frame" x="12" y="38.5" width="118" height="1"/>
-                            <color key="backgroundColor" red="0.56862747669219971" green="0.78039216995239258" blue="0.66274511814117432" alpha="1" colorSpace="calibratedRGB"/>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oB8-SK-s8I" userLabel="Left line">
+                            <rect key="frame" x="12" y="38.5" width="123" height="1"/>
+                            <color key="backgroundColor" red="0.56862747670000002" green="0.78039217000000005" blue="0.66274511810000003" alpha="0.5" colorSpace="calibratedRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="1" id="7gb-AJ-st7"/>
                             </constraints>
                         </view>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Comments" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k5T-Ec-5NV">
-                            <rect key="frame" x="141.5" y="28" width="93" height="14"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="19"/>
-                            <color key="textColor" red="0.56862747669219971" green="0.78039216995239258" blue="0.66274511814117432" alpha="1" colorSpace="calibratedRGB"/>
+                            <rect key="frame" x="146.5" y="28" width="83.5" height="14"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" red="0.56862747669219971" green="0.78039216995239258" blue="0.66274511814117432" alpha="0.5" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <view alpha="0.80000000000000004" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hSW-r4-XDc" userLabel="Left line">
-                            <rect key="frame" x="246" y="38.5" width="117" height="1"/>
-                            <color key="backgroundColor" red="0.56862747670000002" green="0.78039217000000005" blue="0.66274511810000003" alpha="1" colorSpace="calibratedRGB"/>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hSW-r4-XDc" userLabel="Left line">
+                            <rect key="frame" x="241.5" y="38.5" width="121.5" height="1"/>
+                            <color key="backgroundColor" red="0.56862747670000002" green="0.78039217000000005" blue="0.66274511810000003" alpha="0.5" colorSpace="calibratedRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="1" id="yB1-Cr-tYX"/>
                             </constraints>
