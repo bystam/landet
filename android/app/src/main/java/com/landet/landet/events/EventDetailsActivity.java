@@ -90,7 +90,7 @@ public class EventDetailsActivity extends BaseActivity {
         toolbar.setTitle(mEvent.getTitle());
         Picasso.with(this).load(mEvent.getLocation().getImageUrl()).into(headerImage);
         title.setText(mEvent.getTitle());
-        String day = mEvent.getEventTime().dayOfWeek().getAsText();
+        String day = mEvent.getEventTime().dayOfWeek().getAsText().substring(0, 3);
         String time = DateTimeFormat.forPattern("HH:mm").print(mEvent.getEventTime());
         String place = mEvent.getLocation().getName();
         timePlace.setText(getString(R.string.day_time_at_place, day, time, place));

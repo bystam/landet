@@ -52,7 +52,7 @@ public class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.EventViewH
     public void onBindViewHolder(EventViewHolder holder, int position) {
         Event event = getItem(position);
         holder.title.setText(event.getTitle());
-        String day = event.getEventTime().dayOfWeek().getAsText();
+        String day = event.getEventTime().dayOfWeek().getAsText().substring(0, 3);
         String time = DateTimeFormat.forPattern("HH:mm").print(event.getEventTime());
         String place = event.getLocation().getName();
         holder.timePlace.setText(mContext.getString(R.string.day_time_at_place, day, time, place));

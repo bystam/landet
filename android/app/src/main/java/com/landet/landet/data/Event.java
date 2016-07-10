@@ -14,8 +14,18 @@ public class Event extends DataWithId implements Parcelable {
     private DateTime eventTime;
     private User creator;
     private Location location;
+    @SerializedName("location_id")
+    private Long locationId;
 
     public Event() {}
+
+    public Event(String title, String body, DateTime eventTime, Location location) {
+        this.title = title;
+        this.body = body;
+        this.eventTime = eventTime;
+        this.location = location;
+        locationId = location.getId();
+    }
 
     public String getTitle() {
         return title;

@@ -42,7 +42,12 @@
                     android:layout_height="wrap_content"
                     android:textColor="@color/landetGreen"
                     android:layout_alignParentStart="true"
-                    tools:text="19:00 at Bastun"/>
+                    android:ellipsize="end"
+                    android:lines="1"
+                    android:singleLine="true"
+                    android:maxLines="1"
+                    tools:text="Thursday 19:00 at Bakre grasmattan ungefar lolfi"
+                    android:layout_toStartOf="@+id/author" />
 
                 <TextView
                     android:id="@+id/author"
@@ -50,6 +55,7 @@
                     android:layout_height="wrap_content"
                     android:textColor="@color/landetBrown"
                     android:layout_alignParentEnd="true"
+                    android:layout_marginStart="8dp"
                     tools:text="by Shayan Effati" />
 
             </RelativeLayout>

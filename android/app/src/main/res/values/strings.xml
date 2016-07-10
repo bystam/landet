@@ -31,7 +31,11 @@
     <string name="topics_tab">Topics</string>
     <string name="map_tab">Map</string>
     <string name="title">Title</string>
-    <string name="body">Body</string>
+    <string name="body">Description</string>
     <string name="write_a_comment">Write a comment&#8230;</string>
     <string name="close">Close</string>
+    <string name="create_new_event">Create a new event</string>
+    <string name="create">Create</string>
+    <string name="pick_date">Pick date</string>
+    <string name="pick_time">Pick time</string>
 </resources>
