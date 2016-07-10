@@ -71,12 +71,13 @@ public class TopicCommentCache {
             allComments = comments;
         } else if (comments.isEmpty()) {
             allComments = existingComments;
-        } else if (existingComments.get(0).getDateTime().isBefore(comments.get(comments.size()-1).getDateTime())) {
-            allComments.addAll(comments);
+        } else {
             allComments.addAll(existingComments);
-        } else if (existingComments.get(existingComments.size()-1).getDateTime().isAfter(comments.get(0).getDateTime())) {
-            allComments.addAll(existingComments);
-            allComments.addAll(comments);
+            if (existingComments.get(0).getDateTime().isBefore(comments.get(comments.size()-1).getDateTime())) {
+                allComments.addAll(0, comments);
+            } else if (existingComments.get(existingComments.size()-1).getDateTime().isAfter(comments.get(0).getDateTime())) {
+                allComments.addAll(comments);
+            }
         }
         final boolean more = hasMoreComments != null ? hasMoreComments : hasMoreComments(topic);
         cache.put(topic, new TopicCommentListWrapper(allComments, more));
