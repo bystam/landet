@@ -29,9 +29,13 @@
         tools:text="Hur många bävrar får plats i Sala egentligen?"/>
 
     <EditText
+        android:id="@+id/write_comment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="text|textCapSentences"
+        android:imeActionLabel="Send"
+        android:imeActionId="4"
+        android:imeOptions="actionSend"
         android:hint="@string/write_a_comment"/>
 
     <android.support.v7.widget.RecyclerView

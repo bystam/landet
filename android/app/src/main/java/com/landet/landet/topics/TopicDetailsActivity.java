@@ -1,10 +1,17 @@
 package com.landet.landet.topics;
 
+import android.content.Context;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.KeyEvent;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.inputmethod.EditorInfo;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.landet.landet.BaseActivity;
@@ -41,6 +48,26 @@ public class TopicDetailsActivity extends BaseActivity {
         TextView title = (TextView) findViewById(R.id.title);
         title.setText(mTopic.getTitle());
 
+        EditText writeComment = (EditText) findViewById(R.id.write_comment);
+        writeComment.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                boolean handled = false;
+                if (actionId == EditorInfo.IME_ACTION_SEND) {
+                    postComment(mTopic, new TopicComment(v.getText().toString()));
+                    v.setText("");
+                    handled = true;
+                    View view = TopicDetailsActivity.this.getCurrentFocus();
+                    if (view != null) {
+                        InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                        imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+                    }
+                }
+                return handled;
+            }
+        });
+
+
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
@@ -52,7 +79,7 @@ public class TopicDetailsActivity extends BaseActivity {
         view.addOnScrollListener(new RecyclerView.OnScrollListener() {
             private int previousTotal = 0;
             private boolean loading = true;
-            private int visibleThreshold = 10;
+            private final int MAX_VISIBLE = 10;
             int firstVisibleItem, visibleItemCount, totalItemCount;
             @Override
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
@@ -70,7 +97,7 @@ public class TopicDetailsActivity extends BaseActivity {
                         }
                     }
                     if (!loading && (totalItemCount - visibleItemCount)
-                            <= (firstVisibleItem + visibleThreshold)) {
+                            <= (firstVisibleItem + MAX_VISIBLE)) {
                         final Subscription subscription = mModel.fetchOlderTopicComments(mTopic)
                                 .subscribe(new Action1<List<TopicComment>>() {
                                     @Override
@@ -121,5 +148,58 @@ public class TopicDetailsActivity extends BaseActivity {
                 return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    // Call when posting a message or when you want the latest comments for some other reason
+    private void fetchNewerCommentsForTopic(@NonNull Topic topic) {
+        final Subscription subscription = mModel.fetchNewerTopicComments(topic)
+                .subscribe(new Action1<List<TopicComment>>() {
+                    @Override
+                    public void call(List<TopicComment> topicComments) {
+                        Timber.d("comments %s: ", topicComments);
+                        mAdapter.setItems(topicComments);
+                    }
+                }, new Action1<Throwable>() {
+                    @Override
+                    public void call(Throwable throwable) {
+                        Timber.d(throwable, "Failed to load topic comments");
+                    }
+                });
+        mCompositeSubscription.add(subscription);
+    }
+
+    // Call when swiping to the bottom of a list of comments to load older ones
+    private void fetchOlderCommentsForTopic(@NonNull Topic topic) {
+        final Subscription subscription = mModel.fetchOlderTopicComments(topic)
+                .subscribe(new Action1<List<TopicComment>>() {
+                    @Override
+                    public void call(List<TopicComment> topicComments) {
+                        Timber.d("comments %s: ", topicComments);
+                        mAdapter.setItems(topicComments);
+                    }
+                }, new Action1<Throwable>() {
+                    @Override
+                    public void call(Throwable throwable) {
+                        Timber.d(throwable, "Failed to load topic comments");
+                    }
+                });
+        mCompositeSubscription.add(subscription);
+    }
+
+    private void postComment(@NonNull final Topic topic, @NonNull TopicComment comment) {
+        final Subscription subscription = mModel.postTopicComment(topic, comment)
+                .subscribe(new Action1<TopicComment>() {
+                    @Override
+                    public void call(TopicComment comment) {
+                        Timber.d("Posted comment: %s", comment.getText());
+                        fetchNewerCommentsForTopic(topic);
+                    }
+                }, new Action1<Throwable>() {
+                    @Override
+                    public void call(Throwable throwable) {
+                        Timber.d("Failed to post comment");
+                    }
+                });
+        mCompositeSubscription.add(subscription);
     }
 }

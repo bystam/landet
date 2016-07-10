@@ -61,9 +61,12 @@ public class TopicsAdapter extends RecyclerView.Adapter<TopicsAdapter.ViewHolder
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Topic item = getItem(getAdapterPosition());
-                    if (item != null && mListener != null) {
-                        mListener.onItemClicked(item, itemView);
+                    int position = getAdapterPosition();
+                    if (position >= 0) {
+                        Topic item = getItem(position);
+                        if (item != null && mListener != null) {
+                            mListener.onItemClicked(item, itemView);
+                        }
                     }
                 }
             });
