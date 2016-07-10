@@ -27,6 +27,9 @@
                                     <constraint firstAttribute="height" constant="250" id="D3D-cx-tIz"/>
                                 </constraints>
                             </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="navbar-fade" translatesAutoresizingMaskIntoConstraints="NO" id="ivN-lr-tQu">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="84"/>
+                            </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f3n-Sy-s4Z">
                                 <rect key="frame" x="0.0" y="249" width="375" height="1"/>
                                 <color key="backgroundColor" white="1" alpha="0.10000000000000001" colorSpace="calibratedWhite"/>
@@ -41,10 +44,13 @@
                             <constraint firstItem="G8r-Q2-Cfp" firstAttribute="top" secondItem="Noj-RM-K34" secondAttribute="bottom" id="9de-GM-TGs"/>
                             <constraint firstItem="G8r-Q2-Cfp" firstAttribute="top" secondItem="f3n-Sy-s4Z" secondAttribute="bottom" id="K08-Af-48Y"/>
                             <constraint firstAttribute="trailing" secondItem="Noj-RM-K34" secondAttribute="trailing" id="KKQ-1y-Kzz"/>
+                            <constraint firstItem="ivN-lr-tQu" firstAttribute="trailing" secondItem="Noj-RM-K34" secondAttribute="trailing" id="LXg-op-jSM"/>
+                            <constraint firstItem="ivN-lr-tQu" firstAttribute="leading" secondItem="Noj-RM-K34" secondAttribute="leading" id="Mk6-cf-R1H"/>
                             <constraint firstItem="Noj-RM-K34" firstAttribute="top" secondItem="USx-Jz-gJV" secondAttribute="top" id="OPX-ei-Fib"/>
                             <constraint firstItem="Noj-RM-K34" firstAttribute="leading" secondItem="USx-Jz-gJV" secondAttribute="leading" id="TZW-sk-bGO"/>
                             <constraint firstItem="EC4-2K-ukJ" firstAttribute="centerX" secondItem="USx-Jz-gJV" secondAttribute="centerX" id="Ytd-qt-XN4"/>
                             <constraint firstItem="f3n-Sy-s4Z" firstAttribute="leading" secondItem="USx-Jz-gJV" secondAttribute="leading" id="aPr-Gb-yu0"/>
+                            <constraint firstItem="ivN-lr-tQu" firstAttribute="top" secondItem="Noj-RM-K34" secondAttribute="top" id="f57-A8-8TH"/>
                             <constraint firstAttribute="trailing" secondItem="f3n-Sy-s4Z" secondAttribute="trailing" id="fZL-v1-dyA"/>
                             <constraint firstItem="Noj-RM-K34" firstAttribute="top" secondItem="U2o-9F-fmz" secondAttribute="bottom" id="sb3-hP-sPN"/>
                             <constraint firstItem="EC4-2K-ukJ" firstAttribute="centerY" secondItem="USx-Jz-gJV" secondAttribute="centerY" id="tuB-4v-dqw"/>
@@ -70,4 +76,7 @@
             <point key="canvasLocation" x="253" y="410"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="navbar-fade" width="10" height="84"/>
+    </resources>
 </document>
