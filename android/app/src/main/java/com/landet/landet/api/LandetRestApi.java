@@ -3,6 +3,7 @@ package com.landet.landet.api;
 import com.landet.landet.data.Event;
 import com.landet.landet.data.EventComment;
 import com.landet.landet.data.Topic;
+import com.landet.landet.data.TopicComment;
 import com.landet.landet.data.TopicCommentListWrapper;
 import com.landet.landet.data.User;
 
@@ -47,4 +48,7 @@ public interface LandetRestApi {
             @Path("topicId") Long topicId,
             @Query("pageBefore") String before,
             @Query("after") String after);
+
+    @POST("topics/{topicId}/comments")
+    Observable<Result<TopicComment>> postComment(@Path("topicId") Long topicId, @Body TopicComment comment);
 }

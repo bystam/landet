@@ -15,6 +15,10 @@ public class TopicComment extends DataWithId implements Parcelable {
 
     public TopicComment() {}
 
+    public TopicComment(String text) {
+        this.text = text;
+    }
+
     public String getText() {
         return text;
     }

@@ -142,4 +142,20 @@ public class TopicsFragment extends BaseFragment {
                     }
                 });
     }
+
+    private void postComment(@NonNull final Topic topic, @NonNull TopicComment comment) {
+        mModel.postComment(topic, comment)
+                .subscribe(new Action1<TopicComment>() {
+                    @Override
+                    public void call(TopicComment comment) {
+                        Timber.d("Posted comment: %s", comment.getText());
+                        fetchNewerCommentsForTopic(topic);
+                    }
+                }, new Action1<Throwable>() {
+                    @Override
+                    public void call(Throwable throwable) {
+                        Timber.d("Failed to post comment");
+                    }
+                });
+    }
 }

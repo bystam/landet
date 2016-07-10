@@ -8,6 +8,7 @@ import com.google.gson.GsonBuilder;
 import com.landet.landet.data.Event;
 import com.landet.landet.data.EventComment;
 import com.landet.landet.data.Topic;
+import com.landet.landet.data.TopicComment;
 import com.landet.landet.data.TopicCommentListWrapper;
 import com.landet.landet.data.User;
 
@@ -89,6 +90,11 @@ public class Backend {
                                   DateTimeTypeConverter.toString(before),
                                   DateTimeTypeConverter.toString(after))
                 .map(this.<TopicCommentListWrapper>resultToApiResponse());
+    }
+
+    public Observable<ApiResponse<TopicComment>> postComment(@NonNull Topic topic, @NonNull TopicComment comment) {
+        return mApi.postComment(topic.getId(), comment)
+                .map(this.<TopicComment>resultToApiResponse());
     }
 
     @NonNull
