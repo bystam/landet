@@ -9,7 +9,9 @@ const TopicComments = require('./entities').TopicComments;
 const errors = require('../util/errors');
 
 function allTopics() {
-  return Topics.forge().fetch({
+  return Topics.forge()
+  .query('orderBy', 'created_at', 'DESC')
+  .fetch({
     columns: ['id', 'title', 'author_id'],
     withRelated: [ 'author' ]
   });
