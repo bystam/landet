@@ -41,6 +41,12 @@ class CreateEventTableViewController: UITableViewController {
         super.viewDidAppear(animated)
         nameTextField.becomeFirstResponder()
     }
+
+    @IBAction func locationPictureButtonPressed(sender: AnyObject) {
+        guard let location = location else { return }
+        presentViewController(LocationDetailsViewController.fromStoryboard(location: location),
+                              animated: true, completion: nil)
+    }
 }
 
 extension CreateEventTableViewController: UITextViewDelegate {

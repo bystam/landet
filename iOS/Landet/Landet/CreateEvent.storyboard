@@ -218,7 +218,7 @@
                                                     </variation>
                                                 </textField>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kRp-Im-QgE">
-                                                    <rect key="frame" x="12" y="23.5" width="50" height="13.5"/>
+                                                    <rect key="frame" x="12" y="23" width="50" height="13.5"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="50" id="YVl-uP-pDC"/>
                                                     </constraints>
@@ -226,15 +226,29 @@
                                                     <color key="textColor" red="0.56862747670000002" green="0.78039217000000005" blue="0.66274511810000003" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YXm-lp-D1d">
+                                                    <rect key="frame" x="319" y="8" width="44" height="44"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="44" id="4FD-RT-uMH"/>
+                                                        <constraint firstAttribute="height" constant="44" id="mch-Kr-qCJ"/>
+                                                    </constraints>
+                                                    <state key="normal" image="picture"/>
+                                                    <connections>
+                                                        <action selector="locationPictureButtonPressed:" destination="s3C-hk-1ox" eventType="touchUpInside" id="lhA-8t-HHi"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <color key="tintColor" red="0.89803922176361084" green="0.87450981140136719" blue="0.77254903316497803" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
                                                 <constraint firstItem="qKJ-Mn-u8u" firstAttribute="trailing" secondItem="9B4-41-HwP" secondAttribute="trailing" constant="-16" id="AWT-bN-ngZ"/>
+                                                <constraint firstItem="YXm-lp-D1d" firstAttribute="centerY" secondItem="BdZ-xn-88m" secondAttribute="centerY" id="Av5-G6-q2Y"/>
                                                 <constraint firstItem="qKJ-Mn-u8u" firstAttribute="leading" secondItem="kRp-Im-QgE" secondAttribute="trailing" constant="8" id="B70-xP-D7I"/>
                                                 <constraint firstItem="qKJ-Mn-u8u" firstAttribute="top" secondItem="9B4-41-HwP" secondAttribute="top" id="E3V-BJ-oMd"/>
                                                 <constraint firstItem="9B4-41-HwP" firstAttribute="centerY" secondItem="BdZ-xn-88m" secondAttribute="centerY" id="Gxr-7P-9xc"/>
                                                 <constraint firstItem="kRp-Im-QgE" firstAttribute="leading" secondItem="BdZ-xn-88m" secondAttribute="leading" constant="12" id="SF3-l4-px0"/>
                                                 <constraint firstItem="qKJ-Mn-u8u" firstAttribute="bottom" secondItem="9B4-41-HwP" secondAttribute="bottom" id="WQf-vh-UiO"/>
+                                                <constraint firstAttribute="trailing" secondItem="YXm-lp-D1d" secondAttribute="trailing" constant="12" id="aIX-dT-C4P"/>
                                                 <constraint firstAttribute="trailing" secondItem="9B4-41-HwP" secondAttribute="trailing" constant="4" id="bkv-Pu-CPY"/>
                                                 <constraint firstItem="kRp-Im-QgE" firstAttribute="centerY" secondItem="9B4-41-HwP" secondAttribute="centerY" id="dNp-Ie-i4a"/>
                                                 <constraint firstItem="9B4-41-HwP" firstAttribute="leading" secondItem="BdZ-xn-88m" secondAttribute="leading" constant="4" id="zTo-Eb-KN6"/>
@@ -328,4 +342,7 @@
             <point key="canvasLocation" x="679" y="515"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="picture" width="28" height="28"/>
+    </resources>
 </document>
