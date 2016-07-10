@@ -5,7 +5,7 @@
 import Foundation
 
 protocol TopicsRepositoryDelegate: class {
-    func repository(repository: TopicsRepository, loadedTopics topics: [Topic])
+    func repository(repository: TopicsRepository, loadedTopics topics: [Topic]?)
     func repository(repository: TopicsRepository, changedToTopic topic: Topic?)
 }
 
@@ -13,7 +13,7 @@ class TopicsRepository {
 
     weak var delegate: TopicsRepositoryDelegate?
 
-    private(set) var topics = [Topic]()
+    private(set) var topics: [Topic]?
     var currentTopic: Topic? {
         didSet {
             guard currentTopic !== oldValue else { return }

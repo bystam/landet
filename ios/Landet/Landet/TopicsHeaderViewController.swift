@@ -39,6 +39,7 @@ class TopicsHeaderViewController: UIViewController {
         topicsRepository.delegate = self
 
         currentTopicLabel.alpha = 0.0
+        currentTopicLabel.text = nil
 
         collectionView.scrollToItemAtIndexPath(NSIndexPath(forItem: 0, inSection: kTopicsSection),
                                                atScrollPosition: .CenteredHorizontally, animated: false)
@@ -58,9 +59,9 @@ extension TopicsHeaderViewController {
 
 extension TopicsHeaderViewController: TopicsRepositoryDelegate {
 
-    func repository(repository: TopicsRepository, loadedTopics topics: [Topic]) {
+    func repository(repository: TopicsRepository, loadedTopics topics: [Topic]?) {
         collectionView.reloadData()
-        repository.currentTopic = topics.first
+        repository.currentTopic = topics?.first
 
     }
 
@@ -78,7 +79,8 @@ extension TopicsHeaderViewController: UICollectionViewDataSource {
 
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if section == kCreateSection { return 1 }
-        return topicsRepository.topics.isEmpty ? 1 : topicsRepository.topics.count
+        guard let topics = topicsRepository.topics else { return 1 }
+        return topics.count
     }
 
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
@@ -86,13 +88,14 @@ extension TopicsHeaderViewController: UICollectionViewDataSource {
             return collectionView.dequeueLandetCell(.Create, forIndexPath: indexPath)
         }
 
-        if topicsRepository.topics.isEmpty {
+        guard let topics = topicsRepository.topics else {
             let cell: SpinnerCollectionViewCell = collectionView.dequeueLandetCell(.Spinner, forIndexPath: indexPath)
             cell.spin()
             return cell
         }
+
         let cell: TopicsHeaderCollectionViewCell = collectionView.dequeueLandetCell(.TopicHeader, forIndexPath: indexPath)
-        cell.configure(topic: topicsRepository.topics[indexPath.item])
+        cell.configure(topic: topics[indexPath.item])
         return cell
     }
 }
@@ -110,10 +113,11 @@ extension TopicsHeaderViewController: UICollectionViewDelegate {
 
     func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
         guard let indexPath = collectionView.indexPathsForVisibleItems().first else { return }
+        guard let topics = topicsRepository.topics else { return }
 
         let index = indexPath.section == kTopicsSection ? indexPath.item : -1
-        if index >= 0 && index < topicsRepository.topics.count {
-            topicsRepository.currentTopic = topicsRepository.topics[index]
+        if index >= 0 && index < topics.count {
+            topicsRepository.currentTopic = topics[index]
         } else {
             topicsRepository.currentTopic = nil
         }
