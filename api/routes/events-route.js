@@ -17,7 +17,7 @@ router.get('/', function(req, res) {
   }).catch(errors.HttpHandler(res));;
 });
 
-router.post('/create', function(req, res) {
+router.post('/', function(req, res) {
   let eventData = {
     title: req.body.title,
     body: req.body.body,

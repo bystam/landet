@@ -19,7 +19,7 @@ router.get('/', function(req, res) {
   }).catch(errors.HttpHandler(res));
 });
 
-router.post('/create', function(req, res) {
+router.post('/', function(req, res) {
   let commentData = {
     text: req.body.text,
     topic_id: req.params.topicid,

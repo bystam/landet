@@ -9,7 +9,7 @@ const sessions = require('../model/sessions');
 const statuses = require('../util/statuses');
 const errors = require('../util/errors');
 
-router.post('/create', function(req, res) {
+router.post('/', function(req, res) {
   let username = req.body.username;
   let password = req.body.password;
   let name = req.body.name;

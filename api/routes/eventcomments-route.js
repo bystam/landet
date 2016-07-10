@@ -14,7 +14,7 @@ router.get('/', function(req, res) {
   }).catch(errors.HttpHandler(res));;
 });
 
-router.post('/create', function(req, res) {
+router.post('/', function(req, res) {
   let commentData = {
     text: req.body.text,
     event_id: req.params.eventid,
