@@ -47,14 +47,23 @@
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="- Fredrik Bystam" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0LB-8V-qG3">
+                        <rect key="frame" x="270.5" y="222.5" width="92.5" height="14.5"/>
+                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="12"/>
+                        <color key="textColor" red="0.66274511810000003" green="0.18431372939999999" blue="0.25490197539999998" alpha="0.80000000000000004" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             </view>
             <constraints>
                 <constraint firstItem="imz-m7-RbW" firstAttribute="centerX" secondItem="bRu-zS-BaU" secondAttribute="centerX" id="6aZ-Si-oiT"/>
+                <constraint firstAttribute="bottom" secondItem="0LB-8V-qG3" secondAttribute="bottom" constant="12" id="HDS-HB-u34"/>
+                <constraint firstAttribute="trailing" secondItem="0LB-8V-qG3" secondAttribute="trailing" constant="12" id="for-MY-Kt9"/>
                 <constraint firstItem="imz-m7-RbW" firstAttribute="centerY" secondItem="bRu-zS-BaU" secondAttribute="centerY" id="q85-XL-xaz"/>
             </constraints>
             <connections>
+                <outlet property="authorLabel" destination="0LB-8V-qG3" id="KUG-bv-5Yn"/>
                 <outlet property="circleView" destination="imz-m7-RbW" id="9yh-Sr-ZRV"/>
                 <outlet property="titleLabel" destination="Ib8-Gg-OZn" id="JBC-4T-8sC"/>
             </connections>
