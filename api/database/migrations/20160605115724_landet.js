@@ -13,7 +13,7 @@ exports.up = function(knex, Promise) {
 
         knex.schema.createTable('sessions', function(table) {
           table.increments('id').primary();
-          table.string('token').notNullable();
+          table.string('token').notNullable().index();
           table.string('refresh_token').notNullable();
           table.dateTime('expiration_date').notNullable();
 
