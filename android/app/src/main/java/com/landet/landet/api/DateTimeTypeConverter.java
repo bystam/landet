@@ -19,7 +19,7 @@ public class DateTimeTypeConverter implements JsonSerializer<DateTime>, JsonDese
     private static DateTimeFormatter isoDateFormat = DateTimeFormat.forPattern("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
 
     public static String toString(DateTime dateTime) {
-        return dateTime != null ? isoDateFormat.print(dateTime) : null;
+        return dateTime != null ? isoDateFormat.print(dateTime.withZone(DateTimeZone.UTC)) : null;
     }
     // No need for an InstanceCreator since DateTime provides a no-args constructor
     @Override
@@ -29,6 +29,6 @@ public class DateTimeTypeConverter implements JsonSerializer<DateTime>, JsonDese
     @Override
     public DateTime deserialize(JsonElement json, Type type, JsonDeserializationContext context)
             throws JsonParseException {
-        return new DateTime(json.getAsString(), DateTimeZone.UTC);
+        return new DateTime(json.getAsString(), DateTimeZone.UTC).withZone(DateTimeZone.getDefault());
     }
 }
