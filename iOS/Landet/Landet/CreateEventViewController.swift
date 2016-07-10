@@ -29,11 +29,21 @@ class CreateEventViewController: UIViewController {
         guard let location = tableViewController.location else { return }
         guard let body = tableViewController.bodyTextView.text else { return }
 
+        let fields = [
+            tableViewController.nameTextField,
+            tableViewController.timeField,
+            tableViewController.locationField,
+            tableViewController.bodyTextView,
+        ]
+
         EventAPI.shared.create(title: title, body: body, location: location, time: time) { (error) in
             if let error = error {
                 print(error)
             } else {
-                self.dismissViewControllerAnimated(true, completion: nil)
+                Async.main {
+                    fields.forEach({ $0.resignFirstResponder() })
+                    self.dismissViewControllerAnimated(true, completion: nil)
+                }
             }
         }
     }
@@ -46,6 +56,6 @@ extension CreateEventViewController: UITextFieldDelegate {
             tableViewController.timeField.becomeFirstResponder()
         }
 
-        return true
+        return false
     }
 }
