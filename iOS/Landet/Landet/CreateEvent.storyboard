@@ -203,7 +203,7 @@
                                                     </constraints>
                                                 </view>
                                                 <textField opaque="NO" clipsSubviews="YES" alpha="0.69999998807907104" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Location" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qKJ-Mn-u8u" customClass="LandetTextField" customModule="Landet" customModuleProvider="target">
-                                                    <rect key="frame" x="70" y="2" width="285" height="56"/>
+                                                    <rect key="frame" x="70" y="2" width="251" height="56"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="40" id="43D-mn-40L"/>
@@ -239,9 +239,9 @@
                                                 </button>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                            <color key="tintColor" red="0.89803922176361084" green="0.87450981140136719" blue="0.77254903316497803" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="tintColor" red="0.89803922176361084" green="0.87450981140136719" blue="0.77254903316497803" alpha="0.80000000000000004" colorSpace="calibratedRGB"/>
                                             <constraints>
-                                                <constraint firstItem="qKJ-Mn-u8u" firstAttribute="trailing" secondItem="9B4-41-HwP" secondAttribute="trailing" constant="-16" id="AWT-bN-ngZ"/>
+                                                <constraint firstItem="qKJ-Mn-u8u" firstAttribute="trailing" secondItem="9B4-41-HwP" secondAttribute="trailing" constant="-50" id="AWT-bN-ngZ"/>
                                                 <constraint firstItem="YXm-lp-D1d" firstAttribute="centerY" secondItem="BdZ-xn-88m" secondAttribute="centerY" id="Av5-G6-q2Y"/>
                                                 <constraint firstItem="qKJ-Mn-u8u" firstAttribute="leading" secondItem="kRp-Im-QgE" secondAttribute="trailing" constant="8" id="B70-xP-D7I"/>
                                                 <constraint firstItem="qKJ-Mn-u8u" firstAttribute="top" secondItem="9B4-41-HwP" secondAttribute="top" id="E3V-BJ-oMd"/>

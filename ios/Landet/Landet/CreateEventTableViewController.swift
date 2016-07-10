@@ -22,6 +22,8 @@ class CreateEventTableViewController: UITableViewController {
     @IBOutlet weak var bodyTextView: UITextView!
     @IBOutlet weak var bodyPlaceholder: UITextView!
 
+    private var firstAppear = true
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -35,11 +37,16 @@ class CreateEventTableViewController: UITableViewController {
         bodyTextView.textContainerInset = UIEdgeInsetsZero
         bodyPlaceholder.textContainerInset = UIEdgeInsetsZero
         bodyTextView.delegate = self
+
     }
 
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        nameTextField.becomeFirstResponder()
+
+        if firstAppear {
+            firstAppear = false
+            nameTextField.becomeFirstResponder()
+        }
     }
 
     @IBAction func locationPictureButtonPressed(sender: AnyObject) {
