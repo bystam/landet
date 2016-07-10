@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import com.landet.landet.data.Location;
 import com.landet.landet.data.MapContent;
 import com.landet.landet.data.MapLocation;
+import com.landet.landet.locations.LocationDialogFragment;
 import com.landet.landet.locations.LocationModel;
 import com.landet.landet.utils.ZoomableViewGroup;
 import com.squareup.picasso.Callback;
@@ -83,7 +84,7 @@ public class MapFragment extends BaseFragment {
                     @Override
                     public void call(List<Location> locations) {
                         if (locations != null && !locations.isEmpty() && mMapContent != null) {
-                            for (Location location : locations) {
+                            for (final Location location : locations) {
                                 for (MapLocation mapLocation : mMapContent.getLocations()) {
                                     if (mapLocation.getId().equals(location.getEnumId())) {
                                         ImageView icon = new ImageView(getContext());
@@ -94,6 +95,13 @@ public class MapFragment extends BaseFragment {
                                         icon.setMaxWidth(200);
                                         icon.setMaxHeight(200);
                                         icon.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+                                        icon.setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View view) {
+                                                LocationDialogFragment.newInstance(location)
+                                                        .show(getFragmentManager(), "LOCATION_DIALOG");
+                                            }
+                                        });
                                         zoomable.addView(icon);
                                     }
                                 }
