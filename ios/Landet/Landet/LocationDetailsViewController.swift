@@ -7,6 +7,7 @@ import UIKit
 class LocationDetailsViewController: UIViewController {
 
     @IBOutlet weak var blurView: UIVisualEffectView!
+    @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var imageContainer: RoundRectView!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var closeButton: RoundRectButton!
@@ -28,6 +29,8 @@ class LocationDetailsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        nameLabel.text = location.name
 
         imageView.alpha = 0.0
         ImageLoader.loadImage(location.imageUrl) { [weak self] (image) in

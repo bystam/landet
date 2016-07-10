@@ -13,7 +13,7 @@ class LocationDetailsAnimator: NSObject, UIViewControllerAnimatedTransitioning {
     }
 
     @objc func transitionDuration(transitionContext: UIViewControllerContextTransitioning?) -> NSTimeInterval {
-        return presenting ? 1.0 : 0.5
+        return presenting ? 1.0 : 0.6
     }
 
     @objc func animateTransition(transitionContext: UIViewControllerContextTransitioning) {
@@ -34,6 +34,8 @@ class LocationDetailsAnimator: NSObject, UIViewControllerAnimatedTransitioning {
             let effect = detailsVC.blurView.effect
             detailsVC.blurView.effect = nil
 
+            detailsVC.nameLabel.alpha = 0.0
+            detailsVC.nameLabel.transform = CGAffineTransformMakeTranslation(0, 40)
             detailsVC.imageContainer.alpha = 0.0
             detailsVC.imageContainer.transform = CGAffineTransformMakeTranslation(0, 40)
             detailsVC.closeButton.alpha = 0.0
@@ -44,6 +46,11 @@ class LocationDetailsAnimator: NSObject, UIViewControllerAnimatedTransitioning {
             })
 
             UIView.animateWithDuration(0.6, delay: 0.2, usingSpringWithDamping: 0.6, initialSpringVelocity: 2.0, options: [], animations: {
+                detailsVC.nameLabel.alpha = 1.0
+                detailsVC.nameLabel.transform = CGAffineTransformIdentity
+            }, completion: nil)
+
+            UIView.animateWithDuration(0.6, delay: 0.3, usingSpringWithDamping: 0.6, initialSpringVelocity: 2.0, options: [], animations: {
                 detailsVC.imageContainer.alpha = 1.0
                 detailsVC.imageContainer.transform = CGAffineTransformIdentity
             }, completion: nil)
@@ -64,17 +71,24 @@ class LocationDetailsAnimator: NSObject, UIViewControllerAnimatedTransitioning {
             fromVC.beginAppearanceTransition(false, animated: true)
             toVC.beginAppearanceTransition(true, animated: true)
 
-            UIView.animateWithDuration(0.3, animations: {
+            UIView.animateWithDuration(0.3, delay: 0.0, options: [], animations: {
                 detailsVC.closeButton.alpha = 0.0
                 detailsVC.closeButton.transform = CGAffineTransformMakeTranslation(0, 40)
-            })
+            }, completion: nil)
 
-            UIView.animateWithDuration(0.3, delay: 0.1, options: [], animations: { 
+            UIView.animateWithDuration(0.3, delay: 0.1, options: [], animations: {
                 detailsVC.imageContainer.alpha = 0.0
                 detailsVC.imageContainer.transform = CGAffineTransformMakeTranslation(0, 40)
             }, completion: nil)
 
             UIView.animateWithDuration(0.3, delay: 0.2, options: [], animations: {
+                detailsVC.nameLabel.alpha = 0.0
+                detailsVC.nameLabel.transform = CGAffineTransformMakeTranslation(0, 40)
+            }, completion: nil)
+
+
+
+            UIView.animateWithDuration(0.3, delay: 0.3, options: [], animations: {
                 detailsVC.blurView.effect = nil
             }, completion: { _ in
                 transitionContext.completeTransition(!transitionContext.transitionWasCancelled())

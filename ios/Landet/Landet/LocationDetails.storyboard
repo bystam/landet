@@ -25,8 +25,14 @@
                                 </view>
                                 <blurEffect style="dark"/>
                             </visualEffectView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Huset" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NTf-ak-G0h">
+                                <rect key="frame" x="148.5" y="30" width="77" height="183.5"/>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="30"/>
+                                <color key="textColor" red="0.89803922176361084" green="0.87450981140136719" blue="0.77254903316497803" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hUy-R9-lWG" customClass="RoundRectView" customModule="Landet" customModuleProvider="target">
-                                <rect key="frame" x="20" y="143" width="335" height="240"/>
+                                <rect key="frame" x="20" y="213.5" width="335" height="240"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FHg-Jo-EJJ">
                                         <rect key="frame" x="0.0" y="0.0" width="335" height="240"/>
@@ -47,7 +53,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nRG-aO-MMB" customClass="RoundRectButton" customModule="Landet" customModuleProvider="target">
-                                <rect key="frame" x="20" y="413" width="335" height="60"/>
+                                <rect key="frame" x="20" y="567" width="335" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="bdS-mi-hD8"/>
                                 </constraints>
@@ -74,16 +80,28 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="nRG-aO-MMB" firstAttribute="leading" secondItem="w1M-eq-ylA" secondAttribute="leading" constant="20" id="4yk-LY-NyD"/>
+                            <constraint firstItem="hUy-R9-lWG" firstAttribute="top" secondItem="NTf-ak-G0h" secondAttribute="bottom" id="5gQ-ah-oTa"/>
                             <constraint firstAttribute="trailing" secondItem="j9i-wr-OWx" secondAttribute="trailing" id="6id-6i-JW7"/>
                             <constraint firstAttribute="trailing" secondItem="nRG-aO-MMB" secondAttribute="trailing" constant="20" id="6lh-bg-mja"/>
+                            <constraint firstItem="hUy-R9-lWG" firstAttribute="top" secondItem="NTf-ak-G0h" secondAttribute="bottom" constant="40" id="MF6-0C-ljx"/>
                             <constraint firstItem="j9i-wr-OWx" firstAttribute="leading" secondItem="w1M-eq-ylA" secondAttribute="leading" id="MrX-yE-XUO"/>
+                            <constraint firstItem="NTf-ak-G0h" firstAttribute="centerX" secondItem="w1M-eq-ylA" secondAttribute="centerX" id="Pfs-5R-2ke"/>
+                            <constraint firstItem="NTf-ak-G0h" firstAttribute="top" secondItem="4d4-s4-dSb" secondAttribute="bottom" constant="10" id="R9k-po-BEQ"/>
                             <constraint firstItem="WZg-0B-32h" firstAttribute="top" secondItem="j9i-wr-OWx" secondAttribute="bottom" id="RiC-n5-SKl"/>
                             <constraint firstItem="j9i-wr-OWx" firstAttribute="top" secondItem="w1M-eq-ylA" secondAttribute="top" id="TLd-yi-Cke"/>
                             <constraint firstItem="hUy-R9-lWG" firstAttribute="leading" secondItem="w1M-eq-ylA" secondAttribute="leading" constant="20" id="iMP-CL-YJb"/>
                             <constraint firstItem="nRG-aO-MMB" firstAttribute="top" secondItem="hUy-R9-lWG" secondAttribute="bottom" constant="30" id="jsD-Rq-1tL"/>
-                            <constraint firstItem="hUy-R9-lWG" firstAttribute="centerY" secondItem="w1M-eq-ylA" secondAttribute="centerY" constant="-70" id="kRu-bl-0U7"/>
+                            <constraint firstItem="hUy-R9-lWG" firstAttribute="centerY" secondItem="w1M-eq-ylA" secondAttribute="centerY" id="kRu-bl-0U7"/>
+                            <constraint firstItem="NTf-ak-G0h" firstAttribute="centerX" secondItem="w1M-eq-ylA" secondAttribute="centerX" id="t52-ql-YWZ"/>
+                            <constraint firstItem="WZg-0B-32h" firstAttribute="top" secondItem="nRG-aO-MMB" secondAttribute="bottom" constant="40" id="uoW-g2-muW"/>
                             <constraint firstAttribute="trailing" secondItem="hUy-R9-lWG" secondAttribute="trailing" constant="20" id="zGo-ky-fU7"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="MF6-0C-ljx"/>
+                                <exclude reference="jsD-Rq-1tL"/>
+                            </mask>
+                        </variation>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
@@ -91,6 +109,7 @@
                         <outlet property="closeButton" destination="nRG-aO-MMB" id="fTf-4y-3TU"/>
                         <outlet property="imageContainer" destination="hUy-R9-lWG" id="rSG-8F-9b8"/>
                         <outlet property="imageView" destination="FHg-Jo-EJJ" id="dpC-ln-Kak"/>
+                        <outlet property="nameLabel" destination="NTf-ak-G0h" id="IUx-Pd-B6a"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3AL-8n-7T2" userLabel="First Responder" sceneMemberID="firstResponder"/>
