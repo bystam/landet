@@ -13,55 +13,46 @@
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                 <rect key="frame" x="0.0" y="0.0" width="375" height="250"/>
                 <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5im-Gk-4AG" customClass="RoundRectView" customModule="Landet" customModuleProvider="target">
-                        <rect key="frame" x="87" y="25" width="200" height="200"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create topic?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RvA-5c-jGH">
-                                <rect key="frame" x="45" y="90" width="110.5" height="21.5"/>
-                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
-                                <color key="textColor" red="0.66274511814117432" green="0.18431372940540314" blue="0.25490197539329529" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Otp-38-PQD">
-                                <rect key="frame" x="45" y="115.5" width="110.5" height="1"/>
-                                <color key="backgroundColor" red="0.66274511814117432" green="0.18431372940540314" blue="0.25490197539329529" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="1" id="AV7-l3-Rhm"/>
-                                </constraints>
-                            </view>
-                        </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pen" translatesAutoresizingMaskIntoConstraints="NO" id="Sk1-cq-45l">
+                        <rect key="frame" x="102" y="112.5" width="24" height="30"/>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create topic" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RvA-5c-jGH">
+                        <rect key="frame" x="136" y="114" width="101.5" height="21.5"/>
+                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
+                        <color key="textColor" red="0.66274511814117432" green="0.18431372940540314" blue="0.25490197539329529" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Otp-38-PQD">
+                        <rect key="frame" x="136" y="140" width="101.5" height="1"/>
+                        <color key="backgroundColor" red="0.66274511814117432" green="0.18431372940540314" blue="0.25490197539329529" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="RvA-5c-jGH" firstAttribute="centerX" secondItem="5im-Gk-4AG" secondAttribute="centerX" id="4Hv-oI-YOb"/>
-                            <constraint firstItem="Otp-38-PQD" firstAttribute="top" secondItem="RvA-5c-jGH" secondAttribute="bottom" constant="4" id="6AU-gk-tZk"/>
-                            <constraint firstItem="Otp-38-PQD" firstAttribute="leading" secondItem="RvA-5c-jGH" secondAttribute="leading" id="hcN-bW-T7x"/>
-                            <constraint firstItem="Otp-38-PQD" firstAttribute="trailing" secondItem="RvA-5c-jGH" secondAttribute="trailing" id="iIm-c1-Irr"/>
-                            <constraint firstAttribute="height" constant="200" id="mRB-sM-qtC"/>
-                            <constraint firstAttribute="width" constant="200" id="oub-35-b2l"/>
-                            <constraint firstItem="RvA-5c-jGH" firstAttribute="centerY" secondItem="5im-Gk-4AG" secondAttribute="centerY" id="sY2-9Q-KLU"/>
+                            <constraint firstAttribute="height" constant="1" id="AV7-l3-Rhm"/>
                         </constraints>
-                        <userDefinedRuntimeAttributes>
-                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                <real key="value" value="100"/>
-                            </userDefinedRuntimeAttribute>
-                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                <real key="value" value="1"/>
-                            </userDefinedRuntimeAttribute>
-                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                <color key="value" red="0.66274511810000003" green="0.18431372939999999" blue="0.25490197539999998" alpha="1" colorSpace="calibratedRGB"/>
-                            </userDefinedRuntimeAttribute>
-                        </userDefinedRuntimeAttributes>
                     </view>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             </view>
             <constraints>
-                <constraint firstItem="5im-Gk-4AG" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="APJ-wU-Sxj"/>
-                <constraint firstItem="5im-Gk-4AG" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="vTF-Hk-dKC"/>
+                <constraint firstItem="RvA-5c-jGH" firstAttribute="leading" secondItem="Sk1-cq-45l" secondAttribute="trailing" constant="10" id="0Bf-f8-WTf"/>
+                <constraint firstItem="Otp-38-PQD" firstAttribute="top" secondItem="RvA-5c-jGH" secondAttribute="bottom" constant="4" id="15A-IJ-xsv"/>
+                <constraint firstItem="Sk1-cq-45l" firstAttribute="baseline" secondItem="RvA-5c-jGH" secondAttribute="baseline" id="LC5-L3-Sgu"/>
+                <constraint firstItem="Sk1-cq-45l" firstAttribute="centerY" secondItem="RvA-5c-jGH" secondAttribute="centerY" constant="2" id="P4b-MF-dBL"/>
+                <constraint firstItem="Otp-38-PQD" firstAttribute="leading" secondItem="RvA-5c-jGH" secondAttribute="leading" id="W1v-aw-FQp"/>
+                <constraint firstItem="RvA-5c-jGH" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="dMq-nC-Pt7"/>
+                <constraint firstItem="Otp-38-PQD" firstAttribute="trailing" secondItem="RvA-5c-jGH" secondAttribute="trailing" id="qgp-5E-87j"/>
+                <constraint firstItem="RvA-5c-jGH" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="wbF-ya-pha"/>
             </constraints>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="LC5-L3-Sgu"/>
+                </mask>
+            </variation>
             <connections>
-                <outlet property="circleView" destination="5im-Gk-4AG" id="9Cy-bZ-8GF"/>
+                <outlet property="label" destination="RvA-5c-jGH" id="Suc-LE-Xoj"/>
             </connections>
         </collectionViewCell>
     </objects>
+    <resources>
+        <image name="pen" width="24" height="30"/>
+    </resources>
 </document>

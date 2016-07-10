@@ -101,9 +101,7 @@ extension TopicsHeaderViewController: UICollectionViewDataSource {
 extension TopicsHeaderViewController: UICollectionViewDelegate {
 
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        if let cell = collectionView .cellForItemAtIndexPath(indexPath) as? CreateTopicCollectionViewCell {
-            cell.animateTap()
-
+        if let _ = collectionView.cellForItemAtIndexPath(indexPath) as? CreateTopicCollectionViewCell {
             let createVC = CreateTopicViewController.create()
             createVC.topicsRepository = topicsRepository
             presentViewController(createVC, animated: true, completion: nil)

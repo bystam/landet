@@ -13,8 +13,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
 
-//        HttpClient.debugHost = "http://10.0.1.103:3000"
-
         installSession()
         performLaunchCalls()
         setupUI()
@@ -34,6 +32,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Theme.apply()
 
         let window = UIWindow(frame: UIScreen.mainScreen().bounds)
+        window.tintColor = Colors.red
         appNavigationController.installInWindow(window)
         window.makeKeyAndVisible()
         self.window = window
