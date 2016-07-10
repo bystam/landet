@@ -10,6 +10,7 @@ class Theme {
         applyNavbarAppearence()
         applyTabbarAppearence()
         applyTableViewAppearence()
+        applyTextViewTints()
     }
 
     private static func applyNavbarAppearence() {
@@ -33,4 +34,8 @@ class Theme {
         UITableView.appearance().separatorColor = UIColor(white: 0.3, alpha: 0.6)
     }
 
+    private static func applyTextViewTints() {
+        UITextField.appearance().tintColor = Colors.red
+        UITextView.appearance().tintColor = Colors.red
+    }
 }
