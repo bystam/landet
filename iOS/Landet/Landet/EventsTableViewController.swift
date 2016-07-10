@@ -7,6 +7,13 @@ import UIKit
 class EventsTableViewController: UITableViewController {
 
     let dataSource = EventsTableDataSource()
+    var events: [Event] {
+        get { return dataSource.events }
+        set(events) {
+            dataSource.events = events
+            tableView.reloadData()
+        }
+    }
 
     private var cachedHeights = [Int : CGFloat]()
 
@@ -27,11 +34,6 @@ class EventsTableViewController: UITableViewController {
         smartlyDeselectRows(tableView: tableView)
     }
 
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-        reloadData()
-    }
-
     override func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         let event = dataSource.events[indexPath.row]
         return cachedHeights[event.id] ?? EventSummaryCell.preferredHeight
@@ -45,19 +47,5 @@ class EventsTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let event = dataSource.events[indexPath.row]
         navigationController?.pushViewController(EventDetailsViewController.create(event: event), animated: true)
-    }
-}
-
-extension EventsTableViewController {
-
-    func reloadData() {
-        EventAPI.shared.loadAll { (events, error) in
-            Async.main {
-                if let events = events {
-                    self.dataSource.events = events
-                    self.tableView.reloadData()
-                }
-            }
-        }
     }
 }

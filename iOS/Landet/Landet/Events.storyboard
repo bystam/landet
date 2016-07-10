@@ -22,7 +22,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="api-Ee-Kbj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="923.5" y="583.5"/>
+            <point key="canvasLocation" x="924.5" y="607.5"/>
         </scene>
         <!--CreateEvent-->
         <scene sceneID="QrM-Jh-isQ">
@@ -44,18 +44,24 @@
                         <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <containerView opaque="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="umA-0z-xW6">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="umA-0z-xW6">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                                 <connections>
-                                    <segue destination="civ-To-oMR" kind="embed" id="06g-0U-d5T"/>
+                                    <segue destination="civ-To-oMR" kind="embed" identifier="embedTable" id="06g-0U-d5T"/>
                                 </connections>
                             </containerView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="i39-Dp-VU7">
+                                <rect key="frame" x="169" y="283" width="37" height="37"/>
+                                <color key="color" red="0.89803922176361084" green="0.87450981140136719" blue="0.77254903316497803" alpha="1" colorSpace="calibratedRGB"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="0.14509804546833038" green="0.12941177189350128" blue="0.12549020349979401" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="umA-0z-xW6" firstAttribute="leading" secondItem="rOv-aC-zFV" secondAttribute="leading" id="5KC-uk-sVq"/>
                             <constraint firstItem="7Gx-Dc-nJp" firstAttribute="top" secondItem="umA-0z-xW6" secondAttribute="bottom" id="FIM-zK-JoG"/>
+                            <constraint firstItem="i39-Dp-VU7" firstAttribute="centerX" secondItem="rOv-aC-zFV" secondAttribute="centerX" id="PtD-WR-bXb"/>
                             <constraint firstItem="umA-0z-xW6" firstAttribute="top" secondItem="p8p-R3-TMd" secondAttribute="bottom" id="UYl-79-qow"/>
+                            <constraint firstItem="i39-Dp-VU7" firstAttribute="centerY" secondItem="rOv-aC-zFV" secondAttribute="centerY" id="XVO-5W-oh8"/>
                             <constraint firstAttribute="trailing" secondItem="umA-0z-xW6" secondAttribute="trailing" id="icr-XZ-9PX"/>
                         </constraints>
                     </view>
@@ -67,6 +73,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="activityIndicator" destination="i39-Dp-VU7" id="AUq-e4-YKb"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NVK-RH-xkK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
