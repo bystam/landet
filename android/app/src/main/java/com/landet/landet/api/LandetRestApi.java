@@ -23,7 +23,7 @@ public interface LandetRestApi {
     @POST("users/login")
     Observable<Result<AuthenticationResult>> login(@Body AuthenticationParameters authenticationParameters);
 
-    @POST("users/create")
+    @POST("users")
     Observable<Result<User>> register(@Body User user);
 
     @POST("sessions/refresh")
