@@ -10,11 +10,11 @@ class LocationPicker: NSObject {
 
     var selectedLocation: Location? {
         let row = picker.selectedRowInComponent(0)
-        guard row < LocationsService.allLocations.count else {
+        guard row < LocationsService.locations.count else {
             return nil
         }
 
-        return LocationsService.allLocations[row]
+        return LocationsService.locations[row]
     }
 
     lazy var picker: UIPickerView = {
@@ -47,18 +47,18 @@ extension LocationPicker: UIPickerViewDataSource {
     }
 
     func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return LocationsService.allLocations.count
+        return LocationsService.locations.count
     }
 }
 
 extension LocationPicker: UIPickerViewDelegate {
 
     func pickerView(pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
-        return NSAttributedString(string: LocationsService.allLocations[row].name,
+        return NSAttributedString(string: LocationsService.locations[row].name,
                                   attributes: [ NSForegroundColorAttributeName : Colors.yellow ])
     }
 
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        locationField.text = LocationsService.allLocations[row].name
+        locationField.text = LocationsService.locations[row].name
     }
 }

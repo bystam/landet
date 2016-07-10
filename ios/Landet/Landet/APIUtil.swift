@@ -8,6 +8,10 @@ protocol DictionaryInitializable {
     init(dictionary: [String : AnyObject])
 }
 
+protocol DictionaryPersistable {
+    func asDictionary() -> [String : AnyObject]
+}
+
 class APIUtil {
 
     static func parse<T: DictionaryInitializable>(response response: APIResponse)

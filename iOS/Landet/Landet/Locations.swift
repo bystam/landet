@@ -24,6 +24,26 @@ class Location: DictionaryInitializable {
     }
 }
 
+extension Location: Equatable { }
+
+func ==(lhs: Location, rhs: Location) -> Bool {
+    return lhs.id == rhs.id && lhs.locationId == rhs.locationId &&
+           lhs.name == rhs.name && lhs.imageUrl == rhs.imageUrl
+}
+
+extension Location: DictionaryPersistable {
+
+    func asDictionary() -> [String : AnyObject] {
+        return [
+            "id" : id,
+            "enum_id" : locationId.rawValue,
+            "name" : name,
+            "image_url" : imageUrl.absoluteString
+        ]
+    }
+}
+
+
 class MapLocation: DictionaryInitializable {
 
     let locationId: LocationID
@@ -38,18 +58,19 @@ class MapLocation: DictionaryInitializable {
 }
 
 
-private var locations = [Location]()
-
 class LocationsService {
 
-    static var allLocations: [Location] {
-        get { return locations }
-        set { locations = newValue }
-    }
+    static var locations: [Location] = {
+        let defaults = NSUserDefaults.standardUserDefaults()
+        guard let persisted = defaults.objectForKey("LocationsService.locations") as? [[String : AnyObject]] else {
+            return []
+        }
 
+        return persisted.map(Location.init)
+    }()
 
     static func fromID(locationId: LocationID) -> Location? {
-        for location in allLocations {
+        for location in locations {
             if location.locationId == locationId {
                 return location
             }
@@ -60,13 +81,22 @@ class LocationsService {
     static func reload() {
 
         LocationAPI.shared.loadAll { locations, error in
-            if let locations = locations {
-                LocationsService.allLocations = locations
-            }
-            else if let error = error {
-                debugPrint(error.localizedDescription)
+            Async.main {
+                if let locations = locations where !locations.isEmpty && locations != LocationsService.locations {
+                    LocationsService.locations = locations
+                    LocationsService.persistLocations()
+                }
+                else if let error = error {
+                    debugPrint(error.localizedDescription)
+                }
             }
         }
+    }
+
+    private static func persistLocations() {
+        let dictionaries = locations.map { $0.asDictionary() }
+        NSUserDefaults.standardUserDefaults().setObject(dictionaries, forKey: "LocationsService.locations")
+        NSUserDefaults.standardUserDefaults().synchronize()
     }
 }
 
