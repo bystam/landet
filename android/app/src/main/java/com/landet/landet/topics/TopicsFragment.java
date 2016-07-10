@@ -159,7 +159,7 @@ public class TopicsFragment extends BaseFragment {
     }
 
     private void postComment(@NonNull final Topic topic, @NonNull TopicComment comment) {
-        final Subscription subscription = mModel.postComment(topic, comment)
+        final Subscription subscription = mModel.postTopicComment(topic, comment)
                 .subscribe(new Action1<TopicComment>() {
                     @Override
                     public void call(TopicComment comment) {

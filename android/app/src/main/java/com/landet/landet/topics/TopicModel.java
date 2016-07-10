@@ -41,8 +41,8 @@ public class TopicModel {
                 .observeOn(AndroidSchedulers.mainThread());
     }
 
-    public Observable<TopicComment> postComment(@NonNull Topic topic, @NonNull TopicComment comment) {
-        return mBackend.postComment(topic, comment)
+    public Observable<TopicComment> postTopicComment(@NonNull Topic topic, @NonNull TopicComment comment) {
+        return mBackend.postTopicComment(topic, comment)
                 .flatMap(ModelUtils.<TopicComment>mapApiResponseToObservable())
                 .subscribeOn(Schedulers.io())
                 .unsubscribeOn(Schedulers.io())

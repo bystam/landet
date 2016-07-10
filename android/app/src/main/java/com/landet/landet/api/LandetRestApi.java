@@ -56,5 +56,5 @@ public interface LandetRestApi {
             @Query("after") String after);
 
     @POST("topics/{topicId}/comments")
-    Observable<Result<TopicComment>> postComment(@Path("topicId") Long topicId, @Body TopicComment comment);
+    Observable<Result<TopicComment>> postTopicComment(@Path("topicId") Long topicId, @Body TopicComment comment);
 }

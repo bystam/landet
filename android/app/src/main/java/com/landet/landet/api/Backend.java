@@ -102,8 +102,8 @@ public class Backend {
                 .map(this.<TopicCommentListWrapper>resultToApiResponse());
     }
 
-    public Observable<ApiResponse<TopicComment>> postComment(@NonNull Topic topic, @NonNull TopicComment comment) {
-        return mApi.postComment(topic.getId(), comment)
+    public Observable<ApiResponse<TopicComment>> postTopicComment(@NonNull Topic topic, @NonNull TopicComment comment) {
+        return mApi.postTopicComment(topic.getId(), comment)
                 .map(this.<TopicComment>resultToApiResponse());
     }
 
