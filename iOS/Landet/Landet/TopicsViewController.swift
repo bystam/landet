@@ -78,10 +78,10 @@ class TopicsViewController: UIViewController {
     }
 
     func setTextFieldEnabled(enabled: Bool) {
-        addCommentTextField.userInteractionEnabled = enabled
+        addCommentView.userInteractionEnabled = enabled
 
         UIView.animateWithDuration(0.2) { 
-            self.addCommentTextField.alpha = enabled ? 1.0 : 0.3
+            self.addCommentView.alpha = enabled ? 1.0 : 0.3
         }
     }
 
