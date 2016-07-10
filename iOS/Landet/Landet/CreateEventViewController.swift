@@ -17,6 +17,15 @@ class CreateEventViewController: UIViewController {
         tableViewController.nameTextField.delegate = self
     }
 
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+
+        [ tableViewController.nameTextField,
+          tableViewController.timeField,
+          tableViewController.locationField,
+          tableViewController.bodyTextView ].forEach({ $0.resignFirstResponder() })
+    }
+
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "embedTable" {
             tableViewController = segue.destinationViewController as! CreateEventTableViewController
@@ -29,19 +38,11 @@ class CreateEventViewController: UIViewController {
         guard let location = tableViewController.location else { return }
         guard let body = tableViewController.bodyTextView.text else { return }
 
-        let fields = [
-            tableViewController.nameTextField,
-            tableViewController.timeField,
-            tableViewController.locationField,
-            tableViewController.bodyTextView,
-        ]
-
         EventAPI.shared.create(title: title, body: body, location: location, time: time) { (error) in
             if let error = error {
                 print(error)
             } else {
                 Async.main {
-                    fields.forEach({ $0.resignFirstResponder() })
                     self.dismissViewControllerAnimated(true, completion: nil)
                 }
             }
