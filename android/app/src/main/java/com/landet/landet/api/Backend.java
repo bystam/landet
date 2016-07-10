@@ -77,6 +77,11 @@ public class Backend {
                 .map(this.<List<Topic>>resultToApiResponse());
     }
 
+    public Observable<ApiResponse<Topic>> createTopic(@NonNull Topic topic) {
+        return mApi.createTopic(topic)
+                .map(this.<Topic>resultToApiResponse());
+    }
+
     public Observable<ApiResponse<TopicCommentListWrapper>> fetchTopicComments(@NonNull Topic topic,
                                                                                @Nullable DateTime before,
                                                                                @Nullable DateTime after) {

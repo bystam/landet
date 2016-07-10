@@ -42,6 +42,23 @@ public class TopicModel {
                 .observeOn(AndroidSchedulers.mainThread());
     }
 
+    public Observable<Topic> createTopic(@NonNull Topic topic) {
+        return mBackend.createTopic(topic)
+                .flatMap(new Func1<ApiResponse<Topic>, Observable<Topic>>() {
+                    @Override
+                    public Observable<Topic> call(ApiResponse<Topic> apiResponse) {
+                        if (apiResponse.isSuccessful()) {
+                            return Observable.just(apiResponse.getBody());
+                        } else {
+                            return Observable.error(apiResponse.getError());
+                        }
+                    }
+                })
+                .subscribeOn(Schedulers.io())
+                .unsubscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread());
+    }
+
     public Observable<List<TopicComment>> initialLoad(@NonNull Topic topic) {
         if (mCache.hasComments(topic)) {
             return fetchNewerTopicComments(topic);

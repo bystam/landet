@@ -38,6 +38,9 @@ public interface LandetRestApi {
     @GET("topics")
     Observable<Result<List<Topic>>> topics();
 
+    @POST("topics")
+    Observable<Result<Topic>> createTopic(@Body Topic topic);
+
     @Headers("Cache-Control: no-cache")
     @GET("topics/{topicId}/comments")
     Observable<Result<TopicCommentListWrapper>> topicComments(
