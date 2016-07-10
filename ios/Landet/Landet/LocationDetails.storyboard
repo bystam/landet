@@ -32,7 +32,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="335" height="240"/>
                                     </imageView>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="FHg-Jo-EJJ" secondAttribute="trailing" id="6xT-Gd-4wo"/>
                                     <constraint firstItem="FHg-Jo-EJJ" firstAttribute="top" secondItem="hUy-R9-lWG" secondAttribute="top" id="FC4-fw-uUA"/>
