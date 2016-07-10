@@ -66,7 +66,7 @@ public class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.EventViewH
         private TextView author;
         private TextView body;
 
-        public EventViewHolder(View itemView) {
+        public EventViewHolder(final View itemView) {
             super(itemView);
             title = (TextView) itemView.findViewById(R.id.title);
             timePlace = (TextView) itemView.findViewById(R.id.time_place);
@@ -77,7 +77,7 @@ public class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.EventViewH
                 public void onClick(View v) {
                     Event event = getItem(getAdapterPosition());
                     if (event != null && mListener != null) {
-                        mListener.onEventClicked(event);
+                        mListener.onEventClicked(event, itemView);
                     }
                 }
             });
@@ -85,6 +85,6 @@ public class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.EventViewH
     }
 
     public interface EventsListener {
-        void onEventClicked(@NonNull Event event);
+        void onEventClicked(@NonNull Event event, View view);
     }
 }

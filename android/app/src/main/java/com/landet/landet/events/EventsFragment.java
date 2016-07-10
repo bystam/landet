@@ -3,6 +3,7 @@ package com.landet.landet.events;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -46,10 +47,12 @@ public class EventsFragment extends BaseFragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         mEventsAdapter = new EventsAdapter(getContext(), new EventsAdapter.EventsListener() {
             @Override
-            public void onEventClicked(@NonNull Event event) {
+            public void onEventClicked(@NonNull Event event, View view) {
                 final Intent intent = new Intent(getContext(), EventDetailsActivity.class);
                 intent.putExtra("event", event);
-                startActivity(intent);
+                ActivityOptionsCompat options = ActivityOptionsCompat.
+                        makeSceneTransitionAnimation(getActivity(), view, "event_info");
+                startActivity(intent, options.toBundle());
             }
         });
         recyclerView.setAdapter(mEventsAdapter);

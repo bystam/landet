@@ -2,14 +2,19 @@ package com.landet.landet.events;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.app.ActionBar;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.landet.landet.BaseActivity;
 import com.landet.landet.R;
 import com.landet.landet.data.Event;
 import com.landet.landet.data.EventComment;
+import com.squareup.picasso.Picasso;
 
 import org.joda.time.format.DateTimeFormat;
 
@@ -32,6 +37,11 @@ public class EventDetailsActivity extends BaseActivity {
         mEvent = getIntent().getParcelableExtra("event");
         setupLayout();
 
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }
+
         mAdapter = new EventCommentsAdapter(this);
         RecyclerView view = (RecyclerView) findViewById(R.id.comments);
         view.setLayoutManager(new LinearLayoutManager(this));
@@ -39,14 +49,15 @@ public class EventDetailsActivity extends BaseActivity {
     }
 
     private void setupLayout() {
-        // ImageView headerImage = (ImageView) findViewById(R.id.header_image); // TODO: get from location.
-        TextView eventTitle = (TextView) findViewById(R.id.event_title);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        ImageView headerImage = (ImageView) findViewById(R.id.header_image); // TODO: get from location.
         TextView title = (TextView) findViewById(R.id.title);
         TextView timePlace = (TextView) findViewById(R.id.time_place);
         TextView author = (TextView) findViewById(R.id.author);
         TextView body = (TextView) findViewById(R.id.body);
 
-        eventTitle.setText(mEvent.getTitle());
+        toolbar.setTitle(mEvent.getTitle());
+        Picasso.with(this).load("http://media.theagencyre.com/wp-content/uploads/Carolwood-01.jpg").into(headerImage);
         title.setText(mEvent.getTitle());
         String day = mEvent.getEventTime().dayOfWeek().getAsText();
         String time = DateTimeFormat.forPattern("HH:mm").print(mEvent.getEventTime());
@@ -54,6 +65,16 @@ public class EventDetailsActivity extends BaseActivity {
         timePlace.setText(getString(R.string.day_time_at_place, day, time, place));
         author.setText(getString(R.string.by_author, mEvent.getCreator().getName()));
         body.setText(mEvent.getBody());
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                supportFinishAfterTransition();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
