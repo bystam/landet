@@ -45,8 +45,10 @@ public class TopicDetailsActivity extends BaseActivity {
 
         mCompositeSubscription = new CompositeSubscription();
 
-        TextView title = (TextView) findViewById(R.id.title);
+        TextView title = (TextView) findViewById(R.id.title); // TODO: add a onclicklistener to send the user back to the topics fragment.
+        TextView author = (TextView) findViewById(R.id.author);
         title.setText(mTopic.getTitle());
+        author.setText(getString(R.string.by_author, mTopic.getAuthor().getName()));
 
         EditText writeComment = (EditText) findViewById(R.id.write_comment);
         writeComment.setOnEditorActionListener(new TextView.OnEditorActionListener() {
