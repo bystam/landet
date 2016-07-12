@@ -110,8 +110,7 @@ private class SessionAPI {
                         return
                     }
 
-                    let sessionData = refreshResponse.body as! [String : String]
-                    let token = sessionData["token"]!
+                    guard let token = (refreshResponse.body as? [String : String])?["token"] else { return }
                     session.renew(token: token)
 
                     let secondOp = generator()
