@@ -49,6 +49,12 @@
       "x" : 1000,
       "y" : 950,
       "icon" : "landmark"
+    },
+    {
+      "id" : "LAKE",
+      "x" : 1800,
+      "y" : 1300,
+      "icon" : "landmark"
     }
   ]
 }

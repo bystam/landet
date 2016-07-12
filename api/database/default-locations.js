@@ -40,6 +40,11 @@ module.exports = {
       enum_id : 'OUTSIDE_TABLEGROUP',
       name : 'Uteplatsen',
       image_url : 'http://landet.herokuapp.com/locations/outside-tablegroup.jpg'
+    },
+    {
+      enum_id : 'SJON',
+      name : 'Sjön',
+      image_url : 'http://landet.herokuapp.com/locations/lake.jpg'
     }
   ]
 };
