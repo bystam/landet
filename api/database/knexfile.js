@@ -10,10 +10,10 @@ module.exports = {
   heroku_dev: {
     client: 'pg',
     connection: {
-      host     : 'ec2-54-228-219-2.eu-west-1.compute.amazonaws.com',
-      user     : 'hgznctmjjryuvs',
+      host     : process.env.LANDET_DEV_DB_HOST,
+      user     : process.env.LANDET_DEV_DB_USER,
       password : process.env.LANDET_DEV_DB_PW,
-      database : 'd403dmetsr9t9q',
+      database : process.env.LANDET_DEV_DB_DATABASE,
       port     : 5432,
       charset  : 'utf8'
     }
