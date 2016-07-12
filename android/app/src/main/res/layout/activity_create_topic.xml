@@ -3,15 +3,15 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingStart="16dp"
-    android:paddingEnd="16dp">
+    android:paddingEnd="16dp"
+    android:gravity="center">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/landetYellow"
         android:textSize="24sp"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="64dp"
         android:layout_gravity="center"
         android:text="@string/create_new_topic"/>
 
@@ -20,7 +20,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/title"
-        android:layout_marginBottom="16dp"/>
+        android:layout_marginBottom="32dp"/>
 
     <Button
         android:id="@+id/button"

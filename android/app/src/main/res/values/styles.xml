@@ -13,10 +13,14 @@
         <item name="android:windowActivityTransitions">true</item>
     </style>
 
-    <style name="LandetThemeTransparentBar" parent="LandetTheme">
-        <item name="android:background">@android:color/transparent</item>
+    <style name="LandetThemeTransparentBar" parent="Theme.AppCompat.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@android:color/transparent</item>
         <item name="android:windowContentOverlay">@null</item>
         <item name="windowActionBarOverlay">true</item>
+
+        <!-- enable window content transitions -->
+        <item name="android:windowActivityTransitions">true</item>
     </style>
 
 </resources>

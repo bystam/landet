@@ -1,11 +1,10 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:paddingLeft="16dp"
-    android:paddingRight="16dp"
-    tools:context=".topics.TopicsFragment">
+    tools:context=".topics.TopicsFragment"
+    android:layout_gravity="center">
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycler_view"
@@ -13,16 +12,6 @@
         android:layout_height="match_parent"
         tools:listitem="@layout/list_item_topic"/>
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab"
-        app:layout_behavior="com.landet.landet.ScrollAwareFabBehavior"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="16dp"
-        android:src="@android:drawable/ic_input_add"
-        app:fabSize="normal"
-        app:layout_anchor="@id/recycler_view"
-        app:layout_anchorGravity="bottom|right|end" />
+    <include layout="@layout/fab_create"/>
 
-</RelativeLayout>
+</android.support.design.widget.CoordinatorLayout>

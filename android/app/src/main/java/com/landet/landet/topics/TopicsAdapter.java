@@ -6,6 +6,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.landet.landet.R;
@@ -53,10 +54,12 @@ public class TopicsAdapter extends RecyclerView.Adapter<TopicsAdapter.ViewHolder
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
+        private ImageView circle;
         private TextView title;
 
         public ViewHolder(final View itemView) {
             super(itemView);
+            circle = (ImageView) itemView.findViewById(R.id.circle);
             title = (TextView) itemView.findViewById(R.id.title);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -65,7 +68,7 @@ public class TopicsAdapter extends RecyclerView.Adapter<TopicsAdapter.ViewHolder
                     if (position >= 0) {
                         Topic item = getItem(position);
                         if (item != null && mListener != null) {
-                            mListener.onItemClicked(item, itemView);
+                            mListener.onItemClicked(item, circle);
                         }
                     }
                 }

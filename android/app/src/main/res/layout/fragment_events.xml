@@ -13,16 +13,6 @@
         android:background="@color/landetBlack"
         tools:listitem="@layout/list_item_event"/>
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab"
-        app:layout_behavior="com.landet.landet.ScrollAwareFabBehavior"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="16dp"
-        android:src="@android:drawable/ic_input_add"
-        app:fabSize="normal"
-        app:layout_anchor="@id/recycler_view"
-        app:layout_anchorGravity="bottom|right|end" />
+    <include layout="@layout/fab_create"/>
 
 </android.support.design.widget.CoordinatorLayout>
