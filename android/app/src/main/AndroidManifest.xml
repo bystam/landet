@@ -19,7 +19,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".user.LoginOrRegisterActivity"/>
-        <activity android:name=".events.EventDetailsActivity"/>
+        <activity android:name=".events.EventDetailsActivity"
+            android:theme="@style/LandetThemeTransparentBar"/>
         <activity android:name=".topics.TopicDetailsActivity"/>
         <activity android:name=".events.CreateEventActivity"/>
         <activity android:name=".topics.CreateTopicActivity"/>
