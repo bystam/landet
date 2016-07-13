@@ -421,7 +421,7 @@
         <attribute name="redirectauthorization" type="bool">0</attribute>
         <attribute name="method" type="string">POST</attribute>
         <attribute name="followredirects" type="bool">0</attribute>
-        <attribute name="body" type="string">[{"data":{"json":"{\\"title\\":\\"Kan man sv\\\\u00e4lja 4 potatisar p\\\\u00e5 mindre \\\\u00e4n 5 sekunder?\\"\\/*,\\"body\\":\\"Vi festar h\\\\u00e5rdare om m\\\\u00f6jligt fast \\\\u00e4nnu mer\\"*\\/}"},"identifier":"com.luckymarmot.JSONDynamicValue"}]</attribute>
+        <attribute name="body" type="string">[{"data":{"json":"{\\"title\\":\\"Test 2 allt \\\\u00e4r bra\\"\\/*,\\"body\\":\\"Vi festar h\\\\u00e5rdare om m\\\\u00f6jligt fast \\\\u00e4nnu mer\\"*\\/}"},"identifier":"com.luckymarmot.JSONDynamicValue"}]</attribute>
         <attribute name="order" type="int64">9</attribute>
         <attribute name="name" type="string">Topics</attribute>
         <relationship name="parent" type="0/1" destination="LMREQUESTTREEITEM"></relationship>
