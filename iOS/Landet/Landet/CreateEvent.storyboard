@@ -35,7 +35,7 @@
                     <navigationItem key="navigationItem" title="Create Event" id="nLa-Zb-WPd">
                         <barButtonItem key="leftBarButtonItem" systemItem="stop" id="5bZ-dP-5tx">
                             <connections>
-                                <segue destination="jOj-uU-zIp" kind="unwind" unwindAction="unwindToEventsViewController:" id="UWV-HH-Bh7"/>
+                                <segue destination="jOj-uU-zIp" kind="unwind" identifier="unwindToEvents" unwindAction="unwindToEventsViewController:" id="UWV-HH-Bh7"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Create" style="done" id="4Dl-fT-pGt">

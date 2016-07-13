@@ -43,7 +43,7 @@ class CreateEventViewController: UIViewController {
                 print(error)
             } else {
                 Async.main {
-                    self.dismissViewControllerAnimated(true, completion: nil)
+                    self.performSegueWithIdentifier("unwindToEvents", sender: self)
                 }
             }
         }

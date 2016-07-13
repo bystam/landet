@@ -29,6 +29,7 @@ class EventsViewController: UIViewController {
     }
 
     @IBAction func unwindToEventsViewController(segue: UIStoryboardSegue) {
+        reloadData()
     }
 }
 
