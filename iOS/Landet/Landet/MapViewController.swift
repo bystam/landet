@@ -94,6 +94,11 @@ class MapViewController: UIViewController {
         let detailsVC = LocationDetailsViewController.fromStoryboard(location: location)
         presentViewController(detailsVC, animated: true, completion: nil)
     }
+
+
+    @IBAction func logoutButtonPressed(sender: AnyObject) {
+        Session.uninstallCurrentSession()
+    }
 }
 
 extension MapViewController: UIScrollViewDelegate {
