@@ -45,7 +45,9 @@ class TopicsViewController: UIViewController {
 
         topicsRepository.load()
         NSNotificationCenter.defaultCenter()
-            .addObserver(self, selector: #selector(applicationDidBecomeActive(_:)), name: UIApplicationDidBecomeActiveNotification, object: nil)
+            .addObserver(self, selector: #selector(dataShouldBeReloaded(_:)), name: UIApplicationDidBecomeActiveNotification, object: nil)
+        NSNotificationCenter.defaultCenter()
+            .addObserver(self, selector: #selector(dataShouldBeReloaded(_:)), name: kSessionEstablishedNotification, object: nil)
     }
 
     override func viewDidAppear(animated: Bool) {
@@ -63,7 +65,7 @@ class TopicsViewController: UIViewController {
         addCommentTextField.resignFirstResponder()
     }
 
-    func applicationDidBecomeActive(notification: NSNotification) {
+    func dataShouldBeReloaded(notification: NSNotification) {
         topicsRepository.load()
     }
 

@@ -17,7 +17,9 @@ class EventsViewController: UIViewController {
         reloadData()
 
         NSNotificationCenter.defaultCenter()
-            .addObserver(self, selector: #selector(applicationDidBecomeActive(_:)), name: UIApplicationDidBecomeActiveNotification, object: nil)
+            .addObserver(self, selector: #selector(dataShouldBeReloaded(_:)), name: UIApplicationDidBecomeActiveNotification, object: nil)
+        NSNotificationCenter.defaultCenter()
+            .addObserver(self, selector: #selector(dataShouldBeReloaded(_:)), name: kSessionEstablishedNotification, object: nil)
     }
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -32,7 +34,7 @@ class EventsViewController: UIViewController {
 
 extension EventsViewController {
 
-    func applicationDidBecomeActive(notification: NSNotification) {
+    func dataShouldBeReloaded(notification: NSNotification) {
         reloadData()
     }
 
