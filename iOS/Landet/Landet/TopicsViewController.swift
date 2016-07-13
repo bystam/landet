@@ -41,9 +41,11 @@ class TopicsViewController: UIViewController {
         addCommentTextField.delegate = self
 
         observeKeyboard()
-
         setTextFieldEnabled(false)
+
         topicsRepository.load()
+        NSNotificationCenter.defaultCenter()
+            .addObserver(self, selector: #selector(applicationDidBecomeActive(_:)), name: UIApplicationDidBecomeActiveNotification, object: nil)
     }
 
     override func viewDidAppear(animated: Bool) {
@@ -59,6 +61,10 @@ class TopicsViewController: UIViewController {
     override func viewDidDisappear(animated: Bool) {
         super.viewDidDisappear(animated)
         addCommentTextField.resignFirstResponder()
+    }
+
+    func applicationDidBecomeActive(notification: NSNotification) {
+        topicsRepository.load()
     }
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

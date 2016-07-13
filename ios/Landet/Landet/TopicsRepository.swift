@@ -44,6 +44,10 @@ class TopicsRepository {
                     }
                     else if let topics = topics {
                         strongSelf.topics = topics
+                        if strongSelf.currentTopic == nil {
+                            strongSelf.currentTopic = topics.first
+                        }
+
                         strongSelf.delegate?.repository(strongSelf, loadedTopics: topics)
                     }
 

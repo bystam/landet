@@ -69,13 +69,20 @@ class UserAPI {
     }
 }
 
+private typealias PendingOperation =
+    (generator: () -> APIOperation, total: APIOperation, completion: () -> ())
+
+// this is an absolute mess, but I couldn't figure out how to do it in a better way :(
 private class SessionAPI {
 
     static let shared = SessionAPI()
 
     let apiClient: APIClient = APIClientFactory()
 
-    func wrapWithAutomaticRefreshingSession(operation generator:  () -> APIOperation) -> APIOperation {
+    private var refreshRunning = false
+    private var pendingOperations: [PendingOperation] = []
+
+    func wrapWithAutomaticRefreshingSession(operation generator: () -> APIOperation) -> APIOperation {
 
         let session = Session.currentSession!
 
@@ -96,36 +103,81 @@ private class SessionAPI {
                 }
 
 
-                let refreshOp = self.apiClient.post("/sessions/refresh", body: [ "refresh_token" : session.refreshToken])
-                apiQueue.addOperation(refreshOp)
+                // critical zone, try only to run a single refresh operation at once
+                // save the state of this operation together with completion handlers
+                var performRefresh = false
+                Sync.main {
+                    let pending = (
+                        generator: generator,
+                        total: totalOperation,
+                        completion: totalOperationCompletion
+                    )
 
-                refreshOp.completionBlock = {
+                    self.pendingOperations.append(pending)
 
-                    let refreshResponse = refreshOp.apiResponse
-
-                    if refreshResponse.error?.landetErrorCode == .InvalidRefreshToken {
-                        Session.uninstallCurrentSession()
-                        totalOperation.apiResponse = refreshResponse
-                        totalOperationCompletion()
-                        return
-                    }
-
-                    guard let token = (refreshResponse.body as? [String : String])?["token"] else { return }
-                    session.renew(token: token)
-
-                    let secondOp = generator()
-                    apiQueue.addOperation(secondOp)
-                    secondOp.completionBlock = {
-
-                        totalOperation.apiResponse = secondOp.apiResponse
-                        totalOperationCompletion()
-
+                    if !self.refreshRunning {
+                        self.refreshRunning = true
+                        performRefresh = true
                     }
                 }
+
+                if !performRefresh {
+                    return
+                }
+
+
+                self.refreshSession(session)
             }
         }
 
         return totalOperation
+    }
+
+    private func refreshSession(session: Session) {
+        let refreshOp = self.apiClient.post("/sessions/refresh", body: [ "refresh_token" : session.refreshToken])
+        apiQueue.addOperation(refreshOp)
+
+        refreshOp.completionBlock = {
+
+            // critical zone, de-queue all pending operations and flag us as
+            // not currently refreshing
+            var pending: [PendingOperation] = []
+            Sync.main {
+                pending = self.pendingOperations
+                self.refreshRunning = false
+                self.pendingOperations.removeAll()
+            }
+
+            let refreshResponse = refreshOp.apiResponse
+
+
+            if refreshResponse.error?.landetErrorCode == .InvalidRefreshToken {
+                // the refresh failed, uninstall the session and finish all pending operations
+                Session.uninstallCurrentSession()
+
+                for p in pending {
+                    p.total.apiResponse = refreshResponse
+                    p.completion()
+                }
+
+            } else {
+                // the refresh was successful, generate all pending operations
+                // and run their corresponding completion handlers
+
+                guard let token = (refreshResponse.body as? [String : String])?["token"] else { return }
+                session.renew(token: token)
+
+                for p in pending {
+                    let pendingOp = p.generator()
+                    apiQueue.addOperation(pendingOp)
+                    pendingOp.completionBlock = {
+
+                        p.total.apiResponse = pendingOp.apiResponse
+                        p.completion()
+                    }
+                }
+            }
+        }
     }
 }
 
@@ -296,7 +348,7 @@ class LocationAPI {
 
     func loadAll(completion: (locations: [Location]?, error: NSError?) -> ()) {
 
-        let operation = apiClient.get("/locations")
+        let operation = apiClient.get("/locations/")
 
         operation.completionBlock = {
             let res: ([Location]?, NSError?) = APIUtil.parseAsArray(response: operation.apiResponse)

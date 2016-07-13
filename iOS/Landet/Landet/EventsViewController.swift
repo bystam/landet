@@ -14,11 +14,10 @@ class EventsViewController: UIViewController {
         super.viewDidLoad()
 
         activityIndicator.startAnimating()
-    }
-
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
         reloadData()
+
+        NSNotificationCenter.defaultCenter()
+            .addObserver(self, selector: #selector(applicationDidBecomeActive(_:)), name: UIApplicationDidBecomeActiveNotification, object: nil)
     }
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -32,6 +31,10 @@ class EventsViewController: UIViewController {
 }
 
 extension EventsViewController {
+
+    func applicationDidBecomeActive(notification: NSNotification) {
+        reloadData()
+    }
 
     func reloadData() {
         EventAPI.shared.loadAll { (events, error) in

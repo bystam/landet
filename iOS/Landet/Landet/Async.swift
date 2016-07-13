@@ -19,3 +19,10 @@ class Async {
     }
 
 }
+
+class Sync {
+
+    static func main(closure: dispatch_block_t) {
+        dispatch_sync(dispatch_get_main_queue(), closure)
+    }
+}

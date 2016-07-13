@@ -61,8 +61,12 @@ extension TopicsHeaderViewController: TopicsRepositoryDelegate {
 
     func repository(repository: TopicsRepository, loadedTopics topics: [Topic]?) {
         collectionView.reloadData()
-        repository.currentTopic = topics?.first
 
+        if let current = repository.currentTopic {
+            let currentItem = topics?.indexOf({ $0.id == current.id }) ?? 0
+            collectionView.scrollToItemAtIndexPath(NSIndexPath(forItem: currentItem, inSection: kTopicsSection),
+                                                   atScrollPosition: .CenteredHorizontally, animated: false)
+        }
     }
 
     func repository(repository: TopicsRepository, changedToTopic topic: Topic?) {
