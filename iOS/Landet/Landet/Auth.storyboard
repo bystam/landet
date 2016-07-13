@@ -20,8 +20,8 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vfE-oy-JCp">
                                 <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Landet" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FkH-hm-D1X">
-                                        <rect key="frame" x="124" y="135" width="126" height="53"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lillsjöyran" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FkH-hm-D1X">
+                                        <rect key="frame" x="102" y="135" width="171" height="53"/>
                                         <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="44"/>
                                         <color key="textColor" red="0.89803922176361084" green="0.87450981140136719" blue="0.77254903316497803" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -87,7 +87,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7A4-jk-2Ku" customClass="RoundRectButton" customModule="Landet" customModuleProvider="target">
-                                        <rect key="frame" x="107" y="428.5" width="160" height="44"/>
+                                        <rect key="frame" x="107" y="428" width="160" height="44"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="160" id="LRZ-i3-yrL"/>
                                             <constraint firstAttribute="height" constant="44" id="w86-M9-Qpt"/>
@@ -112,7 +112,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9ay-wB-9Hg" customClass="RoundRectButton" customModule="Landet" customModuleProvider="target">
-                                        <rect key="frame" x="107" y="482.5" width="160" height="44"/>
+                                        <rect key="frame" x="107" y="482" width="160" height="44"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="160" id="PHH-5c-l87"/>
                                             <constraint firstAttribute="height" constant="44" id="fTo-5K-dFN"/>
@@ -137,7 +137,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WY7-t7-B8o">
-                                        <rect key="frame" x="57" y="435.5" width="32" height="29"/>
+                                        <rect key="frame" x="57" y="435" width="32" height="29"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <state key="normal" title="Back">
                                             <color key="titleColor" red="0.66274511814117432" green="0.18431372940540314" blue="0.25490197539329529" alpha="1" colorSpace="calibratedRGB"/>
