@@ -4,6 +4,12 @@
 
 import UIKit
 
+private let formatter: NSDateFormatter = {
+    let formatter = NSDateFormatter()
+    formatter.dateFormat = "EEEE HH:mm"
+    return formatter
+}()
+
 class EventsViewController: UIViewController {
 
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
@@ -46,8 +52,54 @@ extension EventsViewController {
                     self.activityIndicator.stopAnimating()
                     self.activityIndicator.hidden = true
                     self.tableViewController.events = events
+                    ReminderRepository.shared.registerEvents(events)
                 }
             }
         }
+    }
+}
+
+private let EventReminderTypeKey = "EventReminderTypeKey"
+private let EventReminderIdKey = "EventReminderIdKey"
+
+private class ReminderRepository {
+
+    static let shared = ReminderRepository()
+
+    func registerEvents(events: [Event]) {
+        let notifications = UIApplication.sharedApplication().scheduledLocalNotifications ?? []
+        let schedueledIds = notifications.flatMap({ (n) -> Int? in
+            return n.userInfo?[EventReminderIdKey] as? Int
+        })
+
+        let limit = NSDate().fifteenMinutesLater
+        let future = events.filter({ (e) -> Bool in
+            return e.time.compare(limit) == NSComparisonResult.OrderedDescending
+        })
+
+        let toSchedule = future.filter { (e) -> Bool in
+            return !schedueledIds.contains(e.id)
+        }
+
+        for event in toSchedule {
+            let newNotification = UILocalNotification()
+            newNotification.alertTitle = event.title
+            newNotification.alertBody = formatter.stringFromDate(event.time)
+            newNotification.fireDate = event.time.fifteenMinutesEarlier
+            newNotification.userInfo = [ EventReminderIdKey : event.id ]
+            UIApplication.sharedApplication().scheduleLocalNotification(newNotification)
+        }
+    }
+
+}
+
+private extension NSDate {
+
+    var fifteenMinutesEarlier: NSDate {
+        return self.dateByAddingTimeInterval(-15 * 60)
+    }
+
+    var fifteenMinutesLater: NSDate {
+        return self.dateByAddingTimeInterval(15 * 60)
     }
 }
