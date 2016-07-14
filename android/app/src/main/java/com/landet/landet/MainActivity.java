@@ -2,6 +2,7 @@ package com.landet.landet;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -12,6 +13,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.landet.landet.events.EventsFragment;
 import com.landet.landet.topics.TopicsFragment;
@@ -24,6 +26,7 @@ public class MainActivity extends BaseActivity {
     private static final int REQUEST_CODE_LOGIN = 1;
 
     private TabLayout tabLayout;
+    private FloatingActionButton mFab;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,11 +40,30 @@ public class MainActivity extends BaseActivity {
             actionBar.setDisplayHomeAsUpEnabled(false);
         }
 
-        ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
+        final ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
         setupViewPager(viewPager);
 
         tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(viewPager);
+        viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout) {
+            @Override
+            public void onPageSelected(int position) {
+                super.onPageSelected(position);
+                final Fragment fragment = ((FragmentPagerAdapter) viewPager.getAdapter()).getItem(viewPager.getCurrentItem());
+                mFab.setVisibility(fragment instanceof FabFragment ? View.VISIBLE : View.GONE);
+            }
+        });
+
+        mFab = (FloatingActionButton) findViewById(R.id.fab);
+        mFab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                final Fragment fragment = ((FragmentPagerAdapter) viewPager.getAdapter()).getItem(viewPager.getCurrentItem());
+                if (fragment instanceof FabFragment) {
+                    ((FabFragment) fragment).onFabClicked();
+                }
+            }
+        });
     }
 
     @Override

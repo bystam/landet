@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -13,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.landet.landet.BaseFragment;
+import com.landet.landet.FabFragment;
 import com.landet.landet.R;
 import com.landet.landet.data.Topic;
 import com.landet.landet.data.TopicComment;
@@ -25,7 +25,7 @@ import rx.subscriptions.CompositeSubscription;
 import timber.log.Timber;
 
 
-public class TopicsFragment extends BaseFragment {
+public class TopicsFragment extends BaseFragment implements FabFragment {
     private TopicModel mModel;
     private TopicsAdapter mAdapter;
     private CompositeSubscription mCompositeSubscription;
@@ -58,15 +58,6 @@ public class TopicsFragment extends BaseFragment {
             }
         });
         recyclerView.setAdapter(mAdapter);
-
-        FloatingActionButton fab = (FloatingActionButton) view.findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), CreateTopicActivity.class);
-                startActivityForResult(intent, 1);
-            }
-        });
 
         return view;
     }
@@ -128,5 +119,11 @@ public class TopicsFragment extends BaseFragment {
                     }
                 });
         mCompositeSubscription.add(subscription);
+    }
+
+    @Override
+    public void onFabClicked() {
+        Intent intent = new Intent(getActivity(), CreateTopicActivity.class);
+        startActivityForResult(intent, 1);
     }
 }

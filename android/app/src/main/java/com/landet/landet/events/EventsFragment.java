@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -13,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.landet.landet.BaseFragment;
+import com.landet.landet.FabFragment;
 import com.landet.landet.R;
 import com.landet.landet.data.Event;
 
@@ -24,7 +24,7 @@ import rx.subscriptions.CompositeSubscription;
 import timber.log.Timber;
 
 
-public class EventsFragment extends BaseFragment {
+public class EventsFragment extends BaseFragment implements FabFragment {
     private EventModel mModel;
     private EventsAdapter mEventsAdapter;
     private CompositeSubscription mCompositeSubscription;
@@ -58,15 +58,6 @@ public class EventsFragment extends BaseFragment {
             }
         });
         recyclerView.setAdapter(mEventsAdapter);
-
-        FloatingActionButton fab = (FloatingActionButton) view.findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), CreateEventActivity.class);
-                startActivity(intent);
-            }
-        });
 
         return view;
     }
@@ -106,5 +97,11 @@ public class EventsFragment extends BaseFragment {
                     }
                 });
         mCompositeSubscription.add(subscription);
+    }
+
+    @Override
+    public void onFabClicked() {
+        Intent intent = new Intent(getActivity(), CreateEventActivity.class);
+        startActivity(intent);
     }
 }
