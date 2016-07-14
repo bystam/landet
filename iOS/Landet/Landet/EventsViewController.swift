@@ -60,7 +60,7 @@ extension EventsViewController {
 }
 
 private let EventReminderTypeKey = "EventReminderTypeKey"
-private let EventReminderVersion = "EventReminderVersion"
+private let EventReminderVersion = "EventReminderVersion2"
 private let EventReminderIdKey = "EventReminderIdKey"
 
 class ReminderRepository {
@@ -98,7 +98,7 @@ class ReminderRepository {
             newNotification.alertBody = formatter.stringFromDate(event.time)
             newNotification.fireDate = event.time.fifteenMinutesEarlier
             newNotification.userInfo = [ EventReminderIdKey : event.id, EventReminderTypeKey : EventReminderVersion ]
-            newNotification.timeZone = NSTimeZone.localTimeZone()
+            newNotification.timeZone = nil
             UIApplication.sharedApplication().scheduleLocalNotification(newNotification)
         }
     }
