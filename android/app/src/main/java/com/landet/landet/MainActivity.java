@@ -112,8 +112,8 @@ public class MainActivity extends BaseActivity {
 
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        adapter.addFrag(new EventsFragment(), "EVENTS");
         adapter.addFrag(new TopicsFragment(), "TOPICS");
+        adapter.addFrag(new EventsFragment(), "EVENTS");
         adapter.addFrag(new MapFragment(), "MAP");
         viewPager.setAdapter(adapter);
     }
