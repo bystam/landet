@@ -15,7 +15,6 @@ import com.landet.landet.BaseFragment;
 import com.landet.landet.FabFragment;
 import com.landet.landet.R;
 import com.landet.landet.data.Topic;
-import com.landet.landet.data.TopicComment;
 
 import java.util.List;
 
@@ -90,32 +89,11 @@ public class TopicsFragment extends BaseFragment implements FabFragment {
                     public void call(List<Topic> topics) {
                         Timber.d("topics: %s", topics);
                         mAdapter.setItems(topics);
-                        if (!topics.isEmpty()) {
-                            setActiveTopic(topics.get(0));
-                        }
                     }
                 }, new Action1<Throwable>() {
                     @Override
                     public void call(Throwable throwable) {
                         Timber.d(throwable, "failed to fetch topics");
-                    }
-                });
-        mCompositeSubscription.add(subscription);
-    }
-
-    //Call this when swiping to a new topic. Will load comments for that topic.
-    private void setActiveTopic(Topic topic) {
-        final Subscription subscription = mModel.initialLoad(topic)
-                .subscribe(new Action1<List<TopicComment>>() {
-                    @Override
-                    public void call(List<TopicComment> topicComments) {
-                        Timber.d("Comments %s", topicComments);
-                        //TODO Set the comments in the adapter
-                    }
-                }, new Action1<Throwable>() {
-                    @Override
-                    public void call(Throwable throwable) {
-                        Timber.d("Failed to fetch comments");
                     }
                 });
         mCompositeSubscription.add(subscription);
