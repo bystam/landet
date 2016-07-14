@@ -16,6 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         installSession()
         performLaunchCalls()
         setupUI()
+        ReminderRepository.shared.purgeLegacyNotifications()
         
         return true
     }

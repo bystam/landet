@@ -60,11 +60,22 @@ extension EventsViewController {
 }
 
 private let EventReminderTypeKey = "EventReminderTypeKey"
+private let EventReminderVersion = "EventReminderVersion"
 private let EventReminderIdKey = "EventReminderIdKey"
 
-private class ReminderRepository {
+class ReminderRepository {
 
     static let shared = ReminderRepository()
+
+    func purgeLegacyNotifications() {
+        let notifications = UIApplication.sharedApplication().scheduledLocalNotifications ?? []
+        for n in notifications {
+            let version = n.userInfo?[EventReminderTypeKey] as? String
+            if version != EventReminderVersion {
+                UIApplication.sharedApplication().cancelLocalNotification(n)
+            }
+        }
+    }
 
     func registerEvents(events: [Event]) {
         let notifications = UIApplication.sharedApplication().scheduledLocalNotifications ?? []
@@ -86,7 +97,7 @@ private class ReminderRepository {
             newNotification.alertTitle = event.title
             newNotification.alertBody = formatter.stringFromDate(event.time)
             newNotification.fireDate = event.time.fifteenMinutesEarlier
-            newNotification.userInfo = [ EventReminderIdKey : event.id ]
+            newNotification.userInfo = [ EventReminderIdKey : event.id, EventReminderTypeKey : EventReminderVersion ]
             newNotification.timeZone = NSTimeZone.localTimeZone()
             UIApplication.sharedApplication().scheduleLocalNotification(newNotification)
         }
