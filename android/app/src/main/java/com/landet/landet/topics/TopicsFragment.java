@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -51,9 +50,7 @@ public class TopicsFragment extends BaseFragment implements FabFragment {
             public void onItemClicked(@NonNull Topic topic, View view) {
                 final Intent intent = new Intent(getContext(), TopicDetailsActivity.class);
                 intent.putExtra("topic", topic);
-                ActivityOptionsCompat options = ActivityOptionsCompat.
-                        makeSceneTransitionAnimation(getActivity(), view, "topic_circle");
-                startActivity(intent, options.toBundle());
+                startActivity(intent);
             }
         });
         recyclerView.setAdapter(mAdapter);

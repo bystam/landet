@@ -9,7 +9,7 @@
     android:background="@color/landetBlack">
 
     <android.support.design.widget.AppBarLayout
-        android:layout_height="@dimen/topic_circle_big_size"
+        android:layout_height="252dp"
         android:layout_width="match_parent"
         android:fitsSystemWindows="true"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
@@ -29,7 +29,7 @@
 
             <TextView
                 android:id="@+id/title"
-                android:layout_marginTop="32dp"
+                android:layout_marginTop="16dp"
                 android:paddingStart="20dp"
                 android:paddingEnd="20dp"
                 android:layout_height="@dimen/topic_circle_big_size"
@@ -46,7 +46,7 @@
                 tools:text="Hur många bävrar får plats i Sala egentligen?"/>
 
             <ImageView
-                android:layout_marginTop="32dp"
+                android:layout_marginTop="16dp"
                 android:layout_width="@dimen/topic_circle_big_size"
                 android:layout_height="@dimen/topic_circle_big_size"
                 android:scaleType="center"
