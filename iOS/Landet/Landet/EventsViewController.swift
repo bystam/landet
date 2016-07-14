@@ -87,6 +87,7 @@ private class ReminderRepository {
             newNotification.alertBody = formatter.stringFromDate(event.time)
             newNotification.fireDate = event.time.fifteenMinutesEarlier
             newNotification.userInfo = [ EventReminderIdKey : event.id ]
+            newNotification.timeZone = NSTimeZone.localTimeZone()
             UIApplication.sharedApplication().scheduleLocalNotification(newNotification)
         }
     }
