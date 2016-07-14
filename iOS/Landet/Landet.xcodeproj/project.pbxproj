@@ -773,7 +773,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = am.byst.Landet;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "8c94d10d-ed9b-4933-bf13-3086a7e6b66e";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};

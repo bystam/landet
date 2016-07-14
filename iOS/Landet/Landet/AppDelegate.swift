@@ -16,8 +16,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         installSession()
         performLaunchCalls()
         setupUI()
+
+        let settings = UIUserNotificationSettings(forTypes: [.Alert, .Badge, .Sound], categories: nil)
+        UIApplication.sharedApplication().registerUserNotificationSettings(settings)
         ReminderRepository.shared.purgeLegacyNotifications()
-        
+
         return true
     }
 
