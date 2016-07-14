@@ -23,6 +23,10 @@ private let apiQueue: NSOperationQueue = {
     return queue
 }()
 
+private func SessionMissingError() -> NSError {
+    return NSError(domain: "LandetDomain", code: -1, userInfo: [ NSLocalizedDescriptionKey : "Session missing!" ])
+}
+
 
 class UserAPI {
 
@@ -189,7 +193,10 @@ class TopicAPI {
 
     func loadAll(completion: (topics: [Topic]?, error: NSError?) -> ()) {
 
-        guard let _ = Session.currentSession else { return }
+        guard let _ = Session.currentSession else {
+            completion(topics: nil, error: SessionMissingError())
+            return
+        }
 
         let operation = SessionAPI.shared.wrapWithAutomaticRefreshingSession(operation:  {
             return self.apiClient.get("/topics")
@@ -205,7 +212,10 @@ class TopicAPI {
 
     func create(title title: String, completion: (error: NSError?) -> ()) {
 
-        guard let _ = Session.currentSession else { return }
+        guard let _ = Session.currentSession else {
+            completion(error: SessionMissingError())
+            return
+        }
 
         let body = [ "title" : title ]
         let operation = SessionAPI.shared.wrapWithAutomaticRefreshingSession(operation:  {
@@ -221,7 +231,11 @@ class TopicAPI {
 
     func comments(forTopic topic: Topic, before: NSDate?, orAfter after: NSDate?,
                            completion: (comments: [TopicComment]?, hasMore: Bool, error: NSError?) -> ()) {
-        guard let _ = Session.currentSession else { return }
+
+        guard let _ = Session.currentSession else {
+            completion(comments: nil, hasMore: false, error: SessionMissingError())
+            return
+        }
 
         var path = "/topics/\(topic.id)/comments"
         if let before = before {
@@ -249,7 +263,10 @@ class TopicAPI {
     func post(comment text: String, toTopic topic: Topic,
                       completion: (error: NSError?) -> ()) {
 
-        guard let _ = Session.currentSession else { return }
+        guard let _ = Session.currentSession else {
+            completion(error: SessionMissingError())
+            return
+        }
 
         let operation = SessionAPI.shared.wrapWithAutomaticRefreshingSession(operation:  {
             return self.apiClient.post("/topics/\(topic.id)/comments", body: [ "text" : text ])
@@ -272,7 +289,10 @@ class EventAPI {
 
     func loadAll(completion: (events: [Event]?, error: NSError?) -> ()) {
 
-        guard let _ = Session.currentSession else { return }
+        guard let _ = Session.currentSession else {
+            completion(events: nil, error: SessionMissingError())
+            return
+        }
 
         let operation = SessionAPI.shared.wrapWithAutomaticRefreshingSession(operation:  {
             return self.apiClient.get("/events")
@@ -289,7 +309,10 @@ class EventAPI {
     func create(title title: String, body bodyText: String, location: Location, time: NSDate,
                       completion: (error: NSError?) -> ()) {
 
-        guard let _ = Session.currentSession else { return }
+        guard let _ = Session.currentSession else {
+            completion(error: SessionMissingError())
+            return
+        }
 
         let body = [
             "title" : title,
@@ -309,7 +332,11 @@ class EventAPI {
     }
 
     func comments(forEvent event: Event, completion: (comments: [EventComment]?, error: NSError?) -> ()) {
-        guard let _ = Session.currentSession else { return }
+
+        guard let _ = Session.currentSession else {
+            completion(comments: nil, error: SessionMissingError())
+            return
+        }
 
         let operation = SessionAPI.shared.wrapWithAutomaticRefreshingSession(operation:  {
             return self.apiClient.get("/events/\(event.id)/comments")
@@ -326,7 +353,10 @@ class EventAPI {
     func post(comment text: String, toEvent event: Event,
                       completion: (error: NSError?) -> ()) {
 
-        guard let _ = Session.currentSession else { return }
+        guard let _ = Session.currentSession else {
+            completion(error: SessionMissingError())
+            return
+        }
 
         let operation = SessionAPI.shared.wrapWithAutomaticRefreshingSession(operation:  {
             return self.apiClient.post("/events/\(event.id)/comments", body: [ "text" : text ])
