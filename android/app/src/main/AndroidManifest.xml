@@ -20,7 +20,8 @@
         </activity>
         <activity android:name=".user.LoginOrRegisterActivity"/>
         <activity android:name=".events.EventDetailsActivity"
-            android:theme="@style/LandetThemeTransparentBar"/>
+            android:theme="@style/LandetThemeTransparentBar"
+            android:windowSoftInputMode="adjustPan"/>
         <activity android:name=".topics.TopicDetailsActivity"/>
         <activity android:name=".events.CreateEventActivity"/>
         <activity android:name=".topics.CreateTopicActivity"/>
